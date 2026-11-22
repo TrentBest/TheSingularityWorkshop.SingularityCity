@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Explore Singularity City: a living spatial front door to The Singularity Workshop.">
+  <title>Singularity City | The Singularity Workshop</title>
+  <link rel="stylesheet" href="assets/css/city.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#city" aria-label="Singularity City home">
+      <span class="brand-mark">S</span><span><strong>SINGULARITY</strong><small>THE WORKSHOP / CITY NETWORK</small></span>
+    </a>
+    <nav aria-label="Primary navigation"><a class="active" href="#city">Explore</a><a href="#districts">Districts</a><a href="#destinations">Destinations</a><a href="docs/ARCHITECTURE.md">Architecture</a></nav>
+    <div class="network-state"><i></i> CITY PREVIEW <span>v0.1</span></div>
+  </header>
+
+  <main id="city">
+    <section class="hero">
+      <div class="eyebrow"><span></span> A PLACE TO BEGIN</div>
+      <h1>A city is more than<br><em>a place on a map.</em></h1>
+      <p>Discover the places, people and experiences that connect the Workshop into one living world.</p>
+      <div class="hero-actions"><a class="primary" href="#districts">Explore the city <b>↗</b></a><a class="quiet" href="#how-it-works">How this world works</a></div>
+    </section>
+
+    <section class="city-layout" aria-label="City map and selected location">
+      <div class="map-panel">
+        <div class="map-head"><div><span class="eyebrow">LIVE SPATIAL INDEX</span><h2>Singularity City</h2></div><span class="map-coords">N 47° / SECTOR 01</span></div>
+        <div class="map-canvas">
+          <div class="map-grid"></div>
+          <svg class="city-map" viewBox="0 0 900 590" role="img" aria-label="Illustrated map of Singularity City districts">
+            <defs><pattern id="blocks" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M0 0H42V42" fill="none" stroke="#254258" stroke-width="1"/></pattern></defs>
+            <path class="river" d="M-20 425 C140 340 205 485 355 390 S610 310 920 390"/>
+            <path class="artery" d="M30 110 L850 500 M90 520 L760 60 M445 -20 L450 620 M0 300 L900 300"/>
+            <path class="district-shape workshop" d="M90 95 L320 70 L370 220 L260 285 L75 230Z"/>
+            <path class="district-shape civic" d="M480 75 L760 95 L810 255 L610 290 L475 220Z"/>
+            <path class="district-shape transit" d="M330 300 L560 270 L650 420 L480 520 L300 435Z"/>
+            <path class="district-shape underworks" d="M95 360 L265 310 L340 470 L180 550 L65 475Z"/>
+            <path class="district-shape waterfront" d="M650 350 L840 300 L900 510 L740 565 L610 465Z"/>
+            <g class="map-label"><text x="115" y="125">WORKSHOP CAMPUS</text><text x="555" y="115">CIVIC QUARTER</text><text x="390" y="340">TRANSIT NEXUS</text><text x="90" y="390">MUNICIPAL UNDERWORKS</text><text x="690" y="390">WATERFRONT</text></g>
+            <g class="map-point" data-place="workshop" tabindex="0" role="button" aria-label="Workshop Campus"><circle cx="220" cy="185" r="23"/><text x="220" y="190">W</text></g>
+            <g class="map-point" data-place="capitol" tabindex="0" role="button" aria-label="Capitol"><circle cx="650" cy="185" r="23"/><text x="650" y="190">C</text></g>
+            <g class="map-point" data-place="transit" tabindex="0" role="button" aria-label="Transit Nexus"><circle cx="470" cy="395" r="23"/><text x="470" y="400">T</text></g>
+            <g class="map-point featured" data-place="underworks" tabindex="0" role="button" aria-label="Underworks entrance"><circle cx="205" cy="450" r="25"/><text x="205" y="455">↓</text></g>
+            <g class="map-point" data-place="shipyard" tabindex="0" role="button" aria-label="Ocean Shipyard"><circle cx="770" cy="455" r="23"/><text x="770" y="460">S</text></g>
+            <g class="you-are-here"><circle cx="430" cy="250" r="8"/><circle cx="430" cy="250" r="22"/><path d="M430 228V210H470"/><text x="478" y="214">YOU ARE HERE</text></g>
+          </svg>
+          <div class="map-legend"><span><i class="legend-you"></i> You are here</span><span><i class="legend-place"></i> Discoverable place</span><span><i class="legend-entry"></i> Experience entrance</span></div>
+        </div>
+        <div class="map-foot"><span>ILLUSTRATIVE CITY MAP · NOT TO SCALE</span><span>SELECT A LOCATION TO INSPECT</span></div>
+      </div>
+
+      <aside class="location-panel" aria-live="polite">
+        <div class="panel-top"><span class="eyebrow">PLACE DOSSIER</span><span class="status">DISCOVERABLE</span></div>
+        <div class="place-icon" id="place-icon">⌖</div>
+        <p class="place-type" id="place-type">CITY ORIENTATION</p>
+        <h2 id="place-title">Central Arrival</h2>
+        <p class="place-description" id="place-description">Your current position in the city. Choose a district marker to discover what lives beyond the next street.</p>
+        <div class="place-facts"><div><small>ACCESS</small><strong id="place-access">Open public space</strong></div><div><small>DOMAIN</small><strong id="place-domain">Singularity City</strong></div></div>
+        <div class="entry-card"><span class="eyebrow">AVAILABLE ENTRY</span><strong id="entry-title">City orientation</strong><p id="entry-description">Inspect the map and discover connected destinations.</p><button id="entry-action" type="button">Inspect destination <b>↗</b></button></div>
+      </aside>
+    </section>
+
+    <section class="section" id="districts">
+      <div class="section-heading"><div><span class="eyebrow">FIND YOUR WAY</span><h2>Districts & destinations</h2></div><p>Every place has a purpose. Every entrance leads somewhere.</p></div>
+      <div class="destination-grid" id="destinations">
+        <button class="destination-card" data-place="workshop"><span class="card-number">01 / CREATE</span><span class="card-symbol">⌘</span><strong>Workshop Campus</strong><span>Build, compose and create new experiences.</span><b>Explore campus ↗</b></button>
+        <button class="destination-card" data-place="capitol"><span class="card-number">02 / GOVERN</span><span class="card-symbol">⌂</span><strong>Civic Quarter</strong><span>Institutions, public services and city life.</span><b>Explore civic life ↗</b></button>
+        <button class="destination-card" data-place="transit"><span class="card-number">03 / CONNECT</span><span class="card-symbol">⟷</span><strong>Transit Nexus</strong><span>Find the next destination across the network.</span><b>Explore transit ↗</b></button>
+        <button class="destination-card featured-card" data-place="underworks"><span class="card-number">04 / DESCEND</span><span class="card-symbol">⌄</span><strong>The Underworks</strong><span>A hidden municipal world beneath the streets.</span><b>Discover the entrance ↗</b></button>
+        <button class="destination-card" data-place="shipyard"><span class="card-number">05 / BUILD</span><span class="card-symbol">⚓</span><strong>Ocean Shipyard</strong><span>Construction, logistics and maritime systems.</span><b>Explore waterfront ↗</b></button>
+      </div>
+    </section>
+
+    <section class="how" id="how-it-works"><div><span class="eyebrow">A CONNECTED WORLD</span><h2>One city.<br><em>Many experiences.</em></h2></div><div class="how-copy"><p>City provides the geography and the doorway. The experience beyond that doorway owns its own rules, simulation and history.</p><div class="flow"><span>WORKSHOP</span><b>→</b><span>TRANSIT</span><b>→</b><span>CITY</span><b>→</b><span>WORLD</span></div><a href="docs/ARCHITECTURE.md">Read the architecture contract ↗</a></div></section>
+  </main>
+
+  <footer><div class="brand"><span class="brand-mark">S</span><span><strong>THE SINGULARITY WORKSHOP</strong><small>BUILD THE WORLD YOU WANT TO LIVE IN.</small></span></div><span>EARLY CITY PROOF · v0.1</span></footer>
+  <dialog id="entry-dialog"><button class="dialog-close" aria-label="Close" type="button">×</button><span class="eyebrow">EXPERIENCE HANDOFF PREVIEW</span><h2 id="dialog-title">Destination</h2><p id="dialog-copy"></p><div class="dialog-note">This is a local navigation fixture. A live transition will be handled by the host and owning experience repository.</div><button class="dialog-confirm" type="button">Understood</button></dialog>
+  <script src="assets/js/city.js"></script>
+</body>
+</html>
