@@ -37,7 +37,7 @@ assert.ok(existsSync("assets/images/living-city-atlas.svg"),"living city atlas i
 assert.ok(existsSync("docs/LIVING_PICTURE.md"),"living picture guide missing");
 assert.ok(existsSync("docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md"),"civil systems theory atlas missing");
 const atlas=readFileSync("assets/images/living-city-atlas.svg","utf8");
-assert.match(atlas,/<svg[\\s\\S]*<title[\\s\\S]*<desc/);
+assert.ok(atlas.startsWith("<svg")&&atlas.includes("<title")&&atlas.includes("<desc"),"atlas SVG must have accessible title and description");
 const theory=readFileSync("docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md","utf8");
 for(const domain of ["Geography","Architecture","Civil and municipal infrastructure","Urban planning","Transportation","Water, energy","Ecology","People, households","Institutions","Economy","Culture","Risk, resilience","Commons theory","Environmental justice"])assert.ok(theory.includes(domain),`missing city domain/theory: ${domain}`);
 
