@@ -65,4 +65,4 @@ The current implementation includes a terrain-first layered map stack with sampl
 
 ## The Singularity Workshop
 
-![The Singularity Workshop](https://raw.githubusercontent.com/TrentBest/FSM_API/master/Documentation/Branding/TheSingularityWorkshop.png)
+![The Singularity Workshop](assets/images/singularity-workshop-avatar.svg)
