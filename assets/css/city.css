@@ -120,3 +120,9 @@
 
 .terrain-contour{stroke:#e6e1c3;stroke-width:1.15;opacity:.52;pointer-events:none}
 .terrain-contour[data-contour="150"],.terrain-contour[data-contour="160"]{stroke-width:1.8;opacity:.76}
+
+/* Shared Workshop identity in the City footer. */
+.city-footer{gap:24px;min-height:120px;border-top:1px solid var(--line)}
+.city-footer .brand{gap:16px;letter-spacing:.12em}
+.workshop-avatar{display:block;flex:0 0 72px;width:72px;height:72px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 0 16px #65e4dc30)}
+@media(max-width:700px){.city-footer{align-items:center;flex-direction:row;flex-wrap:wrap}.workshop-avatar{flex-basis:60px;width:60px;height:60px}.city-footer .brand strong{font-size:10px}.city-footer .brand small{font-size:8px}}
