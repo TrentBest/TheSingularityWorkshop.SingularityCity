@@ -7,6 +7,10 @@
 
 > A city is more than a place on a map. It is a living index of what exists, what can happen here, and where you can go next.
 
+![Singularity City living systems atlas](assets/images/living-city-atlas.svg)
+
+The atlas is a conceptual systems illustration; the browser proof and Visualize's CPU/SVG city-massing proof are separate, explicitly labelled implementation paths.
+
 ## Live preview
 
 The browser proof is designed for GitHub Pages and is built from `development`:
@@ -40,6 +44,8 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Declarative experience entry points](docs/EXPERIENCES.md)
 - [Build your own city, step by step](docs/BUILD_YOUR_CITY.md)
 - [Source-grounded world research and evidence ledger](docs/SOURCE_RESEARCH.md)
+- [Living picture: visual architecture and proof ladder](docs/LIVING_PICTURE.md)
+- [Civil systems and city theory atlas](docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md)
 - [Wheel of Time city showcase plan](docs/WHEEL_OF_TIME_SHOWCASE.md)
 
 ## Development
