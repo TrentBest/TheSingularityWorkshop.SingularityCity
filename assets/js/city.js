@@ -53,7 +53,7 @@ function renderProvenance(p) {
   text("#source-status",p.status);
   text("#source-capabilities",p.capabilities.join(" · "));
   const link=document.querySelector("#source-link");
-  if(link) link.href="https://github.com/"+p.owner.repository+"/blob/master/"+p.owner.path;
+  if(link) link.href="https://github.com/"+p.owner.repository+"/blob/development/"+p.owner.path;
   text("#source-manifest","data/places.json · "+p.id);
 }
 function selectPlace(id) {
