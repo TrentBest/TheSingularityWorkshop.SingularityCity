@@ -39,6 +39,8 @@ jobs:
           test -s data/places.json
           test -s data/city-blueprint.json
           test -s data/city-systems.json
+          test -s data/commerce-route-fixture.json
+          test -s tests/commerce-route-fixture.test.mjs
           test -s data/districts/civic-quarter.json
           test -s data/terrain/city-terrain.json
           test -s data/terrain/physics-volcanic-terrain.json
@@ -64,6 +66,7 @@ jobs:
           test -s docs/WHEEL_OF_TIME_SHOWCASE.md
           test -s docs/rulebooks/SurpsRulebookVillagesToCities.md
           node tests/validate-catalog.mjs
+          node tests/commerce-route-fixture.test.mjs
           node tests/physics-terrain-adapter.test.mjs
           node tests/terrain-interpretation.test.mjs
           node --test tests/physics-terrain-overlay.test.mjs tests/physics-terrain-snapshot.test.mjs
