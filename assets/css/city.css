@@ -23,3 +23,25 @@
 
 .generated-parcel{pointer-events:all;cursor:pointer;transition:fill .15s,stroke .15s}
 .generated-parcel:hover,.generated-parcel:focus{fill:#65e4dc55;stroke:#65e4dc;stroke-width:2;outline:none}
+
+/* Living-picture atlas and multi-domain city knowledge. */
+.atlas-section{max-width:1400px;margin:0 auto 80px;padding:0 clamp(20px,5vw,70px);display:grid;grid-template-columns:minmax(250px,.7fr) minmax(0,1.5fr);gap:30px;align-items:center}
+.atlas-copy h2{font-size:clamp(30px,4vw,48px);line-height:1.08;margin:15px 0}
+.atlas-copy p{color:var(--muted);font-size:13px;line-height:1.9}
+.atlas-copy>a,.theory-ribbon>a{color:var(--cyan);font-size:11px;font-weight:800}
+.atlas-art{display:block;position:relative;border:1px solid #31556b;background:#091725;overflow:hidden}
+.atlas-art img{display:block;width:100%;height:auto;transition:transform .35s}
+.atlas-art:hover img{transform:scale(1.025)}
+.atlas-art span{position:absolute;right:14px;bottom:14px;background:#07111fe8;color:var(--cyan);padding:10px 12px;font:9px 'DM Mono',monospace;letter-spacing:.12em}
+.systems-section{margin-top:0}
+.systems-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.systems-grid a{min-height:160px;padding:20px;background:#0c1b2b;border:1px solid var(--line);display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s}
+.systems-grid a:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.systems-grid b{font:9px 'DM Mono',monospace;color:var(--cyan);letter-spacing:.12em}
+.systems-grid strong{font-size:15px}
+.systems-grid span{font-size:11px;line-height:1.7;color:var(--muted)}
+.theory-ribbon{margin-top:16px;padding:22px;border:1px solid #705e3d;background:linear-gradient(110deg,#302a20,#122638)}
+.theory-ribbon>span{font:10px 'DM Mono',monospace;color:var(--gold);letter-spacing:.14em}
+.theory-ribbon p{font-size:13px;line-height:1.8;color:#d8c8a8}
+@media(max-width:900px){.atlas-section{grid-template-columns:1fr}.systems-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.systems-grid{grid-template-columns:1fr}.atlas-section{margin-bottom:50px}}
