@@ -1,0 +1,338 @@
+{
+  "schema": "singularity-city.terrain-model.v1",
+  "cityId": "singularity-city",
+  "provenance": {
+    "kind": "synthetic-authored-terrain-fixture",
+    "revision": "v1",
+    "source": "data/terrain/city-terrain.json",
+    "limitations": [
+      "Elevation values are illustrative relative metres, not a DEM or survey.",
+      "Land cover and hydrology are authored teaching data, not remote-sensing observations.",
+      "Slope, drainage, flood and buildability decisions require validated source data and domain models."
+    ]
+  },
+  "coordinateSpace": {
+    "width": 900,
+    "height": 590,
+    "units": "map-units",
+    "origin": "north-west",
+    "xAxis": "east",
+    "yAxis": "south"
+  },
+  "elevation": {
+    "unit": "metres",
+    "datum": "local-illustrative-datum",
+    "columns": 10,
+    "rows": 7,
+    "samples": [
+      [
+        142,
+        146,
+        151,
+        158,
+        166,
+        172,
+        168,
+        159,
+        151,
+        145
+      ],
+      [
+        138,
+        143,
+        149,
+        157,
+        164,
+        169,
+        163,
+        154,
+        147,
+        140
+      ],
+      [
+        132,
+        138,
+        145,
+        151,
+        157,
+        160,
+        155,
+        148,
+        139,
+        133
+      ],
+      [
+        126,
+        132,
+        139,
+        145,
+        149,
+        151,
+        147,
+        140,
+        132,
+        126
+      ],
+      [
+        121,
+        127,
+        133,
+        138,
+        142,
+        144,
+        140,
+        134,
+        127,
+        121
+      ],
+      [
+        117,
+        122,
+        128,
+        133,
+        137,
+        139,
+        135,
+        129,
+        123,
+        117
+      ],
+      [
+        114,
+        119,
+        124,
+        129,
+        132,
+        134,
+        131,
+        125,
+        119,
+        114
+      ]
+    ]
+  },
+  "landCover": [
+    [
+      "woodland",
+      "woodland",
+      "woodland",
+      "meadow",
+      "meadow",
+      "meadow",
+      "meadow",
+      "woodland",
+      "woodland"
+    ],
+    [
+      "woodland",
+      "meadow",
+      "meadow",
+      "urban",
+      "urban",
+      "urban",
+      "meadow",
+      "woodland",
+      "woodland"
+    ],
+    [
+      "meadow",
+      "meadow",
+      "urban",
+      "urban",
+      "urban",
+      "urban",
+      "urban",
+      "meadow",
+      "wetland"
+    ],
+    [
+      "meadow",
+      "urban",
+      "urban",
+      "urban",
+      "urban",
+      "urban",
+      "meadow",
+      "wetland",
+      "wetland"
+    ],
+    [
+      "woodland",
+      "meadow",
+      "urban",
+      "urban",
+      "urban",
+      "meadow",
+      "wetland",
+      "wetland",
+      "water"
+    ],
+    [
+      "woodland",
+      "woodland",
+      "meadow",
+      "meadow",
+      "wetland",
+      "wetland",
+      "water",
+      "water",
+      "water"
+    ]
+  ],
+  "hydrology": {
+    "watersheds": [
+      {
+        "id": "watershed-central",
+        "name": "Central Basin",
+        "boundary": [
+          [
+            0,
+            0
+          ],
+          [
+            520,
+            0
+          ],
+          [
+            610,
+            180
+          ],
+          [
+            560,
+            410
+          ],
+          [
+            350,
+            590
+          ],
+          [
+            0,
+            590
+          ]
+        ],
+        "outlet": [
+          810,
+          420
+        ]
+      }
+    ],
+    "watercourses": [
+      {
+        "id": "stream-east",
+        "name": "Eastern Brook",
+        "kind": "stream",
+        "points": [
+          [
+            850,
+            30
+          ],
+          [
+            805,
+            115
+          ],
+          [
+            780,
+            205
+          ],
+          [
+            810,
+            295
+          ],
+          [
+            790,
+            385
+          ],
+          [
+            850,
+            480
+          ]
+        ],
+        "flowDirection": "south-east"
+      },
+      {
+        "id": "drainage-spine",
+        "name": "Central Drainage",
+        "kind": "swale",
+        "points": [
+          [
+            120,
+            40
+          ],
+          [
+            220,
+            150
+          ],
+          [
+            350,
+            245
+          ],
+          [
+            455,
+            360
+          ],
+          [
+            560,
+            500
+          ]
+        ],
+        "flowDirection": "south-east"
+      }
+    ]
+  },
+  "hazards": [
+    {
+      "id": "hazard-lowland-east",
+      "kind": "surface-water-screening",
+      "severity": "watch",
+      "polygon": [
+        [
+          680,
+          280
+        ],
+        [
+          900,
+          260
+        ],
+        [
+          900,
+          590
+        ],
+        [
+          650,
+          500
+        ]
+      ],
+      "basis": "synthetic-lowland-proximity",
+      "notForLifeSafety": true
+    }
+  ],
+  "terrainFeatures": [
+    {
+      "id": "ridge-north",
+      "kind": "ridge",
+      "label": "Northern Ridge",
+      "anchor": [
+        470,
+        80
+      ]
+    },
+    {
+      "id": "basin-central",
+      "kind": "basin",
+      "label": "Central Basin",
+      "anchor": [
+        460,
+        360
+      ]
+    },
+    {
+      "id": "wetland-east",
+      "kind": "wetland",
+      "label": "Eastern Wetlands",
+      "anchor": [
+        790,
+        440
+      ]
+    }
+  ]
+}
