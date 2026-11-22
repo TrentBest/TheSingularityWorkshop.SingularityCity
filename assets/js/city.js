@@ -3,6 +3,8 @@ const catalogUrl = new URL("../../data/places.json", import.meta.url);
 const blueprintUrl = new URL("../../data/city-blueprint.json", import.meta.url);
 const systemsUrl = new URL("../../data/city-systems.json", import.meta.url);
 const districtUrl = new URL("../../data/districts/civic-quarter.json", import.meta.url);
+const terrainUrl = new URL("../../data/terrain/city-terrain.json", import.meta.url);
+const mapLayersUrl = new URL("../../data/map-layers.json", import.meta.url);
 const svgNamespace = "http://www.w3.org/2000/svg";
 const dialog = document.querySelector("#entry-dialog");
 let places = new Map();
@@ -15,6 +17,78 @@ const svg = (name, attributes={}) => {
   for(const [key,value] of Object.entries(attributes)) node.setAttribute(key,String(value));
   return node;
 };
+
+function renderTerrain(terrain) {
+  const elevationLayer=document.querySelector("#terrain-layer");
+  const landCoverLayer=document.querySelector("#land-cover-layer");
+  const hydrologyLayer=document.querySelector("#hydrology-layer");
+  const hazardsLayer=document.querySelector("#hazards-layer");
+  for(const layer of [elevationLayer,landCoverLayer,hydrologyLayer,hazardsLayer]) layer?.replaceChildren();
+  const {width,height}=terrain.coordinateSpace;
+  const grid=terrain.elevation.samples, rows=terrain.landCover.length, columns=terrain.landCover[0].length;
+  const cellWidth=width/columns,cellHeight=height/rows;
+  const colorFor=value=>value<120?"#315a57":value<130?"#416b60":value<140?"#567d68":value<150?"#718b6c":value<160?"#8b966d":value<170?"#a49b75":"#b5a37f";
+  for(let row=0;row<rows;row++) for(let column=0;column<columns;column++) {
+    const average=(grid[row][column]+grid[row][column+1]+grid[row+1][column]+grid[row+1][column+1])/4;
+    elevationLayer?.append(svg("rect",{x:column*cellWidth,y:row*cellHeight,width:cellWidth+1,height:cellHeight+1,fill:colorFor(average),class:"terrain-tile","data-elevation":average.toFixed(1)}));
+    const cover=terrain.landCover[row][column];
+    landCoverLayer?.append(svg("rect",{x:column*cellWidth+2,y:row*cellHeight+2,width:cellWidth-4,height:cellHeight-4,rx:3,class:"land-cover-tile land-cover-"+cover}));
+  }
+  for(const watershed of terrain.hydrology.watersheds) {
+    hydrologyLayer?.append(svg("polygon",{points:watershed.boundary.map(p=>p.join(",")).join(" "),class:"watershed-boundary"}));
+    const outlet=svg("circle",{cx:watershed.outlet[0],cy:watershed.outlet[1],r:7,class:"watershed-outlet"});
+    hydrologyLayer?.append(outlet);
+  }
+  for(const stream of terrain.hydrology.watercourses) {
+    hydrologyLayer?.append(svg("polyline",{points:stream.points.map(p=>p.join(",")).join(" "),class:"watercourse watercourse-"+stream.kind}));
+    const label=svg("text",{x:stream.points[1][0],y:stream.points[1][1]-8,class:"terrain-feature-label"});
+    label.textContent=stream.name.toUpperCase();hydrologyLayer?.append(label);
+  }
+  for(const hazard of terrain.hazards) hazardsLayer?.append(svg("polygon",{points:hazard.polygon.map(p=>p.join(",")).join(" "),class:"hazard-zone","data-hazard":hazard.id}));
+  for(const feature of terrain.terrainFeatures) {
+    const marker=svg("g",{class:"terrain-feature"});
+    marker.append(svg("circle",{cx:feature.anchor[0],cy:feature.anchor[1],r:5}));
+    const label=svg("text",{x:feature.anchor[0]+9,y:feature.anchor[1]-8,class:"terrain-feature-label"});
+    label.textContent=feature.label.toUpperCase();marker.append(label);elevationLayer?.append(marker);
+  }
+  const values=grid.flat();
+  text("#terrain-readout","Synthetic terrain · "+Math.min(...values)+"–"+Math.max(...values)+" m relative elevation");
+}
+function renderInfrastructure(model) {
+  const transit=document.querySelector("#transit-layer"),utilities=document.querySelector("#utilities-layer");
+  transit?.replaceChildren();utilities?.replaceChildren();
+  const sx=900/640,sy=590/420;
+  for(const route of model.transit.routes) {
+    const stops=route.stopIds.map(id=>model.transit.stops.find(s=>s.id===id)).filter(Boolean);
+    if(stops.length>1) transit?.append(svg("polyline",{points:stops.map(s=>(s.x*sx)+","+(s.y*sy)).join(" "),class:"map-transit-route"}));
+  }
+  for(const stop of model.transit.stops) {
+    const x=stop.x*sx,y=stop.y*sy;
+    transit?.append(svg("circle",{cx:x,cy:y,r:8,class:"map-transit-stop"}));
+  }
+  for(const network of [model.water,model.energy]) {
+    const nodes=new Map(network.nodes.map(n=>[n.id,n]));
+    for(const edge of network.edges) {
+      const a=nodes.get(edge.from),b=nodes.get(edge.to);if(!a||!b)continue;
+      utilities?.append(svg("line",{x1:a.x*sx,y1:a.y*sy,x2:b.x*sx,y2:b.y*sy,class:network===model.water?"map-water-link":"map-energy-link"}));
+    }
+  }
+}
+function renderMapLayerControls(catalog) {
+  const root=document.querySelector("#map-layer-controls");if(!root)return;
+  const targets={"terrain":["#terrain-layer"],"land-cover":["#land-cover-layer"],"watersheds":["#hydrology-layer"],"districts":["#district-layer","#district-labels"],"parcels":["#parcel-layer"],"mobility":["#route-layer"],"transit":["#transit-layer"],"utilities":["#utilities-layer"],"hazards":["#hazards-layer"]};
+  root.replaceChildren();
+  const title=document.createElement("span");title.textContent="MAP LAYERS";root.append(title);
+  for(const layer of catalog.layers) {
+    const button=document.createElement("button");button.type="button";button.textContent=layer.title;button.dataset.mapLayer=layer.id;
+    let visible=layer.defaultVisible;
+    for(const selector of targets[layer.id]||[]) {const node=document.querySelector(selector);if(node)node.classList.toggle("map-layer-hidden",!visible);}
+    button.setAttribute("aria-pressed",String(visible));
+    button.addEventListener("click",()=>{visible=!visible;button.setAttribute("aria-pressed",String(visible));for(const selector of targets[layer.id]||[])document.querySelector(selector)?.classList.toggle("map-layer-hidden",!visible);});
+    root.append(button);
+  }
+}
+
 function renderBlueprint(blueprint) {
   const districts=document.querySelector("#district-layer");
   const parcels=document.querySelector("#parcel-layer");
@@ -217,18 +291,22 @@ function inspectDistrictEntity(model,id) {
 }
 
 async function start() {
-  const [catalogResponse,blueprintResponse,systemsResponse,districtResponse]=await Promise.all([fetch(catalogUrl),fetch(blueprintUrl),fetch(systemsUrl),fetch(districtUrl)]);
+  const [catalogResponse,blueprintResponse,systemsResponse,districtResponse,terrainResponse,mapLayersResponse]=await Promise.all([fetch(catalogUrl),fetch(blueprintUrl),fetch(systemsUrl),fetch(districtUrl),fetch(terrainUrl),fetch(mapLayersUrl)]);
   if(!catalogResponse.ok) throw new Error("City catalog unavailable: "+catalogResponse.status);
   if(!blueprintResponse.ok) throw new Error("City blueprint unavailable: "+blueprintResponse.status);
   if(!systemsResponse.ok) throw new Error("City systems catalog unavailable: "+systemsResponse.status);
   if(!districtResponse.ok) throw new Error("Connected district model unavailable: "+districtResponse.status);
-  const [catalog,blueprint,systems,district]=await Promise.all([catalogResponse.json(),blueprintResponse.json(),systemsResponse.json(),districtResponse.json()]);
+  if(!terrainResponse.ok) throw new Error("Terrain model unavailable: "+terrainResponse.status);
+  if(!mapLayersResponse.ok) throw new Error("Map layer catalog unavailable: "+mapLayersResponse.status);
+  const [catalog,blueprint,systems,district,terrain,mapLayers]=await Promise.all([catalogResponse.json(),blueprintResponse.json(),systemsResponse.json(),districtResponse.json(),terrainResponse.json(),mapLayersResponse.json()]);
   if(catalog.schema!=="singularity-city.catalog.v1"||!Array.isArray(catalog.places)) throw new Error("Unsupported City catalog schema");
   if(blueprint.schema!=="singularity-city.blueprint.v1"||blueprint.cityId!==catalog.city.id) throw new Error("Unsupported or mismatched City blueprint");
   if(systems.schema!=="singularity-city.systems.v1"||systems.cityId!==catalog.city.id||!Array.isArray(systems.systems)) throw new Error("Unsupported or mismatched City systems catalog");
   if(district.schema!=="singularity-city.district-model.v1"||district.cityId!==catalog.city.id||district.district.id!=="civic") throw new Error("Unsupported or mismatched connected district model");
+  if(terrain.schema!=="singularity-city.terrain-model.v1"||terrain.cityId!==catalog.city.id) throw new Error("Unsupported or mismatched terrain model");
+  if(mapLayers.schema!=="singularity-city.map-layer-catalog.v1"||mapLayers.cityId!==catalog.city.id) throw new Error("Unsupported or mismatched map layer catalog");
   places=new Map(catalog.places.map(p=>[p.id,p]));
-  renderBlueprint(blueprint); renderSystems(systems); renderConnectedDistrict(district); renderMarkers(catalog.places); renderCards(catalog.places);
+  renderTerrain(terrain); renderBlueprint(blueprint); renderInfrastructure(district); renderMapLayerControls(mapLayers); renderSystems(systems); renderConnectedDistrict(district); renderMarkers(catalog.places); renderCards(catalog.places);
   selectPlace("underworks");
 }
 document.querySelector("#entry-action").addEventListener("click",()=>{
