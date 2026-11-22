@@ -41,17 +41,23 @@
         <div class="map-head"><div><span class="eyebrow">LIVE SPATIAL INDEX</span><h2>Singularity City</h2></div><span class="map-coords">N 47° / SECTOR 01</span></div>
         <div class="map-canvas">
           <div class="map-grid"></div>
+          <div class="map-layer-toolbar" id="map-layer-controls" aria-label="Toggle city map layers"><span>MAP LAYERS</span><button type="button" disabled>Loading layers…</button></div>
           <svg class="city-map" viewBox="0 0 900 590" role="img" aria-label="Illustrated map of Singularity City districts">
             <defs><pattern id="blocks" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M0 0H42V42" fill="none" stroke="#254258" stroke-width="1"/></pattern></defs>
-            <path class="river" d="M-20 425 C140 340 205 485 355 390 S610 310 920 390"/>
-            <g id="route-layer"></g>
+            <g id="terrain-layer"></g>
+            <g id="land-cover-layer"></g>
+            <g id="hydrology-layer"></g>
+            <g id="hazards-layer"></g>
             <g id="district-layer"></g>
+            <g id="route-layer"></g>
             <g id="parcel-layer"></g>
             <g id="district-labels"></g>
+            <g id="transit-layer"></g>
+            <g id="utilities-layer"></g>
             <g id="place-markers"></g>
             <g class="you-are-here"><circle cx="430" cy="250" r="8"/><circle cx="430" cy="250" r="22"/><path d="M430 228V210H470"/><text x="478" y="214">YOU ARE HERE</text></g>
           </svg>
-          <div class="map-legend"><span><i class="legend-you"></i> You are here</span><span><i class="legend-place"></i> Discoverable place</span><span><i class="legend-entry"></i> Experience entrance</span></div>
+          <div class="map-legend"><span><i class="legend-you"></i> You are here</span><span><i class="legend-place"></i> Discoverable place</span><span><i class="legend-entry"></i> Experience entrance</span><span id="terrain-readout">Terrain · synthetic model</span></div>
         </div>
         <div class="map-foot"><span id="map-generation">LOADING CITY BLUEPRINT…</span><span>SELECT A LOCATION TO INSPECT</span></div>
       </div>
@@ -84,6 +90,12 @@
       </div>
       <p class="district-model-status" id="district-model-status">LOADING CONNECTED DISTRICT MODEL…</p>
       <a class="district-doc-link" href="docs/CIVIC_QUARTER_VERTICAL_SLICE.md">Inspect the model, assumptions and relationship contract ↗</a>
+    </section>
+
+    <section class="city-builder-intro section" id="city-builder">
+      <div class="section-heading"><div><span class="eyebrow">FROM MAP TO INHABITED WORLD</span><h2>Plan as mayor. Walk the city you create.</h2></div><p>The same spatial identities should power the planning map, the simulation and the first-person world. A road on the map becomes a street beneath your feet.</p></div>
+      <div class="builder-pillars"><article><b>01 / READ THE LAND</b><h3>Terrain before streets.</h3><p>Elevation, slope, watersheds, wetlands and ecological constraints shape where a city can responsibly grow.</p></article><article><b>02 / DESIGN THE CITY</b><h3>Maps are instruments.</h3><p>Districts, parcels, mobility, transit and utility layers become editable proposals with provenance and validation.</p></article><article><b>03 / LIVE IN THE RESULT</b><h3>First-person mayor.</h3><p>Walk streets, enter civic buildings, inspect services, travel transit and witness the consequences of city decisions.</p></article></div>
+      <a class="district-doc-link" href="docs/MAPS_AS_CITY_DATA.md">Read the layered map and terrain architecture ↗</a> · <a class="district-doc-link" href="docs/CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md">Read the city-builder / FPS experience contract ↗</a>
     </section>
 
     <section class="section" id="districts">
