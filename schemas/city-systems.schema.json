@@ -1,0 +1,28 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/schemas/city-systems.schema.json",
+  "title":"Singularity City Systems Catalog",
+  "type":"object",
+  "required":["schema","cityId","systems"],
+  "properties":{
+    "schema":{"const":"singularity-city.systems.v1"},
+    "cityId":{"type":"string","minLength":1},
+    "systems":{"type":"array","minItems":1,"items":{
+      "type":"object",
+      "required":["id","title","domain","summary","components","status","visualization","measures","theoryAnchor"],
+      "properties":{
+        "id":{"type":"string","pattern":"^[a-z0-9-]+$"},
+        "title":{"type":"string","minLength":1},
+        "domain":{"type":"string","minLength":1},
+        "summary":{"type":"string","minLength":1},
+        "components":{"type":"array","items":{"type":"string"},"minItems":1},
+        "status":{"enum":["concept","preview","contract","implemented"]},
+        "visualization":{"type":"string","minLength":1},
+        "measures":{"type":"array","items":{"type":"string"}},
+        "theoryAnchor":{"type":"string","pattern":"^[a-z0-9-]+$"}
+      },
+      "additionalProperties":false
+    }}
+  },
+  "additionalProperties":false
+}
