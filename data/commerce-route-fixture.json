@@ -1,0 +1,95 @@
+{
+  "schema": "singularity-city.commerce-route-fixture.v1",
+  "status": "authored-fixture",
+  "scenario": {
+    "id": "greenhollow-market-day",
+    "title": "Greenhollow market day",
+    "description": "A small agrarian settlement receives an itinerant peddler carrying household goods and tools.",
+    "settingProfile": {
+      "id": "preindustrial-rural",
+      "baselineCapabilities": ["foot-travel", "animal-drawn-transport", "local-market", "handcraft-production"],
+      "explicitlyUnavailable": ["motor-scooter", "powered-refrigeration", "instant-communication"]
+    },
+    "scenarioExceptions": []
+  },
+  "places": [
+    { "id": "greenhollow-green", "kind": "market-place", "name": "Greenhollow Green", "capabilities": ["public-gathering", "temporary-market"], "access": "public" },
+    { "id": "greenhollow-mill", "kind": "production-place", "name": "Greenhollow Mill", "capabilities": ["grain-milling"], "access": "local-customers" },
+    { "id": "greenhollow-bakery", "kind": "shop", "name": "The Hearth Oven", "capabilities": ["baking", "local-sales"], "access": "public" },
+    { "id": "north-road-crossing", "kind": "route-node", "name": "North Road Crossing", "capabilities": ["pedestrian-access", "animal-cart-access"], "access": "public" }
+  ],
+  "people": [
+    {
+      "id": "mara-peddler",
+      "name": "Mara",
+      "roles": ["itinerant-peddler"],
+      "homeBasePlaceId": "greenhollow-market",
+      "capabilities": ["mobile-commerce", "haggling", "local-route-knowledge"],
+      "scenarioNotes": "A fictional fixture person; role is distinct from persistent identity."
+    },
+    {
+      "id": "tomas-baker",
+      "name": "Tomas",
+      "roles": ["baker", "shopkeeper"],
+      "workplacePlaceId": "greenhollow-bakery",
+      "capabilities": ["baking", "retail"]
+    }
+  ],
+  "inventory": {
+    "ownerPersonId": "mara-peddler",
+    "capacityUnits": 24,
+    "items": [
+      { "id": "iron-needles", "category": "household-tool", "quantity": 12, "unit": "bundle", "storage": "dry-compartment" },
+      { "id": "wooden-spoons", "category": "household-good", "quantity": 8, "unit": "item", "storage": "open-crate" },
+      { "id": "wool-thread", "category": "craft-material", "quantity": 4, "unit": "spool", "storage": "dry-compartment" }
+    ],
+    "capacityAccounting": "fixture-units; item quantities are not assumed to equal physical volume"
+  },
+  "conveyance": {
+    "id": "mara-handcart",
+    "ownerPersonId": "mara-peddler",
+    "mode": "handcart",
+    "capacityUnits": 24,
+    "compatibleRouteModes": ["pedestrian", "animal-cart"],
+    "requiresCapabilities": ["passable-foot-route"]
+  },
+  "routes": [
+    {
+      "id": "north-track",
+      "fromPlaceId": "north-road-crossing",
+      "toPlaceId": "greenhollow-green",
+      "modes": ["pedestrian", "handcart"],
+      "access": "public",
+      "conditions": ["dry-weather"],
+      "distanceMetres": 850,
+      "travelTimeMinutes": null,
+      "travelTimeStatus": "not-simulated"
+    },
+    {
+      "id": "green-to-bakery",
+      "fromPlaceId": "greenhollow-green",
+      "toPlaceId": "greenhollow-bakery",
+      "modes": ["pedestrian", "handcart"],
+      "access": "public",
+      "conditions": [],
+      "distanceMetres": 90,
+      "travelTimeMinutes": null,
+      "travelTimeStatus": "not-simulated"
+    }
+  ],
+  "visits": [
+    { "id": "market-arrival", "actorPersonId": "mara-peddler", "destinationPlaceId": "greenhollow-green", "purpose": "temporary-market-trading", "routeId": "north-track" },
+    { "id": "bakery-stop", "actorPersonId": "mara-peddler", "destinationPlaceId": "greenhollow-bakery", "purpose": "customer-and-restock-contact", "routeId": "green-to-bakery" }
+  ],
+  "ownershipBoundaries": {
+    "city": ["place-identities", "route-access-context", "visits", "civic-space"],
+    "economy": ["prices", "currency", "valuation", "exchange-settlement", "credit"],
+    "physics": ["terrain", "physical-route-conditions", "vehicle-motion", "travel-time-simulation"],
+    "specialistDomains": ["item-manufacture", "food-production", "craft-recipes"]
+  },
+  "evidence": {
+    "kind": "authored-fixture",
+    "source": "The Singularity Workshop",
+    "limitations": ["not a historical reconstruction", "not a live market", "not an economic simulation", "not a route solver", "not a resident simulation"]
+  }
+}
