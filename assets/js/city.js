@@ -34,6 +34,31 @@ function renderTerrain(terrain) {
     const cover=terrain.landCover[row][column];
     landCoverLayer?.append(svg("rect",{x:column*cellWidth+2,y:row*cellHeight+2,width:cellWidth-4,height:cellHeight-4,rx:3,class:"land-cover-tile land-cover-"+cover}));
   }
+  // Marching-squares contour segments derived from the same elevation samples as the tint.
+  const contourLevels=[120,130,140,150,160,170];
+  for(let row=0;row<terrain.elevation.rows-1;row++) for(let column=0;column<terrain.elevation.columns-1;column++) {
+    const x=column*cellWidth,y=row*cellHeight;
+    const corners=[grid[row][column],grid[row][column+1],grid[row+1][column+1],grid[row+1][column]];
+    const edges=[
+      [0,1,x,y,x+cellWidth,y],
+      [1,2,x+cellWidth,y,x+cellWidth,y+cellHeight],
+      [2,3,x+cellWidth,y+cellHeight,x,y+cellHeight],
+      [3,0,x,y+cellHeight,x,y]
+    ];
+    for(const level of contourLevels) {
+      const crossings=[];
+      for(const [a,b,x1,y1,x2,y2] of edges) {
+        const va=corners[a],vb=corners[b];
+        if((va<level)===(vb<level)||va===vb)continue;
+        const t=(level-va)/(vb-va);
+        crossings.push([x1+(x2-x1)*t,y1+(y2-y1)*t]);
+      }
+      for(let i=0;i+1<crossings.length;i+=2) {
+        const [a,b]=[crossings[i],crossings[i+1]];
+        elevationLayer?.append(svg("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],class:"terrain-contour","data-contour":level}));
+      }
+    }
+  }
   for(const watershed of terrain.hydrology.watersheds) {
     hydrologyLayer?.append(svg("polygon",{points:watershed.boundary.map(p=>p.join(",")).join(" "),class:"watershed-boundary"}));
     const outlet=svg("circle",{cx:watershed.outlet[0],cy:watershed.outlet[1],r:7,class:"watershed-outlet"});
