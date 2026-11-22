@@ -8,7 +8,7 @@ Singularity City sourcebooks describe the inhabited world: people, places, insti
 
 ### Nonplayer Characters — LOD 1
 
-![LOD 1](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/development/docs/assets/rulebook-lod-1.svg)
+![LOD 1](../assets/sourcebook-lod-1.svg)
 
 ![Nonplayer Characters cover](covers/nonplayer-characters.svg)
 
