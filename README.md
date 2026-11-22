@@ -38,6 +38,8 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)
 - [City spatial and civic model](docs/CITY_MODEL.md)
 - [Declarative experience entry points](docs/EXPERIENCES.md)
+- [Build your own city, step by step](docs/BUILD_YOUR_CITY.md)
+- [Wheel of Time city showcase plan](docs/WHEEL_OF_TIME_SHOWCASE.md)
 
 ## Development
 
