@@ -33,6 +33,9 @@ jobs:
           test -s schemas/city-blueprint.schema.json
           test -s schemas/source-observation.schema.json
           test -s docs/SOURCE_RESEARCH.md
+          test -s docs/LIVING_PICTURE.md
+          test -s docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md
+          test -s assets/images/living-city-atlas.svg
           test -s docs/ARCHITECTURE.md
           test -s docs/CITY_MODEL.md
           test -s docs/EXPERIENCES.md
