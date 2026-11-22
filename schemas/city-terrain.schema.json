@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thesingularityworkshop.com/schemas/city-terrain.schema.json",
+  "title": "Singularity City Terrain Model",
+  "type": "object",
+  "required": [
+    "schema",
+    "cityId",
+    "provenance",
+    "coordinateSpace",
+    "elevation",
+    "landCover",
+    "hydrology",
+    "hazards",
+    "terrainFeatures"
+  ],
+  "properties": {
+    "schema": {
+      "const": "singularity-city.terrain-model.v1"
+    },
+    "cityId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "kind",
+        "revision",
+        "source",
+        "limitations"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "coordinateSpace": {
+      "type": "object",
+      "required": [
+        "width",
+        "height",
+        "units",
+        "origin",
+        "xAxis",
+        "yAxis"
+      ],
+      "properties": {
+        "width": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "units": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "xAxis": {
+          "type": "string"
+        },
+        "yAxis": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "elevation": {
+      "type": "object",
+      "required": [
+        "unit",
+        "datum",
+        "columns",
+        "rows",
+        "samples"
+      ],
+      "properties": {
+        "unit": {
+          "const": "metres"
+        },
+        "datum": {
+          "type": "string"
+        },
+        "columns": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "samples": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "landCover": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "enum": [
+            "woodland",
+            "meadow",
+            "urban",
+            "wetland",
+            "water"
+          ]
+        }
+      }
+    },
+    "hydrology": {
+      "type": "object",
+      "required": [
+        "watersheds",
+        "watercourses"
+      ],
+      "properties": {
+        "watersheds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "boundary",
+              "outlet"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "boundary": {
+                "$ref": "#/$defs/points"
+              },
+              "outlet": {
+                "$ref": "#/$defs/point"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "watercourses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "kind",
+              "points",
+              "flowDirection"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              },
+              "points": {
+                "$ref": "#/$defs/points"
+              },
+              "flowDirection": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "hazards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "severity",
+          "polygon",
+          "basis",
+          "notForLifeSafety"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "polygon": {
+            "$ref": "#/$defs/points"
+          },
+          "basis": {
+            "type": "string"
+          },
+          "notForLifeSafety": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "terrainFeatures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "label",
+          "anchor"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "anchor": {
+            "$ref": "#/$defs/point"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "point": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "points": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/$defs/point"
+      }
+    }
+  },
+  "additionalProperties": false
+}
