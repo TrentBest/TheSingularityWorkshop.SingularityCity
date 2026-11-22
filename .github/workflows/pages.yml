@@ -32,6 +32,7 @@ jobs:
           test -s docs/CITY_MODEL.md
           test -s docs/EXPERIENCES.md
           test -s docs/BUILD_YOUR_CITY.md
+          test -s docs/WHEEL_OF_TIME_SHOWCASE.md
           node tests/validate-catalog.mjs
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
