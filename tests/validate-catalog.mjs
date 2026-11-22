@@ -33,5 +33,5 @@ const routeIds=new Set();for(const r of blueprint.routes){assert.ok(r.id&&!route
 const html=readFileSync("index.html","utf8"),js=readFileSync("assets/js/city.js","utf8"),generator=readFileSync("assets/js/city-generator.mjs","utf8");
 for(const id of ["place-markers","district-layer","parcel-layer","route-layer"])assert.ok(html.includes(`id="${id}"`),`missing SVG layer ${id}`);
 assert.match(html,/id="source-repository"/);assert.match(html,/docs\/BUILD_YOUR_CITY\.md/);
-assert.match(js,/data\/places\.json/);assert.match(js,/data\/city-blueprint\.json/);assert.match(js,/city-generator\.mjs/);assert.match(generator,/export function generateParcels/);assert.match(js,/renderBlueprint/);
+assert.match(js,/data\/places\.json/);assert.match(js,/data\/city-blueprint\.json/);assert.match(js,/city-generator\.mjs/);assert.match(generator,/export function generateParcels/);assert.match(js,/renderBlueprint/);assert.match(js,/inspectParcel/);
 console.log(`Validated ${catalog.places.length} places, ${blueprint.districts.length} districts, ${parcelCount} deterministic parcels and ${blueprint.routes.length} routes.`);
