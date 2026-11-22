@@ -100,6 +100,16 @@ The long-term map stack should support:
 - editing tools with undoable proposals;
 - provenance, confidence and data freshness indicators.
 
+## Historical and temporal cartography
+
+A map is also a record of what its maker chose and was able to represent at a particular time. Historical maps are not deficient modern maps: they preserve period-specific knowledge, purpose, conventions and omissions. The same City identities should be traceable across hand-drawn plans, historical surveys, modern topographic maps and analytical layers without implying that every source contained the same information.
+
+Keep the untouched source image, any georeferenced overlay, interpreted features and the temporal City model distinct. Record source date and purpose, represented time, scale/coverage, legend, coordinate reference, transformation, provenance, rights, uncertainty and interpretation status. Unknown information stays unknown; absence from a map is not proof of absence from the place.
+
+Time-aware features need valid-time intervals (when something existed) and record-time provenance (when and why City learned it). Events should connect to affected places and systems so the history can explain growth, civic achievements, hardship, conflict, shocks and recovery—with evidence, competing accounts and impacts, not a single decorative timeline.
+
+See [Historical Cartography and the City's Changing Story](HISTORICAL_CARTOGRAPHY_AND_CITY_HISTORY.md) for the source contract, temporal model, narrative principles and implementation sequence.
+
 ## Synthetic fixture disclaimer
 
 The terrain/elevation, land-cover, stream and hazard data currently in this repository are synthetic. They exist to prove the schema, map stack and rendering workflow. They must not be used for real construction, navigation safety, flood decisions, emergency planning or property claims.
