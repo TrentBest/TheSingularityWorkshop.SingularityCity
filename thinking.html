@@ -63,9 +63,9 @@
       <article class="card">
         <div class="eyebrow">04 / THE CITY'S NEXT DERIVATIONS</div>
         <h2>Let the land constrain the plan.</h2>
-        <p>Once the producer contract is stable, City can build traceable civic interpretations from imported evidence:</p>
-        <ul><li>terrain slope and landform classifications;</li><li>drainage and watershed planning layers;</li><li>buildability screening with explicit assumptions;</li><li>road and utility corridor proposals;</li><li>district, block and parcel geometry that follows the terrain.</li></ul>
-        <p>These are planning layers, not authoritative physical solvers or engineering certification.</p>
+        <p>One interpretation is now implemented: City derives a slope-in-degrees grid from the imported Physics elevation samples using central differences internally and one-sided differences at the boundary. The map exposes it as a separately labelled, initially hidden overlay; it does not modify the Physics source or make engineering decisions.</p>
+        <ul><li><strong>Implemented:</strong> descriptive terrain slope derivation and optional map overlay;</li><li><strong>Next:</strong> landform classification with explicit definitions;</li><li><strong>Future:</strong> drainage and watershed planning layers;</li><li><strong>Future:</strong> buildability screening with documented assumptions;</li><li><strong>Future:</strong> road and utility corridor proposals that respect terrain.</li></ul>
+        <p>These are planning interpretations, not authoritative physical solvers or engineering certification. The current Physics sample remains local model coordinates, not georeferenced Tacoma terrain.</p>
       </article>
       <article class="card">
         <div class="eyebrow">05 / THE LIVING WORLD</div>
