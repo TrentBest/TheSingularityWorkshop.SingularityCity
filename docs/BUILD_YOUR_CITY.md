@@ -1,54 +1,38 @@
 # Build Your Own City
 
-This repository is both a working example and a teaching kit. Singularity City is one authored city catalog; the same data contract can describe a different city, several cities, or a city-builder that edits and exports catalogs.
+This repository is a working example and teaching kit. The generic spatial engine loads authored city data; it is not a hard-coded scene.
 
-## 1. Start with the data, not the scene
+## Two separate contracts
 
-The current browser proof reads [`data/places.json`](../data/places.json). The catalog declares a schema version, city identity and place records. Each place has:
-- a stable `id` used by code and references;
-- display fields used by the interface;
-- coordinates used to position its SVG marker;
-- an owning repository and source path;
-- capabilities and an explicit implementation status.
+- [`data/places.json`](../data/places.json) is the discovery catalog: stable place IDs, presentation, owners, capabilities and status.
+- [`data/city-blueprint.json`](../data/city-blueprint.json) is the spatial blueprint: coordinate space, districts, routes and parcel-generation rules.
+- [`schemas/city-blueprint.schema.json`](../schemas/city-blueprint.schema.json) describes the versioned blueprint contract.
 
-Add a place by adding a record. Give it a unique ID, owner, source path, coordinates and capability list. The browser builds its map markers and destination cards from these records.
+Discovery metadata and spatial construction evolve at different rates, so they remain separate.
 
-## 2. Make the SVG reflect the catalog
+## Districts, routes and parcels
 
-The SVG district shapes are authored in `index.html`; place markers are created by `assets/js/city.js` from catalog coordinates. This is intentionally inspectable: the map is a projection of data, not an image file with invisible hotspots.
+Each district declares a stable ID, display name, presentation class and polygon in map coordinates. Routes are ordered coordinate points with a semantic kind: arterial, transit or local. They describe connectivity, not permission to traverse.
 
-To change a marker's position, edit its `coordinates` in the catalog. To change district geometry, edit the SVG path in the HTML. Keep geographic identity in data and visual projection in SVG.
+A district's `parcelGrid` defines origin, rows, columns, dimensions, spacing and occupancy. The blueprint supplies a seed and versioned algorithm identifier. The renderer derives parcel IDs from district, row and column. The same seed and parameters reproduce the same candidate layout.
 
-## 3. Trace a visible feature to its owner
+Generated parcels are currently a deterministic visualization proof—not persisted land ownership, zoning, permits or authoritative city state. A production editor must persist accepted parcels as explicit records before they become authoritative.
 
-Select a place in the preview. The provenance panel shows its owner repository, source path, catalog record, capabilities and status. The source link opens the referenced file in GitHub.
+## Provenance and authoring
 
-Use the owner repository for domain behavior. For example, the Underworks entrance is cataloged by City, while its underground topology and simulation belong to [FSM_Dungeon](https://github.com/TrentBest/FSM_Dungeon). City owns discoverability and the entrance decision; the destination owns its internal world.
+Every generated feature should retain blueprint identity/version, generator algorithm and seed, parameters, source record, manual edits and owning repository. The browser currently exposes place provenance; the same inspection contract should expand to districts, routes and parcels.
 
-Statuses are deliberately explicit:
-- `concept`: planned content, not an implemented simulation;
-- `planned`: intended destination or capability;
-- `reference-integration`: a documented cross-repository boundary, not proof of a live runtime handoff.
+To create another city, copy both data contracts, assign a new stable `city.id` and matching blueprint `cityId`, then author its districts, routes and places. Never encode identity in array order or display names.
 
-## 4. Create another city
-
-Copy the catalog structure and give the new city a distinct `city.id`. Add districts, places, owner references and coordinates appropriate to its own map. A future multi-city host can load multiple catalogs and select one by stable city ID; do not encode city identity in display names or array positions.
-
-A city-builder can expose these same records through editors for parcels, structures, routes, residents, services and entry points, then validate and export the catalog. Keep authored definitions separate from evolving simulation state.
-
-## 5. Extend the package responsibly
-
-Before treating this illustrative JSON as a production contract, add formal schema validation, migration rules, stable package/API types, host authorization and persistence. Keep these boundaries:
+Keep authored definitions separate from evolving runtime state. The host will own accepted parcels, ownership, zoning, construction, residents, services, events and persistence. The renderer is an observation, never the authority.
 
 `Ontology → MicroBundles → arbitration → Experience → spatial manifestation`
 
-The catalog describes spatial manifestation and discovery. It does not become the owner of every capability it points to. NuGet can distribute code; MicroBundles compose optional capabilities; hosts validate access and execute the selected experience.
+## Reproduce and validate
 
-## Reproduce the preview
+1. Clone the repository and serve `index.html` through a local HTTP server.
+2. Edit the catalog or blueprint and refresh.
+3. Run `node tests/validate-catalog.mjs`.
+4. Follow the provenance panel to inspect the selected place's owner.
 
-1. Fork or clone this repository.
-2. Open `index.html` through a local static HTTP server (ES modules and `fetch` require HTTP; opening the file directly may be blocked by the browser).
-3. Edit `data/places.json` and refresh.
-4. Follow the provenance panel to inspect the implementation or domain contract that owns the selected place.
-
-The GitHub Pages workflow publishes the same repository files from `development`. It does not publish NuGet packages or claim a live multi-user simulation.
+The Pages workflow builds from `development`; it does not publish NuGet packages or claim live persistence, multiplayer or authoritative simulation.
