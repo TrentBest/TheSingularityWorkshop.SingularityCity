@@ -85,7 +85,7 @@ Uncertainty is data. A hazard screening polygon is not a flood determination. A 
 
 ## Living map stack
 
-The browser map is currently a local proof projection. Renderer should own observer-relative representation, level of detail, culling and frame composition. Visualize should manifest those frames. City owns feature identity, geometry, semantics, source lineage and map-layer selection. A host owns input, camera, persistence, multiplayer and authority.
+The browser map currently renders elevation tint and marching-squares contour segments from the same sampled terrain grid, with independently toggleable land-cover, hydrology and infrastructure overlays. It remains a local proof projection. Renderer should own observer-relative representation, level of detail, culling and frame composition. Visualize should manifest those frames. City owns feature identity, geometry, semantics, source lineage and map-layer selection. A host owns input, camera, persistence, multiplayer and authority.
 
 The long-term map stack should support:
 - synchronized layer visibility and opacity;
