@@ -33,6 +33,8 @@ The current proof is a static, interactive navigation fixture. It does not claim
 
 City does not absorb the simulation of every destination. The Underworks entrance can resolve to `TrentBest/FSM_Dungeon`; the dungeon repository owns its topology, inhabitants and underground simulation. Workshop tools, laboratories, games and shipyards remain reusable domain capabilities composed through MicroBundles.
 
+**Physics owns terrain generation and physical evolution.** City consumes Physics-produced terrain datasets and builds civic geography around them; the current synthetic terrain file is only a labelled presentation fixture. See [Physics terrain and worldbuilding](docs/PHYSICS_TERRAIN_AND_WORLDBUILDING.md).
+
 ## Architecture
 
 `Workshop → Singularity Transit → Singularity City → World`
@@ -40,6 +42,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 `Ontology → MicroBundles → arbitration → Experience → spatial manifestation`
 
 - [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)
+- [Physics terrain and worldbuilding](docs/PHYSICS_TERRAIN_AND_WORLDBUILDING.md) — Physics-owned terrain authority, existing APIs, adapter contract and worldbuilding sequence.
 - [Maps as city data](docs/MAPS_AS_CITY_DATA.md) — terrain-first spatial layers, hydrology, planning maps and provenance.
 - [City builder and first-person mayor experience](docs/CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md) — shared map/world contract and playable progression.
 - [City spatial and civic model](docs/CITY_MODEL.md)
@@ -58,7 +61,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - GitHub Pages workflow: `.github/workflows/pages.yml`
 - No NuGet package is published by this repository workflow.
 
-The current implementation includes a terrain-first layered map stack with sampled elevation, marching-squares contours, land cover, watersheds, district and parcel maps, mobility, transit, utilities and hazard screening. It also includes a 13-domain systems catalog and a connected synthetic Civic Quarter proof spanning parcels, buildings, rooms, public space and civic services. The map stack and district workbench are generated from shared models with stable IDs and explicit provenance. The city-builder / first-person mayor experience is architected and documented, but is not yet a playable FPS. Terrain and district data remain synthetic fixtures, not surveyed geography or calibrated engineering simulations.
+The current implementation includes a terrain-first layered map stack with sampled elevation, marching-squares contours, land cover, watersheds, district and parcel maps, mobility, transit, utilities and hazard screening. It also includes a 13-domain systems catalog and a connected synthetic Civic Quarter proof spanning parcels, buildings, rooms, public space and civic services. The map stack and district workbench are generated from shared models with stable IDs and explicit provenance. The city-builder / first-person mayor experience is architected and documented, but is not yet a playable FPS. Terrain and district data remain synthetic fixtures, not surveyed geography or calibrated engineering simulations; the synthetic terrain fixture is not the future terrain authority.
 
 ## The Singularity Workshop
 
