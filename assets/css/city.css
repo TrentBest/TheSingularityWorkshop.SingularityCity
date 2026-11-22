@@ -20,3 +20,6 @@
 .generated-parcel{fill:#b5d0d51a;stroke:#8aaab855;stroke-width:1;pointer-events:none}
 #district-labels{pointer-events:none}#district-labels .map-label{font:10px 'DM Mono',monospace;letter-spacing:1px;fill:#c0d1db;opacity:.8}
 .map-foot #map-generation{color:#65e4dc}
+
+.generated-parcel{pointer-events:all;cursor:pointer;transition:fill .15s,stroke .15s}
+.generated-parcel:hover,.generated-parcel:focus{fill:#65e4dc55;stroke:#65e4dc;stroke-width:2;outline:none}
