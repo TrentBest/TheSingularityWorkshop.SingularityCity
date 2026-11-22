@@ -31,11 +31,14 @@ jobs:
           test -s assets/js/city-generator.mjs
           test -s assets/js/physics-terrain-adapter.mjs
           test -s tests/physics-terrain-adapter.test.mjs
+          test -s tests/physics-terrain-overlay.test.mjs
+          test -s tests/physics-terrain-snapshot.test.mjs
           test -s data/places.json
           test -s data/city-blueprint.json
           test -s data/city-systems.json
           test -s data/districts/civic-quarter.json
           test -s data/terrain/city-terrain.json
+          test -s data/terrain/physics-volcanic-terrain.json
           test -s data/map-layers.json
           test -s schemas/city-terrain.schema.json
           test -s schemas/map-layer-catalog.schema.json
@@ -58,6 +61,7 @@ jobs:
           test -s docs/WHEEL_OF_TIME_SHOWCASE.md
           node tests/validate-catalog.mjs
           node tests/physics-terrain-adapter.test.mjs
+          node --test tests/physics-terrain-overlay.test.mjs tests/physics-terrain-snapshot.test.mjs
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
