@@ -1,0 +1,292 @@
+{
+  "schema": "singularity-city.systems.v1",
+  "cityId": "singularity-city",
+  "systems": [
+    {
+      "id": "landscape-water",
+      "title": "Landscape & watershed",
+      "domain": "Geography · geology · ecology",
+      "summary": "Terrain, slope, soil, streams, coast, groundwater, floodplain and habitat shape where a city can grow.",
+      "components": [
+        "Elevation and slope",
+        "Soils and geology",
+        "Catchments and waterways",
+        "Coast and flood exposure",
+        "Habitat corridors"
+      ],
+      "status": "concept",
+      "visualization": "Terrain surface · watershed graph · hazard overlay",
+      "measures": [
+        "Catchment area",
+        "Runoff volume",
+        "Slope distribution",
+        "Habitat connectivity"
+      ],
+      "theoryAnchor": "geography-geology-and-landscape"
+    },
+    {
+      "id": "land-use",
+      "title": "Land, parcels & planning",
+      "domain": "Urban planning · land economics",
+      "summary": "Land is divided, regulated, valued, accessed and transformed through planning decisions and ownership.",
+      "components": [
+        "Districts and blocks",
+        "Parcel boundaries",
+        "Zoning and permitted use",
+        "Setbacks and height envelopes",
+        "Development phases"
+      ],
+      "status": "preview",
+      "visualization": "Plan view · parcel inspector · zoning overlay",
+      "measures": [
+        "Parcel area",
+        "Floor-area ratio",
+        "Land-use mix",
+        "Development capacity"
+      ],
+      "theoryAnchor": "urban-planning-and-land-use"
+    },
+    {
+      "id": "built-environment",
+      "title": "Buildings & architecture",
+      "domain": "Architecture · structural and building engineering",
+      "summary": "Buildings are hierarchies of sites, structures, systems, floors, rooms, components and occupants.",
+      "components": [
+        "Building footprints and massing",
+        "Structure and envelope",
+        "Floors and rooms",
+        "Entrances and circulation",
+        "Utilities and maintenance"
+      ],
+      "status": "concept",
+      "visualization": "Massing · section cut · floor plan · interior",
+      "measures": [
+        "Gross floor area",
+        "Height and volume",
+        "Accessible entrances",
+        "Lifecycle condition"
+      ],
+      "theoryAnchor": "architecture-and-the-built-environment"
+    },
+    {
+      "id": "mobility",
+      "title": "Mobility & logistics",
+      "domain": "Transportation · network science",
+      "summary": "People and goods traverse mode-specific networks with capacity, cost, schedule, reliability and accessibility.",
+      "components": [
+        "Streets and intersections",
+        "Sidewalks and cycleways",
+        "Transit routes and stops",
+        "Freight and port links",
+        "Vehicles and trip demand"
+      ],
+      "status": "preview",
+      "visualization": "Network graph · route animation · service area",
+      "measures": [
+        "Travel time",
+        "Network centrality",
+        "Mode share",
+        "Service accessibility"
+      ],
+      "theoryAnchor": "transportation-and-logistics"
+    },
+    {
+      "id": "water",
+      "title": "Water supply & drainage",
+      "domain": "Civil engineering · hydrology",
+      "summary": "Water is sourced, treated, stored, distributed, used, collected, treated and returned to the environment.",
+      "components": [
+        "Source and intake",
+        "Treatment and storage",
+        "Distribution network",
+        "Stormwater catchments",
+        "Wastewater collection and treatment"
+      ],
+      "status": "concept",
+      "visualization": "Pipe network · flow arrows · catchment overlay",
+      "measures": [
+        "Demand and supply balance",
+        "Network capacity",
+        "Runoff volume",
+        "Treatment load"
+      ],
+      "theoryAnchor": "water-energy-and-material-metabolism"
+    },
+    {
+      "id": "energy",
+      "title": "Energy & communications",
+      "domain": "Electrical engineering · infrastructure",
+      "summary": "Power and information networks connect generation, storage, distribution, demand and critical services.",
+      "components": [
+        "Generation and imports",
+        "Substations and distribution",
+        "Storage and microgrids",
+        "Building loads",
+        "Fiber and communications"
+      ],
+      "status": "concept",
+      "visualization": "Network topology · load heatmap · outage overlay",
+      "measures": [
+        "Peak demand",
+        "Available reserve",
+        "Line utilization",
+        "Critical-service coverage"
+      ],
+      "theoryAnchor": "water-energy-and-material-metabolism"
+    },
+    {
+      "id": "materials-waste",
+      "title": "Materials, food & waste",
+      "domain": "Industrial ecology · circular economy",
+      "summary": "Urban metabolism moves construction materials, food, products, by-products and waste through supply chains.",
+      "components": [
+        "Construction material flows",
+        "Food supply and markets",
+        "Collection routes",
+        "Reuse and recycling",
+        "Landfill and residuals"
+      ],
+      "status": "concept",
+      "visualization": "Sankey flow · logistics network · material ledger",
+      "measures": [
+        "Material throughput",
+        "Recovery rate",
+        "Waste per resident",
+        "Supply-chain dependency"
+      ],
+      "theoryAnchor": "water-energy-and-material-metabolism"
+    },
+    {
+      "id": "environment",
+      "title": "Climate & environmental quality",
+      "domain": "Environmental science · public health",
+      "summary": "Heat, shade, air, noise, water quality and green infrastructure affect comfort, health and resilience.",
+      "components": [
+        "Tree canopy and shade",
+        "Urban heat",
+        "Air quality",
+        "Noise exposure",
+        "Permeable surfaces and habitat"
+      ],
+      "status": "concept",
+      "visualization": "Heatmap · canopy layer · temporal weather view",
+      "measures": [
+        "Surface temperature",
+        "Canopy coverage",
+        "Exposure by district",
+        "Runoff infiltration"
+      ],
+      "theoryAnchor": "ecology-climate-and-environmental-quality"
+    },
+    {
+      "id": "residents",
+      "title": "Residents & community",
+      "domain": "Sociology · demography · behavioral science",
+      "summary": "Households and residents have identities, needs, capabilities, schedules, relationships and service access.",
+      "components": [
+        "Residents and households",
+        "Homes and workplaces",
+        "Schedules and activities",
+        "Relationships and affiliations",
+        "Accessibility and needs"
+      ],
+      "status": "concept",
+      "visualization": "Population distribution · activity timeline · service reach",
+      "measures": [
+        "Population by cohort",
+        "Commute patterns",
+        "Service access",
+        "Housing affordability"
+      ],
+      "theoryAnchor": "people-households-and-community"
+    },
+    {
+      "id": "governance",
+      "title": "Institutions, law & governance",
+      "domain": "Political science · institutional economics",
+      "summary": "Institutions exercise defined authority through rules, budgets, decisions, procedures and accountability.",
+      "components": [
+        "Jurisdictions and powers",
+        "Elected and administrative bodies",
+        "Permits and inspections",
+        "Public budgets",
+        "Decision and event records"
+      ],
+      "status": "concept",
+      "visualization": "Jurisdiction map · decision graph · budget flow",
+      "measures": [
+        "Service performance",
+        "Budget allocation",
+        "Permit duration",
+        "Decision provenance"
+      ],
+      "theoryAnchor": "institutions-law-and-governance"
+    },
+    {
+      "id": "economy",
+      "title": "Economy, labor & public finance",
+      "domain": "Economics · public finance",
+      "summary": "Production, work, exchange, land markets, taxes, procurement and public investment shape urban opportunity.",
+      "components": [
+        "Employers and workplaces",
+        "Labor and wages",
+        "Businesses and markets",
+        "Rent and land value",
+        "Taxes, fees and public spending"
+      ],
+      "status": "concept",
+      "visualization": "Economic flow graph · land-value surface · time series",
+      "measures": [
+        "Employment access",
+        "Rent burden",
+        "Business formation",
+        "Public investment distribution"
+      ],
+      "theoryAnchor": "economy-labor-and-public-finance"
+    },
+    {
+      "id": "culture",
+      "title": "Culture, education & public life",
+      "domain": "Education · cultural geography · community development",
+      "summary": "Learning, culture, sport, gathering places and shared memory create civic identity and social capacity.",
+      "components": [
+        "Schools and universities",
+        "Libraries and museums",
+        "Arts and performance",
+        "Parks and public squares",
+        "Events and archives"
+      ],
+      "status": "concept",
+      "visualization": "Place network · event calendar · cultural access map",
+      "measures": [
+        "Learning access",
+        "Public-space reach",
+        "Event participation",
+        "Cultural facility coverage"
+      ],
+      "theoryAnchor": "culture-education-and-public-life"
+    },
+    {
+      "id": "risk-resilience",
+      "title": "Risk, emergency & resilience",
+      "domain": "Risk engineering · emergency management",
+      "summary": "Hazards intersect exposure, vulnerability and critical dependencies; response and recovery are unevenly distributed.",
+      "components": [
+        "Hazards and exposure",
+        "Critical infrastructure dependencies",
+        "Emergency services",
+        "Evacuation and shelter",
+        "Recovery and adaptation"
+      ],
+      "status": "concept",
+      "visualization": "Hazard overlay · dependency graph · scenario comparison",
+      "measures": [
+        "Population exposed",
+        "Critical-service downtime",
+        "Evacuation access",
+        "Recovery time"
+      ],
+      "theoryAnchor": "risk-resilience-and-emergency-management"
+    }
+  ]
+}
