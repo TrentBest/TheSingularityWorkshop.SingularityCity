@@ -22,6 +22,12 @@ The City answers four questions:
 
 City is a place and a spatial index—not the owner of every simulation it hosts.
 
+## Spatial data stack
+
+City geography is a layered data system, not one map image. Terrain and hydrology establish physical constraints; ecological, district, parcel, mobility, transit, utility and built-form layers build on shared spatial identity. The map-layer catalog exposes these views without changing feature identity. See [`MAPS_AS_CITY_DATA.md`](MAPS_AS_CITY_DATA.md) and [`CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md`](CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md).
+
+The same spatial identities are intended to power regional maps, the city-builder planning tools and a first-person inhabited world. A selected map feature resolves to a world anchor; the player position resolves back to the map. Renderer and Visualize own representation and manifestation; the host owns camera, input, collision, streaming and persistence.
+
 ## Responsibility boundaries
 
 | Concern | Owner |
