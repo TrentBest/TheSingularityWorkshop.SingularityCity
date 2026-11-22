@@ -67,6 +67,25 @@
       </aside>
     </section>
 
+    <section class="district-proof section" id="connected-district">
+      <div class="section-heading"><div><span class="eyebrow">ONE CONNECTED MODEL · SYNTHETIC PROOF</span><h2>Civic Quarter, down to the service connections.</h2></div><p>Land, buildings, rooms, mobility, transit, water, energy, public space and civic services share stable IDs and explicit relationships.</p></div>
+      <div class="district-metrics" id="district-metrics"></div>
+      <div class="district-workbench">
+        <div class="district-map-wrap">
+          <div class="district-layer-controls"><span>NETWORK OVERLAYS</span><button type="button" data-district-layer="mobility" aria-pressed="true">Mobility</button><button type="button" data-district-layer="water" aria-pressed="true">Water</button><button type="button" data-district-layer="energy" aria-pressed="true">Energy</button></div>
+          <svg class="district-map" viewBox="0 0 640 420" role="img" aria-label="Connected synthetic Civic Quarter plan with parcels, civic buildings, street graph and water and energy networks">
+            <rect x="0" y="0" width="640" height="420" rx="12" class="district-map-ground"/>
+            <g id="district-streets"></g><g id="district-parcels"></g><g id="district-buildings"></g><g id="district-networks"></g><g id="district-stops"></g>
+          </svg>
+          <div class="district-entity-list" id="district-entities"></div>
+        </div>
+        <aside class="district-inspector"><span class="eyebrow">ENTITY INSPECTOR</span><h3 id="district-inspector-title">Loading district…</h3><code id="district-inspector-id">—</code><p id="district-inspector-links">Resolving relationships…</p><div class="district-scenario"><span>SCENARIO · TREE CANOPY</span><div><small>Canopy</small><strong>38% → 52%</strong></div><div><small>Surface temperature (illustrative)</small><strong>31.5°C → 29.8°C</strong></div><div><small>Runoff index (illustrative)</small><strong>100 → 86</strong></div></div><p class="district-disclaimer">Synthetic authored fixture. Not surveyed geography, live utility data, real residents or validated engineering predictions.</p>
+        </aside>
+      </div>
+      <p class="district-model-status" id="district-model-status">LOADING CONNECTED DISTRICT MODEL…</p>
+      <a class="district-doc-link" href="docs/CIVIC_QUARTER_VERTICAL_SLICE.md">Inspect the model, assumptions and relationship contract ↗</a>
+    </section>
+
     <section class="section" id="districts">
       <div class="section-heading"><div><span class="eyebrow">FIND YOUR WAY</span><h2>Districts & destinations</h2></div><p>Every place has a purpose. Every entrance leads somewhere.</p></div>
       <div class="destination-grid" id="destinations" aria-live="polite"></div>
