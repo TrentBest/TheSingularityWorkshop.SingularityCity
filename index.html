@@ -49,6 +49,7 @@
             <g id="hydrology-layer"></g>
             <g id="hazards-layer"></g>
             <g id="physics-terrain-layer" aria-label="Imported Physics elevation overlay"></g>
+            <g id="physics-slope-layer" aria-label="City-derived terrain slope overlay"></g>
             <g id="district-layer"></g>
             <g id="route-layer"></g>
             <g id="parcel-layer"></g>
@@ -58,7 +59,7 @@
             <g id="place-markers"></g>
             <g class="you-are-here"><circle cx="430" cy="250" r="8"/><circle cx="430" cy="250" r="22"/><path d="M430 228V210H470"/><text x="478" y="214">YOU ARE HERE</text></g>
           </svg>
-          <div class="map-legend"><span><i class="legend-you"></i> You are here</span><span><i class="legend-place"></i> Discoverable place</span><span><i class="legend-entry"></i> Experience entrance</span><span id="terrain-readout">Terrain · synthetic model</span><button id="physics-terrain-toggle" type="button" disabled>Physics elevation · loading</button><span id="physics-terrain-status">Waiting for Physics export</span></div>
+          <div class="map-legend"><span><i class="legend-you"></i> You are here</span><span><i class="legend-place"></i> Discoverable place</span><span><i class="legend-entry"></i> Experience entrance</span><span id="terrain-readout">Terrain · synthetic model</span><button id="physics-terrain-toggle" type="button" disabled>Physics elevation · loading</button><span id="physics-terrain-status">Waiting for Physics export</span><button id="physics-slope-toggle" type="button" disabled>City slope · loading</button><span id="physics-slope-status">Waiting for imported terrain</span></div>
         </div>
         <div class="map-foot"><span id="map-generation">LOADING CITY BLUEPRINT…</span><span>SELECT A LOCATION TO INSPECT</span></div>
       </div>
