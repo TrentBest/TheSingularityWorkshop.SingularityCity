@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { generateParcels } from "../assets/js/city-generator.mjs";
 const json=p=>JSON.parse(readFileSync(p,"utf8"));
-const catalog=json("data/places.json"), blueprint=json("data/city-blueprint.json"), schema=json("schemas/city-blueprint.schema.json"), researchSchema=json("schemas/source-observation.schema.json"), systems=json("data/city-systems.json"), systemsSchema=json("schemas/city-systems.schema.json");
+const catalog=json("data/places.json"), blueprint=json("data/city-blueprint.json"), schema=json("schemas/city-blueprint.schema.json"), researchSchema=json("schemas/source-observation.schema.json"), systems=json("data/city-systems.json"), systemsSchema=json("schemas/city-systems.schema.json"), district=json("data/districts/civic-quarter.json"), districtSchema=json("schemas/civic-district.schema.json");
 assert.equal(catalog.schema,"singularity-city.catalog.v1");
 assert.ok(catalog.city?.id && Array.isArray(catalog.places) && catalog.places.length);
 assert.equal(blueprint.schema,"singularity-city.blueprint.v1");
@@ -56,3 +56,37 @@ for(const id of ["place-markers","district-layer","parcel-layer","route-layer"])
 assert.match(html,/id="source-repository"/);assert.match(html,/docs\/BUILD_YOUR_CITY\.md/);
 assert.match(js,/data\/places\.json/);assert.match(js,/data\/city-blueprint\.json/);assert.match(js,/city-generator\.mjs/);assert.match(generator,/export function generateParcels/);assert.match(js,/renderBlueprint/);assert.match(js,/inspectParcel/);
 console.log(`Validated ${catalog.places.length} places, ${blueprint.districts.length} districts, ${systems.systems.length} city systems, ${parcelCount} deterministic parcels and ${blueprint.routes.length} routes.`);
+
+assert.equal(district.schema,"singularity-city.district-model.v1");
+assert.equal(district.cityId,catalog.city.id);
+assert.equal(districtSchema.properties.schema.const,district.schema);
+assert.equal(district.district.id,"civic");
+assert.equal(district.provenance.kind,"synthetic-authored-fixture");
+const unique=(items,label)=>{const ids=new Set();for(const item of items){assert.ok(item.id&&!ids.has(item.id),`duplicate ${label} id: ${item.id}`);ids.add(item.id);}return ids;};
+const parcelIds=unique(district.parcels,"parcel"),buildingIds=unique(district.buildings,"building"),roomIds=unique(district.buildings.flatMap(b=>b.rooms),"room");
+const institutionIds=unique(district.institutions,"institution"),serviceIds=unique(district.services,"service");
+for(const parcel of district.parcels)for(const id of parcel.buildingIds)assert.ok(buildingIds.has(id),`parcel ${parcel.id} references missing building ${id}`);
+for(const building of district.buildings){assert.ok(parcelIds.has(building.parcelId),`building ${building.id} references missing parcel`);assert.ok(district.parcels.find(p=>p.id===building.parcelId).buildingIds.includes(building.id));for(const room of building.rooms)assert.ok(room.floor>=1&&room.floor<=building.floors);}
+const checkNetwork=(network,label)=>{const nodes=unique(network.nodes,label+" node");for(const edge of network.edges){assert.ok(nodes.has(edge.from),`${label} edge ${edge.id} missing from node`);assert.ok(nodes.has(edge.to),`${label} edge ${edge.id} missing to node`);assert.notEqual(edge.from,edge.to);}};
+checkNetwork(district.mobility,"mobility");checkNetwork(district.water,"water");checkNetwork(district.energy,"energy");
+const adjacency=new Map(district.mobility.nodes.map(n=>[n.id,[]]));
+for(const edge of district.mobility.edges){adjacency.get(edge.from).push(edge.to);adjacency.get(edge.to).push(edge.from);}
+const visited=new Set(),queue=[district.mobility.nodes[0].id];while(queue.length){const id=queue.shift();if(visited.has(id))continue;visited.add(id);queue.push(...adjacency.get(id).filter(next=>!visited.has(next)));}
+assert.equal(visited.size,district.mobility.nodes.length,"mobility graph must be connected");
+const mobilityNodeIds=new Set(district.mobility.nodes.map(n=>n.id));
+for(const stop of district.transit.stops)assert.ok(mobilityNodeIds.has(stop.nodeId),`transit stop ${stop.id} references missing mobility node`);
+for(const route of district.transit.routes)for(const stopId of route.stopIds)assert.ok(district.transit.stops.some(s=>s.id===stopId),`transit route references missing stop ${stopId}`);
+for(const institution of district.institutions)for(const serviceId of institution.serviceIds)assert.ok(serviceIds.has(serviceId));
+for(const service of district.services){assert.ok(institutionIds.has(service.institutionId));assert.ok(buildingIds.has(service.placeId));assert.ok(district.institutions.find(i=>i.id===service.institutionId).serviceIds.includes(service.id));}
+for(const space of district.publicRealm.spaces)assert.ok(parcelIds.has(space.parcelId));
+assert.equal(district.scenario.proposal.treeCanopyPercent-district.scenario.baseline.treeCanopyPercent,district.scenario.outputs.canopyChangePercentagePoints);
+assert.equal(district.scenario.proposal.summerSurfaceTemperatureC-district.scenario.baseline.summerSurfaceTemperatureC,district.scenario.outputs.surfaceTemperatureChangeC);
+assert.equal(Math.round((district.scenario.proposal.stormwaterRunoffIndex/district.scenario.baseline.stormwaterRunoffIndex-1)*100),district.scenario.outputs.runoffIndexChangePercent);
+assert.ok(district.provenance.limitations.length>=3);
+assert.ok(district.population.kind==="synthetic-aggregate");
+const districtHtml=readFileSync("index.html","utf8");
+for(const id of ["connected-district","district-metrics","district-streets","district-parcels","district-buildings","district-networks","district-stops","district-inspector-title","district-entities"])assert.ok(districtHtml.includes(`id="${id}"`),`missing district projection target ${id}`);
+assert.ok(js.includes("districts/civic-quarter.json"));
+assert.ok(js.includes("renderConnectedDistrict")&&js.includes("inspectDistrictEntity"));
+assert.ok(existsSync("docs/CIVIC_QUARTER_VERTICAL_SLICE.md"));
+console.log(`Validated connected Civic Quarter: ${district.parcels.length} parcels, ${district.buildings.length} buildings, ${roomIds.size} rooms, ${district.mobility.nodes.length} connected mobility nodes, ${district.water.edges.length} water links, ${district.energy.edges.length} energy links, ${district.services.length} civic services.`);
