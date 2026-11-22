@@ -31,6 +31,8 @@ jobs:
           test -s data/places.json
           test -s data/city-blueprint.json
           test -s schemas/city-blueprint.schema.json
+          test -s schemas/source-observation.schema.json
+          test -s docs/SOURCE_RESEARCH.md
           test -s docs/ARCHITECTURE.md
           test -s docs/CITY_MODEL.md
           test -s docs/EXPERIENCES.md
