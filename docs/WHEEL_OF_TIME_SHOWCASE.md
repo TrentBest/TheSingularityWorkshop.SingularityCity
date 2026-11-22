@@ -58,6 +58,10 @@ A city blueprint supplies parameters and authored constraints. It must not requi
 
 Keep the showcase content in its own data/content layer. Keep generic generation and simulation capabilities in reusable packages and MicroBundles. Keep each city's authoritative simulation separate from its map or SVG projection.
 
+## Source research workflow
+
+Use the generic [source-grounded research contract](SOURCE_RESEARCH.md) for every city observation. Capture the work and edition, chapter/page locator, subject, evidence kind, concise paraphrase, interpretation, confidence and blueprint mapping. Keep source facts distinct from interpretation and implementation decisions; record conflicting descriptions and unresolved questions rather than flattening them into false certainty.
+
 ## Delivery sequence
 
 1. **Catalog contract:** stable city, district, parcel, structure, route and place identities; versioned manifests and provenance.
