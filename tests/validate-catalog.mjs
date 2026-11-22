@@ -80,7 +80,7 @@ for(const institution of district.institutions)for(const serviceId of institutio
 for(const service of district.services){assert.ok(institutionIds.has(service.institutionId));assert.ok(buildingIds.has(service.placeId));assert.ok(district.institutions.find(i=>i.id===service.institutionId).serviceIds.includes(service.id));}
 for(const space of district.publicRealm.spaces)assert.ok(parcelIds.has(space.parcelId));
 assert.equal(district.scenario.proposal.treeCanopyPercent-district.scenario.baseline.treeCanopyPercent,district.scenario.outputs.canopyChangePercentagePoints);
-assert.equal(district.scenario.proposal.summerSurfaceTemperatureC-district.scenario.baseline.summerSurfaceTemperatureC,district.scenario.outputs.surfaceTemperatureChangeC);
+assert.ok(Math.abs((district.scenario.proposal.summerSurfaceTemperatureC-district.scenario.baseline.summerSurfaceTemperatureC)-district.scenario.outputs.surfaceTemperatureChangeC)<1e-9,"scenario temperature delta must reconcile");
 assert.equal(Math.round((district.scenario.proposal.stormwaterRunoffIndex/district.scenario.baseline.stormwaterRunoffIndex-1)*100),district.scenario.outputs.runoffIndexChangePercent);
 assert.ok(district.provenance.limitations.length>=3);
 assert.ok(district.population.kind==="synthetic-aggregate");
