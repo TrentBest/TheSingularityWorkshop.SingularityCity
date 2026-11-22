@@ -1,6 +1,10 @@
 # Nonplayer Characters — the people who make a city live
 
+![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
+
 ![LOD 1](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/development/docs/assets/rulebook-lod-1.svg)
+
+![Nonplayer Characters cover](covers/nonplayer-characters.svg)
 
 **Owner:** Singularity City · **LOD:** 1 · **Status:** Domain sourcebook and design contract, not a claim of a complete NPC simulator.
 
