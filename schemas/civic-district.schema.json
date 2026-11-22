@@ -1,0 +1,331 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/schemas/civic-district.schema.json",
+  "title": "Singularity City Connected District Model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "cityId",
+    "district",
+    "provenance",
+    "parcels",
+    "buildings",
+    "streets",
+    "mobility",
+    "transit",
+    "water",
+    "energy",
+    "publicRealm",
+    "institutions",
+    "services",
+    "population",
+    "scenario"
+  ],
+  "properties": {
+    "schema": {
+      "const": "singularity-city.district-model.v1"
+    },
+    "cityId": {
+      "const": "singularity-city"
+    },
+    "district": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "modelStatus",
+        "coordinateSpace"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "modelStatus": {
+          "type": "string"
+        },
+        "coordinateSpace": {
+          "type": "object",
+          "required": [
+            "width",
+            "height",
+            "units"
+          ],
+          "properties": {
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "units": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "kind",
+        "source",
+        "revision",
+        "limitations"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "parcels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "use",
+          "area",
+          "geometry",
+          "buildingIds"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "use": {
+            "type": "string"
+          },
+          "area": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "geometry": {
+            "type": "object",
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          },
+          "buildingIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "buildings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "parcelId",
+          "name",
+          "floors",
+          "footprintArea",
+          "rooms"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "parcelId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "floors": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "footprintArea": {
+            "type": "number"
+          },
+          "rooms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "floor",
+                "capacity"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "floor": {
+                  "type": "integer"
+                },
+                "capacity": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "streets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "mode",
+          "points"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "points": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "mobility": {
+      "type": "object",
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "properties": {
+        "nodes": {
+          "type": "array"
+        },
+        "edges": {
+          "type": "array"
+        }
+      }
+    },
+    "transit": {
+      "type": "object",
+      "required": [
+        "routes",
+        "stops"
+      ],
+      "properties": {
+        "routes": {
+          "type": "array"
+        },
+        "stops": {
+          "type": "array"
+        }
+      }
+    },
+    "water": {
+      "type": "object",
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "properties": {
+        "nodes": {
+          "type": "array"
+        },
+        "edges": {
+          "type": "array"
+        }
+      }
+    },
+    "energy": {
+      "type": "object",
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "properties": {
+        "nodes": {
+          "type": "array"
+        },
+        "edges": {
+          "type": "array"
+        }
+      }
+    },
+    "publicRealm": {
+      "type": "object",
+      "required": [
+        "spaces"
+      ],
+      "properties": {
+        "spaces": {
+          "type": "array"
+        }
+      }
+    },
+    "institutions": {
+      "type": "array"
+    },
+    "services": {
+      "type": "array"
+    },
+    "population": {
+      "type": "object"
+    },
+    "scenario": {
+      "type": "object"
+    }
+  }
+}
