@@ -192,6 +192,9 @@ function renderConnectedDistrict(model) {
   layerButtons.forEach(button=>button.addEventListener("click",()=>{const key=button.dataset.districtLayer;const visible=button.getAttribute("aria-pressed")!=="true";button.setAttribute("aria-pressed",String(visible));document.querySelectorAll('[data-network="'+key+'"]').forEach(line=>line.classList.toggle("network-hidden",!visible));}));
   inspectDistrictEntity(model,model.buildings[0]?.id);
   text("#district-model-status",model.provenance.kind.toUpperCase()+" · "+model.provenance.revision+" · "+model.district.modelStatus.toUpperCase());
+  text("#scenario-canopy",model.scenario.baseline.treeCanopyPercent+"% → "+model.scenario.proposal.treeCanopyPercent+"%");
+  text("#scenario-temperature",model.scenario.baseline.summerSurfaceTemperatureC+"°C → "+model.scenario.proposal.summerSurfaceTemperatureC+"°C");
+  text("#scenario-runoff",model.scenario.baseline.stormwaterRunoffIndex+" → "+model.scenario.proposal.stormwaterRunoffIndex);
 }
 function inspectDistrictEntity(model,id) {
   const entities=[...model.parcels,...model.buildings,...model.buildings.flatMap(b=>b.rooms),...model.mobility.nodes,...model.transit.stops,...model.water.nodes,...model.energy.nodes,...model.publicRealm.spaces,...model.institutions,...model.services];
