@@ -44,6 +44,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)
 - [Physics terrain and worldbuilding](docs/PHYSICS_TERRAIN_AND_WORLDBUILDING.md) — Physics-owned terrain authority, existing APIs, adapter contract and worldbuilding sequence.
 - [Maps as city data](docs/MAPS_AS_CITY_DATA.md) — terrain-first spatial layers, hydrology, planning maps and provenance.
+- [Historical cartography and city history](docs/HISTORICAL_CARTOGRAPHY_AND_CITY_HISTORY.md) — period maps, source evidence, temporal features, uncertainty and the city's changing story.
 - [City builder and first-person mayor experience](docs/CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md) — shared map/world contract and playable progression.
 - [City spatial and civic model](docs/CITY_MODEL.md)
 - [Declarative experience entry points](docs/EXPERIENCES.md)
