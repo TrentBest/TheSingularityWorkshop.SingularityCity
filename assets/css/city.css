@@ -13,3 +13,10 @@
 .provenance-card small{color:#7ea4bb;font-size:10px;letter-spacing:.14em}
 .provenance-card strong{color:#d8edf7;font-size:13px;overflow-wrap:anywhere}
 .provenance-card a{color:#7de0ff;align-self:end}
+
+/* Declarative city blueprint projection. */
+.generated-route{fill:none;stroke:#7893a5;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.42;pointer-events:none}
+.route-transit{stroke:#6ac8c9;stroke-width:8;opacity:.34}.route-local{stroke:#8aa0ad;stroke-width:3;stroke-dasharray:5 8;opacity:.28}
+.generated-parcel{fill:#b5d0d51a;stroke:#8aaab855;stroke-width:1;pointer-events:none}
+#district-labels{pointer-events:none}#district-labels .map-label{font:10px 'DM Mono',monospace;letter-spacing:1px;fill:#c0d1db;opacity:.8}
+.map-foot #map-generation{color:#65e4dc}
