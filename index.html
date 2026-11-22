@@ -48,6 +48,7 @@
             <g id="land-cover-layer"></g>
             <g id="hydrology-layer"></g>
             <g id="hazards-layer"></g>
+            <g id="physics-terrain-layer" aria-label="Imported Physics elevation overlay"></g>
             <g id="district-layer"></g>
             <g id="route-layer"></g>
             <g id="parcel-layer"></g>
@@ -57,7 +58,7 @@
             <g id="place-markers"></g>
             <g class="you-are-here"><circle cx="430" cy="250" r="8"/><circle cx="430" cy="250" r="22"/><path d="M430 228V210H470"/><text x="478" y="214">YOU ARE HERE</text></g>
           </svg>
-          <div class="map-legend"><span><i class="legend-you"></i> You are here</span><span><i class="legend-place"></i> Discoverable place</span><span><i class="legend-entry"></i> Experience entrance</span><span id="terrain-readout">Terrain · synthetic model</span></div>
+          <div class="map-legend"><span><i class="legend-you"></i> You are here</span><span><i class="legend-place"></i> Discoverable place</span><span><i class="legend-entry"></i> Experience entrance</span><span id="terrain-readout">Terrain · synthetic model</span><button id="physics-terrain-toggle" type="button" disabled>Physics elevation · loading</button><span id="physics-terrain-status">Waiting for Physics export</span></div>
         </div>
         <div class="map-foot"><span id="map-generation">LOADING CITY BLUEPRINT…</span><span>SELECT A LOCATION TO INSPECT</span></div>
       </div>
@@ -111,5 +112,6 @@
   <footer class="city-footer"><div class="brand"><img class="workshop-avatar" src="assets/images/singularity-workshop-avatar.svg" width="72" height="72" alt="The Singularity Workshop animated identity"><span><strong>THE SINGULARITY WORKSHOP</strong><small>BUILD THE WORLD YOU WANT TO LIVE IN.</small></span></div><span>EARLY CITY PROOF · v0.1</span></footer>
   <dialog id="entry-dialog"><button class="dialog-close" aria-label="Close" type="button">×</button><span class="eyebrow">EXPERIENCE HANDOFF PREVIEW</span><h2 id="dialog-title">Destination</h2><p id="dialog-copy"></p><div class="dialog-note">This is a local navigation fixture. A live transition will be handled by the host and owning experience repository.</div><button class="dialog-confirm" type="button">Understood</button></dialog>
   <script type="module" src="assets/js/city.js"></script>
+  <script type="module" src="assets/js/physics-terrain-overlay.mjs"></script>
 </body>
 </html>
