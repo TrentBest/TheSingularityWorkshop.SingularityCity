@@ -56,18 +56,21 @@ A parcel can have a footprint before a structure exists. A structure can be plan
 ## Residents and services
 
 Digitens are residents, not decorative crowd instances. A resident may have:
-- stable identity;
+- stable character identity;
 - home and workplace references;
 - needs and capabilities;
 - schedule and current activity;
 - relationships and affiliations;
 - route and destination intentions;
 - inventory or resources;
-- civic role and permissions.
+- civic role and position assignments;
+- provenance for important state changes.
+
+The general resident/NPC model is defined in the [Nonplayer Characters sourcebook (LOD 1)](books/nonplayer-characters.md). It distinguishes character identity, City residency, player-control relationship, institutional position, assignment, authority, and host authorization. Control can change without replacing the character's identity.
 
 Start with deterministic schedules and a small population. Add richer agency only after identity, activity, location and provenance are observable and testable.
 
-Civic services—police, fire, paramedic, transit, utilities, education, building maintenance and construction—should be modeled as reusable capabilities and institutions. They should not be implemented as unrelated bespoke scenes.
+Civic services—police, fire, paramedic, transit, utilities, education, building maintenance and construction—should be modeled as reusable capabilities and institutions. City defines the civic institution and its City-level positions; specialist repositories own the internal operation of their services. Laboratory-specific staffing and qualifications are defined by Singularity Laboratories' [Laboratory NPCs (LOD 2)](https://github.com/TrentBest/TheSingularityWorkshop.SingularityLaboratories/blob/development/docs/books/laboratory-npcs.md).
 
 ## Provenance
 
