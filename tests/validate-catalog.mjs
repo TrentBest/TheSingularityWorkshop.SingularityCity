@@ -112,6 +112,7 @@ for(const layer of mapLayers.layers)assert.ok(layer.title&&layer.category&&layer
 for(const required of ["terrain","land-cover","watersheds","districts","parcels","mobility","transit","utilities","hazards"])assert.ok(layerIds.has(required),"missing map layer "+required);
 for(const id of ["terrain-layer","land-cover-layer","hydrology-layer","hazards-layer","transit-layer","utilities-layer","map-layer-controls","terrain-readout"])assert.ok(html.includes(`id="${id}"`),"missing map stack projection "+id);
 assert.ok(js.includes("renderTerrain")&&js.includes("renderMapLayerControls")&&js.includes("renderInfrastructure"));
+assert.ok(js.includes("Marching-squares"),"terrain elevation must render derived contour lines");
 assert.ok(existsSync("docs/MAPS_AS_CITY_DATA.md"));
 assert.ok(existsSync("docs/CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md"));
 console.log(`Validated terrain-first map stack: ${terrain.elevation.columns}×${terrain.elevation.rows} elevation samples, ${terrain.hydrology.watercourses.length} watercourses, ${mapLayers.layers.length} toggleable map layers.`);
