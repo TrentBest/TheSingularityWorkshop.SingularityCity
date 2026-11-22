@@ -68,4 +68,4 @@ async function start() {
   }
 }
 
-start();
+if (typeof document !== "undefined") start();
