@@ -48,6 +48,7 @@ jobs:
           test -s docs/LIVING_PICTURE.md
           test -s docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md
           test -s assets/images/living-city-atlas.svg
+          test -s assets/images/singularity-workshop-avatar.svg
           test -s docs/ARCHITECTURE.md
           test -s docs/CITY_MODEL.md
           test -s docs/EXPERIENCES.md
