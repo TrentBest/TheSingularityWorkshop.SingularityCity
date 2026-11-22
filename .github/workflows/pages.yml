@@ -30,6 +30,8 @@ jobs:
           test -s assets/js/city-generator.mjs
           test -s data/places.json
           test -s data/city-blueprint.json
+          test -s data/city-systems.json
+          test -s schemas/city-systems.schema.json
           test -s schemas/city-blueprint.schema.json
           test -s schemas/source-observation.schema.json
           test -s docs/SOURCE_RESEARCH.md
