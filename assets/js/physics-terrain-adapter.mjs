@@ -14,13 +14,11 @@ const finitePositive = value => Number.isFinite(value) && value > 0;
 /**
  * Imports a Physics height-field export without changing its physical samples.
  *
- * Required export fields:
- * - datasetId
- * - source: repository, revision, model, modelVersion, runId
- * - coordinateFrame: id, units, origin [x,y], xAxis, yAxis
- * - grid: width, height, cellWidth, cellHeight, rowOrder, sampleConvention
- * - vertical: unit ("metres"), datum, positiveDirection
- * - elevations: flat row-major array (same order as SnapshotElevation())
+ * This adapter accepts the v1 producer's precise storage conventions:
+ * - horizontal coordinates and cell spacing are metres;
+ * - rows advance along positive Y, with X varying fastest;
+ * - each sample is located at its grid-index origin (not cell-centred);
+ * - elevations are metres relative to the declared vertical datum.
  *
  * Coordinate and vertical conventions must be supplied by the producer/caller;
  * they cannot be inferred from CoordinateFrame2d's identifier.
@@ -38,6 +36,8 @@ export function importPhysicsTerrain(exported) {
 
   for (const key of ["id", "units", "xAxis", "yAxis"])
     if (!nonEmpty(coordinateFrame?.[key])) throw new Error(`coordinateFrame.${key} is required.`);
+  if (coordinateFrame.units !== "metres")
+    throw new Error("coordinateFrame.units must be metres.");
   if (!Array.isArray(coordinateFrame.origin) || coordinateFrame.origin.length !== 2 ||
       !coordinateFrame.origin.every(Number.isFinite))
     throw new Error("coordinateFrame.origin must contain two finite coordinates.");
@@ -47,8 +47,10 @@ export function importPhysicsTerrain(exported) {
     throw new Error("grid.width and grid.height must be integers >= 2.");
   if (!finitePositive(grid.cellWidth) || !finitePositive(grid.cellHeight))
     throw new Error("Grid cell dimensions must be finite and positive.");
-  if (!nonEmpty(grid.rowOrder) || !nonEmpty(grid.sampleConvention))
-    throw new Error("Grid rowOrder and sampleConvention must be explicit.");
+  if (grid.rowOrder !== "y-ascending; x-fastest")
+    throw new Error("grid.rowOrder must be y-ascending; x-fastest.");
+  if (grid.sampleConvention !== "grid-index-origin")
+    throw new Error("grid.sampleConvention must be grid-index-origin.");
   if (vertical?.unit !== "metres" || !nonEmpty(vertical.datum) ||
       !nonEmpty(vertical.positiveDirection))
     throw new Error("Vertical unit, datum, and positiveDirection must be explicit.");
