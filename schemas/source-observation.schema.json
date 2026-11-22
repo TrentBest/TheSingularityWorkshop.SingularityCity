@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/schemas/source-observation.schema.json",
+  "title": "Singularity City Source Observation",
+  "description": "A traceable research observation linking a source location to a world-model subject and a blueprint decision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "recordId",
+    "source",
+    "subject",
+    "evidence",
+    "confidence",
+    "blueprintMappings"
+  ],
+  "properties": {
+    "schema": {
+      "const": "singularity-city.source-observation.v1"
+    },
+    "recordId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workTitle",
+        "edition",
+        "chapter"
+      ],
+      "properties": {
+        "workTitle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "edition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publicationYear": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "volume": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pageStart": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pageEnd": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "locatorNote": {
+          "type": "string"
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "name"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "city",
+            "district",
+            "landmark",
+            "building",
+            "street",
+            "route",
+            "institution",
+            "custom"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "summary",
+        "interpretation"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "explicit-description",
+            "narrative-observation",
+            "dialogue",
+            "map-reference",
+            "cross-reference",
+            "inference"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Researcher's concise paraphrase or observation; do not paste extended source passages."
+        },
+        "interpretation": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the observation implies for the world model; distinguish inference from explicit evidence."
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "blueprintMappings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reviewed": {
+          "type": "boolean"
+        },
+        "reviewerNote": {
+          "type": "string"
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  }
+}
