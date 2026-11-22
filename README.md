@@ -25,7 +25,10 @@ The current proof is a static, interactive navigation fixture. It does not claim
 
 - Persistent geography, districts, parcels, places and routes.
 - Ownership, zoning, construction and civic institutions.
-- Residents (Digitens), their activities and city-level relationships.
+- Residents (Digitens), visitors, communities, occupations, and their city-level relationships.
+- City-level NPC identity, daily life, schedules, population representation, and resident-place relationships.
+
+The general [Nonplayer Characters sourcebook (LOD 1)](docs/books/nonplayer-characters.md) is the canonical City-owned people-and-agency domain. Specialist repositories extend it at higher LOD without redefining character identity; for example, [Laboratory NPCs (LOD 2)](https://github.com/TrentBest/TheSingularityWorkshop.SingularityLaboratories/blob/development/docs/books/laboratory-npcs.md).
 - City economy, services, discoverability and access decisions.
 - Spatial entry points into independently owned experiences.
 
@@ -55,6 +58,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Civic Quarter connected district proof](docs/CIVIC_QUARTER_VERTICAL_SLICE.md)
 - [Civil systems and city theory atlas](docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md)
 - [Wheel of Time city showcase plan](docs/WHEEL_OF_TIME_SHOWCASE.md)
+- [City sourcebooks](docs/books/README.md)
 
 ## Development
 
