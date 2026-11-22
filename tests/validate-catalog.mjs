@@ -2,13 +2,23 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { generateParcels } from "../assets/js/city-generator.mjs";
 const json=p=>JSON.parse(readFileSync(p,"utf8"));
-const catalog=json("data/places.json"), blueprint=json("data/city-blueprint.json"), schema=json("schemas/city-blueprint.schema.json"), researchSchema=json("schemas/source-observation.schema.json");
+const catalog=json("data/places.json"), blueprint=json("data/city-blueprint.json"), schema=json("schemas/city-blueprint.schema.json"), researchSchema=json("schemas/source-observation.schema.json"), systems=json("data/city-systems.json"), systemsSchema=json("schemas/city-systems.schema.json");
 assert.equal(catalog.schema,"singularity-city.catalog.v1");
 assert.ok(catalog.city?.id && Array.isArray(catalog.places) && catalog.places.length);
 assert.equal(blueprint.schema,"singularity-city.blueprint.v1");
 assert.equal(blueprint.cityId,catalog.city.id);
 assert.equal(schema.properties.schema.const,blueprint.schema);
 assert.equal(researchSchema.properties.schema.const,"singularity-city.source-observation.v1");
+assert.equal(systems.schema,"singularity-city.systems.v1");
+assert.equal(systems.cityId,catalog.city.id);
+assert.equal(systemsSchema.properties.schema.const,systems.schema);
+assert.ok(systems.systems.length>=10,"city systems catalog must cover a broad domain");
+const systemIds=new Set();
+for(const system of systems.systems){
+ assert.ok(system.id&&!systemIds.has(system.id),`duplicate city system: ${system.id}`);systemIds.add(system.id);
+ assert.ok(system.title&&system.domain&&system.summary&&system.components.length&&system.measures.length&&system.theoryAnchor);
+ assert.ok(["concept","preview","contract","implemented"].includes(system.status));
+}
 assert.ok(researchSchema.required.includes("source")&&researchSchema.required.includes("evidence")&&researchSchema.required.includes("blueprintMappings"));
 assert.equal(blueprint.coordinateSpace.width,900); assert.equal(blueprint.coordinateSpace.height,590);
 assert.equal(blueprint.generation.algorithm,"grid-parcels.v1");
@@ -33,6 +43,7 @@ for(const d of blueprint.districts){
 assert.ok(parcelCount>=20,`expected at least 20 parcels, got ${parcelCount}`);
 const routeIds=new Set();for(const r of blueprint.routes){assert.ok(r.id&&!routeIds.has(r.id));routeIds.add(r.id);assert.ok(r.points.length>=2);}
 const html=readFileSync("index.html","utf8"),js=readFileSync("assets/js/city.js","utf8"),generator=readFileSync("assets/js/city-generator.mjs","utf8");
+assert.match(html,/id="city-systems"/);assert.match(js,/data\\/city-systems\\.json/);assert.match(js,/renderSystems/);
 assert.ok(existsSync("assets/images/living-city-atlas.svg"),"living city atlas image missing");
 assert.ok(existsSync("docs/LIVING_PICTURE.md"),"living picture guide missing");
 assert.ok(existsSync("docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md"),"civil systems theory atlas missing");
@@ -44,4 +55,4 @@ for(const domain of ["Geography","Architecture","Civil and municipal infrastruct
 for(const id of ["place-markers","district-layer","parcel-layer","route-layer"])assert.ok(html.includes(`id="${id}"`),`missing SVG layer ${id}`);
 assert.match(html,/id="source-repository"/);assert.match(html,/docs\/BUILD_YOUR_CITY\.md/);
 assert.match(js,/data\/places\.json/);assert.match(js,/data\/city-blueprint\.json/);assert.match(js,/city-generator\.mjs/);assert.match(generator,/export function generateParcels/);assert.match(js,/renderBlueprint/);assert.match(js,/inspectParcel/);
-console.log(`Validated ${catalog.places.length} places, ${blueprint.districts.length} districts, ${parcelCount} deterministic parcels and ${blueprint.routes.length} routes.`);
+console.log(`Validated ${catalog.places.length} places, ${blueprint.districts.length} districts, ${systems.systems.length} city systems, ${parcelCount} deterministic parcels and ${blueprint.routes.length} routes.`);
