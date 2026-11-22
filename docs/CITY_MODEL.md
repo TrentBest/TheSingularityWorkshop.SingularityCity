@@ -83,3 +83,8 @@ Persistence belongs to the authoritative host, not the browser demo. Simulation 
 - **Distant** — aggregate outcomes and coarse population/economic updates.
 
 Changing fidelity must not silently rewrite domain identity or erase causal history.
+
+
+## City systems catalog
+
+The domain inventory is data, not a hard-coded page list: [data/city-systems.json](../data/city-systems.json) is described by [city-systems.schema.json](../schemas/city-systems.schema.json). Each system declares its discipline, summary, component families, evidence status, intended visualization, candidate measures, and theory anchor. The landing page renders these records dynamically. A status of concept or preview is not a claim of an implemented simulation.
