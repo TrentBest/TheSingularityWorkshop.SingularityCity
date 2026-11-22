@@ -82,3 +82,11 @@ The first vertical slice is deliberately small:
 5. A static-hostable proof that can later be replaced by live host data without changing the domain boundaries.
 
 The current browser proof is a presentation and navigation fixture. It does not pretend to provide persistence, multiplayer, authoritative simulation or a live FSM_Dungeon connection.
+
+## Declarative spatial blueprint
+
+The discovery catalog (`data/places.json`) identifies places and their owners. The spatial blueprint (`data/city-blueprint.json`) defines coordinate space, district boundaries, route geometry and parcel-generation parameters. A versioned JSON Schema describes the blueprint contract.
+
+The browser projects district polygons and route polylines into SVG and generates parcel candidates using a deterministic algorithm and seed. This is a reproducible authoring preview, not authoritative land state. Accepted parcels, ownership, zoning, permits and construction must be validated and persisted by the host.
+
+Every generated feature must be traceable to its blueprint, algorithm version, seed, parameters and source record. Renderer output is an observation of the model, never the owner of city truth.
