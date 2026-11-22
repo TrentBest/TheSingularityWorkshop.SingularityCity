@@ -2,6 +2,8 @@
 
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
+![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
+
 ![LOD 1](../assets/sourcebook-lod-1.svg)
 
 ![Nonplayer Characters cover](covers/nonplayer-characters.svg)
