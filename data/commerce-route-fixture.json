@@ -23,7 +23,7 @@
       "id": "mara-peddler",
       "name": "Mara",
       "roles": ["itinerant-peddler"],
-      "homeBasePlaceId": "greenhollow-market",
+      "homeBasePlaceId": "greenhollow-green",
       "capabilities": ["mobile-commerce", "haggling", "local-route-knowledge"],
       "scenarioNotes": "A fictional fixture person; role is distinct from persistent identity."
     },
