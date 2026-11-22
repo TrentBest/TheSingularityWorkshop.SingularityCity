@@ -98,3 +98,19 @@ The first adapter should be read-only and lossless for the source fields it supp
 ## Explicit status
 
 This document records the integration decision and current source inventory. It does **not** claim that a City-to-Physics adapter, general procedural terrain generator, erosion solver, full world builder, terrain collision mesh, or playable first-person city exists yet. The next implementation should start from the existing Physics APIs and tests, not from a guessed API or a duplicate solver.
+
+
+## City-side import adapter (implemented contract)
+
+City now contains `assets/js/physics-terrain-adapter.mjs`. Its `importPhysicsTerrain` function accepts the explicit `singularity-physics.terrain-heightfield.v1` interchange envelope and returns a read-only `singularity-city.physics-terrain.v1` dataset.
+
+The envelope carries:
+- stable dataset ID and source repository/revision/model/model-version/run identity;
+- coordinate-frame ID, units, origin and axis directions;
+- grid dimensions, cell spacing, explicit row order and sample convention;
+- vertical unit, datum and positive direction;
+- the finite row-major elevation buffer.
+
+The adapter validates required metadata and sample count, rejects non-finite samples, and reshapes the flat buffer into rows without changing sample order or values. It does not infer a coordinate transform from a frame ID, resample elevations, classify land cover, or invent watersheds, streams, hazards or geological features. Contract tests cover exact round-trip sample preservation and invalid-input rejection; the Pages build runs those tests.
+
+**Integration boundary:** the current Physics classes expose snapshots, not this serialized envelope. A producer/export step in Physics is still required to populate the metadata truthfully. The adapter is therefore implemented and tested against the agreed interchange contract, but no live Physics run is yet imported into the City renderer. The existing synthetic map remains the visible demo source until producer export and renderer integration are completed.
