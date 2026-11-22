@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Working thoughts, decisions and next steps for Singularity City.">
+  <title>Field Notes | Singularity City</title>
+  <style>
+    :root{color-scheme:dark;--bg:#07111f;--panel:#0d1c2b;--line:#254258;--ink:#e8f1f7;--muted:#9bb0bf;--cyan:#72d5df;--gold:#e7bd78}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#173348 0,transparent 48%),var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}
+    a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}.shell{width:min(1100px,calc(100% - 40px));margin:auto}
+    header{padding:24px 0;border-bottom:1px solid var(--line)}nav{display:flex;gap:22px;flex-wrap:wrap;align-items:center}.brand{margin-right:auto;color:var(--ink);font-weight:800;letter-spacing:.12em}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.16em}
+    .eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+    .hero{padding:76px 0 54px;max-width:850px}.hero h1{font-size:clamp(42px,7vw,76px);line-height:1.02;letter-spacing:-.055em;margin:16px 0}.hero h1 em{color:var(--gold);font-style:normal}.hero p{font-size:19px;color:var(--muted);max-width:720px}
+    .statusline{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:26px;color:var(--muted);font-size:13px}.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);display:inline-block}
+    main{padding-bottom:70px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{background:linear-gradient(145deg,#102437,#0a1725);border:1px solid var(--line);border-radius:14px;padding:25px}.card h2{font-size:23px;line-height:1.2;margin:8px 0 12px}.card p,.card li{color:var(--muted)}.card ul{padding-left:20px}.wide{grid-column:1/-1}
+    .sequence{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.step{border:1px solid var(--line);border-radius:10px;padding:14px;background:#0a1826}.step b{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em}.step span{display:block;margin-top:6px;font-weight:700}
+    .callout{border-left:3px solid var(--cyan);padding:4px 0 4px 18px;color:var(--muted)}footer{border-top:1px solid var(--line);padding:24px 0 42px;color:var(--muted);font-size:13px}
+    @media(max-width:700px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}.sequence{grid-template-columns:repeat(2,1fr)}.hero{padding-top:52px}nav{gap:14px}.brand{width:100%}}
+  </style>
+</head>
+<body>
+  <header><div class="shell"><nav><a class="brand" href="index.html">SINGULARITY CITY<small>THE WORKSHOP / FIELD NOTES</small></a><a href="index.html">Explore city</a><a href="docs/LIVING_PICTURE.md">Living picture</a><a href="docs/ARCHITECTURE.md">Architecture</a></nav></div></header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">A WORKING PAGE · DEVELOPMENT BRANCH</div>
+      <h1>Think in public.<br><em>Build what we can prove.</em></h1>
+      <p>This is the current design notebook for Singularity City: the decisions we are making, the boundaries we are protecting, and the next pieces of the world we intend to make real. It is a living brief, not a claim that every described capability already exists.</p>
+      <div class="statusline"><span class="dot"></span> Active source: <strong>development</strong> · Physics coordination: <a href="https://github.com/TrentBest/TheSingularityWorkshop.Physics/issues/57">Physics issue #57</a> · <a href="https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity">City source</a></div>
+    </section>
+    <section class="grid">
+      <article class="card">
+        <div class="eyebrow">01 / THE DIVISION OF RESPONSIBILITY</div>
+        <h2>Physics makes the land. City makes a civilization on it.</h2>
+        <p>Physics owns authoritative terrain state, generation, physical evolution, coordinate conventions and numerical evidence. City consumes that output and owns civic geography: districts, parcels, streets, buildings, utilities, services, institutions and the relationships between them.</p>
+        <p class="callout">No second terrain engine in City. No civic rules hidden inside Physics. The boundary is an explicit, versioned contract.</p>
+      </article>
+      <article class="card">
+        <div class="eyebrow">02 / WHAT IS ALREADY REAL</div>
+        <h2>The first Physics-to-City connection exists.</h2>
+        <ul>
+          <li>Physics produces a deterministic 24 × 18 volcanic elevation snapshot.</li>
+          <li>City imports it through a read-only adapter with frame, unit, datum, ordering and provenance validation.</li>
+          <li>A separate, initially hidden map overlay displays those imported samples.</li>
+          <li>City's synthetic terrain and derived map layers remain visibly separate from the Physics source.</li>
+        </ul>
+        <p><a href="docs/PHYSICS_TERRAIN_AND_WORLDBUILDING.md">Read the integration record ↗</a></p>
+      </article>
+      <article class="card wide">
+        <div class="eyebrow">03 / THE NEXT HANDOFF</div>
+        <h2>Give City a stable terrain language.</h2>
+        <p>Physics issue #57 now has the concrete downstream request. The next useful producer slice is a canonical, versioned, host-neutral terrain snapshot/query contract, backed by an analytically checkable plane/ramp/bowl fixture. The existing volcanic output should then use that same contract.</p>
+        <div class="sequence">
+          <div class="step"><b>PHYSICS</b><span>Canonical terrain contract</span></div>
+          <div class="step"><b>IMPORT</b><span>Lossless City adapter</span></div>
+          <div class="step"><b>INTERPRET</b><span>Drainage, slope, landforms</span></div>
+          <div class="step"><b>PLAN</b><span>Roads, parcels, services</span></div>
+        </div>
+        <p>Coordinates must remain honest: the current volcanic dataset is local east/north metres with a model-relative vertical datum. It is not georeferenced Tacoma terrain.</p>
+        <p><a href="https://github.com/TrentBest/TheSingularityWorkshop.Physics/issues/57">Follow the Physics work item ↗</a></p>
+      </article>
+      <article class="card">
+        <div class="eyebrow">04 / THE CITY'S NEXT DERIVATIONS</div>
+        <h2>Let the land constrain the plan.</h2>
+        <p>Once the producer contract is stable, City can build traceable civic interpretations from imported evidence:</p>
+        <ul><li>terrain slope and landform classifications;</li><li>drainage and watershed planning layers;</li><li>buildability screening with explicit assumptions;</li><li>road and utility corridor proposals;</li><li>district, block and parcel geometry that follows the terrain.</li></ul>
+        <p>These are planning layers, not authoritative physical solvers or engineering certification.</p>
+      </article>
+      <article class="card">
+        <div class="eyebrow">05 / THE LIVING WORLD</div>
+        <h2>One world, many views.</h2>
+        <p>The same stable identities should appear in the regional map, district plan, street view, building interior and infrastructure view. Renderer decides what representation is appropriate; Visualize manifests it. The host owns camera, interaction, persistence and runtime.</p>
+        <p>The first-person mayor experience is a direction and architecture, not yet a playable FPS.</p>
+        <p><a href="docs/LIVING_PICTURE.md">Read the living-picture contract ↗</a></p>
+      </article>
+      <article class="card wide">
+        <div class="eyebrow">06 / OUR WORKING RULE</div>
+        <h2>Every visible claim needs a source.</h2>
+        <p>Every map, diagram, number and animation should tell the visitor what is shown, where the data came from, what was computed, what is illustrative, what is not implemented, and how to reproduce the result. A compelling picture is useful; a picture that can be inspected and traced is a Workshop instrument.</p>
+      </article>
+    </section>
+  </main>
+  <footer><div class="shell">The Singularity Workshop · Singularity City · Living documentation on the development branch</div></footer>
+</body>
+</html>
