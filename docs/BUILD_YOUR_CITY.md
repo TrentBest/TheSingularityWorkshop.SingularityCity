@@ -10,6 +10,15 @@ This repository is a working example and teaching kit. The generic spatial engin
 
 Discovery metadata and spatial construction evolve at different rates, so they remain separate.
 
+## Terrain and the map stack
+
+- [`data/terrain/city-terrain.json`](../data/terrain/city-terrain.json) is the synthetic physical-geography fixture: elevation samples, land cover, watersheds, streams, terrain features and hazard-screening areas.
+- [`data/map-layers.json`](../data/map-layers.json) catalogs the selectable map layers and their source paths, semantic categories, status and default visibility.
+- [`docs/MAPS_AS_CITY_DATA.md`](MAPS_AS_CITY_DATA.md) explains the terrain-first planning sequence, coordinate reference, provenance and map families.
+- [`docs/CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md`](CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md) defines how map identities become a walkable mayor experience.
+
+The browser map now has independently toggleable terrain, land cover, watersheds, districts, parcel candidates, mobility, transit, utilities and hazard-screening layers. These are views of shared model data, not independent drawings.
+
 ## Districts, routes and parcels
 
 Each district declares a stable ID, display name, presentation class and polygon in map coordinates. Routes are ordered coordinate points with a semantic kind: arterial, transit or local. They describe connectivity, not permission to traverse.
