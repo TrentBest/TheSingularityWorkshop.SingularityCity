@@ -24,7 +24,7 @@ for(const d of blueprint.districts){
  assert.ok(d.id&&!districtIds.has(d.id),`duplicate district: ${d.id}`);districtIds.add(d.id);
  assert.ok(d.polygon.length>=3&&d.parcelGrid.columns>0&&d.parcelGrid.rows>0);
  assert.ok(d.parcelGrid.occupancy>=0&&d.parcelGrid.occupancy<=1);
- const a=generateParcels(d,blueprint.generation.seed),b=parcelsFor(d,blueprint.generation.seed);
+ const a=generateParcels(d,blueprint.generation.seed),b=generateParcels(d,blueprint.generation.seed);
  assert.deepEqual(a,b,`${d.id} parcel generation is not deterministic`);
  assert.ok(a.every(p=>p.width>0&&p.height>0));parcelCount+=a.length;
 }
