@@ -13,7 +13,7 @@ The atlas is a conceptual systems illustration; the browser proof and Visualize'
 
 ## Live preview
 
-The browser proof is designed for GitHub Pages and is built from `development`:
+The browser proof is validated on `development` and `master`; the Pages deployment is deliberately gated to `master`, matching the Workshop release-aligned branch policy:
 
 - **Explore:** [Singularity City](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/)
 - Select map markers or destination cards to inspect a place.
