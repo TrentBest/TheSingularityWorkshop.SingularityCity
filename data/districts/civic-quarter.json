@@ -1,0 +1,556 @@
+{
+  "schema": "singularity-city.district-model.v1",
+  "cityId": "singularity-city",
+  "district": {
+    "id": "civic",
+    "name": "Civic Quarter",
+    "modelStatus": "connected-synthetic-proof",
+    "coordinateSpace": {
+      "width": 640,
+      "height": 420,
+      "units": "district-map-units"
+    }
+  },
+  "provenance": {
+    "kind": "synthetic-authored-fixture",
+    "source": "data/districts/civic-quarter.json",
+    "revision": "v1",
+    "limitations": [
+      "Not a surveyed or georeferenced site",
+      "Capacities and demand are illustrative assumptions",
+      "No live utility, transit, ownership or resident data"
+    ]
+  },
+  "parcels": [
+    {
+      "id": "civic-parcel-hall",
+      "use": "civic",
+      "area": 8400,
+      "geometry": {
+        "x": 180,
+        "y": 110,
+        "width": 92,
+        "height": 68
+      },
+      "buildingIds": [
+        "civic-building-hall"
+      ]
+    },
+    {
+      "id": "civic-parcel-library",
+      "use": "education-culture",
+      "area": 5200,
+      "geometry": {
+        "x": 305,
+        "y": 105,
+        "width": 78,
+        "height": 60
+      },
+      "buildingIds": [
+        "civic-building-library"
+      ]
+    },
+    {
+      "id": "civic-parcel-clinic",
+      "use": "health-service",
+      "area": 4600,
+      "geometry": {
+        "x": 425,
+        "y": 205,
+        "width": 72,
+        "height": 58
+      },
+      "buildingIds": [
+        "civic-building-clinic"
+      ]
+    },
+    {
+      "id": "civic-parcel-square",
+      "use": "public-open-space",
+      "area": 6100,
+      "geometry": {
+        "x": 265,
+        "y": 235,
+        "width": 105,
+        "height": 78
+      },
+      "buildingIds": []
+    }
+  ],
+  "buildings": [
+    {
+      "id": "civic-building-hall",
+      "parcelId": "civic-parcel-hall",
+      "name": "Civic Hall",
+      "floors": 4,
+      "footprintArea": 1650,
+      "rooms": [
+        {
+          "id": "civic-room-council",
+          "name": "Council Chamber",
+          "floor": 2,
+          "capacity": 120
+        },
+        {
+          "id": "civic-room-service",
+          "name": "Public Service Hall",
+          "floor": 1,
+          "capacity": 36
+        }
+      ]
+    },
+    {
+      "id": "civic-building-library",
+      "parcelId": "civic-parcel-library",
+      "name": "Civic Library",
+      "floors": 3,
+      "footprintArea": 1120,
+      "rooms": [
+        {
+          "id": "civic-room-reading",
+          "name": "Reading Hall",
+          "floor": 1,
+          "capacity": 80
+        },
+        {
+          "id": "civic-room-lab",
+          "name": "Learning Lab",
+          "floor": 2,
+          "capacity": 24
+        }
+      ]
+    },
+    {
+      "id": "civic-building-clinic",
+      "parcelId": "civic-parcel-clinic",
+      "name": "Community Clinic",
+      "floors": 2,
+      "footprintArea": 980,
+      "rooms": [
+        {
+          "id": "civic-room-triage",
+          "name": "Triage",
+          "floor": 1,
+          "capacity": 12
+        },
+        {
+          "id": "civic-room-care",
+          "name": "Care Room",
+          "floor": 2,
+          "capacity": 8
+        }
+      ]
+    }
+  ],
+  "streets": [
+    {
+      "id": "civic-street-civic-way",
+      "name": "Civic Way",
+      "mode": "street",
+      "points": [
+        [
+          60,
+          185
+        ],
+        [
+          180,
+          185
+        ],
+        [
+          305,
+          185
+        ],
+        [
+          425,
+          185
+        ],
+        [
+          560,
+          185
+        ]
+      ]
+    },
+    {
+      "id": "civic-street-library-lane",
+      "name": "Library Lane",
+      "mode": "local",
+      "points": [
+        [
+          345,
+          55
+        ],
+        [
+          345,
+          105
+        ],
+        [
+          345,
+          235
+        ],
+        [
+          345,
+          350
+        ]
+      ]
+    },
+    {
+      "id": "civic-street-square-walk",
+      "name": "Square Walk",
+      "mode": "pedestrian",
+      "points": [
+        [
+          130,
+          275
+        ],
+        [
+          265,
+          275
+        ],
+        [
+          370,
+          275
+        ],
+        [
+          510,
+          275
+        ]
+      ]
+    }
+  ],
+  "mobility": {
+    "nodes": [
+      {
+        "id": "civic-mobility-west",
+        "kind": "intersection",
+        "x": 60,
+        "y": 185
+      },
+      {
+        "id": "civic-mobility-hall",
+        "kind": "access",
+        "x": 226,
+        "y": 185
+      },
+      {
+        "id": "civic-mobility-library",
+        "kind": "access",
+        "x": 345,
+        "y": 185
+      },
+      {
+        "id": "civic-mobility-clinic",
+        "kind": "access",
+        "x": 461,
+        "y": 185
+      },
+      {
+        "id": "civic-mobility-east",
+        "kind": "intersection",
+        "x": 560,
+        "y": 185
+      },
+      {
+        "id": "civic-mobility-square",
+        "kind": "pedestrian-node",
+        "x": 345,
+        "y": 275
+      }
+    ],
+    "edges": [
+      {
+        "id": "civic-mobility-edge-1",
+        "from": "civic-mobility-west",
+        "to": "civic-mobility-hall",
+        "modes": [
+          "walk",
+          "cycle",
+          "service-vehicle"
+        ],
+        "length": 166
+      },
+      {
+        "id": "civic-mobility-edge-2",
+        "from": "civic-mobility-hall",
+        "to": "civic-mobility-library",
+        "modes": [
+          "walk",
+          "cycle",
+          "service-vehicle"
+        ],
+        "length": 119
+      },
+      {
+        "id": "civic-mobility-edge-3",
+        "from": "civic-mobility-library",
+        "to": "civic-mobility-clinic",
+        "modes": [
+          "walk",
+          "cycle",
+          "service-vehicle"
+        ],
+        "length": 116
+      },
+      {
+        "id": "civic-mobility-edge-4",
+        "from": "civic-mobility-clinic",
+        "to": "civic-mobility-east",
+        "modes": [
+          "walk",
+          "cycle",
+          "service-vehicle"
+        ],
+        "length": 99
+      },
+      {
+        "id": "civic-mobility-edge-5",
+        "from": "civic-mobility-library",
+        "to": "civic-mobility-square",
+        "modes": [
+          "walk"
+        ],
+        "length": 90
+      }
+    ]
+  },
+  "transit": {
+    "routes": [
+      {
+        "id": "civic-transit-route-blue",
+        "name": "Civic Connector",
+        "mode": "electric-shuttle",
+        "stopIds": [
+          "civic-stop-hall",
+          "civic-stop-clinic"
+        ],
+        "headwayMinutes": 10,
+        "vehicleCapacity": 18
+      }
+    ],
+    "stops": [
+      {
+        "id": "civic-stop-hall",
+        "name": "Civic Hall Stop",
+        "nodeId": "civic-mobility-hall",
+        "x": 226,
+        "y": 165
+      },
+      {
+        "id": "civic-stop-clinic",
+        "name": "Clinic Stop",
+        "nodeId": "civic-mobility-clinic",
+        "x": 461,
+        "y": 165
+      }
+    ]
+  },
+  "water": {
+    "nodes": [
+      {
+        "id": "civic-water-main",
+        "kind": "distribution-main",
+        "x": 80,
+        "y": 340,
+        "capacityLitresPerHour": 18000
+      },
+      {
+        "id": "civic-water-hall",
+        "kind": "service-connection",
+        "x": 226,
+        "y": 145,
+        "capacityLitresPerHour": 4200
+      },
+      {
+        "id": "civic-water-library",
+        "kind": "service-connection",
+        "x": 345,
+        "y": 145,
+        "capacityLitresPerHour": 2600
+      },
+      {
+        "id": "civic-water-clinic",
+        "kind": "service-connection",
+        "x": 461,
+        "y": 245,
+        "capacityLitresPerHour": 3600
+      },
+      {
+        "id": "civic-water-drain",
+        "kind": "stormwater-outfall",
+        "x": 560,
+        "y": 340,
+        "capacityLitresPerHour": 12000
+      }
+    ],
+    "edges": [
+      {
+        "id": "civic-water-edge-1",
+        "from": "civic-water-main",
+        "to": "civic-water-hall",
+        "flowLitresPerHour": 2100
+      },
+      {
+        "id": "civic-water-edge-2",
+        "from": "civic-water-main",
+        "to": "civic-water-library",
+        "flowLitresPerHour": 1300
+      },
+      {
+        "id": "civic-water-edge-3",
+        "from": "civic-water-main",
+        "to": "civic-water-clinic",
+        "flowLitresPerHour": 2400
+      },
+      {
+        "id": "civic-water-edge-4",
+        "from": "civic-water-hall",
+        "to": "civic-water-drain",
+        "flowLitresPerHour": 900
+      }
+    ]
+  },
+  "energy": {
+    "nodes": [
+      {
+        "id": "civic-energy-substation",
+        "kind": "substation",
+        "x": 80,
+        "y": 70,
+        "capacityKilowatts": 900
+      },
+      {
+        "id": "civic-energy-hall",
+        "kind": "building-load",
+        "x": 226,
+        "y": 145,
+        "capacityKilowatts": 180
+      },
+      {
+        "id": "civic-energy-library",
+        "kind": "building-load",
+        "x": 345,
+        "y": 145,
+        "capacityKilowatts": 120
+      },
+      {
+        "id": "civic-energy-clinic",
+        "kind": "critical-load",
+        "x": 461,
+        "y": 245,
+        "capacityKilowatts": 210
+      },
+      {
+        "id": "civic-energy-square",
+        "kind": "public-lighting",
+        "x": 315,
+        "y": 275,
+        "capacityKilowatts": 35
+      }
+    ],
+    "edges": [
+      {
+        "id": "civic-energy-edge-1",
+        "from": "civic-energy-substation",
+        "to": "civic-energy-hall",
+        "loadKilowatts": 86
+      },
+      {
+        "id": "civic-energy-edge-2",
+        "from": "civic-energy-substation",
+        "to": "civic-energy-library",
+        "loadKilowatts": 54
+      },
+      {
+        "id": "civic-energy-edge-3",
+        "from": "civic-energy-substation",
+        "to": "civic-energy-clinic",
+        "loadKilowatts": 132
+      },
+      {
+        "id": "civic-energy-edge-4",
+        "from": "civic-energy-substation",
+        "to": "civic-energy-square",
+        "loadKilowatts": 18
+      }
+    ]
+  },
+  "publicRealm": {
+    "spaces": [
+      {
+        "id": "civic-square",
+        "parcelId": "civic-parcel-square",
+        "name": "Founders Square",
+        "area": 6100,
+        "treeCanopyPercent": 38,
+        "permeableSurfacePercent": 62
+      }
+    ]
+  },
+  "institutions": [
+    {
+      "id": "civic-institution-municipality",
+      "name": "Civic Administration",
+      "serviceIds": [
+        "civic-service-permits",
+        "civic-service-public-records"
+      ]
+    },
+    {
+      "id": "civic-institution-health",
+      "name": "Community Health Service",
+      "serviceIds": [
+        "civic-service-clinic"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "civic-service-permits",
+      "name": "Planning and permits",
+      "placeId": "civic-building-hall",
+      "institutionId": "civic-institution-municipality"
+    },
+    {
+      "id": "civic-service-public-records",
+      "name": "Public records",
+      "placeId": "civic-building-hall",
+      "institutionId": "civic-institution-municipality"
+    },
+    {
+      "id": "civic-service-clinic",
+      "name": "Primary care",
+      "placeId": "civic-building-clinic",
+      "institutionId": "civic-institution-health"
+    }
+  ],
+  "population": {
+    "kind": "synthetic-aggregate",
+    "households": 420,
+    "residents": 980,
+    "workers": 610,
+    "students": 180,
+    "sourceNote": "Illustrative district scenario inputs; not real people or measured demographics."
+  },
+  "scenario": {
+    "id": "civic-scenario-tree-canopy",
+    "name": "Increase square canopy",
+    "baseline": {
+      "treeCanopyPercent": 38,
+      "summerSurfaceTemperatureC": 31.5,
+      "stormwaterRunoffIndex": 100
+    },
+    "proposal": {
+      "treeCanopyPercent": 52,
+      "summerSurfaceTemperatureC": 29.8,
+      "stormwaterRunoffIndex": 86
+    },
+    "assumptions": [
+      "Tree canopy rises through planting and establishment over time",
+      "Temperature and runoff changes are illustrative scenario deltas, not validated predictions"
+    ],
+    "outputs": {
+      "canopyChangePercentagePoints": 14,
+      "surfaceTemperatureChangeC": -1.7,
+      "runoffIndexChangePercent": -14
+    }
+  }
+}
