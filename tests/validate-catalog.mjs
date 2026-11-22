@@ -33,6 +33,14 @@ for(const d of blueprint.districts){
 assert.ok(parcelCount>=20,`expected at least 20 parcels, got ${parcelCount}`);
 const routeIds=new Set();for(const r of blueprint.routes){assert.ok(r.id&&!routeIds.has(r.id));routeIds.add(r.id);assert.ok(r.points.length>=2);}
 const html=readFileSync("index.html","utf8"),js=readFileSync("assets/js/city.js","utf8"),generator=readFileSync("assets/js/city-generator.mjs","utf8");
+assert.ok(existsSync("assets/images/living-city-atlas.svg"),"living city atlas image missing");
+assert.ok(existsSync("docs/LIVING_PICTURE.md"),"living picture guide missing");
+assert.ok(existsSync("docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md"),"civil systems theory atlas missing");
+const atlas=readFileSync("assets/images/living-city-atlas.svg","utf8");
+assert.match(atlas,/<svg[\\s\\S]*<title[\\s\\S]*<desc/);
+const theory=readFileSync("docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md","utf8");
+for(const domain of ["Geography","Architecture","Civil and municipal infrastructure","Urban planning","Transportation","Water, energy","Ecology","People, households","Institutions","Economy","Culture","Risk, resilience","Commons theory","Environmental justice"])assert.ok(theory.includes(domain),`missing city domain/theory: ${domain}`);
+
 for(const id of ["place-markers","district-layer","parcel-layer","route-layer"])assert.ok(html.includes(`id="${id}"`),`missing SVG layer ${id}`);
 assert.match(html,/id="source-repository"/);assert.match(html,/docs\/BUILD_YOUR_CITY\.md/);
 assert.match(js,/data\/places\.json/);assert.match(js,/data\/city-blueprint\.json/);assert.match(js,/city-generator\.mjs/);assert.match(generator,/export function generateParcels/);assert.match(js,/renderBlueprint/);assert.match(js,/inspectParcel/);
