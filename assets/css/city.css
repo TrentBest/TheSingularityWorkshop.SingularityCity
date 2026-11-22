@@ -126,3 +126,10 @@
 .city-footer .brand{gap:16px;letter-spacing:.12em}
 .workshop-avatar{display:block;flex:0 0 72px;width:72px;height:72px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 0 16px #65e4dc30)}
 @media(max-width:700px){.city-footer{align-items:center;flex-direction:row;flex-wrap:wrap}.workshop-avatar{flex-basis:60px;width:60px;height:60px}.city-footer .brand strong{font-size:10px}.city-footer .brand small{font-size:8px}}
+
+/* Accessible explanation for the descriptive City slope overlay. */
+.map-legend .slope-scale{display:inline-flex;align-items:center;gap:7px;color:#c6d8e3;white-space:nowrap}
+.slope-scale span{font:9px 'DM Mono',monospace}
+.slope-scale i{display:inline-block;width:88px;height:8px;border:1px solid #d6e5ee55;background:linear-gradient(90deg,hsl(190 78% 54%),hsl(105 78% 54%),hsl(20 78% 54%))}
+.map-legend .slope-note{flex-basis:100%;color:#91a8b8;font:8px 'DM Mono',monospace;letter-spacing:.02em}
+@media(max-width:700px){.slope-scale i{width:58px}.map-legend .slope-note{font-size:7px}}
