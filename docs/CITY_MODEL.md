@@ -88,3 +88,8 @@ Changing fidelity must not silently rewrite domain identity or erase causal hist
 ## City systems catalog
 
 The domain inventory is data, not a hard-coded page list: [data/city-systems.json](../data/city-systems.json) is described by [city-systems.schema.json](../schemas/city-systems.schema.json). Each system declares its discipline, summary, component families, evidence status, intended visualization, candidate measures, and theory anchor. The landing page renders these records dynamically. A status of concept or preview is not a claim of an implemented simulation.
+
+
+## Connected district proof
+
+The [Civic Quarter vertical slice](CIVIC_QUARTER_VERTICAL_SLICE.md) is the first multi-domain model with shared stable identities and validated relationships. It connects parcels, structures, rooms, a connected mobility graph, transit stops/routes, water and energy networks, public space, institutions, services, and synthetic population/scenario inputs. The page's district workbench projects the model directly and exposes entity IDs and relationship references. All values are explicitly marked synthetic; no surveyed geography, operational infrastructure or real resident data is implied.
