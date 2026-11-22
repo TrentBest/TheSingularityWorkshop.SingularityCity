@@ -33,19 +33,16 @@
           <svg class="city-map" viewBox="0 0 900 590" role="img" aria-label="Illustrated map of Singularity City districts">
             <defs><pattern id="blocks" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M0 0H42V42" fill="none" stroke="#254258" stroke-width="1"/></pattern></defs>
             <path class="river" d="M-20 425 C140 340 205 485 355 390 S610 310 920 390"/>
-            <path class="artery" d="M30 110 L850 500 M90 520 L760 60 M445 -20 L450 620 M0 300 L900 300"/>
-            <path class="district-shape workshop" d="M90 95 L320 70 L370 220 L260 285 L75 230Z"/>
-            <path class="district-shape civic" d="M480 75 L760 95 L810 255 L610 290 L475 220Z"/>
-            <path class="district-shape transit" d="M330 300 L560 270 L650 420 L480 520 L300 435Z"/>
-            <path class="district-shape underworks" d="M95 360 L265 310 L340 470 L180 550 L65 475Z"/>
-            <path class="district-shape waterfront" d="M650 350 L840 300 L900 510 L740 565 L610 465Z"/>
-            <g class="map-label"><text x="115" y="125">WORKSHOP CAMPUS</text><text x="555" y="115">CIVIC QUARTER</text><text x="390" y="340">TRANSIT NEXUS</text><text x="90" y="390">MUNICIPAL UNDERWORKS</text><text x="690" y="390">WATERFRONT</text></g>
+            <g id="route-layer"></g>
+            <g id="district-layer"></g>
+            <g id="parcel-layer"></g>
+            <g id="district-labels"></g>
             <g id="place-markers"></g>
             <g class="you-are-here"><circle cx="430" cy="250" r="8"/><circle cx="430" cy="250" r="22"/><path d="M430 228V210H470"/><text x="478" y="214">YOU ARE HERE</text></g>
           </svg>
           <div class="map-legend"><span><i class="legend-you"></i> You are here</span><span><i class="legend-place"></i> Discoverable place</span><span><i class="legend-entry"></i> Experience entrance</span></div>
         </div>
-        <div class="map-foot"><span>ILLUSTRATIVE CITY MAP · NOT TO SCALE</span><span>SELECT A LOCATION TO INSPECT</span></div>
+        <div class="map-foot"><span id="map-generation">LOADING CITY BLUEPRINT…</span><span>SELECT A LOCATION TO INSPECT</span></div>
       </div>
 
       <aside class="location-panel" aria-live="polite">
