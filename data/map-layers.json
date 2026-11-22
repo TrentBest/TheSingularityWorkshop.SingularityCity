@@ -1,0 +1,88 @@
+{
+  "schema": "singularity-city.map-layer-catalog.v1",
+  "cityId": "singularity-city",
+  "coordinateSpace": "city-blueprint.map-units",
+  "layers": [
+    {
+      "id": "terrain",
+      "title": "Terrain & elevation",
+      "category": "physical",
+      "source": "data/terrain/city-terrain.json#/elevation",
+      "status": "synthetic-fixture",
+      "defaultVisible": true,
+      "description": "Relative elevation surface and landform context."
+    },
+    {
+      "id": "land-cover",
+      "title": "Land cover",
+      "category": "ecology",
+      "source": "data/terrain/city-terrain.json#/landCover",
+      "status": "synthetic-fixture",
+      "defaultVisible": true,
+      "description": "Woodland, meadow, wetland, urban and water cells."
+    },
+    {
+      "id": "watersheds",
+      "title": "Watersheds & streams",
+      "category": "hydrology",
+      "source": "data/terrain/city-terrain.json#/hydrology",
+      "status": "synthetic-fixture",
+      "defaultVisible": true,
+      "description": "Catchment boundaries, flow paths and outlets."
+    },
+    {
+      "id": "districts",
+      "title": "District boundaries",
+      "category": "planning",
+      "source": "data/city-blueprint.json#/districts",
+      "status": "preview",
+      "defaultVisible": true,
+      "description": "District polygons and labels."
+    },
+    {
+      "id": "parcels",
+      "title": "Parcel candidates",
+      "category": "planning",
+      "source": "data/city-blueprint.json#/districts/*/parcelGrid",
+      "status": "generated-preview",
+      "defaultVisible": true,
+      "description": "Deterministic candidate plots, not legal parcels."
+    },
+    {
+      "id": "mobility",
+      "title": "Streets & mobility",
+      "category": "mobility",
+      "source": "data/city-blueprint.json#/routes",
+      "status": "preview",
+      "defaultVisible": true,
+      "description": "Arterial, local and transit alignments."
+    },
+    {
+      "id": "transit",
+      "title": "Transit",
+      "category": "mobility",
+      "source": "data/districts/civic-quarter.json#/transit",
+      "status": "synthetic-fixture",
+      "defaultVisible": true,
+      "description": "Routes, stops, headways and service capacity."
+    },
+    {
+      "id": "utilities",
+      "title": "Water & energy",
+      "category": "infrastructure",
+      "source": "data/districts/civic-quarter.json#/(water|energy)",
+      "status": "synthetic-fixture",
+      "defaultVisible": false,
+      "description": "Service networks and illustrative loads/flows."
+    },
+    {
+      "id": "hazards",
+      "title": "Environmental constraints",
+      "category": "risk",
+      "source": "data/terrain/city-terrain.json#/hazards",
+      "status": "synthetic-screening",
+      "defaultVisible": false,
+      "description": "Illustrative hazard screening; not a safety determination."
+    }
+  ]
+}
