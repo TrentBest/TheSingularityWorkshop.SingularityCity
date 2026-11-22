@@ -1,0 +1,316 @@
+{
+  "schema": "singularity-city.blueprint.v1",
+  "cityId": "singularity-city",
+  "coordinateSpace": {
+    "width": 900,
+    "height": 590,
+    "units": "map-units"
+  },
+  "generation": {
+    "algorithm": "grid-parcels.v1",
+    "seed": 4172026
+  },
+  "districts": [
+    {
+      "id": "workshop",
+      "name": "Workshop Campus",
+      "className": "workshop",
+      "polygon": [
+        [
+          90,
+          95
+        ],
+        [
+          320,
+          70
+        ],
+        [
+          370,
+          220
+        ],
+        [
+          260,
+          285
+        ],
+        [
+          75,
+          230
+        ]
+      ],
+      "parcelGrid": {
+        "origin": [
+          112,
+          145
+        ],
+        "columns": 4,
+        "rows": 3,
+        "width": 38,
+        "height": 27,
+        "gap": 8,
+        "occupancy": 0.82
+      }
+    },
+    {
+      "id": "civic",
+      "name": "Civic Quarter",
+      "className": "civic",
+      "polygon": [
+        [
+          480,
+          75
+        ],
+        [
+          760,
+          95
+        ],
+        [
+          810,
+          255
+        ],
+        [
+          610,
+          290
+        ],
+        [
+          475,
+          220
+        ]
+      ],
+      "parcelGrid": {
+        "origin": [
+          520,
+          135
+        ],
+        "columns": 4,
+        "rows": 3,
+        "width": 42,
+        "height": 29,
+        "gap": 9,
+        "occupancy": 0.78
+      }
+    },
+    {
+      "id": "transit",
+      "name": "Transit Nexus",
+      "className": "transit",
+      "polygon": [
+        [
+          330,
+          300
+        ],
+        [
+          560,
+          270
+        ],
+        [
+          650,
+          420
+        ],
+        [
+          480,
+          520
+        ],
+        [
+          300,
+          435
+        ]
+      ],
+      "parcelGrid": {
+        "origin": [
+          375,
+          345
+        ],
+        "columns": 3,
+        "rows": 3,
+        "width": 39,
+        "height": 27,
+        "gap": 10,
+        "occupancy": 0.7
+      }
+    },
+    {
+      "id": "underworks",
+      "name": "Municipal Underworks",
+      "className": "underworks",
+      "polygon": [
+        [
+          95,
+          360
+        ],
+        [
+          265,
+          310
+        ],
+        [
+          340,
+          470
+        ],
+        [
+          180,
+          550
+        ],
+        [
+          65,
+          475
+        ]
+      ],
+      "parcelGrid": {
+        "origin": [
+          115,
+          390
+        ],
+        "columns": 3,
+        "rows": 3,
+        "width": 34,
+        "height": 25,
+        "gap": 9,
+        "occupancy": 0.72
+      }
+    },
+    {
+      "id": "waterfront",
+      "name": "Waterfront",
+      "className": "waterfront",
+      "polygon": [
+        [
+          650,
+          350
+        ],
+        [
+          840,
+          300
+        ],
+        [
+          900,
+          510
+        ],
+        [
+          740,
+          565
+        ],
+        [
+          610,
+          465
+        ]
+      ],
+      "parcelGrid": {
+        "origin": [
+          690,
+          375
+        ],
+        "columns": 3,
+        "rows": 3,
+        "width": 38,
+        "height": 27,
+        "gap": 10,
+        "occupancy": 0.75
+      }
+    }
+  ],
+  "routes": [
+    {
+      "id": "north-artery",
+      "name": "North arterial",
+      "kind": "arterial",
+      "points": [
+        [
+          30,
+          110
+        ],
+        [
+          230,
+          205
+        ],
+        [
+          445,
+          295
+        ],
+        [
+          650,
+          390
+        ],
+        [
+          850,
+          500
+        ]
+      ]
+    },
+    {
+      "id": "west-artery",
+      "name": "West arterial",
+      "kind": "arterial",
+      "points": [
+        [
+          90,
+          520
+        ],
+        [
+          260,
+          360
+        ],
+        [
+          430,
+          220
+        ],
+        [
+          600,
+          120
+        ],
+        [
+          760,
+          60
+        ]
+      ]
+    },
+    {
+      "id": "central-spine",
+      "name": "Central spine",
+      "kind": "transit",
+      "points": [
+        [
+          445,
+          -20
+        ],
+        [
+          450,
+          170
+        ],
+        [
+          450,
+          360
+        ],
+        [
+          450,
+          620
+        ]
+      ]
+    },
+    {
+      "id": "river-road",
+      "name": "River road",
+      "kind": "local",
+      "points": [
+        [
+          0,
+          300
+        ],
+        [
+          220,
+          300
+        ],
+        [
+          450,
+          300
+        ],
+        [
+          680,
+          300
+        ],
+        [
+          900,
+          300
+        ]
+      ]
+    }
+  ]
+}
