@@ -58,7 +58,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - GitHub Pages workflow: `.github/workflows/pages.yml`
 - No NuGet package is published by this repository workflow.
 
-The current implementation includes an inspectable City map, a 13-domain systems catalog, and a connected synthetic Civic Quarter proof spanning parcels, buildings, rooms, mobility, transit, water, energy, public space and civic services. The district workbench is generated from one shared model with stable IDs and explicit provenance. It is a synthetic architecture/validation fixture, not live city data or a calibrated engineering simulation.
+The current implementation includes a terrain-first layered map stack with sampled elevation, marching-squares contours, land cover, watersheds, district and parcel maps, mobility, transit, utilities and hazard screening. It also includes a 13-domain systems catalog and a connected synthetic Civic Quarter proof spanning parcels, buildings, rooms, public space and civic services. The map stack and district workbench are generated from shared models with stable IDs and explicit provenance. The city-builder / first-person mayor experience is architected and documented, but is not yet a playable FPS. Terrain and district data remain synthetic fixtures, not surveyed geography or calibrated engineering simulations.
 
 ## The Singularity Workshop
 
