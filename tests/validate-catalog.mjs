@@ -101,6 +101,28 @@ assert.ok(terrain.elevation.samples.every(row=>row.length===terrain.elevation.co
 assert.equal(terrain.landCover.length,terrain.elevation.rows-1);
 assert.ok(terrain.landCover.every(row=>row.length===terrain.elevation.columns-1));
 assert.ok(terrain.elevation.samples.flat().every(Number.isFinite));
+assert.ok(terrain.elevation.samples.flat().every(value=>value>=-12000&&value<=12000),"terrain elevations must remain finite plausible metre values");
+const terrainWidth=terrain.coordinateSpace.width,terrainHeight=terrain.coordinateSpace.height;
+const checkTerrainPoint=(point,label)=>{
+ assert.ok(Array.isArray(point)&&point.length===2&&point.every(Number.isFinite),`${label} must be a finite [x,y] point`);
+ assert.ok(point[0]>=0&&point[0]<=terrainWidth&&point[1]>=0&&point[1]<=terrainHeight,`${label} lies outside the declared coordinate space`);
+};
+const checkTerrainLine=(points,label)=>{
+ assert.ok(points.length>=3,`${label} requires at least three points`);
+ points.forEach((point,index)=>checkTerrainPoint(point,`${label} point ${index}`));
+};
+const watershedIds=unique(terrain.hydrology.watersheds,"watershed");
+const watercourseIds=unique(terrain.hydrology.watercourses,"watercourse");
+const hazardIds=unique(terrain.hazards,"terrain hazard");
+const featureIds=unique(terrain.terrainFeatures,"terrain feature");
+for(const watershed of terrain.hydrology.watersheds){checkTerrainLine(watershed.boundary,`watershed ${watershed.id} boundary`);checkTerrainPoint(watershed.outlet,`watershed ${watershed.id} outlet`);}
+for(const course of terrain.hydrology.watercourses)checkTerrainLine(course.points,`watercourse ${course.id}`);
+for(const hazard of terrain.hazards){checkTerrainLine(hazard.polygon,`hazard ${hazard.id} polygon`);assert.equal(hazard.notForLifeSafety,true,`hazard ${hazard.id} must retain its non-safety limitation`);}
+for(const feature of terrain.terrainFeatures)checkTerrainPoint(feature.anchor,`terrain feature ${feature.id} anchor`);
+const landCoverKinds=new Set(["woodland","meadow","urban","wetland","water"]);
+assert.ok(terrain.landCover.flat().every(kind=>landCoverKinds.has(kind)),"land-cover cells must use a declared category");
+assert.ok(terrain.provenance.kind.includes("synthetic"),"fixture terrain must remain explicitly identified as synthetic");
+assert.ok(terrain.provenance.source&&terrain.provenance.revision,"terrain provenance must identify its source and revision");
 assert.ok(terrain.hydrology.watersheds.length&&terrain.hydrology.watercourses.length);
 assert.ok(terrain.hazards.every(h=>h.notForLifeSafety===true),"synthetic hazard screening must not imply life-safety use");
 assert.ok(terrain.provenance.limitations.length>=3);
