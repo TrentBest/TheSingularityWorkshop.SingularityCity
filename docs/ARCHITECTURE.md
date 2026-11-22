@@ -24,7 +24,9 @@ City is a place and a spatial index—not the owner of every simulation it hosts
 
 ## Spatial data stack
 
-City geography is a layered data system, not one map image. Terrain and hydrology establish physical constraints; ecological, district, parcel, mobility, transit, utility and built-form layers build on shared spatial identity. The map-layer catalog exposes these views without changing feature identity. See [`MAPS_AS_CITY_DATA.md`](MAPS_AS_CITY_DATA.md) and [`CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md`](CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md).
+City geography is a layered data system, not one map image. Terrain and hydrology establish physical constraints; ecological, district, parcel, mobility, transit, utility and built-form layers build on shared spatial identity. The map-layer catalog exposes these views without changing feature identity. See [Maps as City Data](MAPS_AS_CITY_DATA.md).
+
+**Terrain authority belongs to Physics.** Physics generates and evolves physical terrain state; City imports versioned datasets, retains stable spatial identity and provenance, and derives city-planning relationships without duplicating physical solvers. The current City elevation grid is a synthetic presentation fixture, not a terrain-generation implementation. See [Physics Terrain and Worldbuilding](PHYSICS_TERRAIN_AND_WORLDBUILDING.md) for the verified source inventory and adapter contract.
 
 The same spatial identities are intended to power regional maps, the city-builder planning tools and a first-person inhabited world. A selected map feature resolves to a world anchor; the player position resolves back to the map. Renderer and Visualize own representation and manifestation; the host owns camera, input, collision, streaming and persistence.
 
@@ -36,7 +38,8 @@ The same spatial identities are intended to power regional maps, the city-builde
 | Reusable capability composition | MicroBundles |
 | Arbitration, authorization and composition boundary | FSM_COS and host policy |
 | State substrate | FSM_API |
-| City geography, parcels, districts and civic state | Singularity City |
+| Physical terrain generation, evolution and validation | Physics |
+| City coordinate reference, spatial identity, districts, parcels and civic state | Singularity City |
 | Dungeon topology, inhabitants and underground simulation | FSM_Dungeon |
 | Rendering representation and fidelity | Renderer |
 | Visual output | Visualize |
