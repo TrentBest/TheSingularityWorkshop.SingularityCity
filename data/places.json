@@ -1,0 +1,155 @@
+{
+  "schema": "singularity-city.catalog.v1",
+  "city": {
+    "id": "singularity-city",
+    "name": "Singularity City",
+    "source": {
+      "repository": "TrentBest/TheSingularityWorkshop.SingularityCity",
+      "path": "data/places.json"
+    }
+  },
+  "places": [
+    {
+      "id": "workshop",
+      "code": "W",
+      "icon": "⌘",
+      "type": "CREATE / WORKSHOP CAMPUS",
+      "title": "Workshop Campus",
+      "description": "The creator district: build, compose and publish the capabilities that power connected experiences.",
+      "access": "Public campus",
+      "domain": "Workshop repositories",
+      "entry": "Explore the Workshop",
+      "detail": "Discover creation tools, the FSM Workbench, blueprint library, laboratory and creator services.",
+      "action": "Preview campus entry",
+      "district": "Workshop Campus",
+      "coordinates": {
+        "x": 220,
+        "y": 185
+      },
+      "owner": {
+        "repository": "TrentBest/FSM_COS",
+        "path": "README.md"
+      },
+      "capabilities": [
+        "creation",
+        "composition",
+        "publishing"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "capitol",
+      "code": "C",
+      "icon": "⌂",
+      "type": "GOVERN / CIVIC QUARTER",
+      "title": "Civic Quarter",
+      "description": "The institutions that make a persistent city function: governance, public services, planning and everyday civic work.",
+      "access": "Public civic grounds",
+      "domain": "Singularity City",
+      "entry": "Explore civic life",
+      "detail": "City Hall, civic roles, public services, zoning and the systems that govern shared space.",
+      "action": "Preview civic destination",
+      "district": "Civic Quarter",
+      "coordinates": {
+        "x": 650,
+        "y": 185
+      },
+      "owner": {
+        "repository": "TrentBest/TheSingularityWorkshop.SingularityCity",
+        "path": "docs/CITY_MODEL.md"
+      },
+      "capabilities": [
+        "governance",
+        "zoning",
+        "public-services"
+      ],
+      "status": "concept"
+    },
+    {
+      "id": "transit",
+      "code": "T",
+      "icon": "⟷",
+      "type": "CONNECT / TRANSIT NEXUS",
+      "title": "Transit Nexus",
+      "description": "A connected city needs more than roads. Transit links places, districts and entire experiences.",
+      "access": "Public station",
+      "domain": "Singularity Transit / host",
+      "entry": "Open destination network",
+      "detail": "A host-mediated route to the Capitol, Mansion, Shipyard, Workshop and other connected worlds.",
+      "action": "Preview transit handoff",
+      "district": "Transit Nexus",
+      "coordinates": {
+        "x": 470,
+        "y": 395
+      },
+      "owner": {
+        "repository": "TrentBest/TheSingularityWorkshop.SingularityCity",
+        "path": "docs/EXPERIENCES.md"
+      },
+      "capabilities": [
+        "navigation",
+        "routing",
+        "experience-transition"
+      ],
+      "status": "concept"
+    },
+    {
+      "id": "underworks",
+      "code": "↓",
+      "icon": "⌄",
+      "type": "DESCEND / EXPERIENCE ENTRANCE",
+      "title": "The Underworks",
+      "description": "Beneath the municipal core lies an older service network: stormwater channels, blocked gates, maintenance routes and spaces occupied for reasons of their own.",
+      "access": "Restricted / discoverable",
+      "domain": "TrentBest/FSM_Dungeon",
+      "entry": "Enter the Underworks",
+      "detail": "Proposed handoff using an opaque City site reference. City owns the entrance and access decision; FSM_Dungeon owns the underground world and simulation.",
+      "action": "Preview FSM_Dungeon handoff",
+      "district": "Municipal Underworks",
+      "coordinates": {
+        "x": 205,
+        "y": 450
+      },
+      "owner": {
+        "repository": "TrentBest/FSM_Dungeon",
+        "path": "docs/ARCHITECTURE.md"
+      },
+      "capabilities": [
+        "world.topology",
+        "world.inhabitants",
+        "world.environment",
+        "world.exploration"
+      ],
+      "status": "reference-integration"
+    },
+    {
+      "id": "shipyard",
+      "code": "S",
+      "icon": "⚓",
+      "type": "BUILD / OCEAN WATERFRONT",
+      "title": "Ocean Shipyard",
+      "description": "A working waterfront for construction, manufacturing, logistics and maritime experiences.",
+      "access": "Public waterfront / controlled yards",
+      "domain": "Shipyard and logistics domains",
+      "entry": "Explore the shipyard",
+      "detail": "A future spatial manifestation for construction, production, transportation and resource-flow capabilities.",
+      "action": "Preview shipyard entry",
+      "district": "Waterfront",
+      "coordinates": {
+        "x": 770,
+        "y": 455
+      },
+      "owner": {
+        "repository": "TrentBest/TheSingularityWorkshop.SingularityCity",
+        "path": "docs/EXPERIENCES.md"
+      },
+      "capabilities": [
+        "construction",
+        "production",
+        "transportation",
+        "logistics"
+      ],
+      "status": "concept"
+    }
+  ]
+}
