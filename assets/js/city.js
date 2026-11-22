@@ -1,3 +1,4 @@
+import { generateParcels } from "./city-generator.mjs";
 const catalogUrl = new URL("../../data/places.json", import.meta.url);
 const blueprintUrl = new URL("../../data/city-blueprint.json", import.meta.url);
 const svgNamespace = "http://www.w3.org/2000/svg";
@@ -12,38 +13,6 @@ const svg = (name, attributes={}) => {
   for(const [key,value] of Object.entries(attributes)) node.setAttribute(key,String(value));
   return node;
 };
-function seededRandom(seed) {
-  let state = seed >>> 0;
-  return () => {
-    state += 0x6D2B79F5;
-    let value = state;
-    value = Math.imul(value ^ value >>> 15, value | 1);
-    value ^= value + Math.imul(value ^ value >>> 7, value | 61);
-    return ((value ^ value >>> 14) >>> 0) / 4294967296;
-  };
-}
-function hashId(value) {
-  let hash=2166136261;
-  for(const char of value) { hash ^= char.charCodeAt(0); hash=Math.imul(hash,16777619); }
-  return hash >>> 0;
-}
-function generateParcels(district, seed) {
-  const grid=district.parcelGrid;
-  const random=seededRandom((seed ^ hashId(district.id)) >>> 0);
-  const parcels=[];
-  for(let row=0;row<grid.rows;row++) for(let column=0;column<grid.columns;column++) {
-    if(random()>grid.occupancy) continue;
-    const inset=2+random()*3;
-    parcels.push({
-      id:district.id+"-"+row+"-"+column,
-      x:grid.origin[0]+column*(grid.width+grid.gap)+inset,
-      y:grid.origin[1]+row*(grid.height+grid.gap)+inset,
-      width:grid.width-inset*2,
-      height:grid.height-inset*2
-    });
-  }
-  return parcels;
-}
 function renderBlueprint(blueprint) {
   const districts=document.querySelector("#district-layer");
   const parcels=document.querySelector("#parcel-layer");
