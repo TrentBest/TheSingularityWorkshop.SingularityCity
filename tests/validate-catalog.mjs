@@ -43,7 +43,7 @@ for(const d of blueprint.districts){
 assert.ok(parcelCount>=20,`expected at least 20 parcels, got ${parcelCount}`);
 const routeIds=new Set();for(const r of blueprint.routes){assert.ok(r.id&&!routeIds.has(r.id));routeIds.add(r.id);assert.ok(r.points.length>=2);}
 const html=readFileSync("index.html","utf8"),js=readFileSync("assets/js/city.js","utf8"),generator=readFileSync("assets/js/city-generator.mjs","utf8");
-assert.match(html,/id="city-systems"/);assert.match(js,/data\\/city-systems\\.json/);assert.match(js,/renderSystems/);
+assert.match(html,/id="city-systems"/);assert.ok(js.includes("city-systems.json"));assert.ok(js.includes("function renderSystems"));
 assert.ok(existsSync("assets/images/living-city-atlas.svg"),"living city atlas image missing");
 assert.ok(existsSync("docs/LIVING_PICTURE.md"),"living picture guide missing");
 assert.ok(existsSync("docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md"),"civil systems theory atlas missing");
