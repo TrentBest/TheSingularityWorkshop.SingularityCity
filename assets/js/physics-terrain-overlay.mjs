@@ -73,7 +73,8 @@ function render(terrain) {
 
   appendCells(layer, buildPhysicsTerrainCells(terrain), "elevation-metres",
     cell => `hsl(${215 - cell.normalized * 190} 72% ${35 + cell.normalized * 20}%)`);
-  appendCells(slopeLayer, buildPhysicsSlopeCells(terrain), "slope-degrees", cell => cell.color);
+  const slopeCells = buildPhysicsSlopeCells(terrain);
+  appendCells(slopeLayer, slopeCells, "slope-degrees", cell => cell.color);
   layer.setAttribute("visibility", "hidden");
   slopeLayer.setAttribute("visibility", "hidden");
 
@@ -95,11 +96,9 @@ function render(terrain) {
 
   const source = terrain.provenance.source;
   status.textContent = `Physics elevation · ${terrain.elevation.columns}×${terrain.elevation.rows} · ${source.revision.slice(0, 12)} · local frame, not georeferenced`;
-  const slopeValues = terrain.elevation.samples.length;
-  const slopes = buildPhysicsSlopeCells(terrain);
-  const minSlope = Math.min(...slopes.map(cell => cell.slopeDegrees));
-  const maxSlope = Math.max(...slopes.map(cell => cell.slopeDegrees));
-  slopeStatus.textContent = `City-derived slope · ${minSlope.toFixed(1)}°–${maxSlope.toFixed(1)}° · finite differences · ${slopeValues} rows`;
+  const minSlope = Math.min(...slopeCells.map(cell => cell.slopeDegrees));
+  const maxSlope = Math.max(...slopeCells.map(cell => cell.slopeDegrees));
+  slopeStatus.textContent = `City-derived slope · ${minSlope.toFixed(1)}°–${maxSlope.toFixed(1)}° · finite differences · degrees`;
 }
 
 async function start() {
