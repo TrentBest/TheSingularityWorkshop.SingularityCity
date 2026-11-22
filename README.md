@@ -13,10 +13,10 @@ The atlas is a conceptual systems illustration; the browser proof and Visualize'
 
 ## Live preview
 
-The browser proof is validated on `development` and `master`; the Pages deployment is deliberately gated to `master`, matching the Workshop release-aligned branch policy:
+The browser proof is validated on both active branches. GitHub Pages publishes `development` as the live working preview so current implementation and design notes are visible without promoting `master`; `master` remains the release-aligned branch:
 
 - **Explore:** [Singularity City](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/)
-- Select map markers or destination cards to inspect a place.
+- Select map markers or destination cards to inspect a place.\n- Read the [current field notes](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/thinking.html) for active decisions and cross-repository work.
 - Preview the proposed handoff to an experience such as [FSM_Dungeon](https://github.com/TrentBest/FSM_Dungeon).
 
 The current proof is a static, interactive navigation fixture. It does not claim live persistence, multiplayer, authoritative simulation or a connected dungeon runtime.
