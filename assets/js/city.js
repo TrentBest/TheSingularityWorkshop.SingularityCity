@@ -1,6 +1,7 @@
 import { generateParcels } from "./city-generator.mjs";
 const catalogUrl = new URL("../../data/places.json", import.meta.url);
 const blueprintUrl = new URL("../../data/city-blueprint.json", import.meta.url);
+const systemsUrl = new URL("../../data/city-systems.json", import.meta.url);
 const svgNamespace = "http://www.w3.org/2000/svg";
 const dialog = document.querySelector("#entry-dialog");
 let places = new Map();
@@ -40,6 +41,21 @@ function renderBlueprint(blueprint) {
     routes?.append(path);
   }
   text("#map-generation","BLUEPRINT "+blueprint.schema.toUpperCase()+" · SEED "+blueprint.generation.seed+" · "+allParcels.length+" GENERATED PARCELS");
+}
+function renderSystems(catalog) {
+  const grid=document.querySelector("#city-systems");
+  if(!grid) return;
+  grid.replaceChildren();
+  for(const system of catalog.systems) {
+    const link=document.createElement("a");
+    link.href="docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md#"+system.theoryAnchor;
+    link.className="system-card";
+    const code=document.createElement("b"); code.textContent=system.domain.toUpperCase(); link.append(code);
+    const title=document.createElement("strong"); title.textContent=system.title; link.append(title);
+    const summary=document.createElement("span"); summary.textContent=system.summary; link.append(summary);
+    const meta=document.createElement("small"); meta.textContent=system.status.toUpperCase()+" · "+system.components.length+" COMPONENTS"; link.append(meta);
+    grid.append(link);
+  }
 }
 function renderMarkers(items) {
   const layer=document.querySelector("#place-markers");
@@ -113,14 +129,16 @@ function selectPlace(id) {
   document.querySelectorAll("[data-place]").forEach(n=>n.classList.toggle("selected",n.dataset.place===id));
 }
 async function start() {
-  const [catalogResponse,blueprintResponse]=await Promise.all([fetch(catalogUrl),fetch(blueprintUrl)]);
+  const [catalogResponse,blueprintResponse,systemsResponse]=await Promise.all([fetch(catalogUrl),fetch(blueprintUrl),fetch(systemsUrl)]);
   if(!catalogResponse.ok) throw new Error("City catalog unavailable: "+catalogResponse.status);
   if(!blueprintResponse.ok) throw new Error("City blueprint unavailable: "+blueprintResponse.status);
-  const [catalog,blueprint]=await Promise.all([catalogResponse.json(),blueprintResponse.json()]);
+  if(!systemsResponse.ok) throw new Error("City systems catalog unavailable: "+systemsResponse.status);
+  const [catalog,blueprint,systems]=await Promise.all([catalogResponse.json(),blueprintResponse.json(),systemsResponse.json()]);
   if(catalog.schema!=="singularity-city.catalog.v1"||!Array.isArray(catalog.places)) throw new Error("Unsupported City catalog schema");
   if(blueprint.schema!=="singularity-city.blueprint.v1"||blueprint.cityId!==catalog.city.id) throw new Error("Unsupported or mismatched City blueprint");
+  if(systems.schema!=="singularity-city.systems.v1"||systems.cityId!==catalog.city.id||!Array.isArray(systems.systems)) throw new Error("Unsupported or mismatched City systems catalog");
   places=new Map(catalog.places.map(p=>[p.id,p]));
-  renderBlueprint(blueprint); renderMarkers(catalog.places); renderCards(catalog.places);
+  renderBlueprint(blueprint); renderSystems(systems); renderMarkers(catalog.places); renderCards(catalog.places);
   selectPlace("underworks");
 }
 document.querySelector("#entry-action").addEventListener("click",()=>{
