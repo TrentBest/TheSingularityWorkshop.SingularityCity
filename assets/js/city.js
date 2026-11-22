@@ -1,31 +1,85 @@
 const catalogUrl = new URL("../../data/places.json", import.meta.url);
-const nodes = [...document.querySelectorAll("[data-place]")];
+const blueprintUrl = new URL("../../data/city-blueprint.json", import.meta.url);
+const svgNamespace = "http://www.w3.org/2000/svg";
 const dialog = document.querySelector("#entry-dialog");
 let places = new Map();
 let selected = null;
 
 const byId = id => places.get(id);
 const text = (selector, value) => { const node=document.querySelector(selector); if(node) node.textContent=value ?? ""; };
-
+const svg = (name, attributes={}) => {
+  const node=document.createElementNS(svgNamespace,name);
+  for(const [key,value] of Object.entries(attributes)) node.setAttribute(key,String(value));
+  return node;
+};
+function seededRandom(seed) {
+  let state = seed >>> 0;
+  return () => {
+    state += 0x6D2B79F5;
+    let value = state;
+    value = Math.imul(value ^ value >>> 15, value | 1);
+    value ^= value + Math.imul(value ^ value >>> 7, value | 61);
+    return ((value ^ value >>> 14) >>> 0) / 4294967296;
+  };
+}
+function hashId(value) {
+  let hash=2166136261;
+  for(const char of value) { hash ^= char.charCodeAt(0); hash=Math.imul(hash,16777619); }
+  return hash >>> 0;
+}
+function generateParcels(district, seed) {
+  const grid=district.parcelGrid;
+  const random=seededRandom((seed ^ hashId(district.id)) >>> 0);
+  const parcels=[];
+  for(let row=0;row<grid.rows;row++) for(let column=0;column<grid.columns;column++) {
+    if(random()>grid.occupancy) continue;
+    const inset=2+random()*3;
+    parcels.push({
+      id:district.id+"-"+row+"-"+column,
+      x:grid.origin[0]+column*(grid.width+grid.gap)+inset,
+      y:grid.origin[1]+row*(grid.height+grid.gap)+inset,
+      width:grid.width-inset*2,
+      height:grid.height-inset*2
+    });
+  }
+  return parcels;
+}
+function renderBlueprint(blueprint) {
+  const districts=document.querySelector("#district-layer");
+  const parcels=document.querySelector("#parcel-layer");
+  const routes=document.querySelector("#route-layer");
+  const labels=document.querySelector("#district-labels");
+  for(const layer of [districts,parcels,routes,labels]) layer?.replaceChildren();
+  const allParcels=[];
+  for(const district of blueprint.districts) {
+    const polygon=svg("polygon",{points:district.polygon.map(point=>point.join(",")).join(" "),class:"district-shape "+district.className,"data-district":district.id});
+    districts?.append(polygon);
+    const center=district.polygon.reduce((sum,point)=>[sum[0]+point[0]/district.polygon.length,sum[1]+point[1]/district.polygon.length],[0,0]);
+    const label=svg("text",{x:center[0],y:center[1],class:"map-label","text-anchor":"middle"});
+    label.textContent=district.name.toUpperCase();
+    labels?.append(label);
+    for(const parcel of generateParcels(district,blueprint.generation.seed)) {
+      allParcels.push(parcel);
+      parcels?.append(svg("rect",{x:parcel.x,y:parcel.y,width:parcel.width,height:parcel.height,rx:2,class:"generated-parcel","data-parcel":parcel.id}));
+    }
+  }
+  for(const route of blueprint.routes) {
+    const path=svg("polyline",{points:route.points.map(point=>point.join(",")).join(" "),class:"generated-route route-"+route.kind,"data-route":route.id});
+    routes?.append(path);
+  }
+  text("#map-generation","BLUEPRINT "+blueprint.schema.toUpperCase()+" · SEED "+blueprint.generation.seed+" · "+allParcels.length+" GENERATED PARCELS");
+}
 function renderMarkers(items) {
   const layer=document.querySelector("#place-markers");
   if(!layer) return;
   layer.replaceChildren();
   for(const p of items) {
-    const g=document.createElementNS("http://www.w3.org/2000/svg","g");
-    g.setAttribute("class","map-point");
-    g.setAttribute("data-place",p.id);
-    g.setAttribute("tabindex","0");
-    g.setAttribute("role","button");
-    g.setAttribute("aria-label",p.title);
+    const g=svg("g",{class:"map-point","data-place":p.id,tabindex:"0",role:"button","aria-label":p.title});
     if(p.id==="underworks") g.classList.add("featured");
-    const circle=document.createElementNS(g.namespaceURI,"circle");
-    circle.setAttribute("cx",p.coordinates.x); circle.setAttribute("cy",p.coordinates.y);
-    circle.setAttribute("r",p.id==="underworks"?"25":"23");
-    const label=document.createElementNS(g.namespaceURI,"text");
-    label.setAttribute("x",p.coordinates.x); label.setAttribute("y",p.coordinates.y+5);
+    g.append(svg("circle",{cx:p.coordinates.x,cy:p.coordinates.y,r:p.id==="underworks"?25:23}));
+    const label=svg("text",{x:p.coordinates.x,y:p.coordinates.y+5});
     label.textContent=p.code;
-    g.append(circle,label);
+    g.append(label);
     g.addEventListener("click",()=>selectPlace(p.id));
     g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectPlace(p.id);}});
     layer.append(g);
@@ -39,11 +93,12 @@ function renderCards(items) {
     const button=document.createElement("button");
     button.type="button"; button.className="destination-card"+(p.id==="underworks"?" featured-card":"");
     button.dataset.place=p.id;
-    const spans=[["card-number",p.code+" / "+p.type.split(" / ")[0]],["card-symbol",p.icon]];
-    for(const [cls,value] of spans){const s=document.createElement("span");s.className=cls;s.textContent=value;button.append(s);}
-    const title=document.createElement("strong");title.textContent=p.title;button.append(title);
-    const description=document.createElement("span");description.textContent=p.description;button.append(description);
-    const action=document.createElement("b");action.textContent="Inspect place ↗";button.append(action);
+    for(const [cls,value] of [["card-number",p.code+" / "+p.type.split(" / ")[0]],["card-symbol",p.icon]]) {
+      const span=document.createElement("span"); span.className=cls; span.textContent=value; button.append(span);
+    }
+    const title=document.createElement("strong"); title.textContent=p.title; button.append(title);
+    const description=document.createElement("span"); description.textContent=p.description; button.append(description);
+    const action=document.createElement("b"); action.textContent="Inspect place ↗"; button.append(action);
     button.addEventListener("click",()=>selectPlace(p.id)); grid.append(button);
   }
 }
@@ -66,12 +121,14 @@ function selectPlace(id) {
   document.querySelectorAll("[data-place]").forEach(n=>n.classList.toggle("selected",n.dataset.place===id));
 }
 async function start() {
-  const response=await fetch(catalogUrl);
-  if(!response.ok) throw new Error("City catalog unavailable: "+response.status);
-  const catalog=await response.json();
+  const [catalogResponse,blueprintResponse]=await Promise.all([fetch(catalogUrl),fetch(blueprintUrl)]);
+  if(!catalogResponse.ok) throw new Error("City catalog unavailable: "+catalogResponse.status);
+  if(!blueprintResponse.ok) throw new Error("City blueprint unavailable: "+blueprintResponse.status);
+  const [catalog,blueprint]=await Promise.all([catalogResponse.json(),blueprintResponse.json()]);
   if(catalog.schema!=="singularity-city.catalog.v1"||!Array.isArray(catalog.places)) throw new Error("Unsupported City catalog schema");
+  if(blueprint.schema!=="singularity-city.blueprint.v1"||blueprint.cityId!==catalog.city.id) throw new Error("Unsupported or mismatched City blueprint");
   places=new Map(catalog.places.map(p=>[p.id,p]));
-  renderMarkers(catalog.places); renderCards(catalog.places);
+  renderBlueprint(blueprint); renderMarkers(catalog.places); renderCards(catalog.places);
   selectPlace("underworks");
 }
 document.querySelector("#entry-action").addEventListener("click",()=>{
@@ -81,4 +138,4 @@ document.querySelector("#entry-action").addEventListener("click",()=>{
 document.querySelector(".dialog-close").addEventListener("click",()=>dialog.close());
 document.querySelector(".dialog-confirm").addEventListener("click",()=>dialog.close());
 dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close();});
-start().catch(error=>{console.error(error);text("#place-title","City catalog unavailable");text("#place-description",error.message);});
+start().catch(error=>{console.error(error);text("#place-title","City data unavailable");text("#place-description",error.message);});
