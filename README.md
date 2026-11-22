@@ -47,6 +47,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Historical cartography and city history](docs/HISTORICAL_CARTOGRAPHY_AND_CITY_HISTORY.md) — period maps, source evidence, temporal features, uncertainty and the city's changing story.
 - [City builder and first-person mayor experience](docs/CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md) — shared map/world contract and playable progression.
 - [City spatial and civic model](docs/CITY_MODEL.md)
+- [Commerce route fixture: itinerant peddler](docs/COMMERCE_ROUTE_FIXTURE.md) — first authored people, inventory, conveyance, route and visit relationship proof.
 - [Declarative experience entry points](docs/EXPERIENCES.md)
 - [Build your own city, step by step](docs/BUILD_YOUR_CITY.md)
 - [Source-grounded world research and evidence ledger](docs/SOURCE_RESEARCH.md)
