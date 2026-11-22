@@ -23,6 +23,10 @@ The browser proof is validated on both active branches. GitHub Pages publishes `
 
 The current proof is a static, interactive navigation fixture. It does not claim live persistence, multiplayer, authoritative simulation or a connected dungeon runtime.
 
+## Dwarven visitors and neighboring strongholds
+
+A town near a dwarven stronghold can have a visible dwarven presence in its market without loading or exposing the stronghold itself. City owns the market, stalls, residents, visitors, schedules, institutions, trade locations, and resident-place relationships. The general [SURPS Dwarves sourcebook, LOD 1](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/docs/books/dwarves.md) supplies cultural and encounter context. The stronghold remains a separate higher-detail destination; entering it invokes the [Dwarven Strongholds sourcebook, LOD 2](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/docs/books/dwarven-mountain-fortress.md) and FSM_Dungeon's underground environment. City may represent a known neighboring stronghold as a destination reference without owning its interior.
+
 ## What City owns
 
 - Persistent geography, districts, parcels, places and routes.
