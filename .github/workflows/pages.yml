@@ -32,6 +32,9 @@ jobs:
           test -s data/places.json
           test -s data/city-blueprint.json
           test -s data/city-systems.json
+          test -s data/districts/civic-quarter.json
+          test -s schemas/civic-district.schema.json
+          test -s docs/CIVIC_QUARTER_VERTICAL_SLICE.md
           test -s schemas/city-systems.schema.json
           test -s schemas/city-blueprint.schema.json
           test -s schemas/source-observation.schema.json
