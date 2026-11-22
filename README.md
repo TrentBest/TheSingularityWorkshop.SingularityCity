@@ -40,6 +40,8 @@ City does not absorb the simulation of every destination. The Underworks entranc
 `Ontology → MicroBundles → arbitration → Experience → spatial manifestation`
 
 - [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)
+- [Maps as city data](docs/MAPS_AS_CITY_DATA.md) — terrain-first spatial layers, hydrology, planning maps and provenance.
+- [City builder and first-person mayor experience](docs/CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md) — shared map/world contract and playable progression.
 - [City spatial and civic model](docs/CITY_MODEL.md)
 - [Declarative experience entry points](docs/EXPERIENCES.md)
 - [Build your own city, step by step](docs/BUILD_YOUR_CITY.md)
