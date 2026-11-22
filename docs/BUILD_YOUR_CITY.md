@@ -14,7 +14,7 @@ Discovery metadata and spatial construction evolve at different rates, so they r
 
 Each district declares a stable ID, display name, presentation class and polygon in map coordinates. Routes are ordered coordinate points with a semantic kind: arterial, transit or local. They describe connectivity, not permission to traverse.
 
-A district's `parcelGrid` defines origin, rows, columns, dimensions, spacing and occupancy. The blueprint supplies a seed and versioned algorithm identifier. The renderer derives parcel IDs from district, row and column. The same seed and parameters reproduce the same candidate layout.
+A district's `parcelGrid` defines origin, rows, columns, dimensions, spacing and occupancy. The blueprint supplies a seed and versioned algorithm identifier. The shared [`assets/js/city-generator.mjs`](../assets/js/city-generator.mjs) module derives parcel IDs from district, row and column. Both the browser renderer and Node validation import this exact implementation, so the same seed and parameters reproduce the same candidate layout.
 
 Generated parcels are currently a deterministic visualization proof—not persisted land ownership, zoning, permits or authoritative city state. A production editor must persist accepted parcels as explicit records before they become authoritative.
 
