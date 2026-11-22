@@ -6,9 +6,9 @@ A city is not built from one map. It is built from a collection of authoritative
 
 The same parcel can appear on a cadastral map, zoning map, utility map, transit accessibility map, construction map and first-person world. Its identity does not change when the active map changes.
 
-`Terrain → Hydrology → Land cover → Districts → Parcels → Streets → Transit → Utilities → Buildings → Places → Experiences`
+`Physics terrain → hydrology → land cover → districts → parcels → streets → transit → utilities → buildings → places → experiences`
 
-This is a dependency order for reasoning, not a rigid one-way pipeline. City planning is iterative: a road changes parcel geometry, buildings change demand, drainage changes buildability, and a new transit line changes land value and development pressure.
+Physics owns the physical terrain state and evolution. City layers consume that source and express city-specific relationships. This is a dependency order for reasoning, not a rigid one-way pipeline. City planning is iterative: a road changes parcel geometry, buildings change demand, drainage changes buildability, and a new transit line changes land value and development pressure.
 
 ## Map-layer contract
 
@@ -20,7 +20,7 @@ This is a dependency order for reasoning, not a rigid one-way pipeline. City pla
 - default visibility;
 - human-readable purpose.
 
-`data/terrain/city-terrain.json` is the first physical geography fixture. It defines a shared map coordinate space, sampled relative elevation, land-cover cells, watershed boundaries, streams, terrain features and a hazard-screening polygon. Its values are synthetic and deliberately labelled as such. It is a model contract and renderer exercise—not a claim that the city has been surveyed.
+`data/terrain/city-terrain.json` is the first physical geography fixture. It defines a shared map coordinate space, sampled relative elevation, land-cover cells, watershed boundaries, streams, terrain features and a hazard-screening polygon. Its values are synthetic and deliberately labelled as such. It is a temporary presentation and renderer fixture—not the terrain-generation authority. The intended source authority is a versioned Physics terrain dataset imported through a declared coordinate and provenance contract. See [Physics Terrain and Worldbuilding](PHYSICS_TERRAIN_AND_WORLDBUILDING.md).
 
 ## The map families
 
@@ -49,15 +49,17 @@ A future world transform maps local projected coordinates to simulation/world co
 A responsible city-layout workflow proceeds in this order:
 
 1. Establish the region, boundary, coordinate reference and scale.
-2. Load terrain, elevation, slope, geology, soils and water observations.
-3. Delineate watersheds, drainage paths, wetlands, shorelines and hazard constraints.
-4. Establish ecological protections and connected green/blue infrastructure.
-5. Place district boundaries around geography, access, existing settlements and civic purpose.
-6. Lay out movement networks and transit before subdividing every block.
-7. Generate candidate blocks and parcels from street geometry, frontage, easements and planning rules.
-8. Reserve utility corridors and service sites; test capacity and redundancy.
-9. Place public facilities by population, accessibility and service-area analysis.
-10. Author buildings, entrances, public spaces and the walkable world.
+2. Generate or import physical terrain and supported material fields from Physics; retain the exact source model, run, seed, parameters, units and spatial frame.
+3. Derive slope and interpret geology, soils and landforms from actual physical evidence; label unsupported fields as unavailable rather than fabricating them.
+4. Couple water models to the terrain where supported; keep erosion, sediment exchange, infiltration and other future capabilities explicitly separate until validated.
+5. Delineate watersheds, drainage paths, wetlands, shorelines and hazard constraints from supported data.
+6. Establish ecological protections and connected green/blue infrastructure.
+7. Place district boundaries around geography, access, existing settlements and civic purpose.
+8. Lay out movement networks and transit before subdividing every block.
+9. Generate candidate blocks and parcels from street geometry, frontage, easements and planning rules.
+10. Reserve utility corridors and service sites; test capacity and redundancy.
+11. Place public facilities by population, accessibility and service-area analysis.
+12. Author buildings, entrances, public spaces and the walkable world.
 
 This is not a substitute for engineering, planning law, surveying or environmental review. Those systems need their own validated data, uncertainty, permissions and approval workflows.
 
@@ -85,7 +87,7 @@ Uncertainty is data. A hazard screening polygon is not a flood determination. A 
 
 ## Living map stack
 
-The browser map currently renders elevation tint and marching-squares contour segments from the same sampled terrain grid, with independently toggleable land-cover, hydrology and infrastructure overlays. It remains a local proof projection. Renderer should own observer-relative representation, level of detail, culling and frame composition. Visualize should manifest those frames. City owns feature identity, geometry, semantics, source lineage and map-layer selection. A host owns input, camera, persistence, multiplayer and authority.
+The browser map currently renders elevation tint and marching-squares contour segments from the same sampled terrain grid, with independently toggleable land-cover, hydrology and infrastructure overlays. It remains a local proof projection. The next terrain adapter must feed the same Physics dataset into both the map and world representations. Renderer should own observer-relative representation, level of detail, culling and frame composition. Visualize should manifest those frames. City owns feature identity, geometry, semantics, source lineage and map-layer selection. A host owns input, camera, persistence, multiplayer and authority.
 
 The long-term map stack should support:
 - synchronized layer visibility and opacity;
