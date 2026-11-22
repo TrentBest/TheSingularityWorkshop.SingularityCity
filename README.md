@@ -1,5 +1,7 @@
 # The Singularity Workshop — Singularity City
 
+![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
+
 [![Pages](https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity/actions/workflows/pages.yml/badge.svg?branch=development)](https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity/actions/workflows/pages.yml)
 [![Sith](https://img.shields.io/badge/Sith-2%20branches-6b7280)](https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity/branches)
 
