@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "singularity-city.domain.urban-underworld",
+  "category": "Domain",
+  "lod": 2,
+  "title": "The Urban Underworld",
+  "version": "0.1.0",
+  "cover": "docs/books/covers/urban-underworld.svg",
+  "lodBadge": null,
+  "publisher": "The Singularity Workshop",
+  "publisherMoniker": "https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg",
+  "related": [
+    "singularity-city.domain.thieves-and-shadow-work",
+    "singularity-city.domain.nonplayer-characters"
+  ],
+  "economicOwner": "TrentBest/TheSingularityWorkshop.Economy"
+}
