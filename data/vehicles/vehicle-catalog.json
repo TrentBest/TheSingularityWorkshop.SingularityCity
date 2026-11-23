@@ -57,6 +57,7 @@
       "definitionId": "vehicle-definition-handcart",
       "ownerRef": "mara-peddler",
       "scenarioRef": "greenhollow-market-day",
+      "capabilityProfileId": "greenhollow-craft-transport",
       "status": "authored-fixture",
       "currentPlaceRef": "north-road-crossing",
       "tripState": "not-simulated"
@@ -66,6 +67,7 @@
       "definitionId": "vehicle-definition-electric-shuttle",
       "ownerRef": "civic-institution-municipality",
       "scenarioRef": "civic-quarter",
+      "capabilityProfileId": "civic-quarter-electric-service",
       "status": "authored-fixture",
       "currentPlaceRef": "civic-stop-hall",
       "tripState": "not-simulated"
