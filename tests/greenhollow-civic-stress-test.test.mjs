@@ -92,6 +92,37 @@ assert.ok(observationEvidence.supports.includes("crossing-damage-exists"));
 assert.ok(observationEvidence.doesNotEstablish.some(value => value.includes("who caused")));
 assert.ok(!observationEvidence.supports.includes("resident-iven-caused-damage"));
 
+
+const response = scenario.civicResponse;
+assert.equal(response.status, "authored-hearing-outcome-fixture-not-live-civic-process");
+assert.equal(response.hearingEventId, "event-07-civic-hearing");
+const proposalIds = new Set(response.proposals.map(item => item.id));
+assert.equal(proposalIds.size, response.proposals.length, "repair proposal IDs must be unique");
+for (const proposal of response.proposals) {
+  assert.ok(proposal.resourceRequirements.length > 0, "each proposal must expose resource requirements");
+  assert.ok(proposal.resourceRequirements.every(item => item.authority && item.description), "requirements must identify scope and authority");
+  assert.ok(proposal.authorization, "proposal must state its authorization boundary");
+}
+const decision = response.hearingDecision;
+assert.ok(actors.has(decision.authorityId), "hearing decision authority must be declared");
+assert.ok(events.has(decision.sourceEventId), "hearing decision source event must exist");
+for (const id of decision.selectedProposalIds) assert.ok(proposalIds.has(id), "decision proposal must exist: " + id);
+assert.ok(decision.notAuthorized.includes("construction"));
+assert.ok(decision.notAuthorized.includes("payment"));
+assert.ok(decision.authorizations.some(value => value.includes("before any construction or expenditure")));
+for (const obligation of response.oversightObligations) {
+  assert.ok(actors.has(obligation.responsibleActorId), "oversight owner must be declared: " + obligation.id);
+  assert.ok(obligation.trigger && obligation.obligation && obligation.evidenceExpected, "oversight obligation must be actionable and auditable");
+}
+for (const impact of response.residentImpacts) {
+  assert.equal(impact.assessment, "qualitative-unmeasured", "resident impact must not imply unsupported measurement");
+  assert.ok(impact.affectedGroup && impact.concern && impact.followUp);
+}
+assert.equal(response.institutionalTrust.noAggregateScore, true);
+assert.equal(response.institutionalTrust.noAutomaticTrustGain, true);
+assert.ok(response.institutionalTrust.dimensions.length >= 3);
+assert.ok(response.institutionalTrust.limitations.length > 0);
+
 assert.equal(scenario.electionPresentation.fixtureId, election.id);
 assert.equal(scenario.electionPresentation.advertisementsRemainAttributed, true);
 assert.equal(scenario.electionPresentation.advertisementClaimsAreAutomaticallyVerified, false);
