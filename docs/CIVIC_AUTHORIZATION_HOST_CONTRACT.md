@@ -28,7 +28,7 @@ The adapter must derive—not accept from the untrusted request body—the follo
 
 1. `executorId` from the authenticated `principal.principalId`; it must equal the authorization's `executorId`.
 2. `jurisdiction` from verified `authority.jurisdiction`; it must equal the authorization's jurisdiction.
-3. `action` and `subjectId` from the canonical request being authorized, then compare them exactly with the authorization.
+3. `proposalId`, `action` and `subjectId` from the canonical request being authorized, then compare all three exactly with the authorization.
 4. `at` from the trusted `clock.instant`, not the caller's machine or request timestamp.
 5. `satisfiedPrerequisiteEvidenceIds` from prerequisite records whose status is exactly `verified`.
 6. `satisfiedConditionIds` from condition evaluations whose status is exactly `satisfied`.
@@ -44,7 +44,7 @@ Before invoking the policy gate, the adapter must also verify that the authority
 5. Persist an audit event containing the request correlation ID, authorization ID, policy version, evidence references and evaluation result.
 6. Call `evaluateCivicAuthorization()` with only host-derived values. A negative result stops the request.
 7. Re-check revocation and time immediately before dispatch if there is a meaningful delay between evaluation and execution.
-8. Dispatch only the exact authorized action and subject to the authorized executor.
+8. Dispatch only the exact authorized proposal, action and subject to the authorized executor.
 9. Record execution evidence against the authorization and proposal; later record a separate outcome review.
 
 An authorization decision is not a reservation of resources and does not itself perform work. If the executor reports partial, failed or aborted work, preserve that status and its evidence. Do not rewrite it as completed. If the action is retried, issue a distinct execution record linked to the same authorization only if its scope and validity still permit the retry.
