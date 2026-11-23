@@ -13,16 +13,15 @@
 
 The atlas is a conceptual systems illustration; the browser proof and Visualize's CPU/SVG city-massing proof are separate, explicitly labelled implementation paths.
 
-## Live preview
+## Preview status
 
-The browser proof is validated on both active branches. GitHub Pages publishes `development` as the live working preview so current implementation and design notes are visible without promoting `master`; `master` remains the release-aligned branch:
+GitHub Pages is configured to publish the `development` working preview without promoting `master`. The static browser experience and its validation build are present, but the latest observed Pages deployment job failed; a successful current deployment has not yet been verified. The preview URLs are retained for when deployment is healthy:
 
 - **Explore:** [Singularity City](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/)
-- Select map markers or destination cards to inspect a place.
-- Read the [current field notes](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/thinking.html) for active decisions and cross-repository work.
-- Preview the proposed handoff to an experience such as [FSM_Dungeon](https://github.com/TrentBest/FSM_Dungeon).
+- [Current field notes](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/thinking.html)
+- Proposed handoff to an experience such as [FSM_Dungeon](https://github.com/TrentBest/FSM_Dungeon).
 
-The current proof is a static, interactive navigation fixture. It does not claim live persistence, multiplayer, authoritative simulation or a connected dungeon runtime.
+The browser proof is a static, interactive navigation fixture. It does not claim live persistence, multiplayer, authoritative simulation or a connected dungeon runtime.
 
 ## Dwarven visitors and neighboring strongholds
 
