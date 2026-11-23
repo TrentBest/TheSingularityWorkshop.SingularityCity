@@ -48,7 +48,7 @@ jobs:
           test -s docs/GREENHOLLOW_CIVIC_STRESS_TEST.md
           test -s docs/CIVIC_PROCESS_MODEL.md
           test -s schemas/civic-process-response.schema.json
-          test -s tests/civic-process-contract.test.mjs
+          test -s assets/js/civic-authorization-gate.mjs\n          test -s tests/civic-process-contract.test.mjs
           test -s docs/books/vehicles.md
           test -s docs/books/buildings-and-construction.md
           test -s docs/books/thieves-and-shadow-work.md
