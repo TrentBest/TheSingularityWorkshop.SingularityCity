@@ -137,4 +137,24 @@
     <animate attributeName="opacity" begin="8.55s" dur="9s" repeatCount="indefinite" values="0;.85;0;0" keyTimes="0;.08;.18;1"/>
     <animate attributeName="r" begin="8.55s" dur="9s" repeatCount="indefinite" values="12;42;12;12" keyTimes="0;.08;.18;1"/>
   </circle>
+
+  <!-- TEMPORARY GREEN ALIGNMENT GUIDE.
+       These paths are a first visual tracing pass over the magenta-lit floor
+       circuitry. They are static geometry for review, not pulse animation. -->
+  <g id="route-alignment-overlay" fill="none" stroke="#39ff14"
+     stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+     opacity="0.96">
+    <!-- Left-side magenta floor traces approaching the vortex rim. -->
+    <path id="route-left-upper"
+      d="M 2,307 C 38,305 70,307 96,311 C 119,315 139,322 155,326 C 164,328 170,329 178,329"/>
+    <path id="route-left-lower"
+      d="M 2,324 C 43,320 77,319 105,321 C 130,323 151,330 171,334 C 179,336 185,336 190,336"/>
+    <!-- Right-side counterparts, following the visible magenta traces. -->
+    <path id="route-right-upper"
+      d="M 510,307 C 474,305 442,307 416,311 C 393,315 373,322 357,326 C 348,328 342,329 334,329"/>
+    <path id="route-right-lower"
+      d="M 510,324 C 469,320 435,319 407,321 C 382,323 361,330 341,334 C 333,336 327,336 322,336"/>
+    <!-- Perspective boundary of the central floor vortex / receiver rings. -->
+    <ellipse id="vortex-boundary" cx="256" cy="326" rx="123" ry="35"/>
+  </g>
 </svg>
