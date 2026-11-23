@@ -11,6 +11,9 @@
     "status",
     "hearingEventId",
     "proposals",
+    "authorizations",
+    "executionEvidence",
+    "outcomeReviews",
     "hearingDecision",
     "oversightObligations",
     "residentImpacts",
@@ -56,6 +59,24 @@
     },
     "institutionalTrust": {
       "$ref": "#/$defs/trust"
+    },
+    "authorizations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/authorization"
+      }
+    },
+    "executionEvidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/executionEvidence"
+      }
+    },
+    "outcomeReviews": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/outcomeReview"
+      }
     }
   },
   "$defs": {
@@ -129,7 +150,8 @@
         "outcome",
         "selectedProposalIds",
         "authorizations",
-        "notAuthorized"
+        "notAuthorized",
+        "permittedActions"
       ],
       "properties": {
         "id": {
@@ -163,6 +185,13 @@
           }
         },
         "notAuthorized": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "permittedActions": {
           "type": "array",
           "items": {
             "type": "string",
@@ -301,6 +330,284 @@
             "type": "string",
             "minLength": 1
           }
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceDecisionId",
+        "grantingAuthorityId",
+        "jurisdiction",
+        "action",
+        "subjectId",
+        "scope",
+        "exclusions",
+        "prerequisiteEvidenceIds",
+        "conditions",
+        "executorId",
+        "validFrom",
+        "expiresAt",
+        "status",
+        "requiredExecutionEvidence",
+        "reviewPath"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceDecisionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "grantingAuthorityId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "jurisdiction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "prerequisiteEvidenceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "executorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "validFrom": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expiresAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "granted",
+            "suspended",
+            "revoked",
+            "expired",
+            "denied"
+          ]
+        },
+        "requiredExecutionEvidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reviewPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revocationReference": {
+          "type": "string"
+        }
+      }
+    },
+    "executionEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "authorizationId",
+        "proposalId",
+        "action",
+        "subjectId",
+        "executorId",
+        "occurredAt",
+        "status",
+        "evidence",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authorizationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposalId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "executorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "occurredAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "completed",
+            "partial",
+            "failed",
+            "aborted"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind",
+              "source",
+              "provenance"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "provenance": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "outcomeReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "decisionId",
+        "authorizationIds",
+        "executionEvidenceIds",
+        "reviewerId",
+        "reviewedAt",
+        "intendedOutcome",
+        "observedOutcome",
+        "disposition",
+        "unresolvedImpacts",
+        "followUp"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authorizationIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "executionEvidenceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reviewerId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewedAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intendedOutcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observedOutcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "disposition": {
+          "enum": [
+            "achieved",
+            "partially-achieved",
+            "not-achieved",
+            "indeterminate"
+          ]
+        },
+        "unresolvedImpacts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "followUp": {
+          "type": "string",
+          "minLength": 1
         }
       }
     }
