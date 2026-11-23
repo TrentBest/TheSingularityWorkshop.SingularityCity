@@ -22,5 +22,5 @@ for (const book of books) {
 }
 assert.ok(books[0].markdown.includes("not as real-world instruction"));
 assert.ok(books[1].markdown.includes("not an operational guide"));
-assert.ok(books[1].markdown.includes("not a separate ledger"));
+assert.ok(books[1].markdown.includes("not a second ledger"));
 console.log("Underworld sourcebooks validated: " + books.map(b => b.descriptor.title).join("; "));
