@@ -266,6 +266,7 @@ assert.throws(
 
 const gateInput = {
   authorization: grant,
+  proposalId: grant.proposalId,
   jurisdiction: grant.jurisdiction,
   action: grant.action,
   subjectId: grant.subjectId,
