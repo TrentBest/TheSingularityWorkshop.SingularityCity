@@ -67,6 +67,7 @@ jobs:
           test -s docs/rulebooks/SurpsRulebookVillagesToCities.md
           test -s docs/REALITY_AND_RECONSTRUCTION.md
           test -s AgentOnboarding.md
+          test -s .github/workflows/ciai-evidence.yml
           node tests/validate-catalog.mjs
           node tests/commerce-route-fixture.test.mjs
           node tests/physics-terrain-adapter.test.mjs
