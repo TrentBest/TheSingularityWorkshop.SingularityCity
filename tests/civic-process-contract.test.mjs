@@ -14,6 +14,39 @@ assert.deepEqual(
   ["schema", "id", "status", "hearingEventId", "proposals", "hearingDecision", "oversightObligations", "residentImpacts", "institutionalTrust"]
 );
 assert.equal(response.schema, schema.properties.schema.const, "fixture must declare the schema version it conforms to");
+
+function validateSchema(value, definition, path = "$") {
+  if (definition.$ref) {
+    const target = definition.$ref.slice(2).split("/").reduce((node, key) => node[key], schema);
+    validateSchema(value, target, path);
+    return;
+  }
+  if (Object.hasOwn(definition, "const")) {
+    assert.equal(value, definition.const, path + " must equal its schema constant");
+  }
+  if (definition.type === "object") {
+    assert.ok(value !== null && typeof value === "object" && !Array.isArray(value), path + " must be an object");
+    for (const key of definition.required ?? []) {
+      assert.ok(Object.hasOwn(value, key), path + "." + key + " is required");
+    }
+    if (definition.additionalProperties === false) {
+      for (const key of Object.keys(value)) {
+        assert.ok(Object.hasOwn(definition.properties ?? {}, key), path + "." + key + " is not declared");
+      }
+    }
+    for (const [key, child] of Object.entries(definition.properties ?? {})) {
+      if (Object.hasOwn(value, key)) validateSchema(value[key], child, path + "." + key);
+    }
+  } else if (definition.type === "array") {
+    assert.ok(Array.isArray(value), path + " must be an array");
+    assert.ok(value.length >= (definition.minItems ?? 0), path + " has too few items");
+    if (definition.items) value.forEach((item, index) => validateSchema(item, definition.items, path + "[" + index + "]"));
+  } else if (definition.type === "string") {
+    assert.equal(typeof value, "string", path + " must be a string");
+    assert.ok(value.length >= (definition.minLength ?? 0), path + " is too short");
+  }
+}
+validateSchema(response, schema);
 assert.equal(response.status, "authored-hearing-outcome-fixture-not-live-civic-process");
 assert.ok(scenario.timeline.some(event => event.id === response.hearingEventId), "response must reference an existing hearing event");
 
