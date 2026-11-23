@@ -417,6 +417,7 @@
           "minLength": 1
         },
         "status": {
+          "type": "string",
           "enum": [
             "granted",
             "suspended",
@@ -487,6 +488,7 @@
           "minLength": 1
         },
         "status": {
+          "type": "string",
           "enum": [
             "completed",
             "partial",
@@ -591,6 +593,7 @@
           "minLength": 1
         },
         "disposition": {
+          "type": "string",
           "enum": [
             "achieved",
             "partially-achieved",
