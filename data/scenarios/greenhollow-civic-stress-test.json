@@ -270,5 +270,180 @@
     "economyRemainsAuthorityForCampaignTransactions": true,
     "cityDoesNotReimplementPhysicsOrEconomy": true
   },
-  "implementationBoundary": "This is a deterministic authored narrative fixture for cross-domain validation. It does not run a live investigation, court, election, civic simulation, campaign-ad delivery system or persistent player ballot."
+  "implementationBoundary": "This is a deterministic authored narrative fixture for cross-domain validation. It does not run a live investigation, court, election, civic simulation, campaign-ad delivery system or persistent player ballot.",
+  "civicResponse": {
+    "id": "greenhollow-civic-response-001",
+    "status": "authored-hearing-outcome-fixture-not-live-civic-process",
+    "hearingEventId": "event-07-civic-hearing",
+    "proposals": [
+      {
+        "id": "repair-proposal-temporary-access",
+        "title": "Assess and, if cleared, establish a temporary accessible route",
+        "status": "deferred-for-safety-and-accessibility-review",
+        "civicPurpose": "Restore practical access while the damaged crossing remains unavailable",
+        "resourceRequirements": [
+          {
+            "kind": "labor-capacity",
+            "description": "Qualified local works crew and inspection time",
+            "authority": "City coordinates; provider availability not modelled"
+          },
+          {
+            "kind": "materials",
+            "description": "Temporary route materials selected after site assessment",
+            "authority": "Economy owns procurement transactions; material suitability is not decided here"
+          },
+          {
+            "kind": "physical-safety-assessment",
+            "description": "Route stability, slope, drainage, clearance and accessibility",
+            "authority": "Physics owns physical assessment"
+          }
+        ],
+        "authorization": "No construction or expenditure authorized by this hearing fixture"
+      },
+      {
+        "id": "repair-proposal-permanent-rebuild",
+        "title": "Develop a permanent crossing reconstruction plan",
+        "status": "advance-to-options-and-feasibility-study",
+        "civicPurpose": "Restore durable north-road connectivity",
+        "resourceRequirements": [
+          {
+            "kind": "engineering-and-site-assessment",
+            "description": "Compare feasible structural and terrain options",
+            "authority": "Physics owns physical modelling; City owns civic requirements"
+          },
+          {
+            "kind": "skills-and-labor",
+            "description": "Identify qualified design, craft and construction capacity",
+            "authority": "City records civic capability requirements; provider execution is outside this fixture"
+          },
+          {
+            "kind": "materials-and-funding",
+            "description": "Prepare a transparent estimate and procurement plan",
+            "authority": "Economy owns accounts, currency, budgets and transactions"
+          }
+        ],
+        "authorization": "Planning study only; no procurement, contract, construction or payment authorized"
+      }
+    ],
+    "hearingDecision": {
+      "id": "hearing-decision-001",
+      "authorityId": "village-assembly",
+      "sourceEventId": "event-07-civic-hearing",
+      "outcome": "advance-options-to-independent-feasibility-review",
+      "selectedProposalIds": [
+        "repair-proposal-temporary-access",
+        "repair-proposal-permanent-rebuild"
+      ],
+      "authorizations": [
+        "publish the alternatives and their unresolved assumptions",
+        "request physical safety and accessibility assessment from the appropriate domain authority",
+        "prepare a transparent resource and funding estimate for later public review",
+        "return to the assembly before any construction or expenditure authorization"
+      ],
+      "notAuthorized": [
+        "construction",
+        "procurement",
+        "payment",
+        "assignment of blame for the storm damage",
+        "waiver of accessibility or safety review"
+      ]
+    },
+    "oversightObligations": [
+      {
+        "id": "oversight-publish-assumptions",
+        "responsibleActorId": "village-assembly",
+        "trigger": "before the next public decision",
+        "obligation": "Publish proposal assumptions, known unknowns, and the distinction between planning and authorization",
+        "evidenceExpected": "dated public meeting record and versioned proposal summary"
+      },
+      {
+        "id": "oversight-independent-safety-review",
+        "responsibleActorId": "independent-reviewer",
+        "trigger": "before any temporary route is opened",
+        "obligation": "Review the physical safety and accessibility assessment without treating a civic vote as a substitute for technical clearance",
+        "evidenceExpected": "attributed review record with scope, methods and limitations"
+      },
+      {
+        "id": "oversight-resource-transparency",
+        "responsibleActorId": "village-assembly",
+        "trigger": "before any procurement or expenditure vote",
+        "obligation": "Publish the resource estimate and refer all account, budget and transaction handling to Economy",
+        "evidenceExpected": "public estimate and Economy-owned financial record when such a system is integrated"
+      },
+      {
+        "id": "oversight-follow-up-hearing",
+        "responsibleActorId": "village-assembly",
+        "trigger": "after feasibility findings are returned",
+        "obligation": "Hear affected residents, record dissent and conflicts of interest, and issue a reasoned decision",
+        "evidenceExpected": "attributed submissions, disclosed conflicts, meeting record and scoped decision"
+      }
+    ],
+    "residentImpacts": [
+      {
+        "id": "impact-north-road-households",
+        "affectedGroup": "households relying on the north road",
+        "concern": "longer or disrupted journeys while the crossing is unavailable",
+        "assessment": "qualitative-unmeasured",
+        "followUp": "record access needs and travel constraints before selecting a route"
+      },
+      {
+        "id": "impact-mobility-limited-residents",
+        "affectedGroup": "residents with mobility or accessibility needs",
+        "concern": "a nominal detour may not be a usable detour",
+        "assessment": "qualitative-unmeasured",
+        "followUp": "include accessibility review and affected-resident submissions"
+      },
+      {
+        "id": "impact-local-traders",
+        "affectedGroup": "traders and delivery-dependent services",
+        "concern": "delays and reduced access may interrupt ordinary commerce",
+        "assessment": "qualitative-unmeasured",
+        "followUp": "record reported disruption; Economy owns any transaction or financial-impact model"
+      },
+      {
+        "id": "impact-emergency-access",
+        "affectedGroup": "emergency and public-service responders",
+        "concern": "response routes may be constrained",
+        "assessment": "qualitative-unmeasured",
+        "followUp": "obtain service access requirements before route approval"
+      }
+    ],
+    "institutionalTrust": {
+      "institutionId": "village-assembly",
+      "modelStatus": "qualitative-observations-not-a-numeric-trust-score",
+      "dimensions": [
+        {
+          "id": "trust-transparency",
+          "dimension": "transparency",
+          "expectedSignal": "clear publication of assumptions and authorization limits",
+          "evidenceRequired": "public records and dated updates"
+        },
+        {
+          "id": "trust-responsiveness",
+          "dimension": "responsiveness",
+          "expectedSignal": "affected residents can submit concerns and receive a recorded response",
+          "evidenceRequired": "attributed submissions and response record"
+        },
+        {
+          "id": "trust-fairness",
+          "dimension": "procedural-fairness",
+          "expectedSignal": "no blame assignment without evidence and no exclusion of affected groups",
+          "evidenceRequired": "scoped decisions, review provenance and participation record"
+        },
+        {
+          "id": "trust-reliability",
+          "dimension": "reliability",
+          "expectedSignal": "technical clearance precedes opening and resource commitments",
+          "evidenceRequired": "independent safety review and Economy-owned financial evidence"
+        }
+      ],
+      "noAggregateScore": true,
+      "noAutomaticTrustGain": true,
+      "limitations": [
+        "Trust is not inferred from attendance, voting behavior or personal political beliefs.",
+        "No resident-level profile or individual trust score is created.",
+        "The fixture defines observable civic signals, not a validated social-science measurement."
+      ]
+    }
+  }
 }
