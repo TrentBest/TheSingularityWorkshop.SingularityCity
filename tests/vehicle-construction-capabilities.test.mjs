@@ -17,6 +17,10 @@ assert.equal(definitions.size, vehicles.definitions.length, "vehicle definition 
 for (const instance of vehicles.instances) {
   assert.ok(definitions.has(instance.definitionId), "vehicle instance references an unknown definition: " + instance.id);
   assert.equal(instance.tripState, "not-simulated", "fixture must not claim a completed journey");
+  const profile = profileMap.get(instance.capabilityProfileId);
+  assert.ok(profile, "vehicle instance must identify its capability profile: " + instance.id);
+  const definition = definitions.get(instance.definitionId);
+  for (const capability of definition.requiredCapabilities) assert.ok(profile.has(capability), "vehicle instance profile is missing " + capability + ": " + instance.id);
 }
 const peddler = commerce.people.find(person => person.id === "mara-peddler");
 assert.ok(peddler, "handcart owner must exist in commerce fixture");
