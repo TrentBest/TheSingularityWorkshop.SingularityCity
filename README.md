@@ -80,7 +80,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Civil systems and city theory atlas](docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md)
 - [Wheel of Time city showcase plan](docs/WHEEL_OF_TIME_SHOWCASE.md)
 - [City sourcebooks](docs/books/README.md)
-- [SURPS sourcebook catalogue](docs/books/index.md) and [participation manifest](.surps/participation.json) — ten descriptor-backed City books are declared for SURPS enrollment; registry review is tracked in [SURPS issue #6](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/issues/6).
+- [SURPS sourcebook catalogue](docs/books/index.md) and [participation manifest](.surps/participation.json) — ten descriptor-backed draft City books are declared for SURPS review; the repository remains integrated-not-enrolled pending independent registry review in [SURPS issue #1](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/issues/6).
 - [Place-specific city sourcebook program](docs/CITY_SOURCEBOOKS.md) — books about cities, ancient settlements, archaeological sites and cultural landscapes, with evidence, visual atlases and an educational path into interactive learning.
 - [Reality sets, place identity and historical reconstruction](docs/REALITY_AND_RECONSTRUCTION.md) — the shared-ontology boundary between real places, evidence-based reconstructions, fictional realities and “based on” inspirations; includes a scan-first path toward walkable archaeological experiences.
 - [Göbekli Tepe research pilot](docs/books/places/gobekli-tepe/README.md) — initial source ledger and a plan to pursue authoritative present-day LiDAR/3D survey data before building a historical reconstruction.
