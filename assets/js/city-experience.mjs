@@ -6,6 +6,7 @@ const rendererTitle = $("#renderer-place-title");
 const rendererDescription = $("#renderer-place-description");
 const rendererDomain = $("#renderer-domain");
 const rendererAccess = $("#renderer-access");
+const rendererDistrict = $("#renderer-district");
 const rendererWorldState = $("#renderer-world-state");
 
 function setMode(mode) {
