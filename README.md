@@ -18,7 +18,8 @@ The atlas is a conceptual systems illustration; the browser proof and Visualize'
 The browser proof is validated on both active branches. GitHub Pages publishes `development` as the live working preview so current implementation and design notes are visible without promoting `master`; `master` remains the release-aligned branch:
 
 - **Explore:** [Singularity City](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/)
-- Select map markers or destination cards to inspect a place.\n- Read the [current field notes](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/thinking.html) for active decisions and cross-repository work.
+- Select map markers or destination cards to inspect a place.
+- Read the [current field notes](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/thinking.html) for active decisions and cross-repository work.
 - Preview the proposed handoff to an experience such as [FSM_Dungeon](https://github.com/TrentBest/FSM_Dungeon).
 
 The current proof is a static, interactive navigation fixture. It does not claim live persistence, multiplayer, authoritative simulation or a connected dungeon runtime.
@@ -65,6 +66,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Civil systems and city theory atlas](docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md)
 - [Wheel of Time city showcase plan](docs/WHEEL_OF_TIME_SHOWCASE.md)
 - [City sourcebooks](docs/books/README.md)
+- [Place-specific city sourcebook program](docs/CITY_SOURCEBOOKS.md) — books about particular cities, historical periods, evidence, visual atlases and future authored fixtures.
 
 ## Development
 
