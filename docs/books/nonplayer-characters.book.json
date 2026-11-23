@@ -6,7 +6,12 @@
   "title": "Nonplayer Characters",
   "version": "0.1.0",
   "cover": "docs/books/covers/nonplayer-characters.svg",
-  "lodBadge": "docs/assets/sourcebook-lod-1.svg",
+  "lodBadge": "https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/development/docs/assets/rulebook-lod-1.svg",
   "publisher": "The Singularity Workshop",
-  "publisherMoniker": "https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg"
+  "publisherMoniker": "https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg",
+  "source": "docs/books/nonplayer-characters.md",
+  "repository": "https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity",
+  "familyId": "nonplayer-characters",
+  "edition": "0.1.0",
+  "status": "draft"
 }
