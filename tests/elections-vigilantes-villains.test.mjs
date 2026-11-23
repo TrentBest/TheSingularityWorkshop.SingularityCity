@@ -37,7 +37,7 @@ assert.ok(elections.includes("abstains without losing access, rewards or civic s
 assert.ok(elections.includes("not an implemented election engine"));
 const vigilantes = await read("../docs/books/vigilantes-and-civic-justice.md");
 assert.ok(vigilantes.includes("A good intention does not create lawful authority"));
-assert.ok(vigilantes.includes("actual account identity and permissions"));
+assert.ok(vigilantes.includes("control real account identity and permissions"));
 assert.ok(vigilantes.includes("not real-world tactics"));
 const villains = await read("../docs/books/villains-and-antagonists.md");
 assert.ok(villains.includes("Antagonist is a relationship"));
