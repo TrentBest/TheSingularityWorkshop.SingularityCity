@@ -1,6 +1,11 @@
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-# Politics, Power & Public Will — influence, legitimacy and change
+# Politics, Power & Public Will
+
+*influence, legitimacy and change*
+
+**Sourcebook ID:** `singularity-city.domain.politics-power-and-public-will`  
+**Edition:** `0.1.0`  
 
 **Owner:** Singularity City · **LOD:** 2 civic specialization · **Status:** authored domain sourcebook; not a voter-profiling or political-persuasion system.
 
