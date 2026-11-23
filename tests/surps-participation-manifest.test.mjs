@@ -21,7 +21,8 @@ for (const book of manifest.books) {
   assert.ok(!ids.has(book.id), "duplicate book ID: " + book.id);
   ids.add(book.id);
   assert.equal(book.status, "draft", "local participation must not imply publication");
-  assert.match(book.version, /^\\d+\\.\\d+\\.\\d+$/);
+  assert.equal(book.version.split(".").length, 3);
+  assert.ok(book.version.split(".").every(part => part.length > 0 && [...part].every(char => char >= "0" && char <= "9")));
 
   for (const path of [book.bookPath, book.descriptorPath, book.coverPath]) {
     assert.ok(path && !sourcePaths.has(path), "missing or duplicate source path: " + path);
@@ -40,7 +41,7 @@ for (const book of manifest.books) {
 
   const markdown = await read(book.bookPath);
   assert.ok(markdown.includes("# " + book.title), "source title must match descriptor");
-  assert.ok(catalogue.includes("(" + book.bookPath.replace(/^docs\\/books\\//, "") + ")"),
+  assert.ok(catalogue.includes("(" + (book.bookPath.startsWith("docs/books/") ? book.bookPath.slice(11) : book.bookPath) + ")"),
     "canonical catalogue must link to " + book.bookPath);
 }
 
