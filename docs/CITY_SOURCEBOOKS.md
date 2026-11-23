@@ -223,6 +223,8 @@ A sourcebook may propose a City fixture, but imported research, authored interpr
 
 ## Initial place-book catalogue candidates
 
+The first deep-time research pilot is [Göbekli Tepe](books/places/gobekli-tepe/README.md). It begins with a source ledger and a scan-data access plan; it is not yet a complete sourcebook and no scan dataset is claimed acquired.
+
 These are proposed editorial candidates, not completed or researched books:
 
 | Place | Why it is a useful study |
