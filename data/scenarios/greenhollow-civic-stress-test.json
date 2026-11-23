@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "id": "singularity-city.scenario.greenhollow-civic-stress-test.001",
+  "title": "Greenhollow — Civic Trust Under Pressure",
+  "reality": "fictional-scenario",
+  "status": "authored-cross-domain-fixture-not-live-simulation",
+  "linkedFixtures": [
+    "singularity-city.scenario.greenhollow-reeve-election.001"
+  ],
+  "setting": {
+    "placeId": "greenhollow",
+    "placeName": "Greenhollow",
+    "incident": "A severe storm damages the north road crossing shortly before the reeve election."
+  },
+  "actors": [
+    {
+      "id": "resident-iven",
+      "role": "resident-and-wrongly-accused-person",
+      "identityDisclosure": "fictional-public-identity"
+    },
+    {
+      "id": "antagonist-mara",
+      "role": "villain-and-antagonist",
+      "objective": "Exploit uncertainty and institutional delay to weaken public trust and gain influence over the rebuilding process.",
+      "methods": "Narrative-level influence and conflicting public claims only; no operational playbook."
+    },
+    {
+      "id": "vigilante-lantern",
+      "role": "self-appointed-vigilante",
+      "publicPersona": "Lantern",
+      "actualIdentity": "not-disclosed-in-fixture",
+      "authority": "self-appointed-no-public-authority"
+    },
+    {
+      "id": "civic-safety-office",
+      "role": "public-safety-institution"
+    },
+    {
+      "id": "independent-reviewer",
+      "role": "independent-evidence-review"
+    },
+    {
+      "id": "village-court",
+      "role": "justice-and-adjudication"
+    },
+    {
+      "id": "village-assembly",
+      "role": "civic-governance"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "event-01-storm-damage",
+      "sequence": 1,
+      "type": "incident-observed",
+      "actorId": "civic-safety-office",
+      "description": "The north road crossing is found damaged after a severe storm.",
+      "claimStatus": "none",
+      "evidenceStatus": "direct-observation-with-provenance",
+      "findingStatus": "not-yet-reviewed",
+      "attribution": "storm-damage-observed; no person is attributed"
+    },
+    {
+      "id": "event-02-rumor",
+      "sequence": 2,
+      "type": "rumor-circulates",
+      "actorId": "antagonist-mara",
+      "description": "Conflicting public claims circulate and one names Iven Brook as responsible.",
+      "claimStatus": "unverified-allegation",
+      "evidenceStatus": "no-supporting-evidence-attached",
+      "findingStatus": "none",
+      "attribution": "claim-source-recorded; claim is not treated as fact"
+    },
+    {
+      "id": "event-03-vigilante-claim",
+      "sequence": 3,
+      "type": "vigilante-public-claim",
+      "actorId": "vigilante-lantern",
+      "description": "Lantern publicly claims to know who is responsible and urges residents to accept the accusation.",
+      "claimStatus": "unverified-allegation",
+      "evidenceStatus": "not-disclosed",
+      "findingStatus": "none",
+      "authority": "self-appointed; no public enforcement authority"
+    },
+    {
+      "id": "event-04-investigation",
+      "sequence": 4,
+      "type": "independent-investigation",
+      "actorId": "civic-safety-office",
+      "description": "Officials preserve observations, interview witnesses and record the crossing condition without presuming guilt.",
+      "claimStatus": "under-review",
+      "evidenceStatus": "collected-with-provenance",
+      "findingStatus": "pending",
+      "reviewerId": "independent-reviewer"
+    },
+    {
+      "id": "event-05-court-review",
+      "sequence": 5,
+      "type": "justice-review",
+      "actorId": "village-court",
+      "description": "The allegation against Iven is reviewed; the available record does not establish responsibility.",
+      "claimStatus": "reviewed",
+      "evidenceStatus": "insufficient-to-establish-responsibility",
+      "findingStatus": "not-established-on-present-record",
+      "legalDetermination": "fictional-scenario-finding-only"
+    },
+    {
+      "id": "event-06-correction",
+      "sequence": 6,
+      "type": "public-record-correction",
+      "actorId": "independent-reviewer",
+      "description": "The public record distinguishes the original observation from the unsupported accusation and records the review outcome.",
+      "claimStatus": "corrected",
+      "evidenceStatus": "provenance-retained",
+      "findingStatus": "published-with-scope-and-limitations"
+    },
+    {
+      "id": "event-07-civic-hearing",
+      "sequence": 7,
+      "type": "civic-hearing",
+      "actorId": "village-assembly",
+      "description": "The assembly hears residents on crossing repairs, public communication and oversight of emergency decisions.",
+      "claimStatus": "public-submissions",
+      "evidenceStatus": "submissions-retain-source-and-status",
+      "findingStatus": "policy-deliberation-not-criminal-finding"
+    }
+  ],
+  "electionPresentation": {
+    "fixtureId": "singularity-city.scenario.greenhollow-reeve-election.001",
+    "advertisementsRemainAttributed": true,
+    "advertisementClaimsAreAutomaticallyVerified": false,
+    "presentationDensityOptions": [
+      "quiet",
+      "ordinary",
+      "saturated",
+      "muted"
+    ],
+    "mutingChangesPresentationOnly": true,
+    "campaignFinanceOwner": "Economy"
+  },
+  "playerChoices": [
+    "offer practical aid to residents affected by the crossing damage",
+    "report observations while preserving the difference between observation and rumor",
+    "challenge the unsupported accusation without disclosing private identity",
+    "support or request independent review",
+    "attend the civic hearing and question the repair plan",
+    "participate in the election if eligible, or abstain without penalty"
+  ],
+  "invariants": {
+    "allegationIsNotEvidence": true,
+    "evidenceIsNotFinding": true,
+    "findingIsScopedNotOmniscientTruth": true,
+    "rumorRetainsSourceAndUncertainty": true,
+    "vigilanteRoleCreatesNoPublicAuthority": true,
+    "privateIdentityIsNotAutomaticallyDisclosed": true,
+    "noVoterProfiling": true,
+    "noPersistentPlayerBallotInFixture": true,
+    "ballotPrivacyRemainsSecret": true,
+    "noExternalAdvertisingNetwork": true,
+    "noOperationalInstructionForViolenceOrCoercion": true,
+    "economyRemainsAuthorityForCampaignTransactions": true,
+    "cityDoesNotReimplementPhysicsOrEconomy": true
+  },
+  "implementationBoundary": "This is a deterministic authored narrative fixture for cross-domain validation. It does not run a live investigation, court, election, civic simulation, campaign-ad delivery system or persistent player ballot."
+}
