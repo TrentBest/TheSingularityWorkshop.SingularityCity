@@ -151,6 +151,7 @@ function validateLinkedRecords(candidate, candidateScenario) {
   assert.deepEqual([...candidateDecision.authorizations].sort(), [...candidateAuthorizations.keys()].sort(), "decision must enumerate every authorization issued from it");
   for (const authorization of candidate.authorizations) {
     assert.equal(authorization.sourceDecisionId, candidateDecision.id, "authorization must be based on this decision");
+    assert.ok(candidateProposals.has(authorization.proposalId), "authorization proposal reference must resolve");
     assert.ok(candidateActors.has(authorization.grantingAuthorityId), "authorization granting authority must exist");
     assert.ok(candidateActors.has(authorization.executorId), "authorization executor must exist");
     assert.ok(Date.parse(authorization.validFrom) < Date.parse(authorization.expiresAt), "authorization validity window must be ordered");
