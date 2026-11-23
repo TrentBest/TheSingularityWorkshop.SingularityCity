@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#17242b"/><stop offset="1" stop-color="#080c11"/></linearGradient><linearGradient id="river" x2="1" y2="0"><stop stop-color="#426d78"/><stop offset="1" stop-color="#182e3b"/></linearGradient></defs>
+<rect width="900" height="1200" fill="url(#bg)"/>
+<path d="M0 700L130 590 230 680 340 510 455 650 560 470 680 640 790 530 900 650V1200H0Z" fill="#26323a"/>
+<path d="M0 820Q180 750 340 850T680 835T900 820V1200H0Z" fill="url(#river)" opacity=".9"/>
+<g fill="none" stroke="#c09b69" stroke-width="5" opacity=".75"><path d="M100 250H800M160 250V590M740 250V590M160 380H740M160 510H740"/><path d="M280 250V590M450 250V590M620 250V590"/></g>
+<g fill="#c09b69"><circle cx="280" cy="380" r="11"/><circle cx="450" cy="510" r="11"/><circle cx="620" cy="380" r="11"/><circle cx="450" cy="250" r="11"/></g>
+<text x="450" y="130" fill="#d9c29d" font-family="Georgia,serif" font-size="28" text-anchor="middle" letter-spacing="8">THE SINGULARITY WORKSHOP</text>
+<text x="450" y="950" fill="#f2e9d8" font-family="Georgia,serif" font-size="70" text-anchor="middle">THE URBAN</text>
+<text x="450" y="1030" fill="#f2e9d8" font-family="Georgia,serif" font-size="70" text-anchor="middle">UNDERWORLD</text>
+<text x="450" y="1110" fill="#bda88f" font-family="Arial,sans-serif" font-size="20" text-anchor="middle" letter-spacing="5">CREWS · FENCES · HIDDEN POWER</text></svg>
