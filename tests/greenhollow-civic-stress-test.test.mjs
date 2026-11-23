@@ -109,7 +109,7 @@ assert.ok(events.has(decision.sourceEventId), "hearing decision source event mus
 for (const id of decision.selectedProposalIds) assert.ok(proposalIds.has(id), "decision proposal must exist: " + id);
 assert.ok(decision.notAuthorized.includes("construction"));
 assert.ok(decision.notAuthorized.includes("payment"));
-assert.ok(decision.authorizations.some(value => value.includes("before any construction or expenditure")));
+assert.ok(decision.permittedActions.some(value => value.includes("before any construction or expenditure")));
 for (const obligation of response.oversightObligations) {
   assert.ok(actors.has(obligation.responsibleActorId), "oversight owner must be declared: " + obligation.id);
   assert.ok(obligation.trigger && obligation.obligation && obligation.evidenceExpected, "oversight obligation must be actionable and auditable");
