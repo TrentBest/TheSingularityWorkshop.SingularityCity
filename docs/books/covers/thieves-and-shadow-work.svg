@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#25202a"/><stop offset="1" stop-color="#090b12"/></linearGradient><radialGradient id="glow"><stop stop-color="#b78b55" stop-opacity=".45"/><stop offset="1" stop-color="#b78b55" stop-opacity="0"/></radialGradient></defs>
+<rect width="900" height="1200" fill="url(#bg)"/><circle cx="450" cy="475" r="390" fill="url(#glow)"/>
+<path d="M110 850 L110 510 250 390 360 500 450 300 560 500 690 390 790 510 790 850Z" fill="none" stroke="#a98b69" stroke-width="5" opacity=".65"/>
+<path d="M360 850V610Q450 480 540 610V850" fill="none" stroke="#d6b37e" stroke-width="8"/>
+<path d="M415 850V660Q450 615 485 660V850" fill="#080a0e" stroke="#d6b37e" stroke-width="4"/>
+<circle cx="450" cy="555" r="26" fill="#d6b37e"/><path d="M450 581L420 700H480Z" fill="#d6b37e" opacity=".8"/>
+<text x="450" y="130" fill="#d6b37e" font-family="Georgia,serif" font-size="28" text-anchor="middle" letter-spacing="8">THE SINGULARITY WORKSHOP</text>
+<text x="450" y="970" fill="#f3e8d7" font-family="Georgia,serif" font-size="68" text-anchor="middle">THIEVES</text>
+<text x="450" y="1045" fill="#f3e8d7" font-family="Georgia,serif" font-size="42" text-anchor="middle">&amp; SHADOW WORK</text>
+<text x="450" y="1115" fill="#bda88f" font-family="Arial,sans-serif" font-size="20" text-anchor="middle" letter-spacing="5">SINGULARITY CITY · LOD 2</text></svg>
