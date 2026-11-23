@@ -5,12 +5,16 @@ import { evaluateCivicAuthorization } from "../assets/js/civic-authorization-gat
 const readJson = async path => JSON.parse(await readFile(new URL("../" + path, import.meta.url), "utf8"));
 const schema = await readJson("schemas/civic-process-response.schema.json");
 const hostContextSchema = await readJson("schemas/civic-authorization-host-context.schema.json");
+const hostContractDoc = await readFile(new URL("../docs/CIVIC_AUTHORIZATION_HOST_CONTRACT.md", import.meta.url), "utf8");
 const scenario = await readJson("data/scenarios/greenhollow-civic-stress-test.json");
 const response = scenario.civicResponse;
 
 assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
 assert.equal(schema.properties.schema.const, "singularity-city.civic-process-response.v1");
 assert.equal(schema.additionalProperties, false);
+assert.equal(hostContextSchema.properties.schema.const, "singularity-city.civic-authorization-host-context.v1");
+assert.ok(hostContractDoc.includes("Trust boundary"));
+assert.ok(hostContractDoc.includes("Structural conformance does not authenticate"));
 assert.deepEqual(
   schema.required,
   ["schema", "id", "status", "hearingEventId", "proposals", "authorizations", "executionEvidence", "outcomeReviews", "hearingDecision", "oversightObligations", "residentImpacts", "institutionalTrust"]
