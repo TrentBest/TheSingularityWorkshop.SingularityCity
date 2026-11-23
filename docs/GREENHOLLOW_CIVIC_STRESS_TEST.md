@@ -48,6 +48,17 @@ This is a fixture-level record shape, not a claim that City has implemented a pr
 
 The scenario fixture is a City-owned integration artifact. It references Economy and Physics boundaries without implementing their systems or creating shadow ledgers, physical solvers or duplicate authority.
 
+
+## Hearing response and civic consequences
+
+The hearing now has an explicit authored response record. The assembly advances two options to feasibility review: an accessible temporary route and a permanent crossing rebuild. Neither option is authorized for construction, procurement or payment. A civic decision cannot substitute for a Physics safety assessment, and City does not create a parallel Economy budget or ledger.
+
+Each proposal names its resource requirements and the domain responsible for the relevant authority. The fixture also records oversight obligations, including publication of assumptions, independent safety review, financial transparency before any expenditure vote, and a follow-up hearing after feasibility findings return.
+
+Resident impacts are recorded by affected group as qualitative and unmeasured. Accessibility, ordinary travel, local commerce and emergency access are explicit considerations, not fabricated numerical forecasts. Financial impact modelling remains an Economy concern.
+
+Institutional trust is represented through observable procedural dimensions—transparency, responsiveness, fairness and reliability. The fixture creates no aggregate trust score, resident-level profile or automatic trust gain. Future implementation must ground any state changes in attributed evidence and agreed cross-domain contracts.
+
 ## Player participation
 
 Players can provide aid, report observations, challenge unsupported accusations, request independent review, attend the public hearing, or participate in the election if eligible. Abstention remains valid and carries no penalty. Election advertising remains attributed to its sponsor; changing the presentation density changes what is displayed, not the underlying campaign history. Ballots remain secret.
