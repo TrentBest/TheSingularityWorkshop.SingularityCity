@@ -11,7 +11,7 @@ The City answers four questions:
 3. **What can I do here?** Discoverable capabilities and the experiences that provide them.
 4. **What changed while I was away?** Persistent civic, economic, environmental and construction state.
 
-## Spatial hierarchy
+## Entangled workplaces and digital tenancy\n\nCity geography can also host persistent company workplaces. The proposed SingularityCorporation model leases spatial scopes (campuses, buildings, floors and rooms) while tenant identity, membership, guest grants and private work data remain separately governed. A workplace Experience keeps one identity across AnyApp, WebApp and MyVR; City supplies its place anchors, while host services own sessions, persistence, authorization enforcement and execution. See [Entangled Realities and Digital Real Estate](ENTANGLED_REALITIES.md) for the proposed model, existing technology handoffs and the first proof boundary. This is architecture direction, not a claim that multi-user workplace runtime or leasing is implemented.\n\n## Spatial hierarchy
 
 `Workshop → Singularity Transit → Singularity City → World`
 
