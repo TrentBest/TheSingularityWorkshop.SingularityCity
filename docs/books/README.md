@@ -26,7 +26,9 @@ A separate editorial track covers individual settlements, cities, archaeological
 
 [Read the City Sourcebooks program](../CITY_SOURCEBOOKS.md) for the evidence standard, archaeological interpretation safeguards, time-slice convention, educational direction, folder structure, LOD guidance and candidate catalogue.
 
-**Proposed research candidates:** Tacoma, Tenochtitlan, Troy / Hisarlık, Göbekli Tepe, Uruk, Çatalhöyük, Mohenjo-daro, Teotihuacan, Cahokia, Great Zimbabwe, Angkor, Pompeii, New York City, Tokyo, Venice, London, Rome and Singapore. These are editorial candidates, not completed or researched books.
+**First research pilot:** [Göbekli Tepe](places/gobekli-tepe/README.md) — a source-checked research plan for a scan-first present-day visit and evidence-based historical reconstruction. It does not yet contain acquired scans or a completed reconstruction.
+
+**Other proposed research candidates:** Tacoma, Tenochtitlan, Troy / Hisarlık, Uruk, Çatalhöyük, Mohenjo-daro, Teotihuacan, Cahokia, Great Zimbabwe, Angkor, Pompeii, New York City, Tokyo, Venice, London, Rome and Singapore. These remain editorial candidates, not completed or researched books.
 
 Each place book must distinguish sourced evidence, source interpretations, derived analysis, authored reconstruction, scenarios and unknown/disputed claims. Archaeological reconstructions must expose uncertainty instead of presenting a single attractive image as settled history.
 
