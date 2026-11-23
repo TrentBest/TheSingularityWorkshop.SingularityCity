@@ -8,6 +8,8 @@ Politics is how people and groups contest, negotiate and exercise power over sha
 
 This book is for fictional worldbuilding, historical analysis and civic systems education. It does not prescribe a preferred ideology or reduce residents to demographic targets. Political belief, participation and affiliation are contextual, changeable and sometimes private.
 
+Election mechanics and direct player participation are detailed in [Elections & Player Participation — LOD 2](elections-and-player-participation.md). That specialization defines candidate communications, including the deliberately ambient and sometimes repetitive background campaign advertisements, player voting, ballot privacy, campaign finance and result disputes.
+
 ## 1. Power has several sources
 
 Power may arise from:
