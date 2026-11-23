@@ -148,6 +148,7 @@ function validateLinkedRecords(candidate, candidateScenario) {
   const candidateDecision = candidate.hearingDecision;
 
   assert.ok(candidateDecision.authorizations.every(id => candidateAuthorizations.has(id)), "decision authorization references must resolve");
+  assert.deepEqual([...candidateDecision.authorizations].sort(), [...candidateAuthorizations.keys()].sort(), "decision must enumerate every authorization issued from it");
   for (const authorization of candidate.authorizations) {
     assert.equal(authorization.sourceDecisionId, candidateDecision.id, "authorization must be based on this decision");
     assert.ok(candidateActors.has(authorization.grantingAuthorityId), "authorization granting authority must exist");
