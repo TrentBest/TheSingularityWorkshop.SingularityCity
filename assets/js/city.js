@@ -207,6 +207,8 @@ function selectDistrict(id) {
   text("#experience-status","District selected · "+district.name+" · same city identity across presentation channels");
   const scene=document.querySelector("#district-experience");
   if(scene)scene.dataset.selectedDistrict=id;
+  const relatedPlace=[...places.values()].find(place=>place.district===district.name);
+  if(relatedPlace&&selected!==relatedPlace.id)selectPlace(relatedPlace.id);
 }
 function stepDistrict(delta) {
   if(!districtBlueprint?.districts.length)return;
@@ -306,6 +308,7 @@ function renderProvenance(p) {
   text("#source-manifest",(p.manifest ?? "data/places.json")+" · "+p.id);
 }
 function inspectParcel(parcel,district,blueprint) {
+  selectDistrict(district.id);
   selected=null;
   text("#place-icon","▦");
   text("#place-type","GENERATED PARCEL / "+district.name.toUpperCase());
@@ -439,7 +442,7 @@ async function start() {
   if(mapLayers.schema!=="singularity-city.map-layer-catalog.v1"||mapLayers.cityId!==catalog.city.id) throw new Error("Unsupported or mismatched map layer catalog");
   places=new Map(catalog.places.map(p=>[p.id,p]));
   renderTerrain(terrain); renderBlueprint(blueprint); renderInfrastructure(district); renderMapLayerControls(mapLayers); renderSystems(systems); renderConnectedDistrict(district); renderMarkers(catalog.places); renderCards(catalog.places);
-  selectPlace("underworks");
+  selectPlace("capitol");
   selectDistrict("civic");
 }
 document.querySelector("#district-previous")?.addEventListener("click",()=>stepDistrict(-1));
