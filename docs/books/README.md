@@ -32,6 +32,22 @@ Higher-detail domain books specialize this shared model without redefining the p
 
 [Read Economy in Singularity City](../ECONOMY_IN_SINGULARITY_CITY.md) — shared Economy package integration, non-redeemable City Marks and the deterministic Civic Quarter market-day scenario.
 
+### Thieves & Shadow Work — LOD 2
+
+![Thieves & Shadow Work cover](covers/thieves-and-shadow-work.svg)
+
+Descriptor: [thieves-and-shadow-work.book.json](thieves-and-shadow-work.book.json)
+
+[Read Thieves & Shadow Work](thieves-and-shadow-work.md) — thief character roles, motives, agency, relationships, allegations, incidents, victim impact, reform and the shared Economy boundary. Specializes the LOD 1 people model.
+
+### The Urban Underworld — LOD 2
+
+![The Urban Underworld cover](covers/urban-underworld.svg)
+
+Descriptor: [urban-underworld.book.json](urban-underworld.book.json)
+
+[Read The Urban Underworld](urban-underworld.md) — crews, guilds, fences, disputed property, black markets, informal networks, corruption, rumor and the hidden power relationships of a city.
+
 ## Place books
 
 A separate editorial track covers individual settlements, cities, archaeological sites and cultural landscapes rather than reusable domain concepts. The shared reference ontology determines reality membership; City does not invent a local real/fiction taxonomy. An evidence-based reconstruction of a real site's past is distinguished from direct observation, while an alternate-history or invented version belongs to a fictional reality. Fictional places can retain a **based on** relationship to real inspirations without being presented as real locations. See [Reality Sets, Place Identity and Historical Reconstruction](../REALITY_AND_RECONSTRUCTION.md).
