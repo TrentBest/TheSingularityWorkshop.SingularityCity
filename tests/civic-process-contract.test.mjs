@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { evaluateCivicAuthorization } from "../assets/js/civic-authorization-gate.mjs";
 
 const readJson = async path => JSON.parse(await readFile(new URL("../" + path, import.meta.url), "utf8"));
 const schema = await readJson("schemas/civic-process-response.schema.json");
@@ -11,7 +12,7 @@ assert.equal(schema.properties.schema.const, "singularity-city.civic-process-res
 assert.equal(schema.additionalProperties, false);
 assert.deepEqual(
   schema.required,
-  ["schema", "id", "status", "hearingEventId", "proposals", "hearingDecision", "oversightObligations", "residentImpacts", "institutionalTrust"]
+  ["schema", "id", "status", "hearingEventId", "proposals", "authorizations", "executionEvidence", "outcomeReviews", "hearingDecision", "oversightObligations", "residentImpacts", "institutionalTrust"]
 );
 assert.equal(response.schema, schema.properties.schema.const, "fixture must declare the schema version it conforms to");
 
@@ -82,10 +83,45 @@ for (const proposal of response.proposals) {
 assert.ok(response.hearingDecision.notAuthorized.includes("construction"));
 assert.ok(response.hearingDecision.notAuthorized.includes("procurement"));
 assert.ok(response.hearingDecision.notAuthorized.includes("payment"));
-assert.ok(response.hearingDecision.authorizations.some(item => item.includes("before any construction or expenditure")));
+assert.deepEqual(response.hearingDecision.authorizations, [], "the hearing decision must not mint executable authorizations");\nassert.ok(response.hearingDecision.permittedActions.some(item => item.includes("before any construction or expenditure")));\nassert.deepEqual(response.authorizations, [], "no separate grant exists in the Greenhollow fixture");\nassert.deepEqual(response.executionEvidence, [], "no execution may be recorded without a grant");\nassert.deepEqual(response.outcomeReviews, [], "no outcome review may imply unrecorded execution");\nassert.ok(response.authorizations.every(item => item.status === "granted" || item.status === "suspended" || item.status === "revoked" || item.status === "expired" || item.status === "denied"));\nassert.ok(response.executionEvidence.every(item => response.authorizations.some(auth => auth.id === item.authorizationId)), "execution evidence must reference an authorization");\nassert.ok(response.outcomeReviews.every(item => item.authorizationIds.every(id => response.authorizations.some(auth => auth.id === id)) && item.executionEvidenceIds.every(id => response.executionEvidence.some(evidence => evidence.id === id))), "outcome reviews must reference source authorization and execution records");
 assert.ok(response.residentImpacts.every(item => item.assessment === "qualitative-unmeasured"));
 assert.equal(response.institutionalTrust.noAggregateScore, true);
 assert.equal(response.institutionalTrust.noAutomaticTrustGain, true);
 assert.ok(response.institutionalTrust.limitations.length > 0);
 
-console.log("Civic process contract validated: versioned response shape, authority, proposal, oversight and impact references.");
+
+const grant = {
+  id: "authorization-test-001",
+  sourceDecisionId: response.hearingDecision.id,
+  grantingAuthorityId: "village-assembly",
+  jurisdiction: "Greenhollow north-road crossing civic works",
+  action: "open-temporary-route",
+  subjectId: "north-road-temporary-route",
+  scope: "Open only the inspected temporary route identified by this subject ID",
+  exclusions: ["construction", "procurement", "payment"],
+  prerequisiteEvidenceIds: ["safety-review-001"],
+  conditions: ["Maintain the approved accessible route configuration"],
+  executorId: "civic-works-provider",
+  validFrom: "2026-11-23T00:00:00Z",
+  expiresAt: "2026-11-24T00:00:00Z",
+  status: "granted",
+  requiredExecutionEvidence: ["dated-opening-inspection"],
+  reviewPath: "independent-reviewer"
+};
+const gateInput = {
+  authorization: grant,
+  action: "open-temporary-route",
+  subjectId: "north-road-temporary-route",
+  executorId: "civic-works-provider",
+  at: "2026-11-23T12:00:00Z",
+  satisfiedPrerequisiteEvidenceIds: ["safety-review-001"]
+};
+assert.equal(evaluateCivicAuthorization(gateInput).executable, true, "a valid, scoped grant with prerequisites may pass the gate");
+assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: null }).reasons.includes("authorization-missing"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, at: "2026-11-24T00:00:00Z" }).reasons.includes("authorization-expired"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, action: "construction" }).reasons.includes("action-out-of-scope"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, subjectId: "different-route" }).reasons.includes("subject-out-of-scope"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, satisfiedPrerequisiteEvidenceIds: [] }).reasons.includes("prerequisite-unsatisfied:safety-review-001"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: { ...grant, status: "revoked" } }).reasons.includes("authorization-not-granted"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, executorId: "unlisted-provider" }).reasons.includes("executor-not-authorized"));
+\nconsole.log("Civic process contract validated: versioned response shape, authority, proposal, oversight and impact references.");
