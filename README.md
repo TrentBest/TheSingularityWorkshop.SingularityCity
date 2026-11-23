@@ -26,7 +26,7 @@ The current proof is a static, interactive navigation fixture. It does not claim
 
 ## Dwarven visitors and neighboring strongholds
 
-A town near a dwarven stronghold can have a visible dwarven presence in its market without loading or exposing the stronghold itself. City owns the market, stalls, residents, visitors, schedules, institutions, trade locations, and resident-place relationships. The general [SURPS Dwarves sourcebook, LOD 1](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/docs/books/dwarves.md) supplies cultural and encounter context. The stronghold remains a separate higher-detail destination; entering it invokes the [Dwarven Strongholds sourcebook, LOD 2](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/docs/books/dwarven-mountain-fortress.md) and FSM_Dungeon's underground environment. City may represent a known neighboring stronghold as a destination reference without owning its interior.
+A town near a dwarven stronghold can have a visible dwarven presence in its market without loading or exposing the stronghold itself. City owns the market, stalls, residents, visitors, schedules, institutions, trade locations, and resident-place relationships. The general [SURPS Dwarves sourcebook, LOD 1](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRolePlayingSystem/blob/development/docs/books/dwarves.md) supplies cultural and encounter context. The stronghold remains a separate higher-detail destination; entering it invokes the [Dwarven Strongholds sourcebook, LOD 2](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRolePlayingSystem/blob/development/docs/books/dwarven-mountain-fortress.md) and FSM_Dungeon's underground environment. City may represent a known neighboring stronghold as a destination reference without owning its interior.
 
 ## What City owns
 
@@ -66,7 +66,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Civil systems and city theory atlas](docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md)
 - [Wheel of Time city showcase plan](docs/WHEEL_OF_TIME_SHOWCASE.md)
 - [City sourcebooks](docs/books/README.md)
-- [Place-specific city sourcebook program](docs/CITY_SOURCEBOOKS.md) — books about particular cities, historical periods, evidence, visual atlases and future authored fixtures.
+- [Place-specific city sourcebook program](docs/CITY_SOURCEBOOKS.md) — books about cities, ancient settlements, archaeological sites and cultural landscapes, with evidence, visual atlases and an educational path into interactive learning.
 
 ## Development
 
