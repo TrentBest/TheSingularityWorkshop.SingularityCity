@@ -6,8 +6,13 @@
   "title": "Law Enforcement & Public Safety",
   "version": "0.1.0",
   "cover": "docs/books/covers/law-enforcement-and-public-safety.svg",
-  "lodBadge": null,
+  "lodBadge": "https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/development/docs/assets/rulebook-lod-2.svg",
   "publisher": "The Singularity Workshop",
   "publisherMoniker": "https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg",
-  "extends": "singularity-city.domain.nonplayer-characters"
+  "extends": "singularity-city.domain.nonplayer-characters",
+  "source": "docs/books/law-enforcement-and-public-safety.md",
+  "repository": "https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity",
+  "familyId": "law-enforcement-and-public-safety",
+  "edition": "0.1.0",
+  "status": "draft"
 }
