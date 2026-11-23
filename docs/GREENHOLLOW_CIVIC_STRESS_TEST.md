@@ -22,6 +22,17 @@ The scenario follows the distinction between:
 
 A finding is scoped to the available record; it is not omniscient truth. The fixture does not silently convert rumor into evidence or evidence into a legal finding.
 
+## Explicit civic records
+
+The fixture now stores four linked record families rather than relying on event prose alone:
+
+- **Claims** identify a claimant, subject, source event, status, attached evidence and any later finding. Both the rumor and Lantern's public assertion remain unverified claims with no evidence attached.
+- **Evidence** identifies its source actor and event, provenance, what it supports, and what it explicitly does not establish. The observation proves that the crossing is damaged; it does not prove who caused the damage.
+- **Findings** identify the deciding authority, subject, claims and evidence considered, outcome, scope and limitations. The court's scenario finding is only that Iven's responsibility is not established on the present record.
+- **Timeline events** reference those records by stable IDs. The correction preserves the original claims and their provenance while publishing the scoped finding.
+
+This is a fixture-level record shape, not a claim that City has implemented a production evidence-management, court or case-management runtime. Future runtime contracts must still be reconciled with shared Ontology and the owning domain repositories before they become APIs.
+
 ## Domain ownership
 
 | Concern | Authority |
@@ -45,6 +56,6 @@ The fixture contains no persistent player ballot, voter profile, external advert
 
 ## Validation
 
-The test at tests/greenhollow-civic-stress-test.test.mjs verifies deterministic event order, declared actor references, the observation/allegation/evidence/finding distinctions, correction provenance, election-fixture linkage, ballot privacy and domain boundaries.
+The test at tests/greenhollow-civic-stress-test.test.mjs verifies deterministic event order; unique IDs and referential integrity across actors, claims, evidence, findings and events; provenance and evidence limitations; the scoped finding; correction linkage; election-fixture linkage; ballot privacy; and domain boundaries.
 
 The Pages build runs this test alongside the existing sourcebook, election and terrain checks. Passing the test proves the authored fixture is internally consistent; it does not prove a live investigation, court, election, civic simulation or player-facing experience exists.
