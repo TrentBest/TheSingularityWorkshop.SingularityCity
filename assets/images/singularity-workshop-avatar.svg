@@ -105,31 +105,31 @@
   <!-- Dim the launch ports while their burst is away; the darkening is a
        soft radial falloff, not a hard-edged patch. The source PNG is intact. -->
   <g id="port-energy-withdrawal"><circle cx="30" cy="410" r="18" fill="url(#port-dim)" opacity="0">
-    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.015;.27;.30;1"/>
+    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0;.72;.72;0;0" keyTimes="0;.015;.27;.30;.348;.603;.633;.681;1"/>
   </circle>
 <circle cx="39" cy="419" r="18" fill="url(#port-dim)" opacity="0">
-    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.015;.27;.30;1"/>
+    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0;.72;.72;0;0" keyTimes="0;.015;.27;.30;.348;.603;.633;.681;1"/>
   </circle>
 <circle cx="89" cy="473" r="18" fill="url(#port-dim)" opacity="0">
-    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.015;.27;.30;1"/>
+    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0;.72;.72;0;0" keyTimes="0;.015;.27;.30;.348;.603;.633;.681;1"/>
   </circle>
 <circle cx="118" cy="461" r="18" fill="url(#port-dim)" opacity="0">
-    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.015;.27;.30;1"/>
+    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0;.72;.72;0;0" keyTimes="0;.015;.27;.30;.348;.603;.633;.681;1"/>
   </circle>
 <circle cx="157" cy="447" r="18" fill="url(#port-dim)" opacity="0">
-    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.015;.27;.30;1"/>
+    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0;.72;.72;0;0" keyTimes="0;.015;.27;.30;.348;.603;.633;.681;1"/>
   </circle>
 <circle cx="383" cy="443" r="18" fill="url(#port-dim)" opacity="0">
-    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.015;.27;.30;1"/>
+    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0;.72;.72;0;0" keyTimes="0;.015;.27;.30;.348;.603;.633;.681;1"/>
   </circle>
 <circle cx="351" cy="458" r="18" fill="url(#port-dim)" opacity="0">
-    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.015;.27;.30;1"/>
+    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0;.72;.72;0;0" keyTimes="0;.015;.27;.30;.348;.603;.633;.681;1"/>
   </circle>
 <circle cx="501" cy="381" r="18" fill="url(#port-dim)" opacity="0">
-    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.015;.27;.30;1"/>
+    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0;.72;.72;0;0" keyTimes="0;.015;.27;.30;.348;.603;.633;.681;1"/>
   </circle>
 <circle cx="498" cy="373" r="18" fill="url(#port-dim)" opacity="0">
-    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.015;.27;.30;1"/>
+    <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0;.72;.72;0;0" keyTimes="0;.015;.27;.30;.348;.603;.633;.681;1"/>
   </circle></g>
 
   <!-- Each burst launches from its own port. Every route uses the same
