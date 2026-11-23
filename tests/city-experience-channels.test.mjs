@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const read = path => readFile(new URL("../" + path, import.meta.url), "utf8");
-const [html, script, css, contract] = await Promise.all([
+const [html, script, city, css, contract] = await Promise.all([
   read("index.html"),
   read("assets/js/city-experience.mjs"),
+  read("assets/js/city.js"),
   read("assets/css/city.css"),
   read("docs/CITY_EXPERIENCE_CHANNELS.md")
 ]);
@@ -23,4 +24,14 @@ assert.ok(script.includes("audioButton?.addEventListener"), "Audio must start on
 assert.ok(script.includes("new AudioContextType()"), "The first audio proof must use browser audio output");
 assert.ok(contract.includes("not yet a domain-event-driven soundscape"), "Audio implementation limits must be explicit");
 
-console.log("City experience channels validated: independent visualization, Renderer, combined mode and opt-in audio boundary.");
+
+assert.ok(html.includes('id="district-scene-art"'), "A district-specific scene surface must exist beneath the city map");
+assert.ok(html.includes('id="district-next"') && html.includes('id="district-previous"'), "District navigation must be available");
+assert.ok(city.includes('polygon.addEventListener("click",()=>selectDistrict(district.id))'), "Map district footprints must select their matching scene");
+assert.ok(city.includes("renderDistrictScene(district,index,districtBlueprint.districts.length)"), "The scene must be regenerated for the selected district");
+assert.ok(city.includes("connectedDistrictModel.buildings"), "Known Civic Quarter landmarks must come from the connected district fixture");
+assert.ok(script.includes('const rendererDistrict = $("#renderer-district")'), "Renderer district output must be bound");
+assert.ok(script.includes('"#district-scene-title"'), "Renderer must observe district selection");
+assert.ok(css.includes(".district-shape.district-selected"), "Selected district must be visually emphasized");
+
+console.log("City experience channels validated: independent observers, district map selection, linked aerial scenes and opt-in audio boundary.");
