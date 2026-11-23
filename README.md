@@ -15,7 +15,7 @@ The atlas is a conceptual systems illustration; the browser proof and Visualize'
 
 ## Preview status
 
-GitHub Pages is configured to publish the `development` working preview without promoting `master`. The static browser experience and its validation build are present, but the latest observed Pages deployment job failed; a successful current deployment has not yet been verified. The preview URLs are retained for when deployment is healthy:
+The repository contains a GitHub Actions Pages build-and-deploy workflow. Its latest observed run built and uploaded the Pages artifact successfully, but the deploy job failed before exposing step details. The repository-level Pages source setting (Settings → Pages → Build and deployment → Source → GitHub Actions) has not been verified or changed through the connected GitHub controls, so a successful deployment is not claimed. The preview URLs are retained for verification once the Actions source setting and deploy job are healthy:
 
 - **Explore:** [Singularity City](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/)
 - [Current field notes](https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/thinking.html)
@@ -50,7 +50,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 
 `Ontology → MicroBundles → arbitration → Experience → spatial manifestation`
 
-- [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)
+- [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)\n- [Entangled realities and digital real estate](docs/ENTANGLED_REALITIES.md) — proposed company tenancy, shared workplace Experiences, cross-device co-entanglement and immersive BIM coordination, with explicit implementation gaps.
 - [Physics terrain and worldbuilding](docs/PHYSICS_TERRAIN_AND_WORLDBUILDING.md) — Physics-owned terrain authority, existing APIs, adapter contract and worldbuilding sequence.
 - [Maps as city data](docs/MAPS_AS_CITY_DATA.md) — terrain-first spatial layers, hydrology, planning maps and provenance.
 - [Historical cartography and city history](docs/HISTORICAL_CARTOGRAPHY_AND_CITY_HISTORY.md) — period maps, source evidence, temporal features, uncertainty and the city's changing story.
