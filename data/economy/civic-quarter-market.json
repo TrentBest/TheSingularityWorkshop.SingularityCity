@@ -1,0 +1,87 @@
+{
+  "schema": "singularity-city.economy-scenario.v1",
+  "status": "authored-simulation-fixture",
+  "scenario": {
+    "id": "civic-quarter-market-day",
+    "title": "Civic Quarter market day",
+    "reality": "fictional-city-fixture",
+    "currency": {
+      "id": "10000000-0000-4000-8000-000000000001",
+      "name": "City Marks",
+      "symbol": "CM",
+      "decimalPlaces": 2,
+      "redeemable": false,
+      "ownerPackage": "TheSingularityWorkshop.Economy",
+      "type": "SimulatedCurrency"
+    },
+    "initialIssuance": {
+      "operationId": "20000000-0000-4000-8000-000000000001",
+      "accountId": "30000000-0000-4000-8000-000000000001",
+      "amount": 10000.00,
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "reason": "Explicit fictional-world monetary supply for this deterministic fixture"
+    }
+  },
+  "actors": [
+    { "id": "civic-municipality", "name": "Civic Administration", "kind": "institution", "cityPlaceId": "civic-building-hall", "economyEntityId": "40000000-0000-4000-8000-000000000001" },
+    { "id": "bakery-cooperative", "name": "Civic Quarter Bakery Cooperative", "kind": "business", "cityPlaceId": "civic-building-bakery", "economyEntityId": "40000000-0000-4000-8000-000000000002" },
+    { "id": "household-ada", "name": "Ada's household", "kind": "household", "cityPlaceId": "civic-parcel-residential", "economyEntityId": "40000000-0000-4000-8000-000000000003" },
+    { "id": "builder-guild", "name": "Civic Builders Guild", "kind": "business", "cityPlaceId": "civic-building-hall", "economyEntityId": "40000000-0000-4000-8000-000000000004" },
+    { "id": "property-cooperative", "name": "Residential Property Cooperative", "kind": "business", "cityPlaceId": "civic-parcel-residential", "economyEntityId": "40000000-0000-4000-8000-000000000005" },
+    { "id": "utility-cooperative", "name": "Civic Utility Cooperative", "kind": "business", "cityPlaceId": "civic-water-main", "economyEntityId": "40000000-0000-4000-8000-000000000006" },
+    { "id": "market-customer", "name": "Market Customer", "kind": "household", "cityPlaceId": "civic-square", "economyEntityId": "40000000-0000-4000-8000-000000000007" }
+  ],
+  "accounts": [
+    { "id": "30000000-0000-4000-8000-000000000001", "actorId": "civic-municipality", "role": "municipal-treasury" },
+    { "id": "30000000-0000-4000-8000-000000000002", "actorId": "bakery-cooperative", "role": "business-treasury" },
+    { "id": "30000000-0000-4000-8000-000000000003", "actorId": "household-ada", "role": "household-account" },
+    { "id": "30000000-0000-4000-8000-000000000004", "actorId": "builder-guild", "role": "contractor-account" },
+    { "id": "30000000-0000-4000-8000-000000000005", "actorId": "property-cooperative", "role": "property-income-account" },
+    { "id": "30000000-0000-4000-8000-000000000006", "actorId": "utility-cooperative", "role": "utility-income-account" },
+    { "id": "30000000-0000-4000-8000-000000000007", "actorId": "market-customer", "role": "customer-account" }
+  ],
+  "operations": [
+    { "id": "20000000-0000-4000-8000-000000000002", "kind": "issue", "toAccountId": "30000000-0000-4000-8000-000000000002", "amount": 500.00, "reason": "Explicit bakery cooperative startup capitalization" },
+    { "id": "20000000-0000-4000-8000-000000000003", "kind": "issue", "toAccountId": "30000000-0000-4000-8000-000000000003", "amount": 100.00, "reason": "Explicit household starter grant" },
+    { "id": "20000000-0000-4000-8000-000000000004", "kind": "issue", "toAccountId": "30000000-0000-4000-8000-000000000004", "amount": 60.00, "reason": "Explicit construction-service startup grant" },
+    { "id": "20000000-0000-4000-8000-000000000005", "kind": "issue", "toAccountId": "30000000-0000-4000-8000-000000000007", "amount": 20.00, "reason": "Explicit market-customer starter grant" },
+    { "id": "20000000-0000-4000-8000-000000000006", "kind": "transfer", "fromAccountId": "30000000-0000-4000-8000-000000000002", "toAccountId": "30000000-0000-4000-8000-000000000003", "amount": 40.00, "reason": "Household wage paid by bakery cooperative" },
+    { "id": "20000000-0000-4000-8000-000000000007", "kind": "transfer", "fromAccountId": "30000000-0000-4000-8000-000000000003", "toAccountId": "30000000-0000-4000-8000-000000000002", "amount": 25.00, "reason": "Household purchase of bakery goods" },
+    { "id": "20000000-0000-4000-8000-000000000008", "kind": "transfer", "fromAccountId": "30000000-0000-4000-8000-000000000003", "toAccountId": "30000000-0000-4000-8000-000000000005", "amount": 10.00, "reason": "Household rent payment" },
+    { "id": "20000000-0000-4000-8000-000000000009", "kind": "transfer", "fromAccountId": "30000000-0000-4000-8000-000000000003", "toAccountId": "30000000-0000-4000-8000-000000000006", "amount": 8.00, "reason": "Household utility payment" },
+    { "id": "20000000-0000-4000-8000-000000000010", "kind": "transfer", "fromAccountId": "30000000-0000-4000-8000-000000000001", "toAccountId": "30000000-0000-4000-8000-000000000004", "amount": 20.00, "reason": "Municipal payment for a small construction maintenance contract" },
+    { "id": "20000000-0000-4000-8000-000000000011", "kind": "transfer", "fromAccountId": "30000000-0000-4000-8000-000000000007", "toAccountId": "30000000-0000-4000-8000-000000000002", "amount": 12.00, "reason": "Market customer purchase" }
+  ],
+  "shops": [
+    {
+      "id": "civic-bakery-shop",
+      "ownerActorId": "bakery-cooperative",
+      "economyConcept": "EconomyShop",
+      "presentation": "neighborhood-bakery",
+      "products": [
+        { "id": "bread-loaf", "name": "Daily loaf", "economyConcept": "CommerceItem", "price": 5.00, "currency": "City Marks", "inventoryOwner": "city-experience-policy", "quantity": 20 },
+        { "id": "roll-basket", "name": "Market roll basket", "economyConcept": "CommerceItem", "price": 12.00, "currency": "City Marks", "inventoryOwner": "city-experience-policy", "quantity": 8 }
+      ],
+      "offers": [
+        { "id": "market-day-rolls", "itemId": "roll-basket", "economyConcept": "MarketplaceOffer", "availability": "authored-fixture" }
+      ]
+    }
+  ],
+  "expectedBalances": [
+    { "accountId": "30000000-0000-4000-8000-000000000001", "amount": 9980.00 },
+    { "accountId": "30000000-0000-4000-8000-000000000002", "amount": 497.00 },
+    { "accountId": "30000000-0000-4000-8000-000000000003", "amount": 97.00 },
+    { "accountId": "30000000-0000-4000-8000-000000000004", "amount": 80.00 },
+    { "accountId": "30000000-0000-4000-8000-000000000005", "amount": 10.00 },
+    { "accountId": "30000000-0000-4000-8000-000000000006", "amount": 8.00 },
+    { "accountId": "30000000-0000-4000-8000-000000000007", "amount": 8.00 }
+  ],
+  "expectedTotalSupply": 10680.00,
+  "limitations": [
+    "authored deterministic fixture; not executed through the .NET SimulationLedger",
+    "not a Digiten behavior or needs simulation",
+    "inventory quantities are not decremented by the journal fixture",
+    "no production, taxation, credit, price discovery, inflation or persistent storage",
+    "City Marks are fictional and non-redeemable"
+  ]
+}
