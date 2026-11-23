@@ -76,6 +76,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Build your own city, step by step](docs/BUILD_YOUR_CITY.md)
 - [Source-grounded world research and evidence ledger](docs/SOURCE_RESEARCH.md)
 - [Living picture: visual architecture and proof ladder](docs/LIVING_PICTURE.md)
+- [City experience channels](docs/CITY_EXPERIENCE_CHANNELS.md) — independently experience the same city through Visualization, Renderer, or both, with the first opt-in audio proof and its limits.
 - [Civic Quarter connected district proof](docs/CIVIC_QUARTER_VERTICAL_SLICE.md)
 - [Civil systems and city theory atlas](docs/CIVIL_SYSTEMS_AND_CITY_THEORY.md)
 - [Wheel of Time city showcase plan](docs/WHEEL_OF_TIME_SHOWCASE.md)
