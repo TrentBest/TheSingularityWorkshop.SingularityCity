@@ -1,6 +1,11 @@
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-# The Urban Underworld — crews, fences, illicit markets and hidden power
+# The Urban Underworld
+
+*crews, fences, illicit markets and hidden power*
+
+**Sourcebook ID:** `singularity-city.domain.urban-underworld`  
+**Edition:** `0.1.0`  
 
 **Owner:** Singularity City · **LOD:** 2 civic/economic specialization · **Status:** authored domain sourcebook; not a live criminal network simulation.
 
