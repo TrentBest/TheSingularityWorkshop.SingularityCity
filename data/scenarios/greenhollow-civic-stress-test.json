@@ -334,18 +334,19 @@
         "repair-proposal-temporary-access",
         "repair-proposal-permanent-rebuild"
       ],
-      "authorizations": [
-        "publish the alternatives and their unresolved assumptions",
-        "request physical safety and accessibility assessment from the appropriate domain authority",
-        "prepare a transparent resource and funding estimate for later public review",
-        "return to the assembly before any construction or expenditure authorization"
-      ],
+      "authorizations": [],
       "notAuthorized": [
         "construction",
         "procurement",
         "payment",
         "assignment of blame for the storm damage",
         "waiver of accessibility or safety review"
+      ],
+      "permittedActions": [
+        "publish the alternatives and their unresolved assumptions",
+        "request physical safety and accessibility assessment from the appropriate domain authority",
+        "prepare a transparent resource and funding estimate for later public review",
+        "return to the assembly before any construction or expenditure authorization"
       ]
     },
     "oversightObligations": [
@@ -445,6 +446,9 @@
         "The fixture defines observable civic signals, not a validated social-science measurement."
       ]
     },
-    "schema": "singularity-city.civic-process-response.v1"
+    "schema": "singularity-city.civic-process-response.v1",
+    "authorizations": [],
+    "executionEvidence": [],
+    "outcomeReviews": []
   }
 }
