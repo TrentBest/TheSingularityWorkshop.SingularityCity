@@ -123,6 +123,7 @@ jobs:
           test -s docs/books/places/gobekli-tepe/README.md
           test -s AgentOnboarding.md
           test -s .github/workflows/ciai-evidence.yml
+          node --check assets/js/city.js
           node --check assets/js/city-experience.mjs
           node tests/city-experience-channels.test.mjs
           node tests/validate-catalog.mjs
