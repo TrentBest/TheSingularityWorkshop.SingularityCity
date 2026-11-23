@@ -13,31 +13,84 @@ assert.equal(scenario.reality, "fictional-scenario");
 assert.ok(scenario.linkedFixtures.includes(election.id));
 assert.equal(scenario.setting.placeId, election.jurisdiction.id);
 
-const actorIds = new Set(scenario.actors.map(actor => actor.id));
-assert.equal(actorIds.size, scenario.actors.length, "actor IDs must be unique");
+function uniqueIndex(records, label) {
+  const ids = records.map(record => record.id);
+  assert.equal(new Set(ids).size, ids.length, label + " IDs must be unique");
+  return new Map(records.map(record => [record.id, record]));
+}
+
+const actors = uniqueIndex(scenario.actors, "actor");
+const events = uniqueIndex(scenario.timeline, "event");
+const claims = uniqueIndex(scenario.claims, "claim");
+const evidence = uniqueIndex(scenario.evidence, "evidence");
+const findings = uniqueIndex(scenario.findings, "finding");
+
 for (const event of scenario.timeline) {
-  assert.ok(actorIds.has(event.actorId), "event actor must be declared: " + event.id);
+  assert.ok(actors.has(event.actorId), "event actor must be declared: " + event.id);
+  for (const id of event.claimIds ?? []) assert.ok(claims.has(id), "event claim must exist: " + id);
+  for (const id of event.evidenceIds ?? []) assert.ok(evidence.has(id), "event evidence must exist: " + id);
+  if (event.findingId) assert.ok(findings.has(event.findingId), "event finding must exist: " + event.findingId);
 }
 assert.deepEqual(
   scenario.timeline.map(event => event.sequence),
   scenario.timeline.map((_, index) => index + 1),
   "timeline sequence must be contiguous and deterministic"
 );
-assert.equal(new Set(scenario.timeline.map(event => event.id)).size, scenario.timeline.length);
 
-const observation = scenario.timeline.find(event => event.id === "event-01-storm-damage");
-const rumor = scenario.timeline.find(event => event.id === "event-02-rumor");
-const vigilante = scenario.timeline.find(event => event.id === "event-03-vigilante-claim");
-const justice = scenario.timeline.find(event => event.id === "event-05-court-review");
-const correction = scenario.timeline.find(event => event.id === "event-06-correction");
+for (const claim of scenario.claims) {
+  assert.ok(actors.has(claim.subjectId), "claim subject must be declared: " + claim.id);
+  assert.ok(actors.has(claim.claimantId), "claimant must be declared: " + claim.id);
+  assert.ok(events.has(claim.sourceEventId), "claim source event must exist: " + claim.id);
+  for (const id of claim.evidenceIds) assert.ok(evidence.has(id), "claim evidence must exist: " + id);
+  if (claim.findingId) assert.ok(findings.has(claim.findingId), "claim finding must exist: " + claim.id);
+}
+
+for (const item of scenario.evidence) {
+  assert.ok(actors.has(item.sourceActorId), "evidence source actor must be declared: " + item.id);
+  assert.ok(events.has(item.sourceEventId), "evidence source event must exist: " + item.id);
+  assert.ok(item.provenance, "evidence provenance is required: " + item.id);
+  assert.ok(Array.isArray(item.supports) && item.supports.length > 0, "evidence must state what it supports: " + item.id);
+  assert.ok(Array.isArray(item.doesNotEstablish) && item.doesNotEstablish.length > 0, "evidence must state its limits: " + item.id);
+}
+
+for (const finding of scenario.findings) {
+  assert.ok(actors.has(finding.authorityId), "finding authority must be declared: " + finding.id);
+  assert.ok(actors.has(finding.subjectId), "finding subject must be declared: " + finding.id);
+  for (const id of finding.claimIds) assert.ok(claims.has(id), "finding claim must exist: " + id);
+  for (const id of finding.evidenceIds) assert.ok(evidence.has(id), "finding evidence must exist: " + id);
+  assert.ok(finding.scope && finding.limitations.length > 0, "finding must state scope and limitations: " + finding.id);
+}
+
+const observation = events.get("event-01-storm-damage");
+const rumor = events.get("event-02-rumor");
+const vigilante = events.get("event-03-vigilante-claim");
+const investigation = events.get("event-04-investigation");
+const justice = events.get("event-05-court-review");
+const correction = events.get("event-06-correction");
+
 assert.equal(observation.claimStatus, "none");
 assert.equal(observation.attribution, "storm-damage-observed; no person is attributed");
+assert.deepEqual(observation.evidenceIds, ["evidence-crossing-condition"]);
 assert.equal(rumor.claimStatus, "unverified-allegation");
 assert.equal(rumor.evidenceStatus, "no-supporting-evidence-attached");
+assert.deepEqual(rumor.evidenceIds, []);
+assert.deepEqual(vigilante.evidenceIds, []);
 assert.equal(vigilante.authority, "self-appointed; no public enforcement authority");
+assert.equal(investigation.reviewerId, "independent-reviewer");
 assert.equal(justice.findingStatus, "not-established-on-present-record");
+assert.equal(justice.findingId, "finding-iven-responsibility");
 assert.equal(correction.claimStatus, "corrected");
 assert.equal(correction.evidenceStatus, "provenance-retained");
+
+const finding = findings.get("finding-iven-responsibility");
+assert.equal(finding.outcome, "not-established-on-present-record");
+assert.ok(finding.limitations.some(value => value.includes("does not identify who caused")));
+assert.ok(finding.limitations.some(value => value.includes("no further evidence could ever be found")));
+
+const observationEvidence = evidence.get("evidence-crossing-condition");
+assert.ok(observationEvidence.supports.includes("crossing-damage-exists"));
+assert.ok(observationEvidence.doesNotEstablish.some(value => value.includes("who caused")));
+assert.ok(!observationEvidence.supports.includes("resident-iven-caused-damage"));
 
 assert.equal(scenario.electionPresentation.fixtureId, election.id);
 assert.equal(scenario.electionPresentation.advertisementsRemainAttributed, true);
@@ -65,4 +118,4 @@ for (const [key, expected] of Object.entries({
 
 assert.equal(election.playerParticipation.ballotChoiceStoredInThisFixture, false);
 assert.equal(election.rules.ballot, "secret");
-console.log("Greenhollow civic stress-test validated: " + scenario.timeline.length + " ordered events.");
+console.log("Greenhollow civic stress-test validated: " + scenario.timeline.length + " events, " + scenario.claims.length + " claims, " + scenario.evidence.length + " evidence records, " + scenario.findings.length + " scoped findings.");
