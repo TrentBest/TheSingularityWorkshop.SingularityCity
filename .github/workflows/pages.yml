@@ -47,6 +47,13 @@ jobs:
           test -s docs/ECONOMY_IN_SINGULARITY_CITY.md
           test -s docs/books/vehicles.md
           test -s docs/books/buildings-and-construction.md
+          test -s docs/books/thieves-and-shadow-work.md
+          test -s docs/books/thieves-and-shadow-work.book.json
+          test -s docs/books/covers/thieves-and-shadow-work.svg
+          test -s docs/books/urban-underworld.md
+          test -s docs/books/urban-underworld.book.json
+          test -s docs/books/covers/urban-underworld.svg
+          test -s tests/underworld-sourcebooks.test.mjs
           test -s docs/rulebooks/SurpsRulebookVehiclesAndMobility.md
           test -s docs/rulebooks/SurpsRulebookBuildingsAndConstruction.md
           test -s data/commerce-route-fixture.json
@@ -83,6 +90,7 @@ jobs:
           node tests/commerce-route-fixture.test.mjs
           node tests/economy-scenario.test.mjs
           node tests/vehicle-construction-capabilities.test.mjs
+          node tests/underworld-sourcebooks.test.mjs
           node tests/physics-terrain-adapter.test.mjs
           node tests/terrain-interpretation.test.mjs
           node --test tests/physics-terrain-overlay.test.mjs tests/physics-terrain-snapshot.test.mjs
