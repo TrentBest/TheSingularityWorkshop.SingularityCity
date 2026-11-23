@@ -65,6 +65,15 @@ jobs:
           test -s docs/books/politics-power-and-public-will.md
           test -s docs/books/politics-power-and-public-will.book.json
           test -s docs/books/covers/politics-power-and-public-will.svg
+          test -s docs/books/elections-and-player-participation.md
+          test -s docs/books/elections-and-player-participation.book.json
+          test -s docs/books/covers/elections-and-player-participation.svg
+          test -s docs/books/vigilantes-and-civic-justice.md
+          test -s docs/books/vigilantes-and-civic-justice.book.json
+          test -s docs/books/covers/vigilantes-and-civic-justice.svg
+          test -s docs/books/villains-and-antagonists.md
+          test -s docs/books/villains-and-antagonists.book.json
+          test -s docs/books/covers/villains-and-antagonists.svg
           test -s tests/underworld-sourcebooks.test.mjs
           test -s tests/civic-governance-sourcebooks.test.mjs
           test -s docs/rulebooks/SurpsRulebookVehiclesAndMobility.md
@@ -105,6 +114,7 @@ jobs:
           node tests/vehicle-construction-capabilities.test.mjs
           node tests/underworld-sourcebooks.test.mjs
           node tests/civic-governance-sourcebooks.test.mjs
+          node tests/elections-vigilantes-villains.test.mjs
           node tests/physics-terrain-adapter.test.mjs
           node tests/terrain-interpretation.test.mjs
           node --test tests/physics-terrain-overlay.test.mjs tests/physics-terrain-snapshot.test.mjs
