@@ -178,3 +178,5 @@ body.mode-visualize .renderer-output{display:none}
 body.mode-renderer .district-scene-frame{display:none}
 body.mode-renderer .district-experience{border-color:var(--cyan)}
 @media(max-width:600px){.district-experience{padding:14px}.district-experience-toolbar{align-items:stretch;flex-wrap:wrap}.district-experience-toolbar>div{order:-1;flex-basis:100%}.district-scene-caption{flex-direction:column}.district-scene-frame #district-scene{min-height:180px}}
+
+#district-labels .map-label.district-label-selected{fill:#fff;opacity:1;font-weight:800;paint-order:stroke;stroke:#07111f;stroke-width:3px;stroke-linejoin:round}
