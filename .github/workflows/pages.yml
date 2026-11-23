@@ -75,6 +75,7 @@ jobs:
           test -s docs/books/villains-and-antagonists.book.json
           test -s data/elections/greenhollow-reeve-election.json
           test -s tests/greenhollow-election-fixture.test.mjs
+          test -s tests/surps-participation-manifest.test.mjs
           test -s docs/books/covers/villains-and-antagonists.svg
           test -s tests/underworld-sourcebooks.test.mjs
           test -s tests/civic-governance-sourcebooks.test.mjs
@@ -118,6 +119,7 @@ jobs:
           node tests/civic-governance-sourcebooks.test.mjs
           node tests/elections-vigilantes-villains.test.mjs
           node tests/greenhollow-election-fixture.test.mjs
+          node tests/surps-participation-manifest.test.mjs
           node tests/physics-terrain-adapter.test.mjs
           node tests/terrain-interpretation.test.mjs
           node --test tests/physics-terrain-overlay.test.mjs tests/physics-terrain-snapshot.test.mjs
