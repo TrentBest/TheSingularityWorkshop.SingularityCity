@@ -339,6 +339,7 @@
       "required": [
         "id",
         "sourceDecisionId",
+        "proposalId",
         "grantingAuthorityId",
         "jurisdiction",
         "action",
@@ -454,6 +455,10 @@
         },
         "revocationReference": {
           "type": "string"
+        },
+        "proposalId": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },
