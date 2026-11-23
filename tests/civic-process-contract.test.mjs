@@ -158,6 +158,7 @@ function validateLinkedRecords(candidate, candidateScenario) {
     const authorization = candidateAuthorizations.get(execution.authorizationId);
     assert.ok(authorization, "execution authorization reference must resolve");
     assert.ok(candidateProposals.has(execution.proposalId), "execution proposal reference must resolve");
+    assert.equal(execution.proposalId, authorization.proposalId, "execution proposal must match authorization");
     assert.equal(execution.action, authorization.action, "execution action must match authorization");
     assert.equal(execution.subjectId, authorization.subjectId, "execution subject must match authorization");
     assert.equal(execution.executorId, authorization.executorId, "execution executor must match authorization");
@@ -182,6 +183,7 @@ validateLinkedRecords(response, scenario);
 const grant = {
   id: "authorization-test-001",
   sourceDecisionId: decision.id,
+  proposalId: "repair-proposal-temporary-access",
   grantingAuthorityId: "village-assembly",
   jurisdiction: "Greenhollow north-road crossing civic works",
   action: "open-temporary-route",
@@ -201,8 +203,9 @@ validateSchema(grant, schema.$defs.authorization, "$authorization");
 const executionRecord = {
   id: "execution-test-001",
   authorizationId: grant.id,
-  proposalId: "repair-proposal-temporary-access",
+  proposalId: grant.proposalId,
   action: grant.action,
+  proposalId: grant.proposalId,
   subjectId: grant.subjectId,
   executorId: grant.executorId,
   occurredAt: "2026-11-23T13:00:00Z",
@@ -282,6 +285,7 @@ assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: null }).reas
 assert.ok(evaluateCivicAuthorization({ ...gateInput, at: "2026-11-24T00:00:00Z" }).reasons.includes("authorization-expired"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, at: "2026-11-22T23:59:59Z" }).reasons.includes("authorization-not-yet-valid"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, action: "construction" }).reasons.includes("action-out-of-scope"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, proposalId: "different-proposal" }).reasons.includes("proposal-out-of-scope"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, subjectId: "different-route" }).reasons.includes("subject-out-of-scope"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, satisfiedPrerequisiteEvidenceIds: [] }).reasons.includes("prerequisite-unsatisfied:safety-review-001"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: { ...grant, status: "revoked" } }).reasons.includes("authorization-not-granted"));
