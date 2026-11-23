@@ -57,6 +57,10 @@ NuGet distributes executable code. MicroBundles compose optional capabilities in
 
 An experience manifest should declare stable identity, version, capability requirements, entry points and host requirements. City resolves an entry point to a place and delegates execution to the owning experience and host.
 
+## Civic process ownership
+
+City coordinates institutions, jurisdiction, public deliberation, civic decisions, oversight and outcomes. A decision is not an execution authorization; procurement and payments remain Economy-owned, while physical feasibility and safety remain Physics-owned. The versioned [Civic Process Model](CIVIC_PROCESS_MODEL.md) defines the record and evidence boundaries. Its Greenhollow conformance fixture is authored data, not a live civic runtime.
+
 ## Authority and AI
 
 ProtocolAi, GrammarAi and CommandAi can interpret intent and propose actions. They do not directly mutate authoritative City state.
