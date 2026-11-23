@@ -1,6 +1,11 @@
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-# Justice, Courts & Restitution — truth, process and repair
+# Justice, Courts & Restitution
+
+*truth, process and repair*
+
+**Sourcebook ID:** `singularity-city.domain.justice-courts-and-restitution`  
+**Edition:** `0.1.0`  
 
 **Owner:** Singularity City · **LOD:** 2 institutional specialization · **Status:** authored domain sourcebook; not a legal-advice service or adjudication engine.
 
