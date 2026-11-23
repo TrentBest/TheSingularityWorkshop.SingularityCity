@@ -83,7 +83,14 @@ for (const proposal of response.proposals) {
 assert.ok(response.hearingDecision.notAuthorized.includes("construction"));
 assert.ok(response.hearingDecision.notAuthorized.includes("procurement"));
 assert.ok(response.hearingDecision.notAuthorized.includes("payment"));
-assert.deepEqual(response.hearingDecision.authorizations, [], "the hearing decision must not mint executable authorizations");\nassert.ok(response.hearingDecision.permittedActions.some(item => item.includes("before any construction or expenditure")));\nassert.deepEqual(response.authorizations, [], "no separate grant exists in the Greenhollow fixture");\nassert.deepEqual(response.executionEvidence, [], "no execution may be recorded without a grant");\nassert.deepEqual(response.outcomeReviews, [], "no outcome review may imply unrecorded execution");\nassert.ok(response.authorizations.every(item => item.status === "granted" || item.status === "suspended" || item.status === "revoked" || item.status === "expired" || item.status === "denied"));\nassert.ok(response.executionEvidence.every(item => { const auth = response.authorizations.find(candidate => candidate.id === item.authorizationId); return auth && auth.action === item.action && auth.subjectId === item.subjectId && auth.executorId === item.executorId; }), "execution evidence must match its authorization scope and executor");\nassert.ok(response.outcomeReviews.every(item => item.authorizationIds.every(id => response.authorizations.some(auth => auth.id === id)) && item.executionEvidenceIds.every(id => response.executionEvidence.some(evidence => evidence.id === id))), "outcome reviews must reference source authorization and execution records");
+assert.deepEqual(response.hearingDecision.authorizations, [], "the hearing decision must not mint executable authorizations");
+assert.ok(response.hearingDecision.permittedActions.some(item => item.includes("before any construction or expenditure")));
+assert.deepEqual(response.authorizations, [], "no separate grant exists in the Greenhollow fixture");
+assert.deepEqual(response.executionEvidence, [], "no execution may be recorded without a grant");
+assert.deepEqual(response.outcomeReviews, [], "no outcome review may imply unrecorded execution");
+assert.ok(response.authorizations.every(item => item.status === "granted" || item.status === "suspended" || item.status === "revoked" || item.status === "expired" || item.status === "denied"));
+assert.ok(response.executionEvidence.every(item => { const auth = response.authorizations.find(candidate => candidate.id === item.authorizationId); return auth && auth.action === item.action && auth.subjectId === item.subjectId && auth.executorId === item.executorId; }), "execution evidence must match its authorization scope and executor");
+assert.ok(response.outcomeReviews.every(item => item.authorizationIds.every(id => response.authorizations.some(auth => auth.id === id)) && item.executionEvidenceIds.every(id => response.executionEvidence.some(evidence => evidence.id === id))), "outcome reviews must reference source authorization and execution records");
 assert.ok(response.residentImpacts.every(item => item.assessment === "qualitative-unmeasured"));
 assert.equal(response.institutionalTrust.noAggregateScore, true);
 assert.equal(response.institutionalTrust.noAutomaticTrustGain, true);
@@ -124,4 +131,5 @@ assert.ok(evaluateCivicAuthorization({ ...gateInput, subjectId: "different-route
 assert.ok(evaluateCivicAuthorization({ ...gateInput, satisfiedPrerequisiteEvidenceIds: [] }).reasons.includes("prerequisite-unsatisfied:safety-review-001"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: { ...grant, status: "revoked" } }).reasons.includes("authorization-not-granted"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, executorId: "unlisted-provider" }).reasons.includes("executor-not-authorized"));
-\nconsole.log("Civic process contract validated: versioned response shape, authority, proposal, oversight and impact references.");
+
+console.log("Civic process contract validated: versioned response shape, authority, proposal, oversight and impact references.");
