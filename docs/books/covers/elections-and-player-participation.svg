@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Elections and Player Participation</title><desc id="desc">A ballot box and civic gathering beneath banners.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#164e63"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs>
+<rect width="720" height="420" rx="24" fill="url(#bg)"/><path d="M125 110h470M160 110v90M560 110v90" stroke="#cffafe" stroke-width="7" fill="none"/>
+<path d="M145 110l55 0-27 55zM505 110h55l-28 55z" fill="#67e8f9"/>
+<rect x="270" y="230" width="180" height="115" rx="10" fill="none" stroke="#ecfeff" stroke-width="9"/><path d="M300 230l25-35h70l25 35M315 265h90" stroke="#ecfeff" stroke-width="8" fill="none"/>
+<g fill="#a5f3fc"><circle cx="175" cy="260" r="17"/><circle cx="220" cy="280" r="17"/><circle cx="500" cy="280" r="17/><circle cx="545" cy="260" r="17"/></g>
+<text x="360" y="52" fill="#fff" font-family="sans-serif" font-size="23" text-anchor="middle" letter-spacing="4">SINGULARITY CITY</text><text x="360" y="390" fill="#fff" font-family="sans-serif" font-size="25" text-anchor="middle" font-weight="700">VOICE • CHOICE • CONSEQUENCE</text></svg>
