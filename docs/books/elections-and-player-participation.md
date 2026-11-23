@@ -126,6 +126,10 @@ City does not claim cryptographic ballot custody, secure identity, a production 
 - A close result triggers observation, recount and adjudication before certification.
 - Campaign donations and expenses reconcile through the shared Economy domain.
 
-## 10. Implementation boundary
+## 10. Worked scenario: Greenhollow elects a reeve
+
+[Greenhollow Reeve Election](../../data/elections/greenhollow-reeve-election.json) is a fictional, deterministic fixture with three candidates, attributed advertisements, four campaign-presentation density settings, a secret-ballot rule and an illustrative preliminary count. The fixture deliberately stores no player ballot choice and has no persistent voting service. It proves the scenario vocabulary and privacy boundary—not a playable election yet.
+
+## 11. Implementation boundary
 
 This is an authored domain contract and scenario specification, not an implemented election engine. Player ballot interaction, eligibility enforcement, secret ballot custody, campaign simulation, ad scheduling, counting, certification and dispute workflows remain future implementation work. The sourcebook must not be presented as proof that a player can currently vote in the browser experience.
