@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/schemas/civic-authorization-host-context.schema.json",
+  "title": "Singularity City Civic Authorization Host Context",
+  "description": "Host-supplied evidence envelope required before a production adapter may evaluate an authorization. Structural conformance does not authenticate any assertion or evidence reference.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "requestId",
+    "principal",
+    "authority",
+    "clock",
+    "prerequisiteEvidence",
+    "conditionEvaluations",
+    "revocation",
+    "audit"
+  ],
+  "properties": {
+    "schema": {
+      "const": "singularity-city.civic-authorization-host-context.v1"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "principal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "principalId",
+        "authenticatedAt",
+        "authenticationMethod",
+        "identityEvidenceRef",
+        "issuerId"
+      ],
+      "properties": {
+        "principalId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authenticatedAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authenticationMethod": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identityEvidenceRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issuerId": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorityId",
+        "jurisdiction",
+        "sourceDecisionId",
+        "authorityEvidenceRef",
+        "verifiedBy",
+        "verifiedAt"
+      ],
+      "properties": {
+        "authorityId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "jurisdiction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceDecisionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authorityEvidenceRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verifiedBy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verifiedAt": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "clock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instant",
+        "sourceId",
+        "observedAt",
+        "clockEvidenceRef"
+      ],
+      "properties": {
+        "instant": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observedAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clockEvidenceRef": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "prerequisiteEvidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status",
+          "sourceId",
+          "evidenceRef",
+          "verifiedBy",
+          "verifiedAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "verified",
+              "unsatisfied",
+              "unknown"
+            ]
+          },
+          "sourceId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceRef": {
+            "type": "string",
+            "minLength": 1
+          },
+          "verifiedBy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "verifiedAt": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "conditionEvaluations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status",
+          "evaluatorId",
+          "evidenceRefs",
+          "evaluatedAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "satisfied",
+              "unsatisfied",
+              "unknown"
+            ]
+          },
+          "evaluatorId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "evaluatedAt": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "revocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "checkedAt",
+        "sourceId",
+        "evidenceRef"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "revoked",
+            "unknown"
+          ]
+        },
+        "checkedAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceRef": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eventId",
+        "correlationId",
+        "recordedAt",
+        "sinkId"
+      ],
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordedAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sinkId": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
