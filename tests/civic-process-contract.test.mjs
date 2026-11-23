@@ -14,7 +14,7 @@ assert.equal(schema.properties.schema.const, "singularity-city.civic-process-res
 assert.equal(schema.additionalProperties, false);
 assert.equal(hostContextSchema.properties.schema.const, "singularity-city.civic-authorization-host-context.v1");
 assert.ok(hostContractDoc.includes("Trust boundary"));
-assert.ok(hostContractDoc.includes("Structural conformance does not authenticate"));
+assert.ok(hostContractDoc.includes("The schema validates structure only."));
 assert.deepEqual(
   schema.required,
   ["schema", "id", "status", "hearingEventId", "proposals", "authorizations", "executionEvidence", "outcomeReviews", "hearingDecision", "oversightObligations", "residentImpacts", "institutionalTrust"]
