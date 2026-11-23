@@ -20,6 +20,18 @@ The general people-and-agency domain for residents (Digitens), visitors, communi
 
 Higher-detail domain books specialize this shared model without redefining the person or resident.
 
+### Vehicles, Mobility and Transport
+
+[Read Vehicles, Mobility and Transport Systems](vehicles.md) — vehicle definitions and instances, capability profiles, journeys, fleets, route compatibility, and Economy/Physics boundaries.
+
+### Buildings, Materials and Construction
+
+[Read Buildings, Materials and Construction](buildings-and-construction.md) — material availability, fabrication, tools, skills, construction dependencies, feasibility and civic lifecycle.
+
+### City Economy
+
+[Read Economy in Singularity City](../ECONOMY_IN_SINGULARITY_CITY.md) — shared Economy package integration, non-redeemable City Marks and the deterministic Civic Quarter market-day scenario.
+
 ## Place books
 
 A separate editorial track covers individual settlements, cities, archaeological sites and cultural landscapes rather than reusable domain concepts. The shared reference ontology determines reality membership; City does not invent a local real/fiction taxonomy. An evidence-based reconstruction of a real site's past is distinguished from direct observation, while an alternate-history or invented version belongs to a fictional reality. Fictional places can retain a **based on** relationship to real inspirations without being presented as real locations. See [Reality Sets, Place Identity and Historical Reconstruction](../REALITY_AND_RECONSTRUCTION.md).
