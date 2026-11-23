@@ -111,6 +111,10 @@ A playable construction sequence is a hypothesis-testing lesson, not evidence th
 
 The same stable place and feature identities should connect the sourcebook, source ledger, scan, map, reconstruction and interactive scene. The shared reference ontology owns reality membership and semantic identity; SURPS supplies roleplaying-world composition; City owns place and civic/spatial content; Physics owns physical terrain and physical simulation; Renderer and Visualize present the evidence and experience.
 
+## Contribute and review
+
+The public [City sourcebook collaboration issue](https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity/issues/1) is the discussion point for source leads, data-access guidance, specialist review and corrections. Please identify the exact dataset, source or claim, provide its provenance, and state the scope of any expert review.
+
 ## Open questions
 
 - Which current scan, LiDAR and photogrammetry datasets can the research teams share or expose through authoritative viewers?
