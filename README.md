@@ -67,6 +67,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Governance & Civic Administration (LOD 2)](docs/books/governance-and-civic-administration.md) — institutions, public offices, jurisdiction, service delivery, budgets and accountability.
 - [Politics, Power & Public Will (LOD 2)](docs/books/politics-power-and-public-will.md) — elections, factions, coalitions, dissent, legitimacy and transfers of power.
 - [Elections & Player Participation (LOD 2)](docs/books/elections-and-player-participation.md) — player voting, constitutional election rules, campaign finance, secret ballots, candidate advertisements and recounts.
+- [Greenhollow civic stress test](docs/GREENHOLLOW_CIVIC_STRESS_TEST.md) — integrated fictional sequence linking rumor, evidence, vigilantism, public safety, justice, civic response and the existing election fixture.
 - [Vigilantes & Civic Justice (LOD 2)](docs/books/vigilantes-and-civic-justice.md) — self-appointed protectors, masked identities, community response, accountability and the boundary between aid and private enforcement.
 - [Villains & Antagonists (LOD 2)](docs/books/villains-and-antagonists.md) — antagonists with motives, capabilities, factions, public narratives, agency and consequences.
 - [SURPS vehicle rulebook specification](docs/rulebooks/SurpsRulebookVehiclesAndMobility.md) and [building/construction rulebook specification](docs/rulebooks/SurpsRulebookBuildingsAndConstruction.md) — content-first rulebooks pending the shared SURPS interface.
