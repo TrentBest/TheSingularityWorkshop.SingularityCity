@@ -1,6 +1,11 @@
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-# Governance & Civic Administration — how a city makes and delivers decisions
+# Governance & Civic Administration
+
+*how a city makes and delivers decisions*
+
+**Sourcebook ID:** `singularity-city.domain.governance-and-civic-administration`  
+**Edition:** `0.1.0`  
 
 **Owner:** Singularity City · **LOD:** 2 institutional specialization · **Status:** authored domain sourcebook; not a live municipal operating system.
 
