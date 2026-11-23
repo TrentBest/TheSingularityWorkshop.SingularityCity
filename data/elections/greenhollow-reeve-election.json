@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "singularity-city.scenario.greenhollow-reeve-election.001",
+  "title": "Greenhollow Reeve Election",
+  "reality": "fictional-scenario",
+  "status": "authored-fixture-not-live-election",
+  "jurisdiction": {
+    "id": "greenhollow",
+    "name": "Greenhollow",
+    "office": {
+      "id": "reeve",
+      "title": "Reeve",
+      "responsibilities": [
+        "coordinate market-day services",
+        "present a public works plan",
+        "chair the village assembly"
+      ]
+    }
+  },
+  "rules": {
+    "method": "plurality",
+    "ballot": "secret",
+    "eligibilityProfile": "declared-by-setting-constitution",
+    "candidateNomination": "public-nomination",
+    "campaignDisclosure": "sponsor-attribution-required",
+    "counting": "deterministic-fixture-count",
+    "certification": "independent-election-officer"
+  },
+  "candidates": [
+    {
+      "id": "candidate-1",
+      "name": "Elian Moss",
+      "platform": [
+        "repair the north road crossing",
+        "publish market-day service accounts"
+      ],
+      "campaignOrganization": "North Road Neighbors"
+    },
+    {
+      "id": "candidate-2",
+      "name": "Sera Vale",
+      "platform": [
+        "expand the covered market stalls",
+        "fund a village water survey"
+      ],
+      "campaignOrganization": "Greenhollow Common"
+    },
+    {
+      "id": "candidate-3",
+      "name": "Dain Holt",
+      "platform": [
+        "reduce the reeve office's discretionary spending",
+        "create a public complaints hearing"
+      ],
+      "campaignOrganization": "Open Ledger Circle"
+    }
+  ],
+  "campaignAdvertisements": [
+    {
+      "id": "ad-001",
+      "candidateId": "candidate-1",
+      "sponsor": "North Road Neighbors",
+      "medium": "market-board",
+      "message": "A safer crossing. A stronger market.",
+      "placement": "Greenhollow Green",
+      "repeatClass": "ordinary",
+      "isVerifiedPolicyClaim": false
+    },
+    {
+      "id": "ad-002",
+      "candidateId": "candidate-2",
+      "sponsor": "Greenhollow Common",
+      "medium": "street-crier",
+      "message": "More shelter for every market day!",
+      "placement": "Greenhollow Green",
+      "repeatClass": "saturated",
+      "isVerifiedPolicyClaim": false
+    },
+    {
+      "id": "ad-003",
+      "candidateId": "candidate-3",
+      "sponsor": "Open Ledger Circle",
+      "medium": "handbill",
+      "message": "Public accounts. Public answers.",
+      "placement": "bakery notice rail",
+      "repeatClass": "ordinary",
+      "isVerifiedPolicyClaim": false
+    }
+  ],
+  "presentation": {
+    "availableDensity": [
+      "quiet",
+      "ordinary",
+      "saturated",
+      "muted"
+    ],
+    "defaultDensity": "ordinary",
+    "mutingHidesPresentationOnly": true,
+    "mutingChangesCampaignHistory": false
+  },
+  "playerParticipation": {
+    "mayObserveWithoutVoting": true,
+    "mayAbstain": true,
+    "abstentionPenalty": false,
+    "eligibilityDeterminedBy": "setting-constitution",
+    "ballotSelectionPublic": false,
+    "ballotChoiceStoredInThisFixture": false
+  },
+  "countFixture": {
+    "votesByCandidate": {
+      "candidate-1": 12,
+      "candidate-2": 15,
+      "candidate-3": 9
+    },
+    "validBallots": 36,
+    "invalidBallots": 0,
+    "winningCandidateId": "candidate-2",
+    "resultStatus": "illustrative-preliminary-count-not-certified"
+  },
+  "boundaries": {
+    "noRealWorldCandidates": true,
+    "noExternalAdvertisingNetwork": true,
+    "noVoterProfiling": true,
+    "noBallotCustodyImplementation": true,
+    "noPersistentPlayerVote": true,
+    "economyOwnsCampaignTransactions": true
+  }
+}
