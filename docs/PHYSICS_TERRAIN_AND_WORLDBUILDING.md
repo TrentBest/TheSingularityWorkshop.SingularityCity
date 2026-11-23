@@ -73,6 +73,18 @@ City pins the snapshot at `data/terrain/physics-volcanic-terrain.json`. Provenan
 
 The map has a separate, initially hidden Physics elevation layer and toggle. It renders only imported samples. Synthetic terrain, land-cover, hydrology and hazard layers remain separate. Snapshot tests verify provenance, dimensions and exact sample preservation.
 
+## Physics volumetric producer contract (available; City importer not yet implemented)
+
+Physics now provides a versioned sparse material-volume envelope for genuinely three-dimensional regions: [producer contract and interchange notes](https://github.com/TrentBest/TheSingularityWorkshop.Physics/blob/development/docs/SPARSE_MATERIAL_VOXEL_VOLUME_3D.md), [JSON Schema v1](https://github.com/TrentBest/TheSingularityWorkshop.Physics/blob/development/docs/schemas/sparse-material-voxel-volume.v1.schema.json), and [synthetic interchange fixture](https://github.com/TrentBest/TheSingularityWorkshop.Physics/blob/development/docs/records/sparse-material-voxel-volume-example.json).
+
+Schema identity: `singularity-physics.sparse-material-voxel-volume.v1`.
+
+The payload carries stable region/dataset/revision IDs; coordinate-frame ID; linear unit; explicit X/Y/Z axis mapping; vertical datum and positive direction; material-catalog identity; source repository/revision; model and algorithm IDs/versions; generation parameters; source run ID and optional seed; grid origin, cubic voxel size, chunk size, and occupied voxel/material samples. Physics validates the schema, finite grid geometry, positive material IDs, duplicate coordinates, and a configurable sample-count limit.
+
+**This is a producer contract, not a completed City capability.** City does not yet import or render this volumetric payload. A future City adapter must remain read-only, preserve voxel samples and all provenance exactly, and refuse to infer coordinate transforms, units, georeferencing, vertical datum, or material properties. It should expose the volume as a distinct 3D source layer; it must not flatten caves, tunnels, overhangs, or underground infrastructure into the 2D height-field importer. Any surface mesh, slope field, contour, or resampled grid must be a separately identified derived product.
+
+The included 2×2×2 sample is a synthetic contract fixture only, not generated geology or a Tacoma-aligned dataset.
+
 ## City-derived slope interpretation (first analytical layer)
 
 City's pure, renderer-independent `assets/js/terrain-interpretation.mjs` computes a slope angle at each imported elevation sample. It requires explicit metre spacing and the declared row order; it uses central differences internally and one-sided differences at grid boundaries.
