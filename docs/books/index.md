@@ -6,22 +6,22 @@ This is Singularity City's canonical local SURPS catalogue. The cross-repository
 
 Singularity City owns city-specific domain knowledge and implementation. SURPS owns shared roleplaying ontology, CORE rules, book composition, and LOD selection. These books are human-readable domain sourcebooks; their presence does not claim a completed `ISurpsRulebook` runtime adapter or machine-executable rule resolver.
 
-## Registered for SURPS participation
+## Declared for SURPS review — not yet enrolled
 
-All entries below have a local Markdown source, descriptor, and distinct cover. Their current publication status is **draft**.
+All ten entries below have a local Markdown source, canonical descriptor, and distinct cover. Their current publication status is **draft**. The repository is `integrated-not-enrolled`; global ownership claims and admission evidence remain subject to independent SURPS review.
 
-| Sourcebook | LOD | Descriptor | Scope |
+| Sourcebook | LOD | Descriptor | Cover | Scope |
 |---|---:|---|---|
-| [Nonplayer Characters](nonplayer-characters.md) | 1 | [Descriptor](nonplayer-characters.book.json) | Shared City-owned person, resident, visitor, and agency domain |
-| [Thieves & Shadow Work](thieves-and-shadow-work.md) | 2 | [Descriptor](thieves-and-shadow-work.book.json) | Thief roles, motives, agency, incidents, victims, consequences, and reform |
-| [The Urban Underworld](urban-underworld.md) | 2 | [Descriptor](urban-underworld.book.json) | Crews, guilds, fences, disputed property, informal networks, corruption, and rumor |
-| [Law Enforcement & Public Safety](law-enforcement-and-public-safety.md) | 2 | [Descriptor](law-enforcement-and-public-safety.book.json) | Public-safety institutions, jurisdiction, evidence, response, rights, and oversight |
-| [Justice, Courts & Restitution](justice-courts-and-restitution.md) | 2 | [Descriptor](justice-courts-and-restitution.book.json) | Due process, findings, remedies, sentencing, appeals, and restorative justice |
-| [Governance & Civic Administration](governance-and-civic-administration.md) | 2 | [Descriptor](governance-and-civic-administration.book.json) | Institutions, offices, jurisdictions, services, budgets, records, and accountability |
-| [Politics, Power & Public Will](politics-power-and-public-will.md) | 2 | [Descriptor](politics-power-and-public-will.book.json) | Political actors, factions, elections, representation, dissent, and legitimacy |
-| [Elections & Player Participation](elections-and-player-participation.md) | 2 | [Descriptor](elections-and-player-participation.book.json) | Player voting, campaign advertising, ballot privacy, counts, disputes, and appeals |
-| [Vigilantes & Civic Justice](vigilantes-and-civic-justice.md) | 2 | [Descriptor](vigilantes-and-civic-justice.book.json) | Self-appointed protectors, community response, allegations, harms, and accountability |
-| [Villains & Antagonists](villains-and-antagonists.md) | 2 | [Descriptor](villains-and-antagonists.book.json) | Antagonist motives, capabilities, organizations, narratives, choices, and consequences |
+| [Nonplayer Characters](nonplayer-characters.md) | 1 | [Descriptor](nonplayer-characters.book.json) | [Cover](covers/nonplayer-characters.svg) | Shared City-owned person, resident, visitor, and agency domain |
+| [Thieves & Shadow Work](thieves-and-shadow-work.md) | 2 | [Descriptor](thieves-and-shadow-work.book.json) | [Cover](covers/thieves-and-shadow-work.svg) | Thief roles, motives, agency, incidents, victims, consequences, and reform |
+| [The Urban Underworld](urban-underworld.md) | 2 | [Descriptor](urban-underworld.book.json) | [Cover](covers/urban-underworld.svg) | Crews, guilds, fences, disputed property, informal networks, corruption, and rumor |
+| [Law Enforcement & Public Safety](law-enforcement-and-public-safety.md) | 2 | [Descriptor](law-enforcement-and-public-safety.book.json) | [Cover](covers/law-enforcement-and-public-safety.svg) | Public-safety institutions, jurisdiction, evidence, response, rights, and oversight |
+| [Justice, Courts & Restitution](justice-courts-and-restitution.md) | 2 | [Descriptor](justice-courts-and-restitution.book.json) | [Cover](covers/justice-courts-and-restitution.svg) | Due process, findings, remedies, sentencing, appeals, and restorative justice |
+| [Governance & Civic Administration](governance-and-civic-administration.md) | 2 | [Descriptor](governance-and-civic-administration.book.json) | [Cover](covers/governance-and-civic-administration.svg) | Institutions, offices, jurisdictions, services, budgets, records, and accountability |
+| [Politics, Power & Public Will](politics-power-and-public-will.md) | 2 | [Descriptor](politics-power-and-public-will.book.json) | [Cover](covers/politics-power-and-public-will.svg) | Political actors, factions, elections, representation, dissent, and legitimacy |
+| [Elections & Player Participation](elections-and-player-participation.md) | 2 | [Descriptor](elections-and-player-participation.book.json) | [Cover](covers/elections-and-player-participation.svg) | Player voting, campaign advertising, ballot privacy, counts, disputes, and appeals |
+| [Vigilantes & Civic Justice](vigilantes-and-civic-justice.md) | 2 | [Descriptor](vigilantes-and-civic-justice.book.json) | [Cover](covers/vigilantes-and-civic-justice.svg) | Self-appointed protectors, community response, allegations, harms, and accountability |
+| [Villains & Antagonists](villains-and-antagonists.md) | 2 | [Descriptor](villains-and-antagonists.book.json) | [Cover](covers/villains-and-antagonists.svg) | Antagonist motives, capabilities, organizations, narratives, choices, and consequences |
 
 ## Additional City domain specifications
 
