@@ -4,6 +4,7 @@ import { evaluateCivicAuthorization } from "../assets/js/civic-authorization-gat
 
 const readJson = async path => JSON.parse(await readFile(new URL("../" + path, import.meta.url), "utf8"));
 const schema = await readJson("schemas/civic-process-response.schema.json");
+const hostContextSchema = await readJson("schemas/civic-authorization-host-context.schema.json");
 const scenario = await readJson("data/scenarios/greenhollow-civic-stress-test.json");
 const response = scenario.civicResponse;
 
@@ -45,6 +46,25 @@ function validateSchema(value, definition, path = "$") {
   }
 }
 validateSchema(response, schema);
+const hostContext = {
+  schema: "singularity-city.civic-authorization-host-context.v1",
+  requestId: "host-request-test-001",
+  principal: { principalId: "civic-works-provider", authenticatedAt: "2026-11-23T11:59:00Z", authenticationMethod: "service-identity", identityEvidenceRef: "identity-evidence-001", issuerId: "test-identity-issuer" },
+  authority: { authorityId: "village-assembly", jurisdiction: "Greenhollow north-road crossing civic works", sourceDecisionId: "hearing-decision-001", authorityEvidenceRef: "authority-evidence-001", verifiedBy: "host-authority-verifier", verifiedAt: "2026-11-23T11:59:30Z" },
+  clock: { instant: "2026-11-23T12:00:00Z", sourceId: "host-trusted-clock", observedAt: "2026-11-23T12:00:00Z", clockEvidenceRef: "clock-evidence-001" },
+  prerequisiteEvidence: [{ id: "safety-review-001", status: "verified", sourceId: "independent-reviewer", evidenceRef: "safety-review-record-001", verifiedBy: "host-evidence-verifier", verifiedAt: "2026-11-23T11:58:00Z" }],
+  conditionEvaluations: [{ id: "maintain-approved-configuration", status: "satisfied", evaluatorId: "accessibility-inspector", evidenceRefs: ["configuration-inspection-001"], evaluatedAt: "2026-11-23T11:58:30Z" }],
+  revocation: { status: "clear", checkedAt: "2026-11-23T12:00:00Z", sourceId: "authority-revocation-register", evidenceRef: "revocation-check-001" },
+  audit: { eventId: "authorization-evaluation-001", correlationId: "host-request-test-001", recordedAt: "2026-11-23T12:00:00Z", sinkId: "host-audit-store" }
+};
+validateSchema(hostContext, hostContextSchema, "$hostContext");
+for (const section of [hostContext.principal, hostContext.authority, hostContext.clock, hostContext.revocation, hostContext.audit]) {
+  for (const value of Object.values(section)) assert.ok(typeof value === "string" && value.length > 0, "host context attestations must be explicit");
+}
+assert.equal(hostContext.principal.principalId, hostContext.authority.authorityId === "village-assembly" ? "civic-works-provider" : "", "host principal is independently identified");
+assert.equal(hostContext.revocation.status, "clear", "synthetic host context is clear only for schema conformance");
+assert.ok(hostContext.prerequisiteEvidence.every(item => item.status === "verified"));
+assert.ok(hostContext.conditionEvaluations.every(item => item.status === "satisfied"));
 assert.equal(response.status, "authored-hearing-outcome-fixture-not-live-civic-process");
 assert.ok(scenario.timeline.some(event => event.id === response.hearingEventId), "response must reference an existing hearing event");
 
