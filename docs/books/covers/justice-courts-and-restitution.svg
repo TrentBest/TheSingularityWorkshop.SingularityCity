@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Justice, Courts and Restitution</title><desc id="desc">Balanced scales before a civic courthouse.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#312e81"/><stop offset="1" stop-color="#713f12"/></linearGradient></defs>
+<rect width="720" height="420" rx="24" fill="url(#bg)"/><path d="M180 300h360M220 300v-20h280v20M250 280V160h220v120M235 160h250l-125-55z" fill="none" stroke="#fef3c7" stroke-width="7" stroke-linejoin="round"/>
+<path d="M360 115v-38M300 150h120M310 150l-55 80M410 150l55 80M255 230q55 35 110 0M355 230q55 35 110 0" fill="none" stroke="#fde68a" stroke-width="6" stroke-linecap="round"/>
+<path d="M360 77l-15 18h30z" fill="#fde68a"/><text x="360" y="48" fill="#fff7ed" font-family="sans-serif" font-size="23" text-anchor="middle" letter-spacing="4">SINGULARITY CITY</text>
+<text x="360" y="375" fill="#fff" font-family="sans-serif" font-size="27" text-anchor="middle" font-weight="700">JUSTICE • PROCESS • REPAIR</text></svg>
