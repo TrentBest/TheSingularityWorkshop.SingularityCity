@@ -62,6 +62,10 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Buildings, materials and construction](docs/books/buildings-and-construction.md) — material/tool/skill capability profiles and construction feasibility.
 - [Thieves & Shadow Work (LOD 2)](docs/books/thieves-and-shadow-work.md) — character specialization for thieves, from motives and relationships to allegations, consequences and reform.
 - [The Urban Underworld (LOD 2)](docs/books/urban-underworld.md) — crews, fences, black markets, disputed property, corruption and hidden civic power.
+- [Law Enforcement & Public Safety (LOD 2)](docs/books/law-enforcement-and-public-safety.md) — public-safety institutions, jurisdiction, evidence, response, oversight and trust.
+- [Justice, Courts & Restitution (LOD 2)](docs/books/justice-courts-and-restitution.md) — due process, evidence, findings, remedies, appeals and repair.
+- [Governance & Civic Administration (LOD 2)](docs/books/governance-and-civic-administration.md) — institutions, public offices, jurisdiction, service delivery, budgets and accountability.
+- [Politics, Power & Public Will (LOD 2)](docs/books/politics-power-and-public-will.md) — elections, factions, coalitions, dissent, legitimacy and transfers of power.
 - [SURPS vehicle rulebook specification](docs/rulebooks/SurpsRulebookVehiclesAndMobility.md) and [building/construction rulebook specification](docs/rulebooks/SurpsRulebookBuildingsAndConstruction.md) — content-first rulebooks pending the shared SURPS interface.
 - [Declarative experience entry points](docs/EXPERIENCES.md)
 - [Build your own city, step by step](docs/BUILD_YOUR_CITY.md)
