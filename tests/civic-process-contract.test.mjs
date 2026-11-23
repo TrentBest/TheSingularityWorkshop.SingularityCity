@@ -63,6 +63,7 @@ const actors = new Set(scenario.actors.map(actor => actor.id));
 const events = new Set(scenario.timeline.map(event => event.id));
 const proposals = new Set(response.proposals.map(proposal => proposal.id));
 assert.ok(actors.has(response.hearingDecision.authorityId), "decision authority must exist");
+assert.ok(actors.has(response.institutionalTrust.institutionId), "trust institution must exist");
 assert.ok(events.has(response.hearingDecision.sourceEventId), "decision source event must exist");
 assert.deepEqual(
   [...response.hearingDecision.selectedProposalIds].sort(),
