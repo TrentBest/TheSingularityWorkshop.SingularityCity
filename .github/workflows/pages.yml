@@ -53,7 +53,20 @@ jobs:
           test -s docs/books/urban-underworld.md
           test -s docs/books/urban-underworld.book.json
           test -s docs/books/covers/urban-underworld.svg
+          test -s docs/books/law-enforcement-and-public-safety.md
+          test -s docs/books/law-enforcement-and-public-safety.book.json
+          test -s docs/books/covers/law-enforcement-and-public-safety.svg
+          test -s docs/books/justice-courts-and-restitution.md
+          test -s docs/books/justice-courts-and-restitution.book.json
+          test -s docs/books/covers/justice-courts-and-restitution.svg
+          test -s docs/books/governance-and-civic-administration.md
+          test -s docs/books/governance-and-civic-administration.book.json
+          test -s docs/books/covers/governance-and-civic-administration.svg
+          test -s docs/books/politics-power-and-public-will.md
+          test -s docs/books/politics-power-and-public-will.book.json
+          test -s docs/books/covers/politics-power-and-public-will.svg
           test -s tests/underworld-sourcebooks.test.mjs
+          test -s tests/civic-governance-sourcebooks.test.mjs
           test -s docs/rulebooks/SurpsRulebookVehiclesAndMobility.md
           test -s docs/rulebooks/SurpsRulebookBuildingsAndConstruction.md
           test -s data/commerce-route-fixture.json
@@ -91,6 +104,7 @@ jobs:
           node tests/economy-scenario.test.mjs
           node tests/vehicle-construction-capabilities.test.mjs
           node tests/underworld-sourcebooks.test.mjs
+          node tests/civic-governance-sourcebooks.test.mjs
           node tests/physics-terrain-adapter.test.mjs
           node tests/terrain-interpretation.test.mjs
           node --test tests/physics-terrain-overlay.test.mjs tests/physics-terrain-snapshot.test.mjs
