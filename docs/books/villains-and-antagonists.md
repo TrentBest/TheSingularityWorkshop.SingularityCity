@@ -1,6 +1,11 @@
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-# Villains & Antagonists — opposition with agency and consequence
+# Villains & Antagonists
+
+*opposition with agency and consequence*
+
+**Sourcebook ID:** `singularity-city.domain.villains-and-antagonists`  
+**Edition:** `0.1.0`  
 
 **Owner:** Singularity City · **LOD:** 2 character / narrative specialization · **Status:** authored sourcebook; not a morality classifier or real-world harm instruction.
 
