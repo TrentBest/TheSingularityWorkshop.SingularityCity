@@ -1,0 +1,46 @@
+{
+  "schema": "singularity-city.construction-capability-profiles.v1",
+  "status": "authored-domain-fixture",
+  "profiles": [
+    {
+      "id": "greenhollow-village-craft",
+      "description": "Illustrative low-industrial village scenario, not a universal model of a historical era.",
+      "availableCapabilities": [
+        "material:earth", "material:local-timber", "material:thatch", "material:fieldstone",
+        "process:earth-compaction", "process:timber-joinery", "process:thatch-roofing", "process:basic-stone-dressing",
+        "tool:hand-axe", "tool:adze", "tool:hand-saw", "tool:mallet", "tool:handcart",
+        "energy:human-labor", "energy:animal-traction",
+        "skill:carpentry", "skill:thatching", "skill:earth-building", "logistics:animal-cart"
+      ]
+    },
+    {
+      "id": "civic-quarter-industrial",
+      "description": "Synthetic contemporary/industrial district capability profile.",
+      "availableCapabilities": [
+        "material:reinforced-concrete", "material:structural-steel", "material:architectural-glass", "material:timber",
+        "process:concrete-batching", "process:rebar-fabrication", "process:steel-fabrication", "process:prefabrication", "process:glazing",
+        "tool:powered-crane", "tool:power-tools", "tool:survey-instruments",
+        "energy:electric-grid", "energy:industrial-fuel",
+        "skill:concrete-trade", "skill:steel-fabrication", "skill:glazing", "skill:building-services",
+        "logistics:heavy-road-freight"
+      ]
+    }
+  ],
+  "buildingPrototypes": [
+    {
+      "id": "prototype-timber-earth-dwelling",
+      "name": "Timber and earth dwelling",
+      "requiredCapabilities": ["material:earth", "material:local-timber", "material:thatch", "process:earth-compaction", "process:timber-joinery", "process:thatch-roofing", "tool:hand-axe", "skill:carpentry", "energy:human-labor", "logistics:animal-cart"]
+    },
+    {
+      "id": "prototype-steel-concrete-civic-building",
+      "name": "Steel and reinforced-concrete civic building",
+      "requiredCapabilities": ["material:reinforced-concrete", "material:structural-steel", "material:architectural-glass", "process:concrete-batching", "process:rebar-fabrication", "process:steel-fabrication", "process:glazing", "tool:powered-crane", "energy:electric-grid", "skill:steel-fabrication", "skill:building-services", "logistics:heavy-road-freight"]
+    }
+  ],
+  "evaluationPolicy": {
+    "kind": "capability-presence-screen",
+    "results": ["compatible-with-declared-capabilities", "missing-required-capabilities"],
+    "limitations": ["not structural analysis", "not code compliance", "not a permit", "not a cost or schedule estimate"]
+  }
+}
