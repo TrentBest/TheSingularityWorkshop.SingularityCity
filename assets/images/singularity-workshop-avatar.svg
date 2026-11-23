@@ -71,6 +71,60 @@
       <stop offset=".48" stop-color="#080b14" stop-opacity=".58"/>
       <stop offset="1" stop-color="#080b14" stop-opacity="0"/>
     </radialGradient>
+    <radialGradient id="sampled-burst-1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset=".22" stop-color="#ffe2a6" stop-opacity=".98"/>
+      <stop offset=".62" stop-color="#ffb65f" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#ffb65f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sampled-burst-2">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset=".22" stop-color="#fff0c7" stop-opacity=".98"/>
+      <stop offset=".62" stop-color="#f6a95c" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#f6a95c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sampled-burst-3">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset=".22" stop-color="#fff0c9" stop-opacity=".98"/>
+      <stop offset=".62" stop-color="#ffc16d" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#ffc16d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sampled-burst-4">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset=".22" stop-color="#ffe2b3" stop-opacity=".98"/>
+      <stop offset=".62" stop-color="#eaa45b" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#eaa45b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sampled-burst-5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset=".22" stop-color="#e4ffff" stop-opacity=".98"/>
+      <stop offset=".62" stop-color="#78dfff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#78dfff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sampled-burst-6">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset=".22" stop-color="#e6ffff" stop-opacity=".98"/>
+      <stop offset=".62" stop-color="#66d8ff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#66d8ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sampled-burst-7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset=".22" stop-color="#e3ffff" stop-opacity=".98"/>
+      <stop offset=".62" stop-color="#64cfff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#64cfff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sampled-burst-8">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset=".22" stop-color="#efffff" stop-opacity=".98"/>
+      <stop offset=".62" stop-color="#8bdfff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#8bdfff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sampled-burst-9">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset=".22" stop-color="#f3ffff" stop-opacity=".98"/>
+      <stop offset=".62" stop-color="#8ee8ff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#8ee8ff" stop-opacity="0"/>
+    </radialGradient>
     <radialGradient id="vortex-magenta"><stop stop-color="#fff" stop-opacity="1"/><stop offset=".24" stop-color="#ff35e6" stop-opacity=".98"/><stop offset=".72" stop-color="#ff00d9" stop-opacity=".72"/><stop offset="1" stop-color="#ff00d9" stop-opacity="0"/></radialGradient>
     <radialGradient id="vortex-yellow"><stop stop-color="#fff" stop-opacity="1"/><stop offset=".24" stop-color="#fff2a0" stop-opacity=".98"/><stop offset=".72" stop-color="#ffd21a" stop-opacity=".72"/><stop offset="1" stop-color="#ffd21a" stop-opacity="0"/></radialGradient>
     <radialGradient id="vortex-cyan"><stop stop-color="#fff" stop-opacity="1"/><stop offset=".24" stop-color="#a8ffff" stop-opacity=".98"/><stop offset=".72" stop-color="#00eaff" stop-opacity=".72"/><stop offset="1" stop-color="#00eaff" stop-opacity="0"/></radialGradient>
@@ -134,121 +188,169 @@
 
   <!-- Each burst launches from its own port. Every route uses the same
        normalized arrival instant (2.55s), despite different path lengths. -->
-  <g id="traveling-energy"><circle r="5.2" fill="#ff35e6" filter="url(#travel-glow)" opacity="0">
+  <g id="traveling-energy" filter="url(#travel-glow)">
+    <g opacity="0">
+      <circle r="9.5" fill="#ffb65f" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-1)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="0s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-1"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ffd21a" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#ffb65f" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-1)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="3s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="3s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-1"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#00eaff" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#ffb65f" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-1)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="6s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="6s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-1"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ff35e6" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#f6a95c" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-2)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="0s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-2"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ffd21a" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#f6a95c" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-2)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="3s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="3s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-2"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#00eaff" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#f6a95c" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-2)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="6s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="6s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-2"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ff35e6" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#ffc16d" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-3)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="0s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-3"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ffd21a" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#ffc16d" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-3)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="3s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="3s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-3"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#00eaff" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#ffc16d" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-3)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="6s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="6s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-3"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ff35e6" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#eaa45b" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-4)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="0s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-4"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ffd21a" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#eaa45b" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-4)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="3s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="3s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-4"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#00eaff" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#eaa45b" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-4)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="6s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="6s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-4"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ff35e6" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#78dfff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-5)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="0s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-5"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ffd21a" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#78dfff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-5)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="3s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="3s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-5"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#00eaff" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#78dfff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-5)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="6s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="6s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-5"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ff35e6" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#66d8ff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-6)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="0s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-6"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ffd21a" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#66d8ff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-6)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="3s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="3s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-6"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#00eaff" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#66d8ff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-6)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="6s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="6s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-6"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ff35e6" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#64cfff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-7)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="0s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-7"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ffd21a" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#64cfff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-7)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="3s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="3s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-7"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#00eaff" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#64cfff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-7)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="6s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="6s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-7"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ff35e6" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#8bdfff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-8)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="0s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-8"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ffd21a" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#8bdfff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-8)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="3s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="3s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-8"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#00eaff" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#8bdfff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-8)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="6s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="6s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-8"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ff35e6" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#8ee8ff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-9)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="0s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="0s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-9"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#ffd21a" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#8ee8ff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-9)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="3s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="3s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-9"/></animateMotion>
-    </circle>
-<circle r="5.2" fill="#00eaff" filter="url(#travel-glow)" opacity="0">
+    </g>
+    <g opacity="0">
+      <circle r="9.5" fill="#8ee8ff" opacity=".28" filter="url(#travel-glow)"/>
+      <circle r="5.4" fill="url(#sampled-burst-9)" filter="url(#travel-glow)"/>
       <animate attributeName="opacity" begin="6s" dur="9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.015;0.27;0.30;1"/>
       <animateMotion begin="6s" dur="9s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.283333;1" calcMode="linear"><mpath href="#route-9"/></animateMotion>
-    </circle></g>
-
-  <!-- The arriving color overwhelms the vortex briefly, then hands off to
-       the matching rear-right environmental illumination. -->
-  <g id="vortex-arrival">
-    <ellipse cx="256" cy="326" rx="118" ry="31" fill="url(#vortex-magenta)" opacity="0" filter="url(#travel-glow)"><animate attributeName="opacity" begin="2.55s" dur="9s" repeatCount="indefinite" values="0;1;.88;0;0" keyTimes="0;.01;.12;.28;1"/></ellipse>
-    <ellipse cx="256" cy="326" rx="118" ry="31" fill="url(#vortex-yellow)" opacity="0" filter="url(#travel-glow)"><animate attributeName="opacity" begin="5.55s" dur="9s" repeatCount="indefinite" values="0;1;.88;0;0" keyTimes="0;.01;.12;.28;1"/></ellipse>
-    <ellipse cx="256" cy="326" rx="118" ry="31" fill="url(#vortex-cyan)" opacity="0" filter="url(#travel-glow)"><animate attributeName="opacity" begin="8.55s" dur="9s" repeatCount="indefinite" values="0;1;.88;0;0" keyTimes="0;.01;.12;.28;1"/></ellipse>
+    </g>
   </g>
   <g id="rear-right-color-handoff">
     <ellipse cx="425" cy="205" rx="190" ry="230" fill="url(#field-magenta)" opacity="0"><animate attributeName="opacity" begin="2.55s" dur="9s" repeatCount="indefinite" values="0;.72;.72;0;0" keyTimes="0;.10;.34;.48;1"/></ellipse>
