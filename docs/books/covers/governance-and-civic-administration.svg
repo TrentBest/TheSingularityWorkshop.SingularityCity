@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Governance and Civic Administration</title><desc id="desc">A civic assembly hall with connected public service lines.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#164e63"/><stop offset="1" stop-color="#334155"/></linearGradient></defs>
+<rect width="720" height="420" rx="24" fill="url(#bg)"/><path d="M130 290h460M155 290V190h410v100M130 190h460L360 100z" fill="none" stroke="#cffafe" stroke-width="7" stroke-linejoin="round"/>
+<g stroke="#cffafe" stroke-width="6"><path d="M220 205v75M310 205v75M410 205v75M500 205v75"/></g>
+<path d="M360 100V65M360 65l-12 16M360 65l12 16M170 330h380" stroke="#a5f3fc" stroke-width="4" fill="none"/>
+<text x="360" y="48" fill="#ecfeff" font-family="sans-serif" font-size="23" text-anchor="middle" letter-spacing="4">SINGULARITY CITY</text>
+<text x="360" y="385" fill="#fff" font-family="sans-serif" font-size="26" text-anchor="middle" font-weight="700">GOVERNANCE & SERVICE</text></svg>
