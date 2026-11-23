@@ -6,7 +6,6 @@ const rendererTitle = $("#renderer-place-title");
 const rendererDescription = $("#renderer-place-description");
 const rendererDomain = $("#renderer-domain");
 const rendererAccess = $("#renderer-access");
-const rendererDistrict = $("#renderer-district");
 const rendererWorldState = $("#renderer-world-state");
 
 function setMode(mode) {
@@ -23,15 +22,17 @@ function updateRenderer() {
   const description = $("#place-description")?.textContent?.trim();
   const domain = $("#place-domain")?.textContent?.trim();
   const access = $("#place-access")?.textContent?.trim();
+  const districtStatus = $("#district-model-status")?.textContent?.trim();
   if (title) rendererTitle.textContent = title;
   if (description) rendererDescription.textContent = description;
   if (domain) rendererDomain.textContent = "DOMAIN · " + domain.toUpperCase();
   if (access) rendererAccess.textContent = "ACCESS · " + access.toUpperCase();
+  if (districtStatus) rendererDistrict.textContent = "DISTRICT · " + districtStatus;
   const metrics = [...document.querySelectorAll("#district-metrics .district-metric")].map(node => node.innerText.replace(/\n/g," · "));
   if (metrics.length) rendererWorldState.textContent = "CIVIC QUARTER OBSERVATION · " + metrics.join("  |  ") + ". Synthetic authored fixture.";
 }
 const observer = new MutationObserver(updateRenderer);
-for (const selector of ["#place-title","#place-description","#place-domain","#place-access","#district-metrics"]) {
+for (const selector of ["#place-title","#place-description","#place-domain","#place-access","#district-model-status","#district-metrics"]) {
   const node = $(selector);
   if (node) observer.observe(node, {childList:true,subtree:true,characterData:true});
 }
@@ -42,7 +43,6 @@ updateRenderer();
 let audioContext = null;
 let oscillators = [];
 let noiseSource = null;
-let noiseGain = null;
 function startAmbience() {
   const AudioContextType = window.AudioContext || window.webkitAudioContext;
   if (!AudioContextType) throw new Error("Web Audio is not available in this browser.");
@@ -70,7 +70,7 @@ function startAmbience() {
   const filter = audioContext.createBiquadFilter();
   filter.type = "lowpass";
   filter.frequency.value = 360;
-  noiseGain = audioContext.createGain();
+  const noiseGain = audioContext.createGain();
   noiseGain.gain.value = 0.12;
   noiseSource.connect(filter).connect(noiseGain).connect(master);
   noiseSource.start();
