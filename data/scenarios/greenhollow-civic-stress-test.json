@@ -444,6 +444,7 @@
         "No resident-level profile or individual trust score is created.",
         "The fixture defines observable civic signals, not a validated social-science measurement."
       ]
-    }
+    },
+    "schema": "singularity-city.civic-process-response.v1"
   }
 }
