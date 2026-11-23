@@ -33,6 +33,18 @@ These content-first specifications are maintained here but are not yet included 
 
 They remain City-owned domain work. They will be added to the registered sourcebook list when their formal SURPS book metadata is complete.
 
+## Validation
+
+The canonical local declaration is `.surps/participation.json`. Each book entry binds one stable ID to its Markdown source, `.book.json` descriptor, and distinct cover. Descriptors use the shared SURPS LOD badge for their declared level.
+
+Run the local integrity gate before changing this catalogue:
+
+```bash
+python scripts/validate_surps_participation.py
+```
+
+The [SURPS Sourcebook Validation workflow](../.github/workflows/surps-sourcebook-validation.yml) runs this check for relevant changes on `development`. A passing check validates local identity and asset consistency; it does not accept ownership claims or enroll the repository.
+
 ## Ownership boundaries
 
 - City: inhabited places, civic institutions, residents, infrastructure, public services, city-specific procedures, and civic relationships.
