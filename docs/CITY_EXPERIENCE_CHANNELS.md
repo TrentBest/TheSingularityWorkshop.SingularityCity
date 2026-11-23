@@ -20,6 +20,12 @@ The controls in the browser preview switch these modes without reloading the Cit
 - The current sound is **not** a recording, measured soundscape, or simulation of traffic, weather, crowds, machinery or individual events. It is a first audible output proving that audio can be independently enabled and muted.
 - All current city and district content remains synthetic authored preview data.
 
+## District map-to-scene exploration
+
+The City map is also a district selector. Selecting a district footprint or its map label highlights that footprint and updates the scene directly below the map. Previous/next controls move through the blueprint districts while retaining the same district identity in the selected-scene heading and Renderer observer.
+
+The first scene is an oblique aerial massing study. District parcel-grid dimensions and occupancy are sourced from `data/city-blueprint.json`; illustrative building heights are explicitly placeholders, not surveyed building facts. Civic Quarter additionally labels Civic Hall, Civic Library, Community Clinic and Founders Square using records from `data/districts/civic-quarter.json`. Other districts remain massing studies until they have richer domain models. This is a first visible spatial view, not photorealism or a first-person world.
+
 ## Sound as a world observation
 
 The intended soundscape should be derived from observable world state and spatial context, not attached as arbitrary decorative loops. A future audio observer should consume stable City identities and domain-owned event streams, then select sound sources according to listener position, distance, occlusion, time and observer budget.
@@ -47,9 +53,10 @@ The current textual observer is a small browser proof, not yet the complete shar
 
 ## Next vertical slice
 
-1. Replace DOM-derived text with a versioned observer input contract over stable City entity IDs.
-2. Add a small event stream for a single district (for example, transit arrival, pedestrian activity and water flow), with explicit synthetic provenance.
-3. Map those events to independently testable audio cues and a spatial mix.
-4. Add listener position, distance attenuation, occlusion and mute/volume/accessibility controls.
-5. Verify all three presentation modes against the same source revision and entity identities.
-6. Integrate the shared Renderer and Visualize packages through their published contracts rather than copying their implementation into City.
+1. Replace illustrative massing with richer district-owned building and street geometry, then add camera viewpoints (street, window and aerial) without inventing missing source data.
+2. Replace DOM-derived text with a versioned observer input contract over stable City entity IDs.
+3. Add a small event stream for a single district (for example, transit arrival, pedestrian activity and water flow), with explicit synthetic provenance.
+4. Map those events to independently testable audio cues and a spatial mix.
+5. Add listener position, distance attenuation, occlusion and mute/volume/accessibility controls.
+6. Verify all three presentation modes against the same source revision and entity identities.
+7. Integrate the shared Renderer and Visualize packages through their published contracts rather than copying their implementation into City.
