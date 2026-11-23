@@ -22,18 +22,12 @@ function validateSchema(value, definition, path = "$") {
     validateSchema(value, target, path);
     return;
   }
-  if (Object.hasOwn(definition, "const")) {
-    assert.equal(value, definition.const, path + " must equal its schema constant");
-  }
+  if (Object.hasOwn(definition, "const")) assert.equal(value, definition.const, path + " must equal its schema constant");
   if (definition.type === "object") {
     assert.ok(value !== null && typeof value === "object" && !Array.isArray(value), path + " must be an object");
-    for (const key of definition.required ?? []) {
-      assert.ok(Object.hasOwn(value, key), path + "." + key + " is required");
-    }
+    for (const key of definition.required ?? []) assert.ok(Object.hasOwn(value, key), path + "." + key + " is required");
     if (definition.additionalProperties === false) {
-      for (const key of Object.keys(value)) {
-        assert.ok(Object.hasOwn(definition.properties ?? {}, key), path + "." + key + " is not declared");
-      }
+      for (const key of Object.keys(value)) assert.ok(Object.hasOwn(definition.properties ?? {}, key), path + "." + key + " is not declared");
     }
     for (const [key, child] of Object.entries(definition.properties ?? {})) {
       if (Object.hasOwn(value, key)) validateSchema(value[key], child, path + "." + key);
@@ -45,6 +39,9 @@ function validateSchema(value, definition, path = "$") {
   } else if (definition.type === "string") {
     assert.equal(typeof value, "string", path + " must be a string");
     assert.ok(value.length >= (definition.minLength ?? 0), path + " is too short");
+    if (definition.enum) assert.ok(definition.enum.includes(value), path + " must be an allowed value");
+  } else if (definition.type === "boolean") {
+    assert.equal(typeof value, "boolean", path + " must be a boolean");
   }
 }
 validateSchema(response, schema);
@@ -56,6 +53,9 @@ const unique = (items, label) => {
   assert.equal(new Set(ids).size, ids.length, label + " IDs must be unique");
 };
 unique(response.proposals, "proposal");
+unique(response.authorizations, "authorization");
+unique(response.executionEvidence, "execution evidence");
+unique(response.outcomeReviews, "outcome review");
 unique(response.oversightObligations, "oversight");
 unique(response.residentImpacts, "resident impact");
 unique(response.institutionalTrust.dimensions, "trust dimension");
@@ -63,14 +63,38 @@ unique(response.institutionalTrust.dimensions, "trust dimension");
 const actors = new Set(scenario.actors.map(actor => actor.id));
 const events = new Set(scenario.timeline.map(event => event.id));
 const proposals = new Set(response.proposals.map(proposal => proposal.id));
-assert.ok(actors.has(response.hearingDecision.authorityId), "decision authority must exist");
+const authorizationIds = new Set(response.authorizations.map(item => item.id));
+const executionIds = new Set(response.executionEvidence.map(item => item.id));
+const decision = response.hearingDecision;
+assert.ok(actors.has(decision.authorityId), "decision authority must exist");
 assert.ok(actors.has(response.institutionalTrust.institutionId), "trust institution must exist");
-assert.ok(events.has(response.hearingDecision.sourceEventId), "decision source event must exist");
-assert.deepEqual(
-  [...response.hearingDecision.selectedProposalIds].sort(),
-  [...proposals].sort(),
-  "every selected proposal must exist and every declared proposal must be accounted for"
-);
+assert.ok(events.has(decision.sourceEventId), "decision source event must exist");
+assert.deepEqual([...decision.selectedProposalIds].sort(), [...proposals].sort(), "every proposal must be accounted for");
+assert.ok(decision.authorizations.every(id => authorizationIds.has(id)), "decision authorization IDs must resolve");
+for (const authorization of response.authorizations) {
+  assert.equal(authorization.sourceDecisionId, decision.id, "authorization must cite the decision that grants its basis");
+  assert.ok(actors.has(authorization.grantingAuthorityId), "granting authority must exist");
+  assert.ok(actors.has(authorization.executorId), "authorized executor must exist");
+}
+for (const execution of response.executionEvidence) {
+  const authorization = response.authorizations.find(item => item.id === execution.authorizationId);
+  assert.ok(authorization, "execution evidence must cite an existing authorization");
+  assert.ok(proposals.has(execution.proposalId), "execution evidence must cite an existing proposal");
+  assert.equal(execution.action, authorization.action, "executed action must match authorization");
+  assert.equal(execution.subjectId, authorization.subjectId, "executed subject must match authorization");
+  assert.equal(execution.executorId, authorization.executorId, "executor must match authorization");
+  assert.ok(Date.parse(execution.occurredAt) >= Date.parse(authorization.validFrom), "execution must not precede authorization");
+  assert.ok(Date.parse(execution.occurredAt) < Date.parse(authorization.expiresAt), "execution must occur before authorization expiry");
+}
+for (const review of response.outcomeReviews) {
+  assert.equal(review.decisionId, decision.id, "outcome review must cite the decision under review");
+  assert.ok(review.authorizationIds.length > 0, "outcome review must identify its authorizations");
+  assert.ok(review.executionEvidenceIds.length > 0, "outcome review must identify the execution being reviewed");
+  assert.ok(review.authorizationIds.every(id => authorizationIds.has(id)), "outcome review authorization IDs must resolve");
+  assert.ok(review.executionEvidenceIds.every(id => executionIds.has(id)), "outcome review execution IDs must resolve");
+  assert.ok(response.executionEvidence.filter(item => review.executionEvidenceIds.includes(item.id)).every(item => review.authorizationIds.includes(item.authorizationId)), "reviewed execution must belong to a listed authorization");
+  assert.ok(actors.has(review.reviewerId), "outcome reviewer must exist");
+}
 for (const obligation of response.oversightObligations) {
   assert.ok(actors.has(obligation.responsibleActorId), "oversight owner must exist: " + obligation.id);
   assert.ok(obligation.trigger && obligation.obligation && obligation.evidenceExpected);
@@ -80,26 +104,22 @@ for (const proposal of response.proposals) {
   assert.ok(proposal.resourceRequirements.every(item => item.kind && item.description && item.authority));
   assert.ok(proposal.authorization, "proposal must state its execution boundary");
 }
-assert.ok(response.hearingDecision.notAuthorized.includes("construction"));
-assert.ok(response.hearingDecision.notAuthorized.includes("procurement"));
-assert.ok(response.hearingDecision.notAuthorized.includes("payment"));
-assert.deepEqual(response.hearingDecision.authorizations, [], "the hearing decision must not mint executable authorizations");
-assert.ok(response.hearingDecision.permittedActions.some(item => item.includes("before any construction or expenditure")));
+assert.ok(decision.notAuthorized.includes("construction"));
+assert.ok(decision.notAuthorized.includes("procurement"));
+assert.ok(decision.notAuthorized.includes("payment"));
+assert.deepEqual(decision.authorizations, [], "the hearing decision must not mint executable authorizations");
+assert.ok(decision.permittedActions.some(item => item.includes("before any construction or expenditure")));
 assert.deepEqual(response.authorizations, [], "no separate grant exists in the Greenhollow fixture");
 assert.deepEqual(response.executionEvidence, [], "no execution may be recorded without a grant");
 assert.deepEqual(response.outcomeReviews, [], "no outcome review may imply unrecorded execution");
-assert.ok(response.authorizations.every(item => item.status === "granted" || item.status === "suspended" || item.status === "revoked" || item.status === "expired" || item.status === "denied"));
-assert.ok(response.executionEvidence.every(item => { const auth = response.authorizations.find(candidate => candidate.id === item.authorizationId); return auth && auth.action === item.action && auth.subjectId === item.subjectId && auth.executorId === item.executorId; }), "execution evidence must match its authorization scope and executor");
-assert.ok(response.outcomeReviews.every(item => item.authorizationIds.every(id => response.authorizations.some(auth => auth.id === id)) && item.executionEvidenceIds.every(id => response.executionEvidence.some(evidence => evidence.id === id))), "outcome reviews must reference source authorization and execution records");
 assert.ok(response.residentImpacts.every(item => item.assessment === "qualitative-unmeasured"));
 assert.equal(response.institutionalTrust.noAggregateScore, true);
 assert.equal(response.institutionalTrust.noAutomaticTrustGain, true);
 assert.ok(response.institutionalTrust.limitations.length > 0);
 
-
 const grant = {
   id: "authorization-test-001",
-  sourceDecisionId: response.hearingDecision.id,
+  sourceDecisionId: decision.id,
   grantingAuthorityId: "village-assembly",
   jurisdiction: "Greenhollow north-road crossing civic works",
   action: "open-temporary-route",
@@ -131,7 +151,7 @@ const executionRecord = {
 validateSchema(executionRecord, schema.$defs.executionEvidence, "$executionEvidence");
 const outcomeReviewRecord = {
   id: "outcome-review-test-001",
-  decisionId: response.hearingDecision.id,
+  decisionId: decision.id,
   authorizationIds: [grant.id],
   executionEvidenceIds: [executionRecord.id],
   reviewerId: "independent-reviewer",
@@ -143,30 +163,47 @@ const outcomeReviewRecord = {
   followUp: "Return permanent rebuild options to the assembly"
 };
 validateSchema(outcomeReviewRecord, schema.$defs.outcomeReview, "$outcomeReview");
+const syntheticActors = new Set([...actors, grant.executorId]);
+const syntheticResponse = {
+  ...response,
+  authorizations: [grant],
+  executionEvidence: [executionRecord],
+  outcomeReviews: [outcomeReviewRecord],
+  hearingDecision: { ...decision, authorizations: [grant.id] }
+};
+const syntheticScenario = { ...scenario, actors: [...scenario.actors, { id: grant.executorId }] };
+assert.ok(syntheticActors.has(grant.grantingAuthorityId));
+assert.ok(syntheticActors.has(grant.executorId));
+assert.ok(proposals.has(executionRecord.proposalId));
+assert.ok(authorizationIds.size === 0 && executionIds.size === 0, "base fixture remains empty before synthetic records are added");
+assert.equal(syntheticResponse.authorizations[0].id, syntheticResponse.hearingDecision.authorizations[0]);
+assert.equal(syntheticResponse.executionEvidence[0].authorizationId, syntheticResponse.authorizations[0].id);
+assert.equal(syntheticResponse.outcomeReviews[0].executionEvidenceIds[0], syntheticResponse.executionEvidence[0].id);
+assert.ok(syntheticScenario.actors.some(actor => actor.id === outcomeReviewRecord.reviewerId));
+
 const gateInput = {
   authorization: grant,
-  jurisdiction: "Greenhollow north-road crossing civic works",
-  action: "open-temporary-route",
-  subjectId: "north-road-temporary-route",
-  executorId: "civic-works-provider",
+  jurisdiction: grant.jurisdiction,
+  action: grant.action,
+  subjectId: grant.subjectId,
+  executorId: grant.executorId,
   at: "2026-11-23T12:00:00Z",
   satisfiedPrerequisiteEvidenceIds: ["safety-review-001"],
-  satisfiedConditionIds: ["maintain-approved-configuration"],
   satisfiedConditionIds: ["maintain-approved-configuration"]
 };
 assert.equal(evaluateCivicAuthorization(gateInput).executable, true, "a valid, scoped grant with prerequisites may pass the gate");
 assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: null }).reasons.includes("authorization-missing"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, at: "2026-11-24T00:00:00Z" }).reasons.includes("authorization-expired"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, at: "2026-11-22T23:59:59Z" }).reasons.includes("authorization-not-yet-valid"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, action: "construction" }).reasons.includes("action-out-of-scope"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, subjectId: "different-route" }).reasons.includes("subject-out-of-scope"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, satisfiedPrerequisiteEvidenceIds: [] }).reasons.includes("prerequisite-unsatisfied:safety-review-001"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: { ...grant, status: "revoked" } }).reasons.includes("authorization-not-granted"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: { ...grant, status: "suspended" } }).reasons.includes("authorization-not-granted"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, executorId: "unlisted-provider" }).reasons.includes("executor-not-authorized"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, jurisdiction: "outside-jurisdiction" }).reasons.includes("jurisdiction-out-of-scope"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, satisfiedConditionIds: [] }).reasons.includes("condition-unsatisfied:maintain-approved-configuration"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, at: "not-a-timestamp" }).reasons.includes("invalid-authorization-time"));
-assert.ok(evaluateCivicAuthorization({ ...gateInput, jurisdiction: "outside-jurisdiction" }).reasons.includes("jurisdiction-out-of-scope"));
-assert.ok(evaluateCivicAuthorization({ ...gateInput, satisfiedConditionIds: [] }).reasons.includes("condition-unsatisfied:maintain-approved-configuration"));
-assert.ok(evaluateCivicAuthorization({ ...gateInput, at: "not-a-timestamp" }).reasons.includes("invalid-authorization-time"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: { ...grant, exclusions: [...grant.exclusions, grant.action] } }).reasons.includes("action-explicitly-excluded"));
 
-console.log("Civic process contract validated: versioned response shape, authority, proposal, oversight and impact references.");
+console.log("Civic process contract validated: schema shape, authorization lifecycle, cross-record integrity, authority and evidence boundaries.");
