@@ -80,6 +80,30 @@ Descriptor: [politics-power-and-public-will.book.json](politics-power-and-public
 
 [Read Politics, Power & Public Will](politics-power-and-public-will.md) — political actors, elections, representation, coalitions, public opinion, protest, legitimacy and succession.
 
+### Elections & Player Participation — LOD 2
+
+![Elections & Player Participation cover](covers/elections-and-player-participation.svg)
+
+Descriptor: [elections-and-player-participation.book.json](elections-and-player-participation.book.json)
+
+[Read Elections & Player Participation](elections-and-player-participation.md) — player participation, constitutional election rules, candidate platforms, background campaign advertisements, campaign finance, secret ballots, counting and disputes.
+
+### Vigilantes & Civic Justice — LOD 2
+
+![Vigilantes & Civic Justice cover](covers/vigilantes-and-civic-justice.svg)
+
+Descriptor: [vigilantes-and-civic-justice.book.json](vigilantes-and-civic-justice.book.json)
+
+[Read Vigilantes & Civic Justice](vigilantes-and-civic-justice.md) — self-appointed protectors, masked identities, community response, allegations, harms, due process and the boundary between mutual aid and private enforcement.
+
+### Villains & Antagonists — LOD 2
+
+![Villains & Antagonists cover](covers/villains-and-antagonists.svg)
+
+Descriptor: [villains-and-antagonists.book.json](villains-and-antagonists.book.json)
+
+[Read Villains & Antagonists](villains-and-antagonists.md) — antagonist motives, capabilities, organizations, conflicting narratives, player choices, accountability and lasting consequences.
+
 ## Place books
 
 A separate editorial track covers individual settlements, cities, archaeological sites and cultural landscapes rather than reusable domain concepts. The shared reference ontology determines reality membership; City does not invent a local real/fiction taxonomy. An evidence-based reconstruction of a real site's past is distinguished from direct observation, while an alternate-history or invented version belongs to a fictional reality. Fictional places can retain a **based on** relationship to real inspirations without being presented as real locations. See [Reality Sets, Place Identity and Historical Reconstruction](../REALITY_AND_RECONSTRUCTION.md).
