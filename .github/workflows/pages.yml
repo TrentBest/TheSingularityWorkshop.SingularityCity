@@ -29,6 +29,9 @@ jobs:
           test -s thinking.html
           test -s assets/css/city.css
           test -s assets/js/city.js
+          test -s assets/js/city-experience.mjs
+          test -s tests/city-experience-channels.test.mjs
+          test -s docs/CITY_EXPERIENCE_CHANNELS.md
           test -s assets/js/city-generator.mjs
           test -s assets/js/physics-terrain-adapter.mjs
           test -s assets/js/terrain-interpretation.mjs
@@ -120,6 +123,8 @@ jobs:
           test -s docs/books/places/gobekli-tepe/README.md
           test -s AgentOnboarding.md
           test -s .github/workflows/ciai-evidence.yml
+          node --check assets/js/city-experience.mjs
+          node tests/city-experience-channels.test.mjs
           node tests/validate-catalog.mjs
           node tests/commerce-route-fixture.test.mjs
           node tests/economy-scenario.test.mjs
