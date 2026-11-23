@@ -61,7 +61,6 @@ validateSchema(hostContext, hostContextSchema, "$hostContext");
 for (const section of [hostContext.principal, hostContext.authority, hostContext.clock, hostContext.revocation, hostContext.audit]) {
   for (const value of Object.values(section)) assert.ok(typeof value === "string" && value.length > 0, "host context attestations must be explicit");
 }
-assert.equal(hostContext.principal.principalId, hostContext.authority.authorityId === "village-assembly" ? "civic-works-provider" : "", "host principal is independently identified");
 assert.equal(hostContext.revocation.status, "clear", "synthetic host context is clear only for schema conformance");
 assert.ok(hostContext.prerequisiteEvidence.every(item => item.status === "verified"));
 assert.ok(hostContext.conditionEvaluations.every(item => item.status === "satisfied"));
@@ -266,6 +265,14 @@ const gateInput = {
   satisfiedPrerequisiteEvidenceIds: ["safety-review-001"],
   satisfiedConditionIds: ["maintain-approved-configuration"]
 };
+assert.equal(hostContext.principal.principalId, grant.executorId, "host-authenticated principal must supply executor identity");
+assert.equal(hostContext.authority.authorityId, grant.grantingAuthorityId, "host must verify the granting authority");
+assert.equal(hostContext.authority.jurisdiction, grant.jurisdiction, "host jurisdiction must match the grant");
+assert.equal(hostContext.authority.sourceDecisionId, grant.sourceDecisionId, "host must verify the source decision");
+assert.equal(hostContext.clock.instant, "2026-11-23T12:00:00Z", "policy time comes from the host clock");
+assert.deepEqual(hostContext.prerequisiteEvidence.filter(item => item.status === "verified").map(item => item.id), gateInput.satisfiedPrerequisiteEvidenceIds);
+assert.deepEqual(hostContext.conditionEvaluations.filter(item => item.status === "satisfied").map(item => item.id), gateInput.satisfiedConditionIds);
+assert.equal(hostContext.revocation.status, "clear", "unknown or revoked host state must not be mapped to a passing gate");
 assert.equal(evaluateCivicAuthorization(gateInput).executable, true, "a valid, scoped grant with prerequisites may pass the gate");
 assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: null }).reasons.includes("authorization-missing"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, at: "2026-11-24T00:00:00Z" }).reasons.includes("authorization-expired"));
