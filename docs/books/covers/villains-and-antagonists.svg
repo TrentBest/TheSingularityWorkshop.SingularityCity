@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Villains and Antagonists</title><desc id="desc">A dramatic figure stands before intersecting paths and a distant city.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#312e81"/><stop offset="1" stop-color="#7f1d1d"/></linearGradient></defs>
+<rect width="720" height="420" rx="24" fill="url(#bg)"/><path d="M90 310h540M130 310v-90h65v90M525 310v-125h70v125" stroke="#fecaca" stroke-width="7" fill="none"/>
+<circle cx="360" cy="170" r="55" fill="none" stroke="#fee2e2" stroke-width="9"/><path d="M280 310c5-75 38-110 80-110s75 35 80 110M330 160h60M345 185h30" stroke="#fee2e2" stroke-width="9" fill="none" stroke-linecap="round"/>
+<text x="360" y="52" fill="#fff1f2" font-family="sans-serif" font-size="23" text-anchor="middle" letter-spacing="4">SINGULARITY CITY</text><text x="360" y="390" fill="#fff" font-family="sans-serif" font-size="25" text-anchor="middle" font-weight="700">MOTIVE • AGENCY • CONSEQUENCE</text></svg>
