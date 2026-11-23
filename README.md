@@ -50,7 +50,8 @@ City does not absorb the simulation of every destination. The Underworks entranc
 
 `Ontology → MicroBundles → arbitration → Experience → spatial manifestation`
 
-- [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)\n- [Entangled realities and digital real estate](docs/ENTANGLED_REALITIES.md) — proposed company tenancy, shared workplace Experiences, cross-device co-entanglement and immersive BIM coordination, with explicit implementation gaps.
+- [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)
+- [Visitor characters and the first explorable world](docs/VISITOR_CHARACTERS_AND_EXPLORATION.md) — portable character creation/import/export, compatibility, and the first inhabited destination.\n- [Entangled realities and digital real estate](docs/ENTANGLED_REALITIES.md) — proposed company tenancy, shared workplace Experiences, cross-device co-entanglement and immersive BIM coordination, with explicit implementation gaps.
 - [Physics terrain and worldbuilding](docs/PHYSICS_TERRAIN_AND_WORLDBUILDING.md) — Physics-owned terrain authority, existing APIs, adapter contract and worldbuilding sequence.
 - [Maps as city data](docs/MAPS_AS_CITY_DATA.md) — terrain-first spatial layers, hydrology, planning maps and provenance.
 - [Historical cartography and city history](docs/HISTORICAL_CARTOGRAPHY_AND_CITY_HISTORY.md) — period maps, source evidence, temporal features, uncertainty and the city's changing story.
