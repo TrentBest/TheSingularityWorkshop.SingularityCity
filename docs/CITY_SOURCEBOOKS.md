@@ -4,6 +4,9 @@
 
 ## Purpose
 
+Reality membership is a shared-ontology concern, not a City-local classification. A real place, an evidence-based reconstruction of its past, and a fictional adaptation must remain distinguishable; the sourcebook policy is defined in [Reality Sets, Place Identity and Historical Reconstruction](REALITY_AND_RECONSTRUCTION.md).
+
+
 Singularity City should publish books about both the systems that make settlements work and the particular places those systems produce.
 
 A **domain sourcebook** explains a reusable subject: residents, commerce, transport, utilities, governance, buildings or settlement formation. A **place sourcebook** studies one identifiable place or connected landscape: a village, town, city, metropolitan region, historical settlement, archaeological site, planned community, monumental/ritual landscape, orbital habitat or fictional city.
