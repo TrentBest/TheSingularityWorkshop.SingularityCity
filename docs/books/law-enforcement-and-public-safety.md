@@ -1,6 +1,11 @@
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-# Law Enforcement & Public Safety — protection, authority and public trust
+# Law Enforcement & Public Safety
+
+*protection, authority and public trust*
+
+**Sourcebook ID:** `singularity-city.domain.law-enforcement-and-public-safety`  
+**Edition:** `0.1.0`  
 
 **Owner:** Singularity City · **LOD:** 2 institutional specialization · **Status:** authored domain sourcebook; not an operational policing or emergency-dispatch system.
 
