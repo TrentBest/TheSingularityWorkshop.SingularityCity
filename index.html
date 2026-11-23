@@ -93,6 +93,28 @@
       </aside>
     </section>
 
+    <section class="district-experience section" id="district-experience" aria-labelledby="district-experience-title">
+      <div class="section-heading">
+        <div><span class="eyebrow">ZOOM INTO THE CITY</span><h2 id="district-experience-title">Choose a district. Enter its view.</h2></div>
+        <p>The selected district is highlighted above. Below, an oblique aerial study reveals its block pattern and landmarks. Move district by district without losing the city map.</p>
+      </div>
+      <div class="district-experience-toolbar">
+        <button type="button" id="district-previous" aria-label="Previous district">← Previous</button>
+        <div><span class="eyebrow" id="district-scene-index">DISTRICT 1 / 5</span><h3 id="district-scene-title">Civic Quarter</h3></div>
+        <button type="button" id="district-next">Next district →</button>
+      </div>
+      <div class="district-scene-frame">
+        <svg id="district-scene" viewBox="0 0 900 460" role="img" aria-labelledby="district-scene-title district-scene-description">
+          <desc id="district-scene-description">An illustrative oblique aerial view of the selected district.</desc>
+          <defs><linearGradient id="scene-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#17364b"/><stop offset="1" stop-color="#0a1b2b"/></linearGradient></defs>
+          <rect width="900" height="460" fill="url(#scene-sky)"/>
+          <g id="district-scene-art"></g>
+        </svg>
+        <div class="district-scene-caption"><span id="district-scene-summary">Synthetic district massing study</span><span id="district-scene-provenance">BLUEPRINT-DRIVEN · NOT SURVEYED</span></div>
+      </div>
+      <p class="district-scene-note">This is a first spatial-view prototype, not a photorealistic camera or surveyed 3D world. Building massing is illustrative where detailed building records do not yet exist; named Civic Quarter landmarks are placed from the connected district fixture.</p>
+    </section>
+
     <section class="district-proof section" id="connected-district">
       <div class="section-heading"><div><span class="eyebrow">ONE CONNECTED MODEL · SYNTHETIC PROOF</span><h2>Civic Quarter, down to the service connections.</h2></div><p>Land, buildings, rooms, mobility, transit, water, energy, public space and civic services share stable IDs and explicit relationships.</p></div>
       <div class="district-metrics" id="district-metrics"></div>
