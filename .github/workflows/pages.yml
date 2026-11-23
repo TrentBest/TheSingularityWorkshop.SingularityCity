@@ -65,6 +65,8 @@ jobs:
           test -s docs/BUILD_YOUR_CITY.md
           test -s docs/WHEEL_OF_TIME_SHOWCASE.md
           test -s docs/rulebooks/SurpsRulebookVillagesToCities.md
+          test -s docs/REALITY_AND_RECONSTRUCTION.md
+          test -s AgentOnboarding.md
           node tests/validate-catalog.mjs
           node tests/commerce-route-fixture.test.mjs
           node tests/physics-terrain-adapter.test.mjs
