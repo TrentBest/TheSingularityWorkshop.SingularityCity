@@ -87,74 +87,39 @@
   <!-- Side illumination handoffs, timed to the pulses' arrival at the core. -->
   <ellipse cx="92" cy="205" rx="190" ry="230" fill="url(#left-cyan)" opacity="0">
     <animate attributeName="opacity" begin="2.55s" dur="9s" repeatCount="indefinite"
-      values="0;.62;.62;0;0" keyTimes="0;.29;.62;1;1"/>
+      values="0;.62;.62;0;0" keyTimes="0;.29;.62;.95;1"/>
   </ellipse>
   <ellipse cx="425" cy="205" rx="190" ry="230" fill="url(#right-magenta)" opacity="0">
     <animate attributeName="opacity" begin="2.55s" dur="9s" repeatCount="indefinite"
-      values="0;.72;.72;0;0" keyTimes="0;.29;.62;1;1"/>
+      values="0;.72;.72;0;0" keyTimes="0;.29;.62;.95;1"/>
   </ellipse>
   <ellipse cx="425" cy="205" rx="190" ry="230" fill="url(#right-yellow)" opacity="0">
     <animate attributeName="opacity" begin="5.55s" dur="9s" repeatCount="indefinite"
-      values="0;.62;.62;0;0" keyTimes="0;.29;.62;1;1"/>
+      values="0;.62;.62;0;0" keyTimes="0;.29;.62;.95;1"/>
   </ellipse>
   <ellipse cx="92" cy="205" rx="190" ry="230" fill="url(#left-magenta)" opacity="0">
     <animate attributeName="opacity" begin="8.55s" dur="9s" repeatCount="indefinite"
-      values="0;.36;.36;0;0" keyTimes="0;.29;.62;1;1"/>
+      values="0;.36;.36;0;0" keyTimes="0;.29;.62;.95;1"/>
   </ellipse>
 
   <!-- The same circuit network is energized in sequence: magenta, yellow,
        then cyan. Each dash travels from the outer ports toward the center. -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#circuit-glow)">
-    <g stroke="#ff35e6" stroke-width="2.8" opacity=".96">
-      <path d="M18 384 L78 372 L126 352 L169 345 L205 333 L238 329"/>
-      <path d="M24 412 L92 394 L145 369 L190 350 L225 337 L247 332"/>
-      <path d="M494 384 L434 372 L386 352 L343 345 L307 333 L274 329"/>
-      <path d="M488 412 L420 394 L367 369 L322 350 L287 337 L265 332"/>
-      <path d="M74 462 L128 438 L168 402 L202 365 L238 339"/>
-      <path d="M438 462 L384 438 L344 402 L310 365 L274 339"/>
-      <path d="M150 488 L180 456 L205 420 L230 375 L248 343"/>
-      <path d="M362 488 L332 456 L307 420 L282 375 L264 343"/>
-    </g>
-    <g stroke="#ffd21a" stroke-width="2.8" opacity=".96">
-      <path d="M18 384 L78 372 L126 352 L169 345 L205 333 L238 329"/>
-      <path d="M24 412 L92 394 L145 369 L190 350 L225 337 L247 332"/>
-      <path d="M494 384 L434 372 L386 352 L343 345 L307 333 L274 329"/>
-      <path d="M488 412 L420 394 L367 369 L322 350 L287 337 L265 332"/>
-      <path d="M74 462 L128 438 L168 402 L202 365 L238 339"/>
-      <path d="M438 462 L384 438 L344 402 L310 365 L274 339"/>
-      <path d="M150 488 L180 456 L205 420 L230 375 L248 343"/>
-      <path d="M362 488 L332 456 L307 420 L282 375 L264 343"/>
-    </g>
-    <g stroke="#00eaff" stroke-width="2.5" opacity=".9">
-      <path d="M18 384 L78 372 L126 352 L169 345 L205 333 L238 329"/>
-      <path d="M24 412 L92 394 L145 369 L190 350 L225 337 L247 332"/>
-      <path d="M494 384 L434 372 L386 352 L343 345 L307 333 L274 329"/>
-      <path d="M488 412 L420 394 L367 369 L322 350 L287 337 L265 332"/>
-      <path d="M74 462 L128 438 L168 402 L202 365 L238 339"/>
-      <path d="M438 462 L384 438 L344 402 L310 365 L274 339"/>
-      <path d="M150 488 L180 456 L205 420 L230 375 L248 343"/>
-      <path d="M362 488 L332 456 L307 420 L282 375 L264 343"/>
-    </g>
-  </g>
-
   <!-- Moving energy fronts; 3 seconds apart = 120 degrees of a 9-second cycle. -->
   <g fill="none" stroke-linecap="round" filter="url(#circuit-glow)">
     <g stroke="#ff35e6" stroke-width="4">
-      <path d="M18 384 L78 372 L126 352 L169 345 L205 333 L238 329 M24 412 L92 394 L145 369 L190 350 L225 337 L247 332 M494 384 L434 372 L386 352 L343 345 L307 333 L274 329 M488 412 L420 394 L367 369 L322 350 L287 337 L265 332">
-        <animate attributeName="stroke-dasharray" values="0 1200;30 1200;0 1200" dur="2.7s" begin="0s" repeatCount="indefinite"/>
-        <animate attributeName="stroke-dashoffset" values="1200;0;0" keyTimes="0;.3;1" dur="9s" begin="0s" repeatCount="indefinite"/>
+      <path d="M18 384 L78 372 L126 352 L169 345 L205 333 L238 329 M24 412 L92 394 L145 369 L190 350 L225 337 L247 332 M494 384 L434 372 L386 352 L343 345 L307 333 L274 329 M488 412 L420 394 L367 369 L322 350 L287 337 L265 332" stroke-dasharray="30 1200">
+        <animate attributeName="stroke-dashoffset" values="0;-1200;-1200" keyTimes="0;.3;1" dur="9s" begin="0s" repeatCount="indefinite"/>
       </path>
     </g>
     <g stroke="#ffd21a" stroke-width="4">
-      <path d="M18 384 L78 372 L126 352 L169 345 L205 333 L238 329 M24 412 L92 394 L145 369 L190 350 L225 337 L247 332 M494 384 L434 372 L386 352 L343 345 L307 333 L274 329 M488 412 L420 394 L367 369 L322 350 L287 337 L265 332">
-        <animate attributeName="stroke-dasharray" values="0 1200;30 1200;0 1200" dur="2.7s" begin="3s" repeatCount="indefinite"/>
-        <animate attributeName="stroke-dashoffset" values="1200;0;0" keyTimes="0;.3;1" dur="9s" begin="3s" repeatCount="indefinite"/>
+      <path d="M18 384 L78 372 L126 352 L169 345 L205 333 L238 329 M24 412 L92 394 L145 369 L190 350 L225 337 L247 332 M494 384 L434 372 L386 352 L343 345 L307 333 L274 329 M488 412 L420 394 L367 369 L322 350 L287 337 L265 332" stroke-dasharray="30 1200">
+        <animate attributeName="stroke-dashoffset" values="0;-1200;-1200" keyTimes="0;.3;1" dur="9s" begin="3s" repeatCount="indefinite"/>
       </path>
     </g>
     <g stroke="#00eaff" stroke-width="3.6">
-      <path d="M18 384 L78 372 L126 352 L169 345 L205 333 L238 329 M24 412 L92 394 L145 369 L190 350 L225 337 L247 332 M494 384 L434 372 L386 352 L343 345 L307 333 L274 329 M488 412 L420 394 L367 369 L322 350 L287 337 L265 332">
+      <path d="M18 384 L78 372 L126 352 L169 345 L205 333 L238 329 M24 412 L92 394 L145 369 L190 350 L225 337 L247 332 M494 384 L434 372 L386 352 L343 345 L307 333 L274 329 M488 412 L420 394 L367 369 L322 350 L287 337 L265 332" stroke-dasharray="30 1200">
         <animate attributeName="stroke-dasharray" values="0 1200;28 1200;0 1200" dur="2.7s" begin="6s" repeatCount="indefinite"/>
-        <animate attributeName="stroke-dashoffset" values="1200;0;0" keyTimes="0;.3;1" dur="9s" begin="6s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-dashoffset" values="0;-1200;-1200" keyTimes="0;.3;1" dur="9s" begin="6s" repeatCount="indefinite"/>
       </path>
     </g>
   </g>
