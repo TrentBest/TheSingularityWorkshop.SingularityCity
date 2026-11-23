@@ -133,54 +133,57 @@ function renderDistrictScene(district,index,total) {
   // Block count and occupancy follow the authored parcel-grid parameters;
   // illustrative heights are placeholders, not claims about existing buildings.
   root.append(svg("path",{d:"M125 225 L450 355 L775 225 L450 95 Z",fill:"#173b43",stroke:"#5e8983","stroke-width":2,opacity:.8}));
-  for(let row=grid.rows-1;row>=0;row--) {
-    for(let col=0;col<grid.columns;col++) {
-      const seed=(index+2)*17+(row+1)*11+(col+1)*7;
-      if(((seed*13)%100)/100>grid.occupancy)continue;
-      const gx=(col-(grid.columns-1)/2)*78;
-      const gy=(row-(grid.rows-1)/2)*62;
-      const x=450+gx-gy*.72;
-      const y=210+(gx+gy)*.25;
-      const h=28+(seed*19)%66;
-      const w=38+(seed*7)%18;
-      const d=30+(seed*5)%14;
-      const top=[[x,y-h],[x+w,y-h+12],[x,y-h+24],[x-w,y-h+12]];
-      const left=[[x-w,y-h+12],[x,y-h+24],[x,y+24],[x-w,y+12]];
-      const right=[[x,y-h+24],[x+w,y-h+12],[x+w,y+12],[x,y+24]];
-      root.append(scenePolygon(left,"#31566a","#6e91a0",1));
-      root.append(scenePolygon(right,"#1b394e","#527487",1));
-      root.append(scenePolygon(top,"#91b7bd","#c3dadd",1));
-      root.append(svg("path",{d:`M${x-w/2} ${y-h+12} v${Math.min(h-12,32)} M${x+w/2} ${y-h+18} v${Math.min(h-12,32)}`,stroke:"#c1d4d0","stroke-width":2,opacity:.35}));
-    }
-  }
-  // Civic Quarter labels use the connected fixture's actual building and public-space records.
+  const road=svg("path",{d:"M160 300 L450 185 L740 300",fill:"none",stroke:"#a8b9b1","stroke-width":15,"stroke-linecap":"round",opacity:.48});
+  root.append(road);
   if(district.id==="civic"&&connectedDistrictModel) {
-    const project=(x,y)=>[450+(x-320)*.72-(y-210)*.72,220+(x-320)*.24+(y-210)*.24];
+    const project=(x,y,z=0)=>[450+(x-320)*.72-(y-210)*.72,220+(x-320)*.24+(y-210)*.24-z];
     const parcelsById=new Map(connectedDistrictModel.parcels.map(parcel=>[parcel.id,parcel]));
     for(const building of connectedDistrictModel.buildings) {
       const parcel=parcelsById.get(building.parcelId);
       if(!parcel)continue;
       const g=parcel.geometry;
-      const [x,y]=project(g.x+g.width/2,g.y+g.height/2);
-      const label=svg("text",{x,y,class:"scene-landmark-label","text-anchor":"middle"});
+      const height=building.floors*18;
+      const p1=project(g.x,g.y),p2=project(g.x+g.width,g.y),p3=project(g.x+g.width,g.y+g.height),p4=project(g.x,g.y+g.height);
+      const t1=project(g.x,g.y,height),t2=project(g.x+g.width,g.y,height),t3=project(g.x+g.width,g.y+g.height,height),t4=project(g.x,g.y+g.height,height);
+      root.append(scenePolygon([p1,p4,t4,t1],"#31566a","#6e91a0",1));
+      root.append(scenePolygon([p2,p3,t3,t2],"#1b394e","#527487",1));
+      root.append(scenePolygon([t1,t2,t3,t4],"#91b7bd","#c3dadd",1));
+      const [lx,ly]=project(g.x+g.width/2,g.y+g.height/2,height+12);
+      const label=svg("text",{x:lx,y:ly,class:"scene-landmark-label","text-anchor":"middle"});
       label.textContent=building.name.toUpperCase();
       root.append(label);
-      root.append(svg("circle",{cx:x,cy:y+9,r:4,fill:"#f2d18a",stroke:"#07111f","stroke-width":2}));
     }
     const square=connectedDistrictModel.publicRealm.spaces[0];
-    if(square) {
-      const parcel=parcelsById.get(square.parcelId);
-      if(parcel) {
-        const g=parcel.geometry;
-        const [x,y]=project(g.x+g.width/2,g.y+g.height/2);
-        const label=svg("text",{x,y,class:"scene-landmark-label","text-anchor":"middle"});
-        label.textContent=square.name.toUpperCase();
-        root.append(label);
+    const squareParcel=square&&parcelsById.get(square.parcelId);
+    if(squareParcel) {
+      const g=squareParcel.geometry;
+      const corners=[project(g.x,g.y),project(g.x+g.width,g.y),project(g.x+g.width,g.y+g.height),project(g.x,g.y+g.height)];
+      root.append(scenePolygon(corners,"#376b50","#83b88b",2));
+      const [x,y]=project(g.x+g.width/2,g.y+g.height/2,8);
+      const label=svg("text",{x,y,class:"scene-landmark-label","text-anchor":"middle"});
+      label.textContent=square.name.toUpperCase();
+      root.append(label);
+    }
+  } else {
+    for(let row=grid.rows-1;row>=0;row--) {
+      for(let col=0;col<grid.columns;col++) {
+        const seed=(index+2)*17+(row+1)*11+(col+1)*7;
+        if(((seed*13)%100)/100>grid.occupancy)continue;
+        const gx=(col-(grid.columns-1)/2)*(grid.width+grid.gap+24);
+        const gy=(row-(grid.rows-1)/2)*(grid.height+grid.gap+24);
+        const x=450+gx-gy*.72;
+        const y=210+(gx+gy)*.25;
+        const h=28+(seed*19)%66;
+        const w=Math.max(24,grid.width*.72);
+        const top=[[x,y-h],[x+w,y-h+12],[x,y-h+24],[x-w,y-h+12]];
+        const left=[[x-w,y-h+12],[x,y-h+24],[x,y+24],[x-w,y+12]];
+        const right=[[x,y-h+24],[x+w,y-h+12],[x+w,y+12],[x,y+24]];
+        root.append(scenePolygon(left,"#31566a","#6e91a0",1));
+        root.append(scenePolygon(right,"#1b394e","#527487",1));
+        root.append(scenePolygon(top,"#91b7bd","#c3dadd",1));
       }
     }
   }
-  const road=svg("path",{d:"M160 300 L450 185 L740 300",fill:"none",stroke:"#a8b9b1","stroke-width":15,"stroke-linecap":"round",opacity:.48});
-  root.insertBefore(road,root.children[2]||null);
   const trees=[[190,285],[220,310],[700,285],[670,310],[445,365],[485,365]];
   for(const [x,y] of trees) {
     root.append(svg("circle",{cx:x,cy:y,r:8,fill:"#4f9b77",stroke:"#9ac89d","stroke-width":2}));
