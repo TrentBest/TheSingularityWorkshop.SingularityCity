@@ -60,6 +60,8 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Economy in Singularity City](docs/ECONOMY_IN_SINGULARITY_CITY.md) — Economy package boundary, a deterministic City Marks ledger fixture, and the path toward a living Digiten economy.
 - [Vehicles, mobility and transport](docs/books/vehicles.md) — capability-based vehicle definitions, fleets, journeys and Physics/Economy ownership.
 - [Buildings, materials and construction](docs/books/buildings-and-construction.md) — material/tool/skill capability profiles and construction feasibility.
+- [Thieves & Shadow Work (LOD 2)](docs/books/thieves-and-shadow-work.md) — character specialization for thieves, from motives and relationships to allegations, consequences and reform.
+- [The Urban Underworld (LOD 2)](docs/books/urban-underworld.md) — crews, fences, black markets, disputed property, corruption and hidden civic power.
 - [SURPS vehicle rulebook specification](docs/rulebooks/SurpsRulebookVehiclesAndMobility.md) and [building/construction rulebook specification](docs/rulebooks/SurpsRulebookBuildingsAndConstruction.md) — content-first rulebooks pending the shared SURPS interface.
 - [Declarative experience entry points](docs/EXPERIENCES.md)
 - [Build your own city, step by step](docs/BUILD_YOUR_CITY.md)
