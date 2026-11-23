@@ -133,10 +133,17 @@ These books specialize City institutions and the people who serve in, challenge 
 - [Justice, Courts & Restitution — LOD 2](justice-courts-and-restitution.md) covers forums, due process, findings, remedies, appeals and repair of harm.
 - [Governance & Civic Administration — LOD 2](governance-and-civic-administration.md) covers institutional charters, offices, services, budgets, public decisions and accountability.
 - [Politics, Power & Public Will — LOD 2](politics-power-and-public-will.md) covers political actors, elections, coalitions, dissent, legitimacy and transfers of power.
+- [Elections & Player Participation — LOD 2](elections-and-player-participation.md) covers candidate campaigns, player voting, election rules, campaign advertisements, ballot privacy, counting and disputes.
+- [Vigilantes & Civic Justice — LOD 2](vigilantes-and-civic-justice.md) covers masked protectors, informal community action, self-appointed authority, harms and accountability.
+- [Villains & Antagonists — LOD 2](villains-and-antagonists.md) covers antagonist identity, motives, agency, factions, public narratives and consequences.
 
 They share this LOD 1 person model. An officer, judge, administrator, candidate, protester, elected official or political dissident is still a character with identity, knowledge, agency, relationships and rights—not a separate kind of person.
 
-## 14. Implementation boundary and validation
+## 14. Additional specialist books: elections, vigilantes and antagonists
+
+Election candidates, voters, campaign volunteers and election officials remain characters under this book's shared identity and agency model. [Elections & Player Participation — LOD 2](elections-and-player-participation.md) specializes the civic process; it does not create a second voter identity model. [Vigilantes & Civic Justice — LOD 2](vigilantes-and-civic-justice.md) and [Villains & Antagonists — LOD 2](villains-and-antagonists.md) likewise specialize roles and narrative context without declaring a separate class of person.
+
+## 15. Implementation boundary and validation
 
 This is a domain and authoring contract, not a claim of a complete persistent NPC engine, autonomous behavior runtime, population simulator, dialogue service, or staffing scheduler. City currently documents resident concepts and synthetic population fixtures; those are not proof of a production resident system.
 
