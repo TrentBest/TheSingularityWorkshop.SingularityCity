@@ -117,9 +117,6 @@ function renderMapLayerControls(catalog) {
   }
 }
 
-function districtScenePoint(x,y,z=0) {
-  return [450+(x-y)*0.78, 185+(x+y)*0.39-z];
-}
 function scenePolygon(points,fill,stroke="#d5e6e8",width=1) {
   return svg("polygon",{points:points.map(p=>p.join(",")).join(" "),fill,stroke,"stroke-width":width});
 }
@@ -133,11 +130,8 @@ function renderDistrictScene(district,index,total) {
   if(!root||!district)return;
   root.replaceChildren();
   const grid=district.parcelGrid;
-  const ground=scenePolygon([district.polygon[0],district.polygon[1],district.polygon[2],district.polygon[3],district.polygon[4]],"#234c49","#4e827b",2);
-  // The district footprint is used as a backdrop; the axonometric block study is
-  // generated from the blueprint parcel grid, not from fabricated surveyed geometry.
-  root.append(ground);
-  const baseY=225;
+  // Block count and occupancy follow the authored parcel-grid parameters;
+  // illustrative heights are placeholders, not claims about existing buildings.
   root.append(svg("path",{d:"M125 225 L450 355 L775 225 L450 95 Z",fill:"#173b43",stroke:"#5e8983","stroke-width":2,opacity:.8}));
   for(let row=grid.rows-1;row>=0;row--) {
     for(let col=0;col<grid.columns;col++) {
@@ -159,23 +153,34 @@ function renderDistrictScene(district,index,total) {
       root.append(svg("path",{d:`M${x-w/2} ${y-h+12} v${Math.min(h-12,32)} M${x+w/2} ${y-h+18} v${Math.min(h-12,32)}`,stroke:"#c1d4d0","stroke-width":2,opacity:.35}));
     }
   }
-  // Civic Quarter has a richer connected fixture: annotate only its known buildings.
+  // Civic Quarter labels use the connected fixture's actual building and public-space records.
   if(district.id==="civic"&&connectedDistrictModel) {
-    const landmarks=connectedDistrictModel.buildings;
-    const anchors=[[340,175],[475,150],[565,260]];
-    landmarks.forEach((building,i)=>{
-      const [x,y]=anchors[i]||[450,230];
+    const project=(x,y)=>[450+(x-320)*.72-(y-210)*.72,220+(x-320)*.24+(y-210)*.24];
+    const parcelsById=new Map(connectedDistrictModel.parcels.map(parcel=>[parcel.id,parcel]));
+    for(const building of connectedDistrictModel.buildings) {
+      const parcel=parcelsById.get(building.parcelId);
+      if(!parcel)continue;
+      const g=parcel.geometry;
+      const [x,y]=project(g.x+g.width/2,g.y+g.height/2);
       const label=svg("text",{x,y,class:"scene-landmark-label","text-anchor":"middle"});
       label.textContent=building.name.toUpperCase();
       root.append(label);
       root.append(svg("circle",{cx:x,cy:y+9,r:4,fill:"#f2d18a",stroke:"#07111f","stroke-width":2}));
-    });
-    const square=svg("text",{x:450,y:330,class:"scene-landmark-label","text-anchor":"middle"});
-    square.textContent="FOUNDERS SQUARE";
-    root.append(square);
+    }
+    const square=connectedDistrictModel.publicRealm.spaces[0];
+    if(square) {
+      const parcel=parcelsById.get(square.parcelId);
+      if(parcel) {
+        const g=parcel.geometry;
+        const [x,y]=project(g.x+g.width/2,g.y+g.height/2);
+        const label=svg("text",{x,y,class:"scene-landmark-label","text-anchor":"middle"});
+        label.textContent=square.name.toUpperCase();
+        root.append(label);
+      }
+    }
   }
   const road=svg("path",{d:"M160 300 L450 185 L740 300",fill:"none",stroke:"#a8b9b1","stroke-width":15,"stroke-linecap":"round",opacity:.48});
-  root.prepend(road);
+  root.insertBefore(road,root.children[2]||null);
   const trees=[[190,285],[220,310],[700,285],[670,310],[445,365],[485,365]];
   for(const [x,y] of trees) {
     root.append(svg("circle",{cx:x,cy:y,r:8,fill:"#4f9b77",stroke:"#9ac89d","stroke-width":2}));
