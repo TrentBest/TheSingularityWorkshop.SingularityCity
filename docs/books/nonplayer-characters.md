@@ -125,7 +125,18 @@ Do not use disability, culture, identity, or life circumstances as shortcuts for
 
 [Thieves & Shadow Work — LOD 2](thieves-and-shadow-work.md) specializes the character model for thieves, fences, confidence artists, smugglers, reluctant participants and reforming characters. It keeps identity, allegation, evidence, adjudication and reputation distinct; models incidents and victim consequences; and preserves Economy as the authority for value movement. [The Urban Underworld — LOD 2](urban-underworld.md) expands the city-level networks, crews, informal markets, disputed property and hidden power relationships. Neither book defines a second person model or a shadow ledger.
 
-## 13. Implementation boundary and validation
+## 13. Specialist books: civic authority and political life
+
+These books specialize City institutions and the people who serve in, challenge or are affected by them:
+
+- [Law Enforcement & Public Safety — LOD 2](law-enforcement-and-public-safety.md) covers public-safety agencies, jurisdiction, roles, incidents, evidence, response, oversight and emergency services.
+- [Justice, Courts & Restitution — LOD 2](justice-courts-and-restitution.md) covers forums, due process, findings, remedies, appeals and repair of harm.
+- [Governance & Civic Administration — LOD 2](governance-and-civic-administration.md) covers institutional charters, offices, services, budgets, public decisions and accountability.
+- [Politics, Power & Public Will — LOD 2](politics-power-and-public-will.md) covers political actors, elections, coalitions, dissent, legitimacy and transfers of power.
+
+They share this LOD 1 person model. An officer, judge, administrator, candidate, protester, elected official or political dissident is still a character with identity, knowledge, agency, relationships and rights—not a separate kind of person.
+
+## 14. Implementation boundary and validation
 
 This is a domain and authoring contract, not a claim of a complete persistent NPC engine, autonomous behavior runtime, population simulator, dialogue service, or staffing scheduler. City currently documents resident concepts and synthetic population fixtures; those are not proof of a production resident system.
 
