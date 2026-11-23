@@ -2,7 +2,7 @@
 
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-<badge>Research pilot · not a completed sourcebook</badge>
+**Status:** Research pilot — not a completed sourcebook
 
 ## Why this is the first deep-time pilot
 
@@ -122,6 +122,6 @@ The same stable place and feature identities should connect the sourcebook, sour
 
 ## Status
 
-<badge>Source-checked research pilot</badge>
+**Evidence status:** Source-checked research pilot
 
 This page is an initial research plan with a source ledger, not a completed place sourcebook. It does not contain acquired scan data, raw point clouds, a verified full-site digital twin, an authoritative historical reconstruction, or a playable Göbekli Tepe experience. The first implementation gate is lawful access to authoritative present-day survey data and a tightly scoped, expert-reviewable reconstruction target.
