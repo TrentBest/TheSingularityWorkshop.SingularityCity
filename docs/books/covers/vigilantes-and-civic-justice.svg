@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Vigilantes and Civic Justice</title><desc id="desc">A masked silhouette stands between a neighborhood and civic scales.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#334155"/><stop offset="1" stop-color="#7c2d12"/></linearGradient></defs>
+<rect width="720" height="420" rx="24" fill="url(#bg)"/><path d="M95 305h530M130 305v-70h90v70M500 305v-95h90v95" stroke="#fed7aa" stroke-width="7" fill="none"/>
+<path d="M360 105c-65 0-90 48-90 105 0 55 38 100 90 115 52-15 90-60 90-115 0-57-25-105-90-105z" fill="none" stroke="#ffedd5" stroke-width="9"/><path d="M300 205h120M325 235l35-12 35 12" stroke="#ffedd5" stroke-width="8" fill="none"/>
+<text x="360" y="52" fill="#fff7ed" font-family="sans-serif" font-size="23" text-anchor="middle" letter-spacing="4">SINGULARITY CITY</text><text x="360" y="390" fill="#fff" font-family="sans-serif" font-size="25" text-anchor="middle" font-weight="700">PROTECTION • POWER • ACCOUNTABILITY</text></svg>
