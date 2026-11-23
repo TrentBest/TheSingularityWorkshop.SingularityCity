@@ -46,6 +46,9 @@ jobs:
           test -s tests/economy-scenario.test.mjs
           test -s docs/ECONOMY_IN_SINGULARITY_CITY.md
           test -s docs/GREENHOLLOW_CIVIC_STRESS_TEST.md
+          test -s docs/CIVIC_PROCESS_MODEL.md
+          test -s schemas/civic-process-response.schema.json
+          test -s tests/civic-process-contract.test.mjs
           test -s docs/books/vehicles.md
           test -s docs/books/buildings-and-construction.md
           test -s docs/books/thieves-and-shadow-work.md
@@ -123,6 +126,7 @@ jobs:
           node tests/elections-vigilantes-villains.test.mjs
           node tests/greenhollow-election-fixture.test.mjs
           node tests/greenhollow-civic-stress-test.test.mjs
+          node tests/civic-process-contract.test.mjs
           node tests/surps-participation-manifest.test.mjs
           node tests/physics-terrain-adapter.test.mjs
           node tests/terrain-interpretation.test.mjs
