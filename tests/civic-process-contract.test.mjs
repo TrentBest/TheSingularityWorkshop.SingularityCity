@@ -117,6 +117,46 @@ assert.equal(response.institutionalTrust.noAggregateScore, true);
 assert.equal(response.institutionalTrust.noAutomaticTrustGain, true);
 assert.ok(response.institutionalTrust.limitations.length > 0);
 
+function validateLinkedRecords(candidate, candidateScenario) {
+  const candidateActors = new Set(candidateScenario.actors.map(actor => actor.id));
+  const candidateProposals = new Set(candidate.proposals.map(item => item.id));
+  const candidateAuthorizations = new Map(candidate.authorizations.map(item => [item.id, item]));
+  const candidateExecutions = new Map(candidate.executionEvidence.map(item => [item.id, item]));
+  const candidateDecision = candidate.hearingDecision;
+
+  assert.ok(candidateDecision.authorizations.every(id => candidateAuthorizations.has(id)), "decision authorization references must resolve");
+  for (const authorization of candidate.authorizations) {
+    assert.equal(authorization.sourceDecisionId, candidateDecision.id, "authorization must be based on this decision");
+    assert.ok(candidateActors.has(authorization.grantingAuthorityId), "authorization granting authority must exist");
+    assert.ok(candidateActors.has(authorization.executorId), "authorization executor must exist");
+    assert.ok(Date.parse(authorization.validFrom) < Date.parse(authorization.expiresAt), "authorization validity window must be ordered");
+  }
+  for (const execution of candidate.executionEvidence) {
+    const authorization = candidateAuthorizations.get(execution.authorizationId);
+    assert.ok(authorization, "execution authorization reference must resolve");
+    assert.ok(candidateProposals.has(execution.proposalId), "execution proposal reference must resolve");
+    assert.equal(execution.action, authorization.action, "execution action must match authorization");
+    assert.equal(execution.subjectId, authorization.subjectId, "execution subject must match authorization");
+    assert.equal(execution.executorId, authorization.executorId, "execution executor must match authorization");
+    assert.equal(authorization.status, "granted", "execution requires a granted authorization");
+    assert.ok(Date.parse(execution.occurredAt) >= Date.parse(authorization.validFrom), "execution must not precede authorization");
+    assert.ok(Date.parse(execution.occurredAt) < Date.parse(authorization.expiresAt), "execution must precede authorization expiry");
+    const evidenceIds = new Set(execution.evidence.map(item => item.id));
+    assert.ok(authorization.requiredExecutionEvidence.every(id => evidenceIds.has(id)), "execution must include all required evidence");
+  }
+  for (const review of candidate.outcomeReviews) {
+    assert.equal(review.decisionId, candidateDecision.id, "outcome review must cite the decision under review");
+    assert.ok(candidateActors.has(review.reviewerId), "outcome reviewer must exist");
+    assert.ok(review.authorizationIds.length > 0 && review.executionEvidenceIds.length > 0, "outcome review must cite authorizations and execution");
+    assert.ok(review.authorizationIds.every(id => candidateAuthorizations.has(id)), "outcome authorization references must resolve");
+    assert.ok(review.executionEvidenceIds.every(id => candidateExecutions.has(id)), "outcome execution references must resolve");
+    const reviewedExecutions = review.executionEvidenceIds.map(id => candidateExecutions.get(id));
+    assert.ok(reviewedExecutions.every(item => review.authorizationIds.includes(item.authorizationId)), "reviewed execution must belong to a listed authorization");
+    assert.ok(reviewedExecutions.every(item => Date.parse(review.reviewedAt) >= Date.parse(item.occurredAt)), "outcome review cannot precede execution");
+  }
+}
+validateLinkedRecords(response, scenario);
+
 const grant = {
   id: "authorization-test-001",
   sourceDecisionId: decision.id,
@@ -145,7 +185,7 @@ const executionRecord = {
   executorId: grant.executorId,
   occurredAt: "2026-11-23T13:00:00Z",
   status: "completed",
-  evidence: [{ id: "opening-inspection-001", kind: "inspection", source: "independent-reviewer", provenance: "dated fictional fixture evidence" }],
+  evidence: [{ id: "dated-opening-inspection", kind: "inspection", source: "independent-reviewer", provenance: "dated fictional fixture evidence" }],
   limitations: ["Synthetic schema-conformance record only"]
 };
 validateSchema(executionRecord, schema.$defs.executionEvidence, "$executionEvidence");
@@ -180,6 +220,7 @@ assert.equal(syntheticResponse.authorizations[0].id, syntheticResponse.hearingDe
 assert.equal(syntheticResponse.executionEvidence[0].authorizationId, syntheticResponse.authorizations[0].id);
 assert.equal(syntheticResponse.outcomeReviews[0].executionEvidenceIds[0], syntheticResponse.executionEvidence[0].id);
 assert.ok(syntheticScenario.actors.some(actor => actor.id === outcomeReviewRecord.reviewerId));
+validateLinkedRecords(syntheticResponse, syntheticScenario);
 
 const gateInput = {
   authorization: grant,
