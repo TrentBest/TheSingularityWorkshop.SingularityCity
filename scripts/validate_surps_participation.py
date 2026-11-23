@@ -142,8 +142,8 @@ def main() -> int:
                 fail(errors, f"{book['bookPath']}: H1 must match the canonical title")
             if f"`{book_id}`" not in source:
                 fail(errors, f"{book['bookPath']}: stable sourcebook ID is missing")
-            edition_pattern = r"**Edition:**s+`?" + re.escape(str(book.get("version"))) + r"`?"
-            if not re.search(edition_pattern, source):
+            edition_marker = "**Edition:** " + chr(96) + str(book.get("version")) + chr(96)
+            if edition_marker not in source:
                 fail(errors, f"{book['bookPath']}: edition must match manifest version")
 
     if errors:
