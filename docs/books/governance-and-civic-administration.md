@@ -156,6 +156,7 @@ For each setting document:
 |---|---|
 | Civic institutions, jurisdictions, public offices, decisions and service relationships | Singularity City |
 | Political competition, public opinion and power transitions | Politics, Power & Public Will |
+| Character identity, knowledge, capabilities and personal agency | Nonplayer Characters LOD 1 |
 | Public safety agencies and response relationships | Law Enforcement & Public Safety |
 | Courts and adjudication | Justice, Courts & Restitution |
 | Currency, accounts, payments and journals | Economy |
