@@ -11,6 +11,7 @@ const isTimestamp = value =>
 export function evaluateCivicAuthorization({
   authorization,
   action,
+  proposalId,
   subjectId,
   jurisdiction,
   executorId,
@@ -23,13 +24,14 @@ export function evaluateCivicAuthorization({
     return { executable: false, reasons: ["authorization-missing"] };
   }
 
-  for (const field of ["id", "sourceDecisionId", "grantingAuthorityId", "jurisdiction", "action", "subjectId", "scope", "executorId"]) {
+  for (const field of ["id", "sourceDecisionId", "proposalId", "grantingAuthorityId", "jurisdiction", "action", "subjectId", "scope", "executorId"]) {
     if (typeof authorization[field] !== "string" || authorization[field].trim().length === 0) {
       reasons.push("authorization-field-missing:" + field);
     }
   }
   if (authorization.status !== "granted") reasons.push("authorization-not-granted");
   if (authorization.action !== action) reasons.push("action-out-of-scope");
+  if (authorization.proposalId !== proposalId) reasons.push("proposal-out-of-scope");
   if (authorization.subjectId !== subjectId) reasons.push("subject-out-of-scope");
   if (authorization.jurisdiction !== jurisdiction) reasons.push("jurisdiction-out-of-scope");
   if (authorization.executorId !== executorId) reasons.push("executor-not-authorized");
