@@ -6,7 +6,7 @@
 
 Singularity City coordinates civic processes: who may deliberate, what proposals are considered, which authority makes a decision, what that decision permits, what remains prohibited, who must oversee the next steps, and what evidence closes the loop. This is a City domain contract, not a replacement for Physics, Economy, shared Ontology, or a setting's rule system.
 
-The machine-readable response shape is [civic-process-response.schema.json](../schemas/civic-process-response.schema.json). Greenhollow is the first authored fixture using this contract: [scenario data](../data/scenarios/greenhollow-civic-stress-test.json) and [stress-test documentation](GREENHOLLOW_CIVIC_STRESS_TEST.md).
+The machine-readable response shape is [civic-process-response.schema.json](../schemas/civic-process-response.schema.json). Greenhollow is the first authored fixture using this contract: [scenario data](../data/scenarios/greenhollow-civic-stress-test.json) and [stress-test documentation](GREENHOLLOW_CIVIC_STRESS_TEST.md). The separate [authorization host contract](CIVIC_AUTHORIZATION_HOST_CONTRACT.md) defines the trusted evidence envelope required by a future production adapter.
 
 ## 1. Process records and relationships
 
