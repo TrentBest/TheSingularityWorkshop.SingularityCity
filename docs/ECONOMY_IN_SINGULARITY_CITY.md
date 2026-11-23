@@ -92,3 +92,9 @@ Economy does not provide the Digiten scheduler, production system, inventory or 
 ## Next implementation boundary
 
 The next .NET host should reference the Economy package according to the ecosystem's development-branch/package policy, create a typed currency and accounts for selected actors, execute the fixture's operation sequence through SimulationLedger, and export receipts plus journal entries for validation. Do not add a second City-owned ledger. No release or package publication is implied.
+
+## Coordination and tracking
+
+- [Economy #14: authoritative Singularity currency and casino simulation slice](https://github.com/TrentBest/TheSingularityWorkshop.Economy/issues/14) establishes the currency custody dependency.
+- [Economy #16: deterministic Digiten work-to-commerce loop](https://github.com/TrentBest/TheSingularityWorkshop.Economy/issues/16) is the cross-domain economic behavior target; City has posted its fixture mapping and requested API review there.
+- [City #2: execute the first Economy-backed City market-day vertical slice](https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity/issues/2) tracks the host-side integration and its acceptance criteria.
