@@ -47,6 +47,8 @@ jobs:
           test -s docs/ECONOMY_IN_SINGULARITY_CITY.md
           test -s docs/GREENHOLLOW_CIVIC_STRESS_TEST.md
           test -s docs/CIVIC_PROCESS_MODEL.md
+          test -s docs/CIVIC_AUTHORIZATION_HOST_CONTRACT.md
+          test -s schemas/civic-authorization-host-context.schema.json
           test -s schemas/civic-process-response.schema.json
           test -s assets/js/civic-authorization-gate.mjs
           test -s tests/civic-process-contract.test.mjs
