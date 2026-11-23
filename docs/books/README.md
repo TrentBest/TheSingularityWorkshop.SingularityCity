@@ -22,7 +22,7 @@ Higher-detail domain books specialize this shared model without redefining the p
 
 ## Place books
 
-A separate editorial track covers individual settlements, cities, archaeological sites and cultural landscapes rather than reusable domain concepts. Subjects may be contemporary, historical, prehistoric, comparative, fictional or explicitly speculative. A place need not qualify as a city to merit a sourcebook: the evidence and classification should determine how it is described.
+A separate editorial track covers individual settlements, cities, archaeological sites and cultural landscapes rather than reusable domain concepts. The shared reference ontology determines reality membership; City does not invent a local real/fiction taxonomy. An evidence-based reconstruction of a real site's past is distinguished from direct observation, while an alternate-history or invented version belongs to a fictional reality. Fictional places can retain a **based on** relationship to real inspirations without being presented as real locations. See [Reality Sets, Place Identity and Historical Reconstruction](../REALITY_AND_RECONSTRUCTION.md).
 
 [Read the City Sourcebooks program](../CITY_SOURCEBOOKS.md) for the evidence standard, archaeological interpretation safeguards, time-slice convention, educational direction, folder structure, LOD guidance and candidate catalogue.
 
