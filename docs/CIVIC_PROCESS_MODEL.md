@@ -18,10 +18,10 @@ A civic process is not a single mutable status field. Keep the following records
 | Proposal | Describes an option and its intended civic purpose | Author, status, dependencies, resource needs and limits |
 | Deliberation | Records submissions, questions, dissent, conflicts and review | Attributed source, time, response and privacy boundary |
 | Decision | Records the competent authority's reasoned outcome | Authority, jurisdiction, source record, selected proposals and reasons |
-| Authorization | Separately grants a bounded action when the proper authority has approved it | Actor, action, scope, conditions, validity and evidence |
+| Authorization | Separately grants a bounded action when the proper authority has approved it | Granting authority, jurisdiction, action, subject, scope, exclusions, prerequisites, conditions, validity, executor and review path |
 | Oversight obligation | Requires a review or publication at a defined trigger | Responsible actor, trigger, obligation and expected evidence |
 | Impact observation | Records how groups are affected without inventing measurements | Affected group, source, uncertainty, assessment and follow-up |
-| Outcome / appeal | Records execution evidence, result, challenge or reconsideration | Decision reference, evidence, reviewer, status and disposition |
+| Execution evidence | Records what an authorized executor actually did | Authorization, action, subject, executor, time, status, source evidence and limitations |\n| Outcome review / appeal | Evaluates results or records challenge and reconsideration | Decision, authorization and execution references, reviewer, observed outcome, unresolved impacts and disposition |
 
 A proposal is not a decision. A decision is not an authorization. An authorization is not proof of execution. An execution record is not proof that the outcome achieved its purpose. Each transition needs its own source and evidence.
 
@@ -81,6 +81,6 @@ A later correction, appeal or overturned decision must append a linked record ra
 
 ## 7. Validation and implementation boundary
 
-The JSON Schema defines the versioned response-record shape. Fixture tests add cross-record checks that JSON Schema alone cannot express: stable-ID uniqueness, actor/event/proposal references, decision authority, explicit prohibited actions, oversight ownership, and the qualitative/no-score trust constraints.
+The JSON Schema defines the versioned response-record shape, including separate authorization, execution-evidence and outcome-review records. The pure `evaluateCivicAuthorization()` gate requires a granted authorization whose action, subject and executor match, whose validity window includes the attempted time, and whose prerequisite evidence is satisfied. Missing, suspended, revoked, expired, denied, out-of-scope or prerequisite-incomplete grants fail closed. Fixture tests add cross-record checks that JSON Schema alone cannot express: stable-ID uniqueness, actor/event/proposal references, decision authority, explicit prohibited actions, oversight ownership, and the qualitative/no-score trust constraints.
 
-The Greenhollow fixture is the first conformance example, not a production process engine. The current contract does not implement workflow persistence, authorization issuance, identity management, a case-management service, procurement, financial execution, construction or legal adjudication. A future runtime must be introduced behind an explicit host boundary and reconciled with the shared Ontology, Physics, Economy and SURPS contracts before claiming execution capability.
+The Greenhollow fixture is the first conformance example, not a production process engine. The current contract does not implement workflow persistence, authorization issuance, identity management, a case-management service, trusted time, prerequisite evidence custody, revocation distribution, procurement, financial execution, construction or legal adjudication. The authorization gate is a deterministic policy check only; a production host must supply trusted identity, time, evidence and revocation state before treating its result as operational permission. A future runtime must be introduced behind an explicit host boundary and reconciled with the shared Ontology, Physics, Economy and SURPS contracts before claiming execution capability.
