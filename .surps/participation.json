@@ -2,10 +2,9 @@
   "schemaVersion": 1,
   "repository": "TrentBest/TheSingularityWorkshop.SingularityCity",
   "domain": "Singularity City",
-  "participationStatus": "active",
+  "participationStatus": "integrated-not-enrolled",
   "contributionType": [
     "domain-city",
-    "city-rulebook-provider",
     "sourcebook-publication"
   ],
   "contributionSummary": "Owns inhabited-place and civic-domain knowledge: settlements, districts, parcels, buildings, roads and transit, utilities, institutions, governance, residents, public safety, justice, elections, and city-specific relationships. Physics owns physical laws and terrain generation; Economy owns authoritative economic ledgers and transactions; SURPS owns shared roleplaying ontology, CORE rules, book identity, and composition. City sourcebooks describe domain rules and tabletop procedures without claiming a completed SURPS runtime adapter.",
@@ -121,5 +120,25 @@
       "descriptorPath": "docs/books/villains-and-antagonists.book.json",
       "coverPath": "docs/books/covers/villains-and-antagonists.svg"
     }
-  ]
+  ],
+  "rulebookCoordination": {
+    "authorityRepository": "TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem",
+    "authorityBranch": "development",
+    "masterBacklogPath": ".surps/rulebook-backlog.json",
+    "masterMapPath": "docs/rulebook-backlog/index.md",
+    "participationContractPath": "docs/repository-participation.md",
+    "canonicalParticipationStandard": "https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/docs/repository-participation.md",
+    "ownershipClaimTemplate": "https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/.github/ISSUE_TEMPLATE/rulebook-owner-sign-in.yml",
+    "repositoryEnrollmentTemplate": "https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/.github/ISSUE_TEMPLATE/surps-repository-participation.yml",
+    "coordinationIssue": "https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity/issues/1",
+    "policy": "SURPS is the canonical cross-repository registry. Singularity City owns civic and inhabited-place domain knowledge and its sourcebooks; SURPS owns shared ontology, CORE rules, global identity, LOD semantics, and composition. This declaration does not claim an implemented runtime adapter."
+  },
+  "admissionReadiness": {
+    "status": "blocked",
+    "blockers": [
+      "Ten City-owned sourcebooks now have stable IDs, canonical descriptors, distinct covers, and structured manifest entries; the final independent SURPS review must reconcile ownership claims and domain boundaries.",
+      "The final development-branch manifest and catalogue snapshot must be verified and recorded as central admission evidence.",
+      "The repository's own local sourcebook validator and CI gate must be run and verified before active admission."
+    ]
+  }
 }
