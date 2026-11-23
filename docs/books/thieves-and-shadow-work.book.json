@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "singularity-city.domain.thieves-and-shadow-work",
+  "category": "Domain",
+  "lod": 2,
+  "title": "Thieves & Shadow Work",
+  "version": "0.1.0",
+  "cover": "docs/books/covers/thieves-and-shadow-work.svg",
+  "lodBadge": null,
+  "publisher": "The Singularity Workshop",
+  "publisherMoniker": "https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg",
+  "extends": "singularity-city.domain.nonplayer-characters"
+}
