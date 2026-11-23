@@ -43,7 +43,7 @@ Run the local integrity gate before changing this catalogue:
 python scripts/validate_surps_participation.py
 ```
 
-The [SURPS Sourcebook Validation workflow](../.github/workflows/surps-sourcebook-validation.yml) runs this check for relevant changes on `development`. A passing check validates local identity and asset consistency; it does not accept ownership claims or enroll the repository.
+The [SURPS Sourcebook Validation workflow](../../.github/workflows/surps-sourcebook-validation.yml) runs this check for relevant changes on `development`. A passing check validates local identity and asset consistency; it does not accept ownership claims or enroll the repository.
 
 ## Ownership boundaries
 
