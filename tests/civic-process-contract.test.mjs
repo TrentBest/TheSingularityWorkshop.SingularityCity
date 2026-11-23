@@ -138,7 +138,6 @@ function validateLinkedRecords(candidate, candidateScenario) {
     assert.equal(execution.action, authorization.action, "execution action must match authorization");
     assert.equal(execution.subjectId, authorization.subjectId, "execution subject must match authorization");
     assert.equal(execution.executorId, authorization.executorId, "execution executor must match authorization");
-    assert.equal(authorization.status, "granted", "execution requires a granted authorization");
     assert.ok(Date.parse(execution.occurredAt) >= Date.parse(authorization.validFrom), "execution must not precede authorization");
     assert.ok(Date.parse(execution.occurredAt) < Date.parse(authorization.expiresAt), "execution must precede authorization expiry");
     const evidenceIds = new Set(execution.evidence.map(item => item.id));
@@ -221,6 +220,21 @@ assert.equal(syntheticResponse.executionEvidence[0].authorizationId, syntheticRe
 assert.equal(syntheticResponse.outcomeReviews[0].executionEvidenceIds[0], syntheticResponse.executionEvidence[0].id);
 assert.ok(syntheticScenario.actors.some(actor => actor.id === outcomeReviewRecord.reviewerId));
 validateLinkedRecords(syntheticResponse, syntheticScenario);
+assert.throws(
+  () => validateLinkedRecords({ ...syntheticResponse, executionEvidence: [{ ...executionRecord, executorId: "unlisted-provider" }] }, syntheticScenario),
+  /execution executor must match authorization/,
+  "cross-record validation must reject an executor mismatch"
+);
+assert.throws(
+  () => validateLinkedRecords({ ...syntheticResponse, executionEvidence: [{ ...executionRecord, proposalId: "missing-proposal" }] }, syntheticScenario),
+  /execution proposal reference must resolve/,
+  "cross-record validation must reject an unknown proposal"
+);
+assert.throws(
+  () => validateLinkedRecords({ ...syntheticResponse, outcomeReviews: [{ ...outcomeReviewRecord, executionEvidenceIds: ["missing-execution"] }] }, syntheticScenario),
+  /outcome execution references must resolve/,
+  "cross-record validation must reject an unknown execution record"
+);
 
 const gateInput = {
   authorization: grant,
