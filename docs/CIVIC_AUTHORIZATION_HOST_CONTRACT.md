@@ -51,7 +51,7 @@ An authorization decision is not a reservation of resources and does not itself 
 
 ## Ownership and non-goals
 
-- City owns the civic-process record relationships and the policy gate's exact action/subject/jurisdiction/executor comparison.
+- City owns the civic-process record relationships and the policy gate's exact proposal/action/subject/jurisdiction/executor comparison.
 - The host owns authentication, authority verification, trusted time, evidence custody, condition evaluation, revocation distribution, audit persistence and execution dispatch.
 - Physics remains authoritative for physical and safety assessments; Economy remains authoritative for budgets, procurement and transactions; shared Ontology and SURPS retain their respective contracts.
 - This contract does not implement a host, identity provider, legal authority registry, evidence vault, trusted clock, revocation service, immutable audit store, workflow engine or executor.
