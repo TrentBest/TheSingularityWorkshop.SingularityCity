@@ -1,12 +1,16 @@
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-# Nonplayer Characters — the people who make a city live
+# Nonplayer Characters
 
-![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
+*the people who make a city live*
+
 
 ![LOD 1](../assets/sourcebook-lod-1.svg)
 
 ![Nonplayer Characters cover](covers/nonplayer-characters.svg)
+
+**Sourcebook ID:** `singularity-city.domain.nonplayer-characters`  
+**Edition:** `0.1.0`  
 
 **Owner:** Singularity City · **LOD:** 1 · **Status:** Domain sourcebook and design contract, not a claim of a complete NPC simulator.
 
