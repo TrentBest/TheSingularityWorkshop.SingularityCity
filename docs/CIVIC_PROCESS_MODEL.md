@@ -21,7 +21,8 @@ A civic process is not a single mutable status field. Keep the following records
 | Authorization | Separately grants a bounded action when the proper authority has approved it | Granting authority, jurisdiction, action, subject, scope, exclusions, prerequisites, conditions, validity, executor and review path |
 | Oversight obligation | Requires a review or publication at a defined trigger | Responsible actor, trigger, obligation and expected evidence |
 | Impact observation | Records how groups are affected without inventing measurements | Affected group, source, uncertainty, assessment and follow-up |
-| Execution evidence | Records what an authorized executor actually did | Authorization, action, subject, executor, time, status, source evidence and limitations |\n| Outcome review / appeal | Evaluates results or records challenge and reconsideration | Decision, authorization and execution references, reviewer, observed outcome, unresolved impacts and disposition |
+| Execution evidence | Records what an authorized executor actually did | Authorization, action, subject, executor, time, status, source evidence and limitations |
+| Outcome review / appeal | Evaluates results or records challenge and reconsideration | Decision, authorization and execution references, reviewer, observed outcome, unresolved impacts and disposition |
 
 A proposal is not a decision. A decision is not an authorization. An authorization is not proof of execution. An execution record is not proof that the outcome achieved its purpose. Each transition needs its own source and evidence.
 
