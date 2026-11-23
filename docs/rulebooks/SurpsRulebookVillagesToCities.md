@@ -46,7 +46,7 @@ Population, density, service coverage, economic diversity and network centrality
 - **Resilience:** the ability to maintain or recover valued functions under disturbance, with the disturbance and measure explicitly named.
 - **Governance arrangement:** the institutions, responsibilities, rights and decision processes through which shared resources and services are managed.
 
-These concepts should map to SURPS entities, attributes, capabilities, behaviors, interactions and environments without forcing a premature API shape.
+These concepts should map to SURPS entities, attributes, capabilities, behaviors, interactions and environments without forcing a premature API shape. Reality membership and shared semantic identity are inherited from the Workshop reference ontology; this City rulebook must not invent a parallel reality taxonomy. The same real place can be explored through a measured present-day representation and evidence-based historical reconstructions, while intentionally altered or invented versions belong to their declared fictional reality. See [Reality Sets, Place Identity and Historical Reconstruction](../REALITY_AND_RECONSTRUCTION.md).
 
 ## Growth and transformation rules
 
