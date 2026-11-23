@@ -1,6 +1,11 @@
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-# Vigilantes & Civic Justice — the line between protection and private power
+# Vigilantes & Civic Justice
+
+*the line between protection and private power*
+
+**Sourcebook ID:** `singularity-city.domain.vigilantes-and-civic-justice`  
+**Edition:** `0.1.0`  
 
 **Owner:** Singularity City · **LOD:** 2 civic / character specialization · **Status:** authored domain sourcebook; no vigilante combat or enforcement runtime is implied.
 
