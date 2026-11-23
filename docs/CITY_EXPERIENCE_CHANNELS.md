@@ -1,0 +1,55 @@
+# City Experience Channels
+
+## One world, independent observers
+
+Singularity City has one domain model and multiple independent ways to experience it. Presentation mode must never change city identity or authoritative state.
+
+| Mode | Visualization | Renderer |
+|---|---:|---:|
+| Visualization only | On | Hidden |
+| Renderer only | Hidden | On |
+| Both together | On | On |
+
+The controls in the browser preview switch these modes without reloading the City data. Visualization is the visible spatial projection. Renderer is a textual observer that describes the selected place and summarizes the connected Civic Quarter fixture. The two are deliberately separable.
+
+## Current browser proof
+
+- The Visualization channel uses the existing City map, district SVG, terrain layers, network overlays and place selection.
+- The Renderer channel reads the same selected-place fields and district status from the City browser model and presents them as text.
+- The audio control is opt-in and starts only after a user gesture. It currently produces a low procedural tone/noise ambience sketch through Web Audio.
+- The current sound is **not** a recording, measured soundscape, or simulation of traffic, weather, crowds, machinery or individual events. It is a first audible output proving that audio can be independently enabled and muted.
+- All current city and district content remains synthetic authored preview data.
+
+## Sound as a world observation
+
+The intended soundscape should be derived from observable world state and spatial context, not attached as arbitrary decorative loops. A future audio observer should consume stable City identities and domain-owned event streams, then select sound sources according to listener position, distance, occlusion, time and observer budget.
+
+Candidate sound domains include:
+
+- environmental ambience: wind, rain, water, birds and seasonal conditions;
+- mobility: pedestrians, bicycles, road traffic, transit arrivals and departures;
+- civic and commercial life: markets, public spaces, workshops and service activity;
+- construction and infrastructure: machinery, maintenance, utilities and alarms;
+- authored events: announcements, performances, ceremonies and localized incidents.
+
+Physics and domain owners remain authoritative for the events and physical conditions they produce. City supplies spatial context and discoverability. The audio observer renders an acoustic interpretation; it does not invent authoritative events.
+
+## Separation contract
+
+- City owns place identity, spatial relationships, domain facts and source provenance.
+- Renderer owns textual/semantic representation policy for the observer.
+- Visualize owns visual manifestation and rendering backends.
+- Audio presentation is a separate observer/output channel; it must be usable with or without visual output.
+- The host owns user input, audio permission, device lifecycle, accessibility settings and presentation orchestration.
+- Domain repositories own the events and physical consequences that can become audible.
+
+The current textual observer is a small browser proof, not yet the complete shared Renderer package integration. The procedural audio sketch is not yet a domain-event-driven soundscape. No first-person movement, spatial audio positioning, persistence, live simulation or multiplayer audio is claimed.
+
+## Next vertical slice
+
+1. Replace DOM-derived text with a versioned observer input contract over stable City entity IDs.
+2. Add a small event stream for a single district (for example, transit arrival, pedestrian activity and water flow), with explicit synthetic provenance.
+3. Map those events to independently testable audio cues and a spatial mix.
+4. Add listener position, distance attenuation, occlusion and mute/volume/accessibility controls.
+5. Verify all three presentation modes against the same source revision and entity identities.
+6. Integrate the shared Renderer and Visualize packages through their published contracts rather than copying their implementation into City.
