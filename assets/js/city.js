@@ -9,6 +9,9 @@ const svgNamespace = "http://www.w3.org/2000/svg";
 const dialog = document.querySelector("#entry-dialog");
 let places = new Map();
 let selected = null;
+let selectedDistrictId = null;
+let districtBlueprint = null;
+let connectedDistrictModel = null;
 
 const byId = id => places.get(id);
 const text = (selector, value) => { const node=document.querySelector(selector); if(node) node.textContent=value ?? ""; };
@@ -114,6 +117,96 @@ function renderMapLayerControls(catalog) {
   }
 }
 
+function districtScenePoint(x,y,z=0) {
+  return [450+(x-y)*0.78, 185+(x+y)*0.39-z];
+}
+function scenePolygon(points,fill,stroke="#d5e6e8",width=1) {
+  return svg("polygon",{points:points.map(p=>p.join(",")).join(" "),fill,stroke,"stroke-width":width});
+}
+function renderDistrictScene(district,index,total) {
+  const root=document.querySelector("#district-scene-art");
+  const title=document.querySelector("#district-scene-title");
+  const count=document.querySelector("#district-scene-index");
+  const summary=document.querySelector("#district-scene-summary");
+  const provenance=document.querySelector("#district-scene-provenance");
+  const description=document.querySelector("#district-scene-description");
+  if(!root||!district)return;
+  root.replaceChildren();
+  const grid=district.parcelGrid;
+  const ground=scenePolygon([district.polygon[0],district.polygon[1],district.polygon[2],district.polygon[3],district.polygon[4]],"#234c49","#4e827b",2);
+  // The district footprint is used as a backdrop; the axonometric block study is
+  // generated from the blueprint parcel grid, not from fabricated surveyed geometry.
+  root.append(ground);
+  const baseY=225;
+  root.append(svg("path",{d:"M125 225 L450 355 L775 225 L450 95 Z",fill:"#173b43",stroke:"#5e8983","stroke-width":2,opacity:.8}));
+  for(let row=grid.rows-1;row>=0;row--) {
+    for(let col=0;col<grid.columns;col++) {
+      const seed=(index+2)*17+(row+1)*11+(col+1)*7;
+      if(((seed*13)%100)/100>grid.occupancy)continue;
+      const gx=(col-(grid.columns-1)/2)*78;
+      const gy=(row-(grid.rows-1)/2)*62;
+      const x=450+gx-gy*.72;
+      const y=210+(gx+gy)*.25;
+      const h=28+(seed*19)%66;
+      const w=38+(seed*7)%18;
+      const d=30+(seed*5)%14;
+      const top=[[x,y-h],[x+w,y-h+12],[x,y-h+24],[x-w,y-h+12]];
+      const left=[[x-w,y-h+12],[x,y-h+24],[x,y+24],[x-w,y+12]];
+      const right=[[x,y-h+24],[x+w,y-h+12],[x+w,y+12],[x,y+24]];
+      root.append(scenePolygon(left,"#31566a","#6e91a0",1));
+      root.append(scenePolygon(right,"#1b394e","#527487",1));
+      root.append(scenePolygon(top,"#91b7bd","#c3dadd",1));
+      root.append(svg("path",{d:`M${x-w/2} ${y-h+12} v${Math.min(h-12,32)} M${x+w/2} ${y-h+18} v${Math.min(h-12,32)}`,stroke:"#c1d4d0","stroke-width":2,opacity:.35}));
+    }
+  }
+  // Civic Quarter has a richer connected fixture: annotate only its known buildings.
+  if(district.id==="civic"&&connectedDistrictModel) {
+    const landmarks=connectedDistrictModel.buildings;
+    const anchors=[[340,175],[475,150],[565,260]];
+    landmarks.forEach((building,i)=>{
+      const [x,y]=anchors[i]||[450,230];
+      const label=svg("text",{x,y,class:"scene-landmark-label","text-anchor":"middle"});
+      label.textContent=building.name.toUpperCase();
+      root.append(label);
+      root.append(svg("circle",{cx:x,cy:y+9,r:4,fill:"#f2d18a",stroke:"#07111f","stroke-width":2}));
+    });
+    const square=svg("text",{x:450,y:330,class:"scene-landmark-label","text-anchor":"middle"});
+    square.textContent="FOUNDERS SQUARE";
+    root.append(square);
+  }
+  const road=svg("path",{d:"M160 300 L450 185 L740 300",fill:"none",stroke:"#a8b9b1","stroke-width":15,"stroke-linecap":"round",opacity:.48});
+  root.prepend(road);
+  const trees=[[190,285],[220,310],[700,285],[670,310],[445,365],[485,365]];
+  for(const [x,y] of trees) {
+    root.append(svg("circle",{cx:x,cy:y,r:8,fill:"#4f9b77",stroke:"#9ac89d","stroke-width":2}));
+    root.append(svg("path",{d:`M${x} ${y+7} v10`,stroke:"#8d7658","stroke-width":3}));
+  }
+  title.textContent=district.name;
+  count.textContent="DISTRICT "+(index+1)+" / "+total;
+  summary.textContent=district.name+" · "+grid.columns+" × "+grid.rows+" parcel-grid study";
+  provenance.textContent=district.id==="civic"&&connectedDistrictModel?"CONNECTED CIVIC FIXTURE + BLUEPRINT":"BLUEPRINT-DRIVEN · SYNTHETIC MASSING";
+  description.textContent="Oblique aerial massing study for "+district.name+". District footprint and parcel-grid parameters come from the City blueprint. This is not surveyed building geometry.";
+}
+function selectDistrict(id) {
+  if(!districtBlueprint)return;
+  const index=districtBlueprint.districts.findIndex(d=>d.id===id);
+  if(index<0)return;
+  selectedDistrictId=id;
+  const district=districtBlueprint.districts[index];
+  document.querySelectorAll("[data-district]").forEach(node=>node.classList.toggle("district-selected",node.dataset.district===id));
+  document.querySelectorAll("[data-district-label]").forEach(node=>node.classList.toggle("district-label-selected",node.dataset.districtLabel===id));
+  renderDistrictScene(district,index,districtBlueprint.districts.length);
+  text("#experience-status","District selected · "+district.name+" · same city identity across presentation channels");
+  const scene=document.querySelector("#district-experience");
+  if(scene)scene.dataset.selectedDistrict=id;
+}
+function stepDistrict(delta) {
+  if(!districtBlueprint?.districts.length)return;
+  const current=Math.max(0,districtBlueprint.districts.findIndex(d=>d.id===selectedDistrictId));
+  const next=(current+delta+districtBlueprint.districts.length)%districtBlueprint.districts.length;
+  selectDistrict(districtBlueprint.districts[next].id);
+}
+
 function renderBlueprint(blueprint) {
   const districts=document.querySelector("#district-layer");
   const parcels=document.querySelector("#parcel-layer");
@@ -121,12 +214,17 @@ function renderBlueprint(blueprint) {
   const labels=document.querySelector("#district-labels");
   for(const layer of [districts,parcels,routes,labels]) layer?.replaceChildren();
   const allParcels=[];
+  districtBlueprint=blueprint;
   for(const district of blueprint.districts) {
-    const polygon=svg("polygon",{points:district.polygon.map(point=>point.join(",")).join(" "),class:"district-shape "+district.className,"data-district":district.id});
+    const polygon=svg("polygon",{points:district.polygon.map(point=>point.join(",")).join(" "),class:"district-shape "+district.className,"data-district":district.id,tabindex:"0",role:"button","aria-label":"Select "+district.name});
+    polygon.addEventListener("click",()=>selectDistrict(district.id));
+    polygon.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();selectDistrict(district.id);}});
     districts?.append(polygon);
     const center=district.polygon.reduce((sum,point)=>[sum[0]+point[0]/district.polygon.length,sum[1]+point[1]/district.polygon.length],[0,0]);
     const label=svg("text",{x:center[0],y:center[1],class:"map-label","text-anchor":"middle"});
     label.textContent=district.name.toUpperCase();
+    label.setAttribute("data-district-label",district.id);
+    label.addEventListener("click",()=>selectDistrict(district.id));
     labels?.append(label);
     for(const parcel of generateParcels(district,blueprint.generation.seed)) {
       allParcels.push(parcel);
@@ -230,6 +328,7 @@ function selectPlace(id) {
 }
 
 function renderConnectedDistrict(model) {
+  connectedDistrictModel=model;
   const root=document.querySelector("#connected-district");
   if(!root) return;
   const layerIds=["district-streets","district-parcels","district-buildings","district-networks","district-stops"];
@@ -333,7 +432,10 @@ async function start() {
   places=new Map(catalog.places.map(p=>[p.id,p]));
   renderTerrain(terrain); renderBlueprint(blueprint); renderInfrastructure(district); renderMapLayerControls(mapLayers); renderSystems(systems); renderConnectedDistrict(district); renderMarkers(catalog.places); renderCards(catalog.places);
   selectPlace("underworks");
+  selectDistrict("civic");
 }
+document.querySelector("#district-previous")?.addEventListener("click",()=>stepDistrict(-1));
+document.querySelector("#district-next")?.addEventListener("click",()=>stepDistrict(1));
 document.querySelector("#entry-action").addEventListener("click",()=>{
   const p=byId(selected); if(!p)return;
   text("#dialog-title",p.entry); text("#dialog-copy",p.detail); dialog.showModal();
