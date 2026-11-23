@@ -115,6 +115,34 @@ const grant = {
   requiredExecutionEvidence: ["dated-opening-inspection"],
   reviewPath: "independent-reviewer"
 };
+validateSchema(grant, schema.$defs.authorization, "$authorization");
+const executionRecord = {
+  id: "execution-test-001",
+  authorizationId: grant.id,
+  proposalId: "repair-proposal-temporary-access",
+  action: grant.action,
+  subjectId: grant.subjectId,
+  executorId: grant.executorId,
+  occurredAt: "2026-11-23T13:00:00Z",
+  status: "completed",
+  evidence: [{ id: "opening-inspection-001", kind: "inspection", source: "independent-reviewer", provenance: "dated fictional fixture evidence" }],
+  limitations: ["Synthetic schema-conformance record only"]
+};
+validateSchema(executionRecord, schema.$defs.executionEvidence, "$executionEvidence");
+const outcomeReviewRecord = {
+  id: "outcome-review-test-001",
+  decisionId: response.hearingDecision.id,
+  authorizationIds: [grant.id],
+  executionEvidenceIds: [executionRecord.id],
+  reviewerId: "independent-reviewer",
+  reviewedAt: "2026-11-23T14:00:00Z",
+  intendedOutcome: "Provide a safe accessible temporary route",
+  observedOutcome: "The inspected route opened within the authorized scope",
+  disposition: "achieved",
+  unresolvedImpacts: ["Long-term crossing restoration remains unresolved"],
+  followUp: "Return permanent rebuild options to the assembly"
+};
+validateSchema(outcomeReviewRecord, schema.$defs.outcomeReview, "$outcomeReview");
 const gateInput = {
   authorization: grant,
   action: "open-temporary-route",
