@@ -22,7 +22,8 @@ for (const name of names) {
   assert.ok(markdown.includes("# " + descriptor.title), "title must match descriptor");
   assert.ok(markdown.includes("Owner:** Singularity City"));
   assert.ok(markdown.includes("Implementation boundary"));
-  assert.ok(markdown.includes("Nonplayer Characters LOD 1"));
+  assert.equal(descriptor.extends, "singularity-city.domain.nonplayer-characters");
+  assert.ok(markdown.includes("Nonplayer Characters"));
   assert.ok(cover.includes("<svg"));
   assert.ok(cover.includes("<title"));
 }
