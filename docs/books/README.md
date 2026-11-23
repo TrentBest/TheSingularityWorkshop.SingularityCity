@@ -48,6 +48,38 @@ Descriptor: [urban-underworld.book.json](urban-underworld.book.json)
 
 [Read The Urban Underworld](urban-underworld.md) — crews, guilds, fences, disputed property, black markets, informal networks, corruption, rumor and the hidden power relationships of a city.
 
+### Law Enforcement & Public Safety — LOD 2
+
+![Law Enforcement & Public Safety cover](covers/law-enforcement-and-public-safety.svg)
+
+Descriptor: [law-enforcement-and-public-safety.book.json](law-enforcement-and-public-safety.book.json)
+
+[Read Law Enforcement & Public Safety](law-enforcement-and-public-safety.md) — public-safety institutions, jurisdiction, roles, incidents, evidence, response, rights, oversight and emergency resilience.
+
+### Justice, Courts & Restitution — LOD 2
+
+![Justice, Courts & Restitution cover](covers/justice-courts-and-restitution.svg)
+
+Descriptor: [justice-courts-and-restitution.book.json](justice-courts-and-restitution.book.json)
+
+[Read Justice, Courts & Restitution](justice-courts-and-restitution.md) — legal process, forums, due process, evidence, findings, remedies, sentencing, appeals and restorative justice.
+
+### Governance & Civic Administration — LOD 2
+
+![Governance & Civic Administration cover](covers/governance-and-civic-administration.svg)
+
+Descriptor: [governance-and-civic-administration.book.json](governance-and-civic-administration.book.json)
+
+[Read Governance & Civic Administration](governance-and-civic-administration.md) — institutional charters, jurisdictions, public services, budgets, records, transparency and accountability.
+
+### Politics, Power & Public Will — LOD 2
+
+![Politics, Power & Public Will cover](covers/politics-power-and-public-will.svg)
+
+Descriptor: [politics-power-and-public-will.book.json](politics-power-and-public-will.book.json)
+
+[Read Politics, Power & Public Will](politics-power-and-public-will.md) — political actors, elections, representation, coalitions, public opinion, protest, legitimacy and succession.
+
 ## Place books
 
 A separate editorial track covers individual settlements, cities, archaeological sites and cultural landscapes rather than reusable domain concepts. The shared reference ontology determines reality membership; City does not invent a local real/fiction taxonomy. An evidence-based reconstruction of a real site's past is distinguished from direct observation, while an alternate-history or invented version belongs to a fictional reality. Fictional places can retain a **based on** relationship to real inspirations without being presented as real locations. See [Reality Sets, Place Identity and Historical Reconstruction](../REALITY_AND_RECONSTRUCTION.md).
