@@ -24,16 +24,17 @@ function updateRenderer() {
   const domain = $("#place-domain")?.textContent?.trim();
   const access = $("#place-access")?.textContent?.trim();
   const districtStatus = $("#district-model-status")?.textContent?.trim();
+  const selectedDistrict = $("#district-scene-title")?.textContent?.trim();
   if (title) rendererTitle.textContent = title;
   if (description) rendererDescription.textContent = description;
   if (domain) rendererDomain.textContent = "DOMAIN · " + domain.toUpperCase();
   if (access) rendererAccess.textContent = "ACCESS · " + access.toUpperCase();
-  if (districtStatus) rendererDistrict.textContent = "DISTRICT · " + districtStatus;
+  if (districtStatus) rendererDistrict.textContent = "DISTRICT · " + (selectedDistrict || "UNSELECTED") + " · " + districtStatus;
   const metrics = [...document.querySelectorAll("#district-metrics .district-metric")].map(node => node.innerText.replace(/\n/g," · "));
   if (metrics.length) rendererWorldState.textContent = "CIVIC QUARTER OBSERVATION · " + metrics.join("  |  ") + ". Synthetic authored fixture.";
 }
 const observer = new MutationObserver(updateRenderer);
-for (const selector of ["#place-title","#place-description","#place-domain","#place-access","#district-model-status","#district-metrics"]) {
+for (const selector of ["#place-title","#place-description","#place-domain","#place-access","#district-model-status","#district-metrics","#district-scene-title"]) {
   const node = $(selector);
   if (node) observer.observe(node, {childList:true,subtree:true,characterData:true});
 }
