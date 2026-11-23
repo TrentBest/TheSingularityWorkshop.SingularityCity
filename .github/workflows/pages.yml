@@ -39,6 +39,9 @@ jobs:
           test -s data/places.json
           test -s data/city-blueprint.json
           test -s data/city-systems.json
+          test -s data/vehicles/vehicle-catalog.json
+          test -s data/construction/capability-profiles.json
+          test -s tests/vehicle-construction-capabilities.test.mjs
           test -s data/economy/civic-quarter-market.json
           test -s tests/economy-scenario.test.mjs
           test -s docs/ECONOMY_IN_SINGULARITY_CITY.md
@@ -79,6 +82,7 @@ jobs:
           node tests/validate-catalog.mjs
           node tests/commerce-route-fixture.test.mjs
           node tests/economy-scenario.test.mjs
+          node tests/vehicle-construction-capabilities.test.mjs
           node tests/physics-terrain-adapter.test.mjs
           node tests/terrain-interpretation.test.mjs
           node --test tests/physics-terrain-overlay.test.mjs tests/physics-terrain-snapshot.test.mjs
