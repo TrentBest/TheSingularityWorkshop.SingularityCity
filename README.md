@@ -68,6 +68,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [City sourcebooks](docs/books/README.md)
 - [Place-specific city sourcebook program](docs/CITY_SOURCEBOOKS.md) — books about cities, ancient settlements, archaeological sites and cultural landscapes, with evidence, visual atlases and an educational path into interactive learning.
 - [Reality sets, place identity and historical reconstruction](docs/REALITY_AND_RECONSTRUCTION.md) — the shared-ontology boundary between real places, evidence-based reconstructions, fictional realities and “based on” inspirations; includes a scan-first path toward walkable archaeological experiences.
+- [Göbekli Tepe research pilot](docs/books/places/gobekli-tepe/README.md) — initial source ledger and a plan to pursue authoritative present-day LiDAR/3D survey data before building a historical reconstruction.
 - [Workshop documentation standard](https://github.com/TrentBest/TheSingularityWorkshop.FSM_COS/blob/master/DOCUMENTATION_STANDARD.md) — shared reader journey, evidence labels, provenance, diagrams, CI gates and README policy.
 - [CiAi City evidence-consumer request](https://github.com/TrentBest/TheSingularityWorkshop.CiAi/issues/86) — read-only exact-commit CI observation; GitHub Actions remains authoritative.
 
