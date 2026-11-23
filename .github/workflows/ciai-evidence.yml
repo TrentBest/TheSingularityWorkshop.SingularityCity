@@ -41,7 +41,7 @@ jobs:
       - name: Check out exact City target commit
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
         with:
-          repository: TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem
+          repository: TrentBest/TheSingularityWorkshop.SingularityCity
           ref: ${{ steps.target.outputs.sha }}
           path: _target/City
           persist-credentials: false
@@ -152,7 +152,7 @@ jobs:
           using System.Text.Json;
           using TheSingularityWorkshop.CiAi;
 
-          var repository = "TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem";
+          var repository = "TrentBest/TheSingularityWorkshop.SingularityCity";
           var sha = args[0];
           var content = new UTF8Encoding(false, true).GetString(File.ReadAllBytes(args[1]));
           var observation = new AgentOnboardingSourceObservation(
@@ -182,7 +182,7 @@ jobs:
           mkdir -p artifacts
           set +e
           dotnet run --project samples/TheSingularityWorkshop.CiAi.ObserveRun --configuration Release --no-build -- \
-            "TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem" "$TARGET_SHA" artifacts/ciai-city-evidence.json
+            "TrentBest/TheSingularityWorkshop.SingularityCity" "$TARGET_SHA" artifacts/ciai-city-evidence.json
           result=$?
           set -e
           echo "observer_exit_code=$result" >> "$GITHUB_OUTPUT"
@@ -201,7 +201,7 @@ jobs:
           jq -e --arg sha "$TARGET_SHA" --arg workflow "$REQUIRED_WORKFLOW" '
             .schema == "ciai.commit-observation.v2" and
             .reportType == "read-only-workflow-observation" and
-            .repository == "TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem" and
+            .repository == "TrentBest/TheSingularityWorkshop.SingularityCity" and
             .headSha == $sha and
             .requiredWorkflowPolicy.configured == true and
             (.requiredWorkflowResults | length) == 1 and
@@ -230,7 +230,7 @@ jobs:
           {
             echo "## CiAi — City exact commit evidence"
             echo
-            echo "- Repository: TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem"
+            echo "- Repository: TrentBest/TheSingularityWorkshop.SingularityCity"
             echo "- Exact source commit: $TARGET_SHA"
             echo "- Required workflow selector: $REQUIRED_WORKFLOW"
             echo "- Authoritative Pages run: ${SOURCE_RUN_URL:-not uniquely resolved}"
