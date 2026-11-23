@@ -139,21 +139,31 @@
   </circle>
 
   <!-- TEMPORARY GREEN ALIGNMENT GUIDE.
-       These paths are a first visual tracing pass over the magenta-lit floor
-       circuitry. They are static geometry for review, not pulse animation. -->
+       Traced against the visible floor circuitry using the user's blue
+       sketch as a routing guide. These are static review lines, not pulses. -->
   <g id="route-alignment-overlay" fill="none" stroke="#39ff14"
      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
      opacity="0.96">
-    <!-- Left-side magenta floor traces approaching the vortex rim. -->
-    <path id="route-left-upper"
-      d="M 2,307 C 38,305 70,307 96,311 C 114,314 126,320 133,326"/>
-    <path id="route-left-lower"
-      d="M 2,324 C 43,320 77,319 105,321 C 119,323 128,329 133,334"/>
-    <!-- Right-side counterparts, following the visible magenta traces. -->
-    <path id="route-right-upper"
-      d="M 510,307 C 474,305 442,307 416,311 C 398,314 386,320 379,326"/>
-    <path id="route-right-lower"
-      d="M 510,324 C 469,320 435,319 407,321 C 393,323 384,329 379,334"/>
+    <!-- Left: routes follow the illuminated stepped traces from the floor ports. -->
+    <path id="route-left-01"
+      d="M 30,410 L 42,395 L 72,395 L 102,386 L 112,376 L 119,361"/>
+    <path id="route-left-02"
+      d="M 39,419 L 52,400 L 80,400 L 107,399 L 121,382 L 137,349"/>
+    <path id="route-left-03"
+      d="M 89,473 L 108,433 L 116,410 L 123,390 L 131,371 L 139,349"/>
+    <path id="route-left-04"
+      d="M 118,461 L 127,419 L 136,399 L 144,383 L 151,366 L 157,351"/>
+    <path id="route-left-05"
+      d="M 157,447 L 172,400 L 192,392 L 221,381 L 221,361"/>
+    <!-- Right: corresponding illuminated traces, retaining their distinct bends. -->
+    <path id="route-right-01"
+      d="M 383,443 L 355,429 L 353,407 L 326,399 L 300,392 L 298,368 L 284,349"/>
+    <path id="route-right-02"
+      d="M 351,458 L 330,444 L 329,417 L 310,414 L 289,411 L 285,387 L 284,366"/>
+    <path id="route-right-03"
+      d="M 501,381 L 394,381 L 369,377 L 359,365 L 350,348"/>
+    <path id="route-right-04"
+      d="M 498,373 L 392,373 L 380,370 L 373,359 L 366,348"/>
     <!-- Perspective boundary of the central floor vortex / receiver rings. -->
     <ellipse id="vortex-boundary" cx="256" cy="326" rx="123" ry="35"/>
   </g>
