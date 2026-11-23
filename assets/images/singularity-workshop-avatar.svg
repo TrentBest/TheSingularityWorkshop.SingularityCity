@@ -146,14 +146,14 @@
      opacity="0.96">
     <!-- Left-side magenta floor traces approaching the vortex rim. -->
     <path id="route-left-upper"
-      d="M 2,307 C 38,305 70,307 96,311 C 119,315 139,322 155,326 C 164,328 170,329 178,329"/>
+      d="M 2,307 C 38,305 70,307 96,311 C 114,314 126,320 133,326"/>
     <path id="route-left-lower"
-      d="M 2,324 C 43,320 77,319 105,321 C 130,323 151,330 171,334 C 179,336 185,336 190,336"/>
+      d="M 2,324 C 43,320 77,319 105,321 C 119,323 128,329 133,334"/>
     <!-- Right-side counterparts, following the visible magenta traces. -->
     <path id="route-right-upper"
-      d="M 510,307 C 474,305 442,307 416,311 C 393,315 373,322 357,326 C 348,328 342,329 334,329"/>
+      d="M 510,307 C 474,305 442,307 416,311 C 398,314 386,320 379,326"/>
     <path id="route-right-lower"
-      d="M 510,324 C 469,320 435,319 407,321 C 382,323 361,330 341,334 C 333,336 327,336 322,336"/>
+      d="M 510,324 C 469,320 435,319 407,321 C 393,323 384,329 379,334"/>
     <!-- Perspective boundary of the central floor vortex / receiver rings. -->
     <ellipse id="vortex-boundary" cx="256" cy="326" rx="123" ry="35"/>
   </g>
