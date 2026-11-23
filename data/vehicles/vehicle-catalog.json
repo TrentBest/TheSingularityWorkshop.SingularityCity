@@ -1,0 +1,80 @@
+{
+  "schema": "singularity-city.vehicle-catalog.v1",
+  "status": "authored-domain-fixture",
+  "capabilityProfiles": [
+    {
+      "id": "greenhollow-craft-transport",
+      "description": "Illustrative village capability profile; not a claim about a specific historical community.",
+      "capabilities": ["environment:land", "propulsion:human", "propulsion:animal", "vehicle:handcart-craft", "vehicle:animal-harness", "route:pedestrian", "route:handcart", "route:animal-cart"]
+    },
+    {
+      "id": "civic-quarter-electric-service",
+      "description": "Synthetic civic-district service capability profile.",
+      "capabilities": ["environment:land", "propulsion:electric", "vehicle:shuttle-maintenance", "infrastructure:charging", "route:service-vehicle", "route:pedestrian", "route:cycle"]
+    }
+  ],
+  "definitions": [
+    {
+      "id": "vehicle-definition-handcart",
+      "name": "Handcart",
+      "roles": ["freight", "personal"],
+      "environment": "land",
+      "propulsion": "human",
+      "capacity": { "value": 24, "unit": "fixture-capacity-unit", "interpretation": "abstract scenario units; not a physical volume or mass rating" },
+      "compatibleRouteModes": ["pedestrian", "handcart"],
+      "requiredCapabilities": ["environment:land", "propulsion:human", "vehicle:handcart-craft"],
+      "physicsOwner": "TrentBest/TheSingularityWorkshop.Physics",
+      "cityOwner": "TrentBest/TheSingularityWorkshop.SingularityCity"
+    },
+    {
+      "id": "vehicle-definition-animal-cart",
+      "name": "Animal-drawn cart",
+      "roles": ["freight", "agricultural", "personal"],
+      "environment": "land",
+      "propulsion": "animal",
+      "capacity": { "value": null, "unit": null, "interpretation": "not specified; no load rating inferred" },
+      "compatibleRouteModes": ["pedestrian", "animal-cart"],
+      "requiredCapabilities": ["environment:land", "propulsion:animal", "vehicle:animal-harness"],
+      "physicsOwner": "TrentBest/TheSingularityWorkshop.Physics",
+      "cityOwner": "TrentBest/TheSingularityWorkshop.SingularityCity"
+    },
+    {
+      "id": "vehicle-definition-electric-shuttle",
+      "name": "Electric civic shuttle",
+      "roles": ["passenger", "public-transit"],
+      "environment": "land",
+      "propulsion": "electric",
+      "capacity": { "value": 18, "unit": "passengers", "interpretation": "synthetic service fixture capacity" },
+      "compatibleRouteModes": ["service-vehicle"],
+      "requiredCapabilities": ["environment:land", "propulsion:electric", "vehicle:shuttle-maintenance", "infrastructure:charging"],
+      "physicsOwner": "TrentBest/TheSingularityWorkshop.Physics",
+      "cityOwner": "TrentBest/TheSingularityWorkshop.SingularityCity"
+    }
+  ],
+  "instances": [
+    {
+      "id": "mara-handcart",
+      "definitionId": "vehicle-definition-handcart",
+      "ownerRef": "mara-peddler",
+      "scenarioRef": "greenhollow-market-day",
+      "status": "authored-fixture",
+      "currentPlaceRef": "north-road-crossing",
+      "tripState": "not-simulated"
+    },
+    {
+      "id": "civic-shuttle-01",
+      "definitionId": "vehicle-definition-electric-shuttle",
+      "ownerRef": "civic-institution-transit",
+      "scenarioRef": "civic-quarter",
+      "status": "authored-fixture",
+      "currentPlaceRef": "civic-stop-hall",
+      "tripState": "not-simulated"
+    }
+  ],
+  "limitations": [
+    "capability profiles are authored examples, not universal historical technology classifications",
+    "no route solver, dispatch, vehicle dynamics, collision, energy consumption or travel-time simulation",
+    "vehicle instance locations are fixture values, not live telemetry",
+    "Physics owns physical behavior; City owns fleet, service, access and place relationships"
+  ]
+}
