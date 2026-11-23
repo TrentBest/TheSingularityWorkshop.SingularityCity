@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "singularity-city.domain.law-enforcement-and-public-safety",
+  "category": "Domain",
+  "lod": 2,
+  "title": "Law Enforcement & Public Safety",
+  "version": "0.1.0",
+  "cover": "docs/books/covers/law-enforcement-and-public-safety.svg",
+  "lodBadge": null,
+  "publisher": "The Singularity Workshop",
+  "publisherMoniker": "https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg",
+  "extends": "singularity-city.domain.nonplayer-characters"
+}
