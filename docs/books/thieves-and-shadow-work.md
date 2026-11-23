@@ -1,6 +1,11 @@
 ![The Singularity Workshop animated moniker](https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg)
 
-# Thieves & Shadow Work — characters who live between the rules
+# Thieves & Shadow Work
+
+*characters who live between the rules*
+
+**Sourcebook ID:** `singularity-city.domain.thieves-and-shadow-work`  
+**Edition:** `0.1.0`  
 
 **Owner:** Singularity City · **LOD:** 2 specialization of Nonplayer Characters · **Status:** authored domain sourcebook; not a criminal-behavior simulator.
 
