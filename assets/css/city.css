@@ -133,3 +133,29 @@
 .slope-scale i{display:inline-block;width:88px;height:8px;border:1px solid #d6e5ee55;background:linear-gradient(90deg,hsl(190 78% 54%),hsl(105 78% 54%),hsl(20 78% 54%))}
 .map-legend .slope-note{flex-basis:100%;color:#91a8b8;font:8px 'DM Mono',monospace;letter-spacing:.02em}
 @media(max-width:700px){.slope-scale i{width:58px}.map-legend .slope-note{font-size:7px}}
+
+
+/* Independent observation channels: the same City model can be visual, textual, or both. */
+.experience-console{margin-top:28px;padding-top:0}
+.experience-controls{display:flex;gap:9px;flex-wrap:wrap}
+.experience-controls button{border:1px solid #36566b;background:#102638;color:var(--text);padding:12px 16px;font:10px 'DM Mono',monospace;cursor:pointer}
+.experience-controls button[aria-pressed="true"]{border-color:var(--cyan);color:var(--cyan);background:#16404a}
+.experience-controls button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.experience-status{font:9px 'DM Mono',monospace;color:#91a8b8;margin:12px 0}
+.renderer-output{display:grid;grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);gap:12px 24px;padding:22px;border:1px solid #31556b;background:linear-gradient(110deg,#102638,#091725)}
+.renderer-output h3{font-size:24px;margin:9px 0}
+.renderer-output>p{font-size:12px;line-height:1.8;color:#c2d4df;margin:0}
+.renderer-facts{display:flex;gap:8px;flex-wrap:wrap;grid-column:1/-1}
+.renderer-facts span{font:9px 'DM Mono',monospace;color:var(--cyan);border:1px solid #36566b;padding:8px}
+.renderer-output .renderer-note{grid-column:1/-1;color:#91a8b8;font-size:10px}
+body.mode-renderer .atlas-art,
+body.mode-renderer .map-canvas,
+body.mode-renderer .district-map,
+body.mode-renderer .district-metrics,
+body.mode-renderer .provenance-card{display:none!important}
+body.mode-renderer .city-layout{grid-template-columns:1fr}
+body.mode-renderer .district-workbench{grid-template-columns:1fr}
+body.mode-renderer .district-map-wrap{display:none}
+body.mode-renderer .renderer-output{border-color:var(--cyan)}
+body.mode-visualize .renderer-output{display:none}
+@media(max-width:700px){.renderer-output{grid-template-columns:1fr}.renderer-facts{grid-column:1}.renderer-output .renderer-note{grid-column:1}}
