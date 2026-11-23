@@ -133,14 +133,15 @@
     <radialGradient id="field-cyan"><stop stop-color="#00eaff" stop-opacity=".62"/><stop offset="1" stop-color="#00eaff" stop-opacity="0"/></radialGradient>
   </defs>
 
-  <!-- Spin the actual pixels already inside the surface vortex. This is a
-       top-down spin in the X-Z surface plane (rotation about its Y normal),
-       not decorative rings rotating above the artwork. -->
+  <!-- Spin the actual source pixels inside the surface vortex.
+       World X-Z is the floor and world Y is up, so this is rotation about Y.
+       SVG screen Y points down: a positive 0-to-360 turn is visually clockwise.
+       Linear timing keeps the angular velocity constant. -->
   <g clip-path="url(#vortex-pixel-clip)">
     <g>
       <use href="#source"/>
       <animateTransform attributeName="transform" type="rotate"
-        from="0 256 326" to="360 256 326" dur="8s" repeatCount="indefinite"/>
+        from="0 256 326" to="360 256 326" dur="8s" calcMode="linear" repeatCount="indefinite"/>
     </g>
   </g>
 
