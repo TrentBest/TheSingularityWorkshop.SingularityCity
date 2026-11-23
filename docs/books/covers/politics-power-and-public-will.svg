@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Politics, Power and Public Will</title><desc id="desc">A public forum with people gathered around a central civic podium.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#581c87"/><stop offset="1" stop-color="#9f1239"/></linearGradient></defs>
+<rect width="720" height="420" rx="24" fill="url(#bg)"/><path d="M130 310h460M190 310v-55h340v55" stroke="#fce7f3" stroke-width="6" fill="none"/>
+<path d="M300 255v-95h120v95M280 160h160l-80-55z" fill="none" stroke="#fce7f3" stroke-width="7" stroke-linejoin="round"/>
+<g fill="#fbcfe8"><circle cx="145" cy="220" r="18"/><circle cx="205" cy="205" r="18"/><circle cx="515" cy="205" r="18"/><circle cx="575" cy="220" r="18"/><circle cx="245" cy="280" r="14"/><circle cx="475" cy="280" r="14"/></g>
+<g stroke="#fbcfe8" stroke-width="8" stroke-linecap="round"><path d="M145 242v35M205 227v45M515 227v45M575 242v35"/></g>
+<text x="360" y="48" fill="#fff1f2" font-family="sans-serif" font-size="23" text-anchor="middle" letter-spacing="4">SINGULARITY CITY</text>
+<text x="360" y="385" fill="#fff" font-family="sans-serif" font-size="26" text-anchor="middle" font-weight="700">POWER • VOICE • CHANGE</text></svg>
