@@ -107,7 +107,7 @@ const grant = {
   scope: "Open only the inspected temporary route identified by this subject ID",
   exclusions: ["construction", "procurement", "payment"],
   prerequisiteEvidenceIds: ["safety-review-001"],
-  conditions: ["Maintain the approved accessible route configuration"],
+  conditions: [{ id: "maintain-approved-configuration", description: "Maintain the approved accessible route configuration" }],
   executorId: "civic-works-provider",
   validFrom: "2026-11-23T00:00:00Z",
   expiresAt: "2026-11-24T00:00:00Z",
@@ -149,7 +149,7 @@ const gateInput = {
   subjectId: "north-road-temporary-route",
   executorId: "civic-works-provider",
   at: "2026-11-23T12:00:00Z",
-  satisfiedPrerequisiteEvidenceIds: ["safety-review-001"]
+  satisfiedPrerequisiteEvidenceIds: ["safety-review-001"],\n  satisfiedConditionIds: ["maintain-approved-configuration"]
 };
 assert.equal(evaluateCivicAuthorization(gateInput).executable, true, "a valid, scoped grant with prerequisites may pass the gate");
 assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: null }).reasons.includes("authorization-missing"));
@@ -158,6 +158,6 @@ assert.ok(evaluateCivicAuthorization({ ...gateInput, action: "construction" }).r
 assert.ok(evaluateCivicAuthorization({ ...gateInput, subjectId: "different-route" }).reasons.includes("subject-out-of-scope"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, satisfiedPrerequisiteEvidenceIds: [] }).reasons.includes("prerequisite-unsatisfied:safety-review-001"));
 assert.ok(evaluateCivicAuthorization({ ...gateInput, authorization: { ...grant, status: "revoked" } }).reasons.includes("authorization-not-granted"));
-assert.ok(evaluateCivicAuthorization({ ...gateInput, executorId: "unlisted-provider" }).reasons.includes("executor-not-authorized"));
+assert.ok(evaluateCivicAuthorization({ ...gateInput, executorId: "unlisted-provider" }).reasons.includes("executor-not-authorized"));\nassert.ok(evaluateCivicAuthorization({ ...gateInput, jurisdiction: "outside-jurisdiction" }).reasons.includes("jurisdiction-out-of-scope"));\nassert.ok(evaluateCivicAuthorization({ ...gateInput, satisfiedConditionIds: [] }).reasons.includes("condition-unsatisfied:maintain-approved-configuration"));\nassert.ok(evaluateCivicAuthorization({ ...gateInput, at: "not-a-timestamp" }).reasons.includes("invalid-authorization-time"));
 
 console.log("Civic process contract validated: versioned response shape, authority, proposal, oversight and impact references.");
