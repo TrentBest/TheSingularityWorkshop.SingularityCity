@@ -48,6 +48,83 @@
       "role": "civic-governance"
     }
   ],
+  "claims": [
+    {
+      "id": "claim-iven-responsibility",
+      "subjectId": "resident-iven",
+      "claimantId": "antagonist-mara",
+      "claim": "Iven Brook caused the north road crossing damage.",
+      "status": "unverified-allegation",
+      "sourceEventId": "event-02-rumor",
+      "evidenceIds": [],
+      "findingId": "finding-iven-responsibility"
+    },
+    {
+      "id": "claim-lantern-knows-responsible-party",
+      "subjectId": "resident-iven",
+      "claimantId": "vigilante-lantern",
+      "claim": "Lantern claims to know who is responsible for the crossing damage.",
+      "status": "unverified-public-claim",
+      "sourceEventId": "event-03-vigilante-claim",
+      "evidenceIds": [],
+      "findingId": "finding-iven-responsibility"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence-crossing-condition",
+      "type": "direct-observation",
+      "description": "The north road crossing is visibly damaged after the severe storm.",
+      "sourceActorId": "civic-safety-office",
+      "sourceEventId": "event-01-storm-damage",
+      "provenance": "fictional-scenario-observation",
+      "supports": [
+        "crossing-damage-exists"
+      ],
+      "doesNotEstablish": [
+        "who caused the damage",
+        "whether any person acted intentionally"
+      ]
+    },
+    {
+      "id": "evidence-review-record",
+      "type": "review-summary",
+      "description": "The reviewed record contains no evidence sufficient to attribute responsibility for the crossing damage to Iven.",
+      "sourceActorId": "independent-reviewer",
+      "sourceEventId": "event-04-investigation",
+      "provenance": "fictional-scenario-review-with-scope-and-limitations",
+      "supports": [
+        "responsibility-not-established-on-present-record"
+      ],
+      "doesNotEstablish": [
+        "the identity of whoever caused the damage",
+        "that no other evidence could ever exist"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "finding-iven-responsibility",
+      "authorityId": "village-court",
+      "subjectId": "resident-iven",
+      "claimIds": [
+        "claim-iven-responsibility",
+        "claim-lantern-knows-responsible-party"
+      ],
+      "evidenceIds": [
+        "evidence-crossing-condition",
+        "evidence-review-record"
+      ],
+      "outcome": "not-established-on-present-record",
+      "scope": "The available fictional scenario record does not establish that Iven caused the crossing damage.",
+      "limitations": [
+        "This finding does not identify who caused the damage.",
+        "This finding does not assert that no further evidence could ever be found.",
+        "This finding applies only to this authored scenario record."
+      ],
+      "status": "fictional-scenario-finding-only"
+    }
+  ],
   "timeline": [
     {
       "id": "event-01-storm-damage",
@@ -57,6 +134,9 @@
       "description": "The north road crossing is found damaged after a severe storm.",
       "claimStatus": "none",
       "evidenceStatus": "direct-observation-with-provenance",
+      "evidenceIds": [
+        "evidence-crossing-condition"
+      ],
       "findingStatus": "not-yet-reviewed",
       "attribution": "storm-damage-observed; no person is attributed"
     },
@@ -67,7 +147,11 @@
       "actorId": "antagonist-mara",
       "description": "Conflicting public claims circulate and one names Iven Brook as responsible.",
       "claimStatus": "unverified-allegation",
+      "claimIds": [
+        "claim-iven-responsibility"
+      ],
       "evidenceStatus": "no-supporting-evidence-attached",
+      "evidenceIds": [],
       "findingStatus": "none",
       "attribution": "claim-source-recorded; claim is not treated as fact"
     },
@@ -78,7 +162,11 @@
       "actorId": "vigilante-lantern",
       "description": "Lantern publicly claims to know who is responsible and urges residents to accept the accusation.",
       "claimStatus": "unverified-allegation",
+      "claimIds": [
+        "claim-lantern-knows-responsible-party"
+      ],
       "evidenceStatus": "not-disclosed",
+      "evidenceIds": [],
       "findingStatus": "none",
       "authority": "self-appointed; no public enforcement authority"
     },
@@ -90,6 +178,9 @@
       "description": "Officials preserve observations, interview witnesses and record the crossing condition without presuming guilt.",
       "claimStatus": "under-review",
       "evidenceStatus": "collected-with-provenance",
+      "evidenceIds": [
+        "evidence-review-record"
+      ],
       "findingStatus": "pending",
       "reviewerId": "independent-reviewer"
     },
@@ -100,8 +191,17 @@
       "actorId": "village-court",
       "description": "The allegation against Iven is reviewed; the available record does not establish responsibility.",
       "claimStatus": "reviewed",
+      "claimIds": [
+        "claim-iven-responsibility",
+        "claim-lantern-knows-responsible-party"
+      ],
       "evidenceStatus": "insufficient-to-establish-responsibility",
+      "evidenceIds": [
+        "evidence-crossing-condition",
+        "evidence-review-record"
+      ],
       "findingStatus": "not-established-on-present-record",
+      "findingId": "finding-iven-responsibility",
       "legalDetermination": "fictional-scenario-finding-only"
     },
     {
@@ -111,8 +211,17 @@
       "actorId": "independent-reviewer",
       "description": "The public record distinguishes the original observation from the unsupported accusation and records the review outcome.",
       "claimStatus": "corrected",
+      "claimIds": [
+        "claim-iven-responsibility",
+        "claim-lantern-knows-responsible-party"
+      ],
       "evidenceStatus": "provenance-retained",
-      "findingStatus": "published-with-scope-and-limitations"
+      "evidenceIds": [
+        "evidence-crossing-condition",
+        "evidence-review-record"
+      ],
+      "findingStatus": "published-with-scope-and-limitations",
+      "findingId": "finding-iven-responsibility"
     },
     {
       "id": "event-07-civic-hearing",
