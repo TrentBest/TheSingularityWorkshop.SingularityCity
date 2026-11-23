@@ -64,7 +64,7 @@
     {
       "id": "civic-shuttle-01",
       "definitionId": "vehicle-definition-electric-shuttle",
-      "ownerRef": "civic-institution-transit",
+      "ownerRef": "civic-institution-municipality",
       "scenarioRef": "civic-quarter",
       "status": "authored-fixture",
       "currentPlaceRef": "civic-stop-hall",
