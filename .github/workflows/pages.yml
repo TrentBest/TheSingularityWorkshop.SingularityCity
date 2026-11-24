@@ -33,6 +33,7 @@ jobs:
         run: |
           test -s _visualize/samples/SoldierField/WebGpuRunner/index.html
           test -s _visualize/samples/SoldierField/WebGpuRunner/renderer-policy.json
+          git -C _visualize log -1 --format='Visualize WebGPU source: %H %s'
           node --test _visualize/samples/SoldierField/WebGpuRunner/renderer-policy.test.mjs
           python3 - <<'PY'
           from pathlib import Path
