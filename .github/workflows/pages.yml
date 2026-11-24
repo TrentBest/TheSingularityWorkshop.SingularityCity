@@ -172,7 +172,7 @@ jobs:
           test -s _site/data/mall-leasing.json
           test -s _site/docs/LIVING_PICTURE.md
           test -s _site/docs/MALL_MANAGEMENT_AND_TENANT_DESIGN.md
-          test -s _site/.nojekyll
+          test -f _site/.nojekyll
           test ! -d _site/.github
           test ! -d _site/tests
       - name: Upload Pages artifact
