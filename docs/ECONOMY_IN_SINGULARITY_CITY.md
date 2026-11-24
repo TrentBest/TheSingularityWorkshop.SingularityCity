@@ -16,9 +16,12 @@ The integration is designed around the current TheSingularityWorkshop.Economy AP
 - SimulationAccount registers an owner-controlled account for one simulated currency.
 - SimulationLedger records explicit Issue, Transfer, Post and Retire operations, derives balances from signed journal entries, and supports idempotent replay for an identical operation identity/request.
 - CommerceItem, EconomyShop and MarketplaceOffer describe products, shop composition and offers.
+- The optional `TheSingularityWorkshop.Economy.ShopConnectors` companion adapts native or external provider catalogs into canonical EconomyShop/CommerceItem identities, retaining provider/shop/item provenance and explicitly declared read, synchronization, product-link and availability capabilities. It is separate from Economy core.
 - ProductionResourceId, ProductionResourceQuantity, ProductionRecipe and ProductionInventory describe generic resource requirements, process-local production execution, and immutable receipts with input/capacity/yield/waste provenance.
 - EconomyTransfer describes intent; it is not evidence of execution.
 - EconomicExecutionResult is an observation contract, not a settlement engine.
+
+The connector companion does not provide checkout, purchase, reservation, stock mutation, refund, settlement, payment processing, account authentication, or provider credentials. Provider availability is an observation, not an inventory command. City can consume a canonical imported shop and its provider provenance; City placement and storefront presentation remain City/Experience responsibilities. The connector's in-memory identity map is concurrency-safe within one process, but durable identity mapping remains a host implementation task.
 
 The ledger and production inventory are process-local and in-memory. Neither is durable or distributed; the ledger is not real-money custody. Production receipts record declared resource flows, not verified physical measurements. City must not add a shadow balance counter or imply that a displayed number came from Economy unless an actual ledger/production run supplied receipt and journal evidence.
 
@@ -29,15 +32,16 @@ The ledger and production inventory are process-local and in-memory. Neither is 
 | Digiten identity, residence, workplace, needs, schedule and place relationships | City |
 | Business location, civic context, opening/access state and service area | City |
 | Currency identity, accounts, journal semantics, explicit simulated issuance/transfer/retirement | Economy |
-| Shop/product/offer/transfer vocabulary | Economy |
+| Shop/product/offer vocabulary and canonical shop/item identities | Economy |
+| Provider catalog adaptation, provenance and declared read/synchronization capabilities | Optional Economy.ShopConnectors companion |
 | Local pricing policy, inventory quantities, production, wages, rent, taxes, demand and consumption rules | City Experience policy plus specialist domains |
 | Generic recipe/resource transformation and process-local inventory accounting | Economy |
 | What a City workshop produces, where it operates, which recipes are permitted, workforce schedules and business policy | City Experience policy / specialist domains |
 | Physical material properties and process-specific simulation | Physics or specialist domains |
 | Routes and access | City; physical travel/motion belongs to Physics |
-| Storefront presentation | City/Experience |
+| Storefront presentation, market placement and discovery | City/Experience |
 
-A City business is not automatically a bank account. A Digiten is not automatically a wallet. Create explicit Economy owners and accounts only where the scenario requires them.
+A City business is not automatically a bank account. A Digiten is not automatically a wallet. Create explicit Economy owners and accounts only where the scenario requires them. A provider identity is not a creator identity or proof of shop ownership; trusted host policy must authenticate the creator and authorize shop management.
 
 ## The first closed-books scenario
 
@@ -94,10 +98,13 @@ Economy does not provide the Digiten scheduler, production system, inventory or 
 
 ## Next implementation boundary
 
-The next .NET host should reference the Economy package according to the ecosystem's development-branch/package policy, create a typed currency and accounts for selected actors, execute the fixture's operation sequence through SimulationLedger, and export receipts plus journal entries for validation. A workshop slice can then execute a declared ProductionRecipe against ProductionInventory and expose its receipt/provenance to City; linking produced yield to saleable CommerceItem availability remains a host-owned integration task, not an automatic side effect. Do not add a second City-owned ledger. No release or package publication is implied.
+The next .NET host should reference the Economy package according to the ecosystem's development-branch/package policy, create a typed currency and accounts for selected actors, execute the fixture's operation sequence through SimulationLedger, and export receipts plus journal entries for validation. A workshop slice can execute a declared ProductionRecipe against ProductionInventory and expose its receipt/provenance to City; linking produced yield to saleable CommerceItem availability remains a host-owned integration task, not an automatic side effect.
+
+For creator commerce, the host can consume the optional ShopConnectors companion to import a provider catalog into canonical Economy shop/item identities, then pass that shop to City for market placement and presentation. Do not let a provider catalog observation create City inventory, prove creator ownership, or trigger checkout. The connector companion currently has deterministic native/fake-provider tests, but no durable identity-map implementation, live provider adapter, or WebPage hosted storefront consumer. Do not add a second City-owned ledger. No release or package publication is implied.
 
 ## Coordination and tracking
 
 - [Economy #14: authoritative Singularity currency and casino simulation slice](https://github.com/TrentBest/TheSingularityWorkshop.Economy/issues/14) establishes the currency custody dependency.
 - [Economy #16: deterministic Digiten work-to-commerce loop](https://github.com/TrentBest/TheSingularityWorkshop.Economy/issues/16) is the cross-domain economic behavior target; City has posted its fixture mapping and requested API review there.
+- [Economy #24: provider-neutral shop connector boundary](https://github.com/TrentBest/TheSingularityWorkshop.Economy/issues/24) tracks canonical shop/item import, provenance and provider capability boundaries.
 - [City #2: execute the first Economy-backed City market-day vertical slice](https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity/issues/2) tracks the host-side integration and its acceptance criteria.
