@@ -26,6 +26,15 @@ jobs:
       - name: Validate static experience
         run: |
           test -s index.html
+          test -s mall.html
+          test -s data/mall-pavilion.json
+          test -s data/proof-review.json
+          test -s assets/css/proof-review.css
+          test -s assets/js/proof-review.mjs
+          test -s assets/images/proof-review-lifecycle.svg
+          test -s docs/PROOF_REVIEW_AND_VERIFICATION.md
+          test -s tests/proof-review-contract.test.mjs
+          test -s tests/mall-pavilion.test.mjs
           test -s thinking.html
           test -s assets/css/city.css
           test -s assets/js/city.js
@@ -124,6 +133,10 @@ jobs:
           test -s AgentOnboarding.md
           test -s .github/workflows/ciai-evidence.yml
           node --check assets/js/city.js
+          node --check assets/js/proof-review.mjs
+          node --check assets/js/mall.mjs
+          node tests/proof-review-contract.test.mjs
+          node tests/mall-pavilion.test.mjs
           node --check assets/js/city-experience.mjs
           node tests/city-experience-channels.test.mjs
           node tests/validate-catalog.mjs
