@@ -85,6 +85,19 @@
           "width": 240,
           "height": 175
         }
+      },
+      {
+        "id": "mall-management-office",
+        "name": "Mall Management Office",
+        "description": "The public-facing office for leasing enquiries, tenant orientation and mall operations.",
+        "kind": "civic",
+        "plan": {
+          "levelId": "ground",
+          "x": 500,
+          "y": 105,
+          "width": 190,
+          "height": 160
+        }
       }
     ],
     "levelDefinitions": [
@@ -256,6 +269,28 @@
             ]
           ],
           "accessibilityIntent": "intended-accessible"
+        },
+        {
+          "id": "atrium-to-management-office",
+          "from": "grand-atrium",
+          "to": "mall-management-office",
+          "levelId": "ground",
+          "mode": "public-walk",
+          "points": [
+            [
+              480,
+              180
+            ],
+            [
+              490,
+              180
+            ],
+            [
+              500,
+              180
+            ]
+          ],
+          "accessibilityIntent": "intended-accessible"
         }
       ],
       "verticalLinks": [
@@ -321,6 +356,7 @@
     "Only Civic Quarter Bakery has a storefront reference into the current Economy market fixture.",
     "The remaining storefronts are leasing concepts, not registered merchants or available products.",
     "No purchase, payment, inventory reservation or settlement is performed by this browser experience.",
-    "The floor plans and circulation routes are conceptual design fixtures, not measured architecture, code-compliant egress, or an accessibility audit."
+    "The floor plans and circulation routes are conceptual design fixtures, not measured architecture, code-compliant egress, or an accessibility audit.",
+    "Mall management and vacant-unit leasing are local browser demonstrations; they do not create staff identity, tenant ownership, lease rights or shared state."
   ]
 }
