@@ -10,7 +10,7 @@ Singularity City has one domain model and multiple independent ways to experienc
 | Renderer only | Hidden | On |
 | Both together | On | On |
 
-The controls in the browser preview switch these modes without reloading the City data. Visualization is the visible spatial projection. Renderer is a textual observer that describes the selected place and summarizes the connected Civic Quarter fixture. The two are deliberately separable.
+The controls in the browser preview switch these modes without reloading the City data. Visualization is the visible spatial projection. Renderer is a textual observer that describes the selected place and summarizes the connected Civic Quarter fixture. The two are deliberately separable. A separate Hyper-visualization proving ground below the district scene embeds Visualize's WebGPU Soldier Field lab.
 
 ## Current browser proof
 
@@ -25,6 +25,20 @@ The controls in the browser preview switch these modes without reloading the Cit
 The City map is also a district selector. Selecting a district footprint or its map label highlights that footprint and updates the scene directly below the map. Previous/next controls move through the blueprint districts while retaining the same district identity in the selected-scene heading and Renderer observer.
 
 The first scene is an oblique aerial massing study. District parcel-grid dimensions and occupancy are sourced from `data/city-blueprint.json`; illustrative building heights are explicitly placeholders, not surveyed building facts. Civic Quarter additionally labels Civic Hall, Civic Library, Community Clinic and Founders Square using records from `data/districts/civic-quarter.json`. Other districts remain massing studies until they have richer domain models. This is a first visible spatial view, not photorealism or a first-person world.
+
+## Hyper-visualization proving ground
+
+The City page embeds the Visualize-owned Soldier Field WebGPU lab. Its `renderer-policy.json` is generated from the real .NET Renderer `ObserverRepresentationPolicy`; the browser runner consumes the policy's horizon representation labels and frame intervals when updating its eight instance-buffer workloads.
+
+This is a cross-repository policy-to-presentation proof, not yet a live City renderer:
+- The policy is generated in .NET and delivered as a deterministic static manifest; Renderer does not execute inside the browser.
+- The lab uses procedural soldier geometry, not City-owned building or street geometry.
+- The current stress fixture renders the same selected population in every horizon; it does not yet perform per-entity occlusion, culling, or geometry promotion.
+- The attention-floor example demonstrates a Renderer decision but is not yet connected to live camera focus or focal-beam detail.
+- WebGPU executes on the visitor's supported browser/device GPU. GitHub Pages only serves the files; it does not provide a GPU server.
+- Browser frame/JavaScript timing and upload counters are diagnostic telemetry, not GPU timestamp measurements.
+
+This is the current capability showcase and a proving ground for the next City integration: stable City entity IDs and transforms should enter Renderer policy, selected frames should flow through Visualize, and actual submitted work should respond to observer movement and attention.
 
 ## Sound as a world observation
 
