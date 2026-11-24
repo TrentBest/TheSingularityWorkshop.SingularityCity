@@ -1,0 +1,106 @@
+{
+  "schema": "singularity-city.mall-leasing.v1",
+  "status": "interactive-local-design-prototype",
+  "authority": "Singularity City owns mall spaces and lease scope; Economy owns commercial accounts, prices, inventory and settlement; SURPS owns shared character contracts; the trusted host owns identity, authorization, sessions and persistence.",
+  "managementOffice": {
+    "id": "mall-management-office",
+    "zoneId": "mall-management-office",
+    "name": "Singularity Mall Management",
+    "role": "Mall manager",
+    "purpose": "Leasing enquiries, tenant orientation, public-area coordination and building operations.",
+    "interaction": "scripted-demo-dialogue",
+    "characterIdentity": "not-yet-bound-to-surps",
+    "hours": "Conceptual office hours; no live staff schedule."
+  },
+  "units": [
+    {
+      "id": "maker-studio-02",
+      "name": "Maker Promenade · Unit 02",
+      "zoneId": "maker-promenade",
+      "status": "vacant-fixture",
+      "category": "Retail shell",
+      "areaM2": 48,
+      "frontageM": 6,
+      "clearWidthM": 8,
+      "clearDepthM": 6,
+      "clearHeightM": 4,
+      "fitOutOptions": [
+        "shell-constrained",
+        "freeform-interior"
+      ],
+      "notes": "A compact maker-facing storefront beside the public promenade."
+    },
+    {
+      "id": "market-hall-02",
+      "name": "Market Hall · Unit 02",
+      "zoneId": "market-hall",
+      "status": "vacant-fixture",
+      "category": "Retail / food shell",
+      "areaM2": 72,
+      "frontageM": 8,
+      "clearWidthM": 9,
+      "clearDepthM": 8,
+      "clearHeightM": 4.5,
+      "fitOutOptions": [
+        "shell-constrained",
+        "freeform-interior"
+      ],
+      "notes": "A larger market-facing shell; specialist utilities and food-service permissions are not modelled."
+    },
+    {
+      "id": "upper-gallery-01",
+      "name": "Upper Gallery · Unit 01",
+      "zoneId": "upper-gallery",
+      "status": "vacant-fixture",
+      "category": "Studio / gallery shell",
+      "areaM2": 64,
+      "frontageM": 7,
+      "clearWidthM": 8,
+      "clearDepthM": 8,
+      "clearHeightM": 4,
+      "fitOutOptions": [
+        "shell-constrained",
+        "freeform-interior"
+      ],
+      "notes": "A quiet upper-level studio or gallery frontage overlooking the atrium."
+    }
+  ],
+  "designModel": {
+    "facade": {
+      "owner": "tenant-design-draft",
+      "editable": [
+        "storeName",
+        "signText",
+        "palette"
+      ],
+      "constraints": [
+        "The leased frontage remains attached to its City unit identity.",
+        "Structural openings, glazing, egress and shared circulation are not editable in this prototype."
+      ]
+    },
+    "interior": {
+      "modes": [
+        {
+          "id": "shell-constrained",
+          "label": "Respect the leased shell",
+          "description": "Preview the interior inside the unit's authored clear width, depth and height."
+        },
+        {
+          "id": "freeform-interior",
+          "label": "Freeform interior",
+          "description": "Let the creator imagine an interior beyond the shell dimensions; the lease still governs the exterior footprint and real-world safety constraints."
+        }
+      ],
+      "dimensions": "metres; authored conceptual values, not surveyed measurements"
+    },
+    "persistence": "localStorage draft in this browser profile only",
+    "submission": "No lease application, lease grant, payment, tenant account or shared publication is performed."
+  },
+  "limitations": [
+    "Vacant units are authored leasing fixtures, not live inventory or a binding offer.",
+    "The manager interaction is scripted demonstration content, not a live human, AI agent or SURPS-registered character.",
+    "Facade and interior edits are local design drafts and are not visible to other visitors.",
+    "Freeform interior mode is an expressive design option, not permission to alter the mall shell, structure, fire egress, accessibility, utilities or safety requirements.",
+    "No lease, payment, merchant registration, Economy account, catalog or inventory mutation is performed."
+  ]
+}
