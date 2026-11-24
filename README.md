@@ -53,6 +53,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)
 - [Human proof review and verification](docs/PROOF_REVIEW_AND_VERIFICATION.md) — proof claims, automated evidence, human review checkboxes and the boundary between local notes and shared certification.
 - [Singularity Mall pavilion](docs/SINGULARITY_MALL_PAVILION.md) — pavilion spaces, merchant boundaries, and the interactive browser experience.
+- [Mall management and tenant design](docs/MALL_MANAGEMENT_AND_TENANT_DESIGN.md) — management office, vacant units, tenant facade/interior customization, and the boundary between local drafts and future shared leasing.
 - [Visitor characters and the first explorable world](docs/VISITOR_CHARACTERS_AND_EXPLORATION.md) — portable character creation/import/export, compatibility, and the first inhabited destination.\n- [Entangled realities and digital real estate](docs/ENTANGLED_REALITIES.md) — proposed company tenancy, shared workplace Experiences, cross-device co-entanglement and immersive BIM coordination, with explicit implementation gaps.
 - [Markets, venues and creator commerce](docs/MARKETS_VENUES_AND_CREATOR_COMMERCE.md) — City markets, concert/convention venues, low-friction creator shops and the integration boundary with Economy.
 - [Physics terrain and worldbuilding](docs/PHYSICS_TERRAIN_AND_WORLDBUILDING.md) — Physics-owned terrain authority, existing APIs, adapter contract and worldbuilding sequence.
