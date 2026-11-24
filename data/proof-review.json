@@ -56,6 +56,14 @@
         "method": "Select the Mall destination on the map and follow its entry action.",
         "evidence": "Browser interaction",
         "automated": "tests/mall-pavilion.test.mjs"
+      },
+      {
+        "id": "city-proof-review-mechanics",
+        "title": "Proof review record",
+        "claim": "A reviewer can record, retain and export a local human review without implying shared certification.",
+        "method": "Check one proof, refresh the page, confirm the local timestamp remains, then export and inspect the JSON record. Repeat in another browser profile to see that it is not shared.",
+        "evidence": "Browser interaction + exported record",
+        "automated": "tests/proof-review-contract.test.mjs"
       }
     ],
     "mall": [
