@@ -47,7 +47,7 @@ for (const route of circulation.routes) {
   assert.ok(levels.has(route.levelId), "route must reference a known level: " + route.id);
   assert.ok(route.points.length >= 2, "route needs at least two spatial points: " + route.id);
 }
-assert.ok(circulation.verticalLinks.some(link => link.mode === "lift" && link.accessible), "the concept must distinguish an accessible lift from stairs");
+assert.ok(circulation.verticalLinks.some(link => link.mode === "lift" && link.accessibilityIntent === "intended-accessible"), "the concept must distinguish an accessible lift from stairs");
 
 for (const node of circulation.nodes) {
   assert.ok(levels.has(node.levelId), "circulation node must reference a known level: " + node.id);
