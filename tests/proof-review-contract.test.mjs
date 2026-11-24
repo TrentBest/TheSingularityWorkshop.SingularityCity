@@ -13,5 +13,5 @@ for(const [page,proofs] of Object.entries(register.pages)){
  for(const proof of proofs){assert.ok(proof.id&&proof.title&&proof.claim&&proof.method&&proof.evidence&&proof.automated);assert.ok(!ids.has(proof.id),"duplicate proof ID: "+proof.id);ids.add(proof.id);count++;}
 }
 const script=await readFile(new URL("../assets/js/proof-review.mjs",import.meta.url),"utf8");
-assert.match(script,/checkbox\.type = "checkbox"/);assert.match(script,/localStorage/);assert.match(script,/workshop\.proof-review-record\.v1/);assert.match(script,/local-browser-review/);
+assert.match(script,/checkbox\\.type\\s*=\\s*"checkbox"/);assert.match(script,/localStorage/);assert.match(script,/workshop\.proof-review-record\.v1/);assert.match(script,/local-browser-review/);
 console.log("Proof review contract validated: "+count+" proofs across "+Object.keys(register.pages).length+" pages.");
