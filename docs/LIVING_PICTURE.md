@@ -37,7 +37,7 @@ Visualize already has a deterministic City Massing proof. It generates a procedu
 
 That is a CPU-side SVG proof, not a GPU renderer, calibrated urban model, persistent city or live street-level world. See the [City Massing sample](https://github.com/TrentBest/TheSingularityWorkshop.Visualize/tree/development/samples/CityMassing) and [Visualize gallery](https://github.com/TrentBest/TheSingularityWorkshop.Visualize/blob/development/docs/GALLERY.md).
 
-The City browser currently has a separate declarative district/route/parcel preview. These two paths must converge through explicit world inputs and stable IDs—not by copying a second renderer into City.
+The City browser currently has a separate declarative district/route/parcel preview. It now also embeds Visualize's WebGPU Soldier Field proving ground, whose workload cadence is driven by a generated Renderer policy manifest. That lab is a capability demonstration, not yet a rendering of City geometry. The district preview and Renderer/Visualize pipeline must converge through explicit world inputs and stable IDs—not by copying a second renderer into City.
 
 ## The visual proof contract
 
