@@ -111,7 +111,7 @@
           "levelId": "ground",
           "x": 12,
           "y": 195,
-          "accessible": true
+          "accessibilityIntent": "intended-accessible"
         },
         {
           "id": "atrium-stair",
@@ -120,7 +120,7 @@
           "levelId": "ground",
           "x": 330,
           "y": 155,
-          "accessible": false
+          "accessibilityIntent": "vertical-stair-only"
         },
         {
           "id": "atrium-lift",
@@ -129,7 +129,7 @@
           "levelId": "ground",
           "x": 370,
           "y": 155,
-          "accessible": true
+          "accessibilityIntent": "intended-accessible"
         },
         {
           "id": "upper-stair",
@@ -138,7 +138,7 @@
           "levelId": "upper",
           "x": 330,
           "y": 155,
-          "accessible": false
+          "accessibilityIntent": "vertical-stair-only"
         },
         {
           "id": "upper-lift",
@@ -147,7 +147,7 @@
           "levelId": "upper",
           "x": 370,
           "y": 155,
-          "accessible": true
+          "accessibilityIntent": "intended-accessible"
         }
       ],
       "routes": [
@@ -157,7 +157,6 @@
           "to": "arrival-court",
           "levelId": "ground",
           "mode": "public-entry",
-          "accessible": true,
           "points": [
             [
               12,
@@ -167,7 +166,8 @@
               30,
               195
             ]
-          ]
+          ],
+          "accessibilityIntent": "intended-accessible"
         },
         {
           "id": "arrival-to-atrium",
@@ -175,7 +175,6 @@
           "to": "grand-atrium",
           "levelId": "ground",
           "mode": "public-walk",
-          "accessible": true,
           "points": [
             [
               175,
@@ -185,7 +184,8 @@
               230,
               195
             ]
-          ]
+          ],
+          "accessibilityIntent": "intended-accessible"
         },
         {
           "id": "atrium-to-makers",
@@ -193,7 +193,6 @@
           "to": "maker-promenade",
           "levelId": "ground",
           "mode": "public-walk",
-          "accessible": true,
           "points": [
             [
               300,
@@ -211,7 +210,8 @@
               175,
               295
             ]
-          ]
+          ],
+          "accessibilityIntent": "intended-accessible"
         },
         {
           "id": "atrium-to-market",
@@ -219,7 +219,6 @@
           "to": "market-hall",
           "levelId": "ground",
           "mode": "public-walk",
-          "accessible": true,
           "points": [
             [
               420,
@@ -237,7 +236,8 @@
               540,
               295
             ]
-          ]
+          ],
+          "accessibilityIntent": "intended-accessible"
         },
         {
           "id": "gallery-to-events",
@@ -245,7 +245,6 @@
           "to": "event-terrace",
           "levelId": "upper",
           "mode": "public-walk",
-          "accessible": true,
           "points": [
             [
               410,
@@ -255,7 +254,8 @@
               450,
               180
             ]
-          ]
+          ],
+          "accessibilityIntent": "intended-accessible"
         }
       ],
       "verticalLinks": [
@@ -264,14 +264,14 @@
           "from": "atrium-lift",
           "to": "upper-lift",
           "mode": "lift",
-          "accessible": true
+          "accessibilityIntent": "intended-accessible"
         },
         {
           "id": "public-stair",
           "from": "atrium-stair",
           "to": "upper-stair",
           "mode": "stair",
-          "accessible": false
+          "accessibilityIntent": "vertical-stair-only"
         }
       ]
     }
