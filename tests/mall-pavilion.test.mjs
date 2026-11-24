@@ -24,7 +24,32 @@ assert.ok(cityMall, "Singularity Mall must be discoverable from the City catalog
 assert.equal(cityMall.owner.path, "mall.html");
 assert.equal(cityMall.district, "Civic Quarter");
 
-const economyShops = new Map(economy.shops.map(shop => [shop.id, shop]));
+
+const levels = new Map(pavilion.architecture.levelDefinitions.map(level => [level.id, level]));
+assert.equal(levels.size, pavilion.architecture.levelDefinitions.length, "floor IDs must be unique");
+assert.equal(levels.size, 2, "the pavilion floor plan must describe both levels");
+for (const zone of pavilion.architecture.zones) {
+  assert.ok(zone.plan, "every room must have a spatial footprint: " + zone.id);
+  assert.ok(levels.has(zone.plan.levelId), "room must reference a known floor: " + zone.id);
+  assert.ok(zone.plan.width > 0 && zone.plan.height > 0, "room footprint dimensions must be positive");
+  assert.ok(zone.plan.x >= 0 && zone.plan.y >= 0 && zone.plan.x + zone.plan.width <= 720 && zone.plan.y + zone.plan.height <= 375,
+    "room footprint must remain inside its floor plan: " + zone.id);
+}
+const circulation = pavilion.architecture.circulation;
+const circulationNodes = new Map(circulation.nodes.map(node => [node.id, node]));
+assert.equal(circulation.status, "conceptual-circulation-study");
+assert.ok(circulationNodes.has("main-entry"), "the ground floor needs an explicit public entrance");
+assert.ok(circulationNodes.has("atrium-lift") && circulationNodes.has("upper-lift"), "both levels need lift landing references");
+assert.ok(circulationNodes.has("atrium-stair") && circulationNodes.has("upper-stair"), "both levels need stair landing references");
+for (const route of circulation.routes) {
+  assert.ok(circulationNodes.has(route.from) || zones.has(route.from), "route source must resolve: " + route.id);
+  assert.ok(circulationNodes.has(route.to) || zones.has(route.to), "route target must resolve: " + route.id);
+  assert.ok(levels.has(route.levelId), "route must reference a known level: " + route.id);
+  assert.ok(route.points.length >= 2, "route needs at least two spatial points: " + route.id);
+}
+assert.ok(circulation.verticalLinks.some(link => link.mode === "lift" && link.accessible), "the concept must distinguish an accessible lift from stairs");
+assert.ok(pavilion.limitations.some(text => text.includes("accessibility audit")), "circulation must disclose that it is not an accessibility audit");
+\nconst economyShops = new Map(economy.shops.map(shop => [shop.id, shop]));
 const storefrontIds = new Set();
 for (const storefront of pavilion.storefronts) {
   assert.ok(!storefrontIds.has(storefront.id), "duplicate storefront identity: " + storefront.id);
