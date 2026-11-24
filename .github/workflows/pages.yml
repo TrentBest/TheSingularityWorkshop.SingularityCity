@@ -157,6 +157,7 @@ jobs:
           node --test tests/physics-terrain-overlay.test.mjs tests/physics-terrain-snapshot.test.mjs
       - name: Assemble the public City experience
         run: |
+          set -euxo pipefail
           mkdir -p _site
           cp index.html mall.html thinking.html _site/
           cp -R assets data docs schemas _site/
@@ -180,6 +181,9 @@ jobs:
           path: _site
   deploy:
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
