@@ -22,3 +22,5 @@
 .is-reviewed .proof-review-record{color:#8ce0b5}
 .proof-review-boundary{margin-top:18px;border-top:1px solid #29475a;padding-top:14px}
 @media(max-width:800px){.proof-review-heading,.proof-review-list{grid-template-columns:1fr}.proof-review-art{max-width:560px}.proof-review-section{padding:18px;margin:36px 16px}}
+
+.proof-review-doc-link{margin:12px 0 0;font-size:11px}.proof-review-doc-link a{color:#78dfe1;text-decoration:none}.proof-review-doc-link a:hover{text-decoration:underline}
