@@ -4,7 +4,7 @@
 
 SingularityCity pages are demonstrations of a living domain, not merely marketing pages. Each proof of concept therefore has an explicit claim, a reproducible review method and a visible human-review checkbox. The default state is unchecked.
 
-This is the first City-local proof-review experience and a proposal for a Workshop-wide contract that SURPS can lead.
+This is the first City-local proof-review experience and a proposal for a Workshop-wide contract that SURPS can lead. Coordination is open in [SURPS issue #13](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/issues/13); the shared vocabulary must align with SURPS's [repository participation standard](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/docs/repository-participation.md) and its living rulebook evidence model.
 
 ## The proof lifecycle
 
