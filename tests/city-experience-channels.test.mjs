@@ -25,6 +25,10 @@ assert.ok(script.includes("new AudioContextType()"), "The first audio proof must
 assert.ok(contract.includes("not yet a domain-event-driven soundscape"), "Audio implementation limits must be explicit");
 
 
+assert.ok(html.includes('id="hyper-visualization"'), "The City page must expose the hyper-visualization proving ground");
+assert.ok(html.includes("TheSingularityWorkshop.Visualize/samples/SoldierField/WebGpuRunner/"), "The City page must embed the Visualize WebGPU runner");
+assert.ok(html.includes("visitor's own browser/device GPU"), "The City page must state that WebGPU runs on the visitor device");
+assert.ok(contract.includes("ObserverRepresentationPolicy"), "The experience contract must document the Renderer policy bridge");
 assert.ok(html.includes('id="district-scene-art"'), "A district-specific scene surface must exist beneath the city map");
 assert.ok(html.includes('id="district-next"') && html.includes('id="district-previous"'), "District navigation must be available");
 assert.ok(city.includes('polygon.addEventListener("click",()=>selectDistrict(district.id))'), "Map district footprints must select their matching scene");
