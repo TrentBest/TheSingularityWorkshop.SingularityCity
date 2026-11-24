@@ -8,13 +8,273 @@
     "form": "covered urban pavilion",
     "levels": 2,
     "zones": [
-      { "id": "arrival-court", "name": "Arrival Court", "description": "A sheltered threshold with a clear view into the central atrium.", "kind": "public" },
-      { "id": "grand-atrium", "name": "Grand Atrium", "description": "The social heart of the pavilion: daylight, gathering space and a directory of the surrounding promenade.", "kind": "public" },
-      { "id": "maker-promenade", "name": "Maker Promenade", "description": "Small storefronts for independent makers, creators and specialist merchants.", "kind": "retail" },
-      { "id": "market-hall", "name": "Market Hall", "description": "Food, daily goods and neighborhood commerce around a shared seating court.", "kind": "retail" },
-      { "id": "upper-gallery", "name": "Upper Gallery", "description": "A quieter second-level walk overlooking the atrium and event floor.", "kind": "public" },
-      { "id": "event-terrace", "name": "Event Terrace", "description": "A flexible venue for demonstrations, launches, workshops and seasonal gatherings.", "kind": "event" }
-    ]
+      {
+        "id": "arrival-court",
+        "name": "Arrival Court",
+        "description": "A sheltered threshold with a clear view into the central atrium.",
+        "kind": "public",
+        "plan": {
+          "levelId": "ground",
+          "x": 30,
+          "y": 135,
+          "width": 145,
+          "height": 120
+        }
+      },
+      {
+        "id": "grand-atrium",
+        "name": "Grand Atrium",
+        "description": "The social heart of the pavilion: daylight, gathering space and a directory of the surrounding promenade.",
+        "kind": "public",
+        "plan": {
+          "levelId": "ground",
+          "x": 230,
+          "y": 105,
+          "width": 250,
+          "height": 180
+        }
+      },
+      {
+        "id": "maker-promenade",
+        "name": "Maker Promenade",
+        "description": "Small storefronts for independent makers, creators and specialist merchants.",
+        "kind": "retail",
+        "plan": {
+          "levelId": "ground",
+          "x": 30,
+          "y": 295,
+          "width": 290,
+          "height": 70
+        }
+      },
+      {
+        "id": "market-hall",
+        "name": "Market Hall",
+        "description": "Food, daily goods and neighborhood commerce around a shared seating court.",
+        "kind": "retail",
+        "plan": {
+          "levelId": "ground",
+          "x": 390,
+          "y": 295,
+          "width": 300,
+          "height": 70
+        }
+      },
+      {
+        "id": "upper-gallery",
+        "name": "Upper Gallery",
+        "description": "A quieter second-level walk overlooking the atrium and event floor.",
+        "kind": "public",
+        "plan": {
+          "levelId": "upper",
+          "x": 70,
+          "y": 95,
+          "width": 340,
+          "height": 175
+        }
+      },
+      {
+        "id": "event-terrace",
+        "name": "Event Terrace",
+        "description": "A flexible venue for demonstrations, launches, workshops and seasonal gatherings.",
+        "kind": "event",
+        "plan": {
+          "levelId": "upper",
+          "x": 450,
+          "y": 95,
+          "width": 240,
+          "height": 175
+        }
+      }
+    ],
+    "levelDefinitions": [
+      {
+        "id": "ground",
+        "name": "Level 01 · Ground",
+        "description": "Public entry, central atrium, maker promenade and market hall",
+        "offsetY": 0
+      },
+      {
+        "id": "upper",
+        "name": "Level 02 · Upper",
+        "description": "Gallery overlook and event terrace",
+        "offsetY": 390
+      }
+    ],
+    "circulation": {
+      "status": "conceptual-circulation-study",
+      "nodes": [
+        {
+          "id": "main-entry",
+          "name": "Main public entrance",
+          "kind": "entrance",
+          "levelId": "ground",
+          "x": 12,
+          "y": 195,
+          "accessible": true
+        },
+        {
+          "id": "atrium-stair",
+          "name": "Atrium stair",
+          "kind": "stair",
+          "levelId": "ground",
+          "x": 330,
+          "y": 155,
+          "accessible": false
+        },
+        {
+          "id": "atrium-lift",
+          "name": "Atrium lift",
+          "kind": "lift",
+          "levelId": "ground",
+          "x": 370,
+          "y": 155,
+          "accessible": true
+        },
+        {
+          "id": "upper-stair",
+          "name": "Upper stair landing",
+          "kind": "stair",
+          "levelId": "upper",
+          "x": 330,
+          "y": 155,
+          "accessible": false
+        },
+        {
+          "id": "upper-lift",
+          "name": "Upper lift landing",
+          "kind": "lift",
+          "levelId": "upper",
+          "x": 370,
+          "y": 155,
+          "accessible": true
+        }
+      ],
+      "routes": [
+        {
+          "id": "entry-to-arrival",
+          "from": "main-entry",
+          "to": "arrival-court",
+          "levelId": "ground",
+          "mode": "public-entry",
+          "accessible": true,
+          "points": [
+            [
+              12,
+              195
+            ],
+            [
+              30,
+              195
+            ]
+          ]
+        },
+        {
+          "id": "arrival-to-atrium",
+          "from": "arrival-court",
+          "to": "grand-atrium",
+          "levelId": "ground",
+          "mode": "public-walk",
+          "accessible": true,
+          "points": [
+            [
+              175,
+              195
+            ],
+            [
+              230,
+              195
+            ]
+          ]
+        },
+        {
+          "id": "atrium-to-makers",
+          "from": "grand-atrium",
+          "to": "maker-promenade",
+          "levelId": "ground",
+          "mode": "public-walk",
+          "accessible": true,
+          "points": [
+            [
+              300,
+              285
+            ],
+            [
+              300,
+              288
+            ],
+            [
+              175,
+              288
+            ],
+            [
+              175,
+              295
+            ]
+          ]
+        },
+        {
+          "id": "atrium-to-market",
+          "from": "grand-atrium",
+          "to": "market-hall",
+          "levelId": "ground",
+          "mode": "public-walk",
+          "accessible": true,
+          "points": [
+            [
+              420,
+              285
+            ],
+            [
+              420,
+              288
+            ],
+            [
+              540,
+              288
+            ],
+            [
+              540,
+              295
+            ]
+          ]
+        },
+        {
+          "id": "gallery-to-events",
+          "from": "upper-gallery",
+          "to": "event-terrace",
+          "levelId": "upper",
+          "mode": "public-walk",
+          "accessible": true,
+          "points": [
+            [
+              410,
+              180
+            ],
+            [
+              450,
+              180
+            ]
+          ]
+        }
+      ],
+      "verticalLinks": [
+        {
+          "id": "accessible-lift",
+          "from": "atrium-lift",
+          "to": "upper-lift",
+          "mode": "lift",
+          "accessible": true
+        },
+        {
+          "id": "public-stair",
+          "from": "atrium-stair",
+          "to": "upper-stair",
+          "mode": "stair",
+          "accessible": false
+        }
+      ]
+    }
   },
   "storefronts": [
     {
@@ -26,7 +286,10 @@
       "economyShopId": "civic-bakery-shop",
       "status": "fixture-connected",
       "description": "A neighborhood cooperative serving the daily loaf and market roll basket. Its catalog is read from the shared City market fixture.",
-      "offerings": ["bread-loaf", "roll-basket"]
+      "offerings": [
+        "bread-loaf",
+        "roll-basket"
+      ]
     },
     {
       "id": "maker-studio",
@@ -57,6 +320,7 @@
     "The pavilion is an authored spatial and navigation prototype, not a live 3D world.",
     "Only Civic Quarter Bakery has a storefront reference into the current Economy market fixture.",
     "The remaining storefronts are leasing concepts, not registered merchants or available products.",
-    "No purchase, payment, inventory reservation or settlement is performed by this browser experience."
+    "No purchase, payment, inventory reservation or settlement is performed by this browser experience.",
+    "The floor plans and circulation routes are conceptual design fixtures, not measured architecture, code-compliant egress, or an accessibility audit."
   ]
 }
