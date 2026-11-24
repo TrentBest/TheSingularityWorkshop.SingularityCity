@@ -1,8 +1,9 @@
 const $=s=>document.querySelector(s);
 const svgNS="http://www.w3.org/2000/svg";
-const [pavilion,economy]=await Promise.all([
+const [pavilion,economy,leasing]=await Promise.all([
  fetch("data/mall-pavilion.json").then(r=>{if(!r.ok)throw new Error("Pavilion data unavailable");return r.json()}),
- fetch("data/economy/civic-quarter-market.json").then(r=>{if(!r.ok)throw new Error("Economy fixture unavailable");return r.json()})
+ fetch("data/economy/civic-quarter-market.json").then(r=>{if(!r.ok)throw new Error("Economy fixture unavailable");return r.json()}),
+ fetch("data/mall-leasing.json").then(r=>{if(!r.ok)throw new Error("Leasing fixture unavailable");return r.json()})
 ]);
 const shops=new Map((economy.shops||[]).map(shop=>[shop.id,shop]));
 const zones=new Map(pavilion.architecture.zones.map(zone=>[zone.id,zone]));
@@ -97,3 +98,52 @@ for(const shop of pavilion.storefronts){
 }
 $("#show-shops").addEventListener("click",()=>{document.querySelector(".storefront-section").scrollIntoView({behavior:"smooth"});const first=pavilion.storefronts.find(s=>s.zoneId===selectedZone);if(first)inspectShop(first.id)});
 inspectZone(selectedZone);inspectShop("civic-bakery-shop");
+
+const unitSelect=$("#leasing-unit"), managerResponse=$("#manager-response");
+const facadePreview=$("#tenant-facade-preview"), interiorPreview=$("#tenant-interior-preview");
+const paletteMap={teal:{main:"#65e4dc",deep:"#164653",light:"#c6fff7"},amber:{main:"#e7c27c",deep:"#59452a",light:"#fff0c9"},forest:{main:"#8fc99c",deep:"#244b38",light:"#d9f5df"},violet:{main:"#b8a1e6",deep:"#40345f",light:"#eee5ff"}};
+const draftKey="singularity-city:mall-tenant-design:v1";
+let savedDrafts={};try{savedDrafts=JSON.parse(localStorage.getItem(draftKey)||"{}");}catch{savedDrafts={};}
+const managerAnswers={
+ vacancies:"We currently have three authored demonstration vacancies: a maker-facing unit on the promenade, a larger market-hall shell, and an upper-gallery studio. These are prototype fixtures, not a live availability feed.",
+ customize:"Absolutely. The facade preview lets you choose a name, sign and palette. Inside, choose a shell-constrained fit-out or a freeform concept. The leased exterior and safety obligations remain governed by the building.",
+ rules:"You can explore signage, facade finishes and interior concepts. You cannot use a design draft to move the unit, alter shared circulation, remove exits, change the building structure or claim accessibility approval.",
+ lease:"Start by selecting a unit and preparing a design brief. A real application will require authenticated identity, tenant authority, lease terms, approvals and a persistent host. This prototype deliberately does not grant a lease."
+};
+for(const unit of leasing.units){const option=document.createElement("option");option.value=unit.id;option.textContent=unit.name;unitSelect.append(option);}
+$("#manager-prompts")?.addEventListener("click",event=>{const button=event.target.closest("button[data-manager-question]");if(!button)return;managerResponse.textContent=managerAnswers[button.dataset.managerQuestion]||"Please speak with the leasing desk.";if(button.dataset.managerQuestion==="vacancies")unitSelect.focus();});
+function activeUnit(){return leasing.units.find(unit=>unit.id===unitSelect.value)||leasing.units[0];}
+function svgNode(name,attrs={},content){const node=document.createElementNS(svgNS,name);for(const [key,value] of Object.entries(attrs))node.setAttribute(key,String(value));if(content!==undefined)node.textContent=content;return node;}
+function renderTenantStudio(){
+ const unit=activeUnit();if(!unit)return;
+ const storeName=$("#tenant-store-name").value.trim()||"Your Store",signText=$("#tenant-sign-text").value.trim()||"OPEN";
+ const palette=paletteMap[$("#tenant-palette").value]||paletteMap.teal,free=$("#tenant-fitout").value==="freeform-interior";
+ $("#leasing-unit-facts").textContent=unit.category+" · "+unit.areaM2+" m² concept area · "+unit.frontageM+" m frontage · "+unit.clearHeightM+" m clear height";
+ $("#tenant-fitout-note").textContent=free?"Freeform concept: explore an interior beyond the authored shell dimensions. The external lease boundary remains unchanged.":"Shell-constrained concept: preview respects "+unit.clearWidthM+" m × "+unit.clearDepthM+" m × "+unit.clearHeightM+" m authored clear dimensions.";
+ facadePreview.replaceChildren();
+ facadePreview.append(svgNode("rect",{x:18,y:18,width:564,height:204,rx:8,fill:"#0a1926",stroke:"#456579","stroke-width":2}));
+ facadePreview.append(svgNode("rect",{x:65,y:62,width:470,height:160,fill:palette.deep,stroke:palette.main,"stroke-width":4}));
+ facadePreview.append(svgNode("rect",{x:85,y:77,width:430,height:42,fill:palette.main}));
+ facadePreview.append(svgNode("text",{x:300,y:105,"text-anchor":"middle",fill:"#07111f","font-size":20,"font-weight":700},storeName.toUpperCase()));
+ facadePreview.append(svgNode("rect",{x:95,y:135,width:175,height:87,fill:"#16394a",stroke:palette.light,"stroke-width":3}));
+ facadePreview.append(svgNode("rect",{x:330,y:135,width:175,height:87,fill:"#16394a",stroke:palette.light,"stroke-width":3}));
+ facadePreview.append(svgNode("path",{d:"M300 135v87",stroke:palette.main,"stroke-width":5}));
+ facadePreview.append(svgNode("text",{x:300,y:53,"text-anchor":"middle",fill:palette.light,"font-size":13,"letter-spacing":2},signText.toUpperCase()));
+ facadePreview.append(svgNode("path",{d:"M40 222h520",stroke:"#9bb0bf","stroke-width":2}));
+ interiorPreview.replaceChildren();
+ interiorPreview.append(svgNode("rect",{x:18,y:18,width:564,height:204,rx:8,fill:"#0a1926",stroke:"#456579","stroke-width":2}));
+ const scale=Math.min(420/(unit.clearWidthM*(free?1.65:1)),130/(unit.clearDepthM*(free?1.65:1)));
+ const w=unit.clearWidthM*scale*(free?1.65:1),d=unit.clearDepthM*scale*(free?1.65:1),x=(600-w)/2,y=(240-d)/2;
+ interiorPreview.append(svgNode("rect",{x,y,width:w,height:d,fill:"#102c3e",stroke:palette.main,"stroke-width":3}));
+ interiorPreview.append(svgNode("rect",{x:x+w*.08,y:y+d*.12,width:w*.34,height:d*.26,fill:palette.deep,stroke:palette.light,"stroke-width":2}));
+ interiorPreview.append(svgNode("rect",{x:x+w*.54,y:y+d*.12,width:w*.36,height:d*.26,fill:"#284457",stroke:palette.main,"stroke-width":2}));
+ interiorPreview.append(svgNode("rect",{x:x+w*.2,y:y+d*.56,width:w*.6,height:d*.25,rx:5,fill:palette.deep,stroke:palette.light,"stroke-width":2}));
+ interiorPreview.append(svgNode("text",{x:300,y:225,"text-anchor":"middle",fill:"#9bb0bf","font-size":10},free?"FREEFORM CONCEPT · 1.65× DISPLAY FOOTPRINT":"LEASED SHELL · "+unit.clearWidthM+" m × "+unit.clearDepthM+" m"));
+}
+function tenantDraft(){const unit=activeUnit();return {schema:"singularity-city.mall-tenant-design-draft.v1",scope:"local-browser-design-only",unitId:unit.id,storeName:$("#tenant-store-name").value.trim(),signText:$("#tenant-sign-text").value.trim(),palette:$("#tenant-palette").value,interiorPolicy:$("#tenant-fitout").value,createdAt:new Date().toISOString(),unitDimensions:{areaM2:unit.areaM2,frontageM:unit.frontageM,clearWidthM:unit.clearWidthM,clearDepthM:unit.clearDepthM,clearHeightM:unit.clearHeightM},limitations:["Not a lease application or lease grant.","Not shared with other visitors.","Not a tenant account or Economy merchant registration.","Conceptual dimensions; no architectural or safety approval."]};}
+function saveTenantDraft(){const draft=tenantDraft();savedDrafts[draft.unitId]=draft;try{localStorage.setItem(draftKey,JSON.stringify(savedDrafts));$("#tenant-draft-status").textContent="Local draft saved for "+draft.unitId+" · "+new Date().toLocaleTimeString();}catch{$("#tenant-draft-status").textContent="Browser storage unavailable; export the draft instead.";}}
+unitSelect?.addEventListener("change",()=>{const draft=savedDrafts[unitSelect.value];if(draft){$("#tenant-store-name").value=draft.storeName||"My New Store";$("#tenant-sign-text").value=draft.signText||"OPEN";$("#tenant-palette").value=draft.palette||"teal";$("#tenant-fitout").value=draft.interiorPolicy||"shell-constrained";$("#tenant-draft-status").textContent="Loaded local draft for "+unitSelect.value;}else $("#tenant-draft-status").textContent="No local draft saved for this unit.";renderTenantStudio();});
+["tenant-store-name","tenant-sign-text","tenant-palette","tenant-fitout"].forEach(id=>$("#"+id)?.addEventListener("input",renderTenantStudio));
+$("#save-tenant-draft")?.addEventListener("click",saveTenantDraft);
+$("#export-tenant-draft")?.addEventListener("click",()=>{const blob=new Blob([JSON.stringify(tenantDraft(),null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=activeUnit().id+"-design-draft.json";a.click();URL.revokeObjectURL(url);});
+renderTenantStudio();
