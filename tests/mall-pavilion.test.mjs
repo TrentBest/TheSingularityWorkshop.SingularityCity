@@ -49,7 +49,8 @@ for (const route of circulation.routes) {
 }
 assert.ok(circulation.verticalLinks.some(link => link.mode === "lift" && link.accessible), "the concept must distinguish an accessible lift from stairs");
 assert.ok(pavilion.limitations.some(text => text.includes("accessibility audit")), "circulation must disclose that it is not an accessibility audit");
-\nconst economyShops = new Map(economy.shops.map(shop => [shop.id, shop]));
+
+const economyShops = new Map(economy.shops.map(shop => [shop.id, shop]));
 const storefrontIds = new Set();
 for (const storefront of pavilion.storefronts) {
   assert.ok(!storefrontIds.has(storefront.id), "duplicate storefront identity: " + storefront.id);
