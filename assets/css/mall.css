@@ -20,3 +20,33 @@
 .mall-core-label{fill:#e7c27c;font:8px 'DM Mono',monospace;letter-spacing:1px}
 .floor-plan-legend{display:flex;gap:18px;flex-wrap:wrap;padding:8px 6px;color:#9bb0bf;font:8px 'DM Mono',monospace;letter-spacing:1px}
 @media(max-width:600px){.floor-plan-wrap{padding:4px}.mall-room-label{font-size:10px}.mall-room-kind{font-size:6px}.floor-plan-legend{gap:8px;font-size:7px}}
+
+.management-section{max-width:1400px;margin:85px auto;padding:0 clamp(20px,5vw,72px)}
+.management-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+.management-office,.leasing-desk,.tenant-studio{border:1px solid var(--line);background:linear-gradient(145deg,#10283a,#0a1927);padding:22px;min-width:0}
+.management-art{display:block;width:100%;height:auto;margin-bottom:22px;border-radius:10px}
+.management-office h3,.leasing-desk h3,.studio-heading h3{font-size:27px;margin:10px 0}
+.manager-disclosure,.leasing-desk>p,.studio-heading>p,.fitout-note,.studio-boundary{font-size:12px;line-height:1.8;color:var(--muted)}
+.manager-prompts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:20px 0}
+.manager-prompts button,.studio-actions button{padding:12px 14px;border:1px solid #426579;background:#122f42;color:var(--text);text-align:left;cursor:pointer}
+.manager-prompts button:hover,.studio-actions button:hover{border-color:var(--cyan);color:var(--cyan)}
+.manager-response{min-height:88px;padding:16px;border-left:3px solid var(--gold);background:#081724;color:#d5e2e9;font-size:12px;line-height:1.8}
+.leasing-desk label,.studio-controls label{display:flex;flex-direction:column;gap:8px;margin:16px 0;color:var(--muted);font:10px 'DM Mono',monospace;letter-spacing:.08em}
+.leasing-desk select,.studio-controls input,.studio-controls select{width:100%;padding:12px;background:#071725;color:var(--text);border:1px solid #426579;font:12px Inter,Segoe UI,sans-serif}
+.unit-facts{padding:14px 0;color:var(--gold);font:10px 'DM Mono',monospace;line-height:1.8}
+.local-only-label{display:inline-block;padding:8px 10px;border:1px dashed #b89a5c;color:#e7c27c;font:8px 'DM Mono',monospace;letter-spacing:.1em}
+.tenant-studio{margin-top:14px}
+.studio-heading{display:flex;justify-content:space-between;gap:25px;align-items:end}
+.studio-heading>p{max-width:360px}
+.studio-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tenant-previews{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.tenant-previews figure{margin:0;padding:10px;background:#071522;border:1px solid var(--line);min-width:0}
+.tenant-previews figcaption{padding:5px 5px 12px;color:var(--gold);font:8px 'DM Mono',monospace;letter-spacing:.1em}
+.tenant-previews svg{display:block;width:100%;height:auto;background:radial-gradient(ellipse at center,#18384b,#071522)}
+.studio-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.studio-actions button{background:var(--cyan);color:#062027;border:0;font-weight:700;text-align:center}
+.studio-actions button.secondary{background:transparent;color:var(--text);border:1px solid #426579}
+.studio-actions span{font:9px 'DM Mono',monospace;color:var(--muted)}
+.studio-boundary{border-top:1px solid var(--line);padding-top:14px;margin-top:18px}
+@media(max-width:900px){.management-layout{grid-template-columns:1fr}.studio-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.studio-heading{display:block}}
+@media(max-width:600px){.manager-prompts,.tenant-previews,.studio-controls{grid-template-columns:1fr}.studio-actions{align-items:stretch;flex-direction:column}.studio-actions button{text-align:center}}
