@@ -106,6 +106,22 @@
         "method": "Inspect both levels, select each room, trace the public route markings and identify the lift and stair cores. Treat the plan as conceptual, not a code or accessibility certification.",
         "evidence": "Data + browser interaction",
         "automated": "tests/mall-pavilion.test.mjs"
+      },
+      {
+        "id": "mall-management-office",
+        "title": "Mall management office",
+        "claim": "The dedicated office is reachable from the public pavilion and its scripted manager explains leasing and customization boundaries.",
+        "method": "Select Mall Management Office on the floor plan, then use each manager prompt and compare the response with the documented service boundary.",
+        "evidence": "Data + browser interaction",
+        "automated": "tests/mall-pavilion.test.mjs"
+      },
+      {
+        "id": "mall-tenant-design-studio",
+        "title": "Tenant facade and interior studio",
+        "claim": "A visitor can select a vacant unit, customize a facade, switch between shell-constrained and freeform interior previews, save a local draft and export JSON.",
+        "method": "Select each vacant unit, edit store/sign text and palette, switch interior policy, save, refresh and export. Confirm another browser profile does not inherit the draft.",
+        "evidence": "Browser interaction + exported local JSON",
+        "automated": "tests/mall-pavilion.test.mjs"
       }
     ]
   }
