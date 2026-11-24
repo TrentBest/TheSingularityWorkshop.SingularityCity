@@ -28,7 +28,7 @@ The first scene is an oblique aerial massing study. District parcel-grid dimensi
 
 ## Hyper-visualization proving ground
 
-The City page embeds the Visualize-owned Soldier Field WebGPU lab. Its `renderer-policy.json` is generated from the real .NET Renderer `ObserverRepresentationPolicy`; the browser runner consumes the policy's horizon representation labels and frame intervals when updating its eight instance-buffer workloads.
+The City page embeds the Visualize-owned Soldier Field WebGPU lab. Its `renderer-policy.json` is generated from the real .NET Renderer `ObserverRepresentationPolicy`; the browser runner queries its 8-distance × 5-minimum-representation decision matrix and, by default, refreshes and draws only the selected horizon. An explicit stress toggle runs all eight instance-buffer workloads.
 
 This is a cross-repository policy-to-presentation proof, not yet a live City renderer:
 - The policy is generated in .NET and delivered as a deterministic static manifest; Renderer does not execute inside the browser.
