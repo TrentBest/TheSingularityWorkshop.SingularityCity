@@ -26,7 +26,9 @@ assert.ok(contract.includes("not yet a domain-event-driven soundscape"), "Audio 
 
 
 assert.ok(html.includes('id="hyper-visualization"'), "The City page must expose the hyper-visualization proving ground");
-assert.ok(html.includes("TheSingularityWorkshop.Visualize/samples/SoldierField/WebGpuRunner/"), "The City page must embed the Visualize WebGPU runner");
+assert.ok(html.includes('src="visualization-lab/index.html"'), "The City page must embed the local Visualize WebGPU runner");
+assert.ok(html.includes("TheSingularityWorkshop.Visualize/blob/development/samples/SoldierField/WebGpuRunner/README.md"), "The City page must preserve the Visualize source link");
+assert.ok(html.includes('href="visualization-lab/source-revision.txt"'), "The City page must expose the exact Visualize source revision");
 assert.ok(html.includes("visitor's own browser/device GPU"), "The City page must state that WebGPU runs on the visitor device");
 assert.ok(contract.includes("ObserverRepresentationPolicy"), "The experience contract must document the Renderer policy bridge");
 assert.ok(html.includes('id="district-scene-art"'), "A district-specific scene surface must exist beneath the city map");
