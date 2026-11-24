@@ -21,7 +21,7 @@ function renderFloorPlan(){
   const heading=svg("text",{x:24,y:34,class:"floor-heading"});heading.textContent=level.name.toUpperCase()+" · CONCEPTUAL PLAN";
   group.append(bg,heading);
   for(const route of pavilion.architecture.circulation.routes.filter(item=>item.levelId===level.id)){
-   const line=svg("polyline",{points:route.points.map(point=>point.join(",")).join(" "),class:"mall-route"+(route.accessible?" accessible":""),"data-route":route.id,"aria-label":route.mode+" "+(route.accessible?"accessible":"")});
+   const line=svg("polyline",{points:route.points.map(point=>point.join(",")).join(" "),class:"mall-route"+(route.accessibilityIntent==="intended-accessible"?" accessible":""),"data-route":route.id,"aria-label":route.mode+" "+(route.accessibilityIntent==="intended-accessible"?"intended accessible · not audited":"")});
    group.append(line);
   }
   for(const zone of pavilion.architecture.zones.filter(item=>item.plan?.levelId===level.id)){
