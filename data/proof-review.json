@@ -45,7 +45,7 @@
         "id": "city-hyper-visualization-renderer-webgpu",
         "title": "Renderer-driven WebGPU proving ground",
         "claim": "City embeds the Visualize WebGPU lab, whose horizon labels and refresh cadence are supplied by a manifest generated from Renderer policy.",
-        "method": "Open the embedded Soldier Field lab. Change observer distance and minimum representation, confirm Renderer policy selects the expected horizon and the displayed FSM state matches it, and verify only that horizon is refreshed/drawn by default. Enable all-horizon stress mode and compare the work counters. Verify the page identifies WebGPU as visitor-device execution rather than a Pages GPU service. Try the full-lab link if the embedded browser does not support WebGPU.",
+        "method": "Open the embedded Soldier Field lab. Change observer distance and minimum representation, confirm Renderer policy selects the expected horizon and the displayed FSM state matches it, and inspect the state-scaled dust-mote and triangle budgets. Verify only the selected horizon is refreshed/drawn by default; enable all-horizon stress mode and compare work counters. Confirm WebGPU is visitor-device execution, not a Pages GPU service. Try the full-lab link if the embedded browser does not support WebGPU.",
         "evidence": "Browser interaction + generated Renderer policy manifest",
         "automated": "tests/city-experience-channels.test.mjs"
       },
