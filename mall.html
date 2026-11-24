@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Walk the Singularity Mall pavilion: discover its atrium, promenade, market hall and merchant storefronts.">
+  <title>Singularity Mall | Singularity City</title>
+  <link rel="stylesheet" href="assets/css/mall.css">
+</head>
+<body>
+  <header class="mall-topbar">
+    <a class="mall-brand" href="index.html"><span class="mall-mark">S</span><span><b>SINGULARITY CITY</b><small>THE WORKSHOP / CIVIC QUARTER</small></span></a>
+    <nav><a href="index.html">City</a><a class="active" href="mall.html">The Mall</a><a href="docs/ECONOMY_IN_SINGULARITY_CITY.md">Commerce model</a></nav>
+    <span class="preview-state">PAVILION PREVIEW · v0.1</span>
+  </header>
+  <main>
+    <section class="mall-hero">
+      <div class="hero-copy"><span class="eyebrow">CIVIC QUARTER · A PLACE TO MEET</span><h1>Come in.<br><em>Stay a while.</em></h1><p>Not just a shopping center. A covered public place where makers, merchants, neighbors and curious visitors cross paths.</p><div class="hero-meta"><span>2 LEVELS</span><span>6 SPACES</span><span>1 CONNECTED MERCHANT FIXTURE</span></div></div>
+      <div class="hero-art" aria-label="Illustrated architectural cutaway of the Singularity Mall pavilion">
+        <svg viewBox="0 0 720 470" role="img" aria-labelledby="mall-art-title mall-art-desc">
+          <title id="mall-art-title">Singularity Mall pavilion cutaway</title><desc id="mall-art-desc">A two-level glass-roofed pavilion with a central atrium, shops along the promenade and a market hall.</desc>
+          <defs><linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7de0ff" stop-opacity=".55"/><stop offset="1" stop-color="#d8c18c" stop-opacity=".18"/></linearGradient><linearGradient id="atrium" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#65e4dc" stop-opacity=".24"/><stop offset="1" stop-color="#65e4dc" stop-opacity=".02"/></linearGradient></defs>
+          <path d="M65 365 350 205 660 365 370 445Z" fill="#102b3b" stroke="#54778a" stroke-width="3"/>
+          <path d="M90 340 350 190 630 340 370 415Z" fill="url(#roof)" stroke="#8adcf0" stroke-width="3"/>
+          <path d="M350 190V395M90 340V365M630 340V365" stroke="#a6c8d2" stroke-width="5"/>
+          <path d="M180 290 350 385 520 290 350 200Z" fill="url(#atrium)" stroke="#65e4dc" stroke-width="2"/>
+          <path d="M110 350 350 220 590 350M110 350 350 415 590 350" fill="none" stroke="#8fb6c4" stroke-width="2"/>
+          <g fill="#173e52" stroke="#6d9caf" stroke-width="2"><path d="M110 342 200 292 200 355 110 400Z"/><path d="M230 275 305 233 305 305 230 348Z"/><path d="M395 232 475 277 475 350 395 305Z"/><path d="M510 294 600 342 600 398 510 352Z"/></g>
+          <g fill="#e7c27c"><path d="M128 350 180 321 180 370 128 398Z"/><path d="M246 282 289 258 289 300 246 324Z"/><path d="M414 251 455 274 455 316 414 293Z"/><path d="M530 306 580 333 580 380 530 353Z"/></g>
+          <path d="M90 340 350 190 630 340" fill="none" stroke="#d9f4f4" stroke-width="5"/>
+          <path d="M350 190 350 100M350 100 330 130M350 100 370 130" stroke="#65e4dc" stroke-width="2" fill="none"/>
+          <text x="350" y="82" text-anchor="middle" fill="#9ce9e3" font-size="13" letter-spacing="3">GRAND ATRIUM</text>
+          <text x="135" y="435" fill="#b8cbd6" font-size="11">MAKER PROMENADE</text><text x="470" y="435" fill="#b8cbd6" font-size="11">MARKET HALL</text>
+          <g fill="#65e4dc"><circle cx="350" cy="385" r="5"/><circle cx="180" cy="370" r="4"/><circle cx="550" cy="360" r="4"/></g>
+        </svg>
+        <span class="art-caption">PAVILION MASSING · CONCEPTUAL CUTAWAY</span>
+      </div>
+    </section>
+    <section class="pavilion-layout">
+      <div class="section-title"><div><span class="eyebrow">CHOOSE YOUR WAY THROUGH</span><h2>Explore the pavilion</h2></div><p>Choose a space to inspect it. Storefronts and public rooms resolve to stable pavilion IDs.</p></div>
+      <div class="pavilion-workbench">
+        <div class="pavilion-plan">
+          <div class="plan-head"><span>GROUND + UPPER LEVEL</span><span id="zone-count">LOADING SPACES…</span></div>
+          <div id="zone-grid" class="zone-grid"><p>Loading pavilion plan…</p></div>
+          <div class="level-strip"><span>LEVEL 01 · MARKET + PROMENADE</span><span>LEVEL 02 · GALLERY + EVENTS</span></div>
+        </div>
+        <aside class="zone-inspector"><span class="eyebrow">SPACE DOSSIER</span><span id="zone-kind" class="zone-kind">PUBLIC SPACE</span><h3 id="zone-name">Grand Atrium</h3><p id="zone-description">The social heart of the pavilion.</p><div class="zone-facts"><span>SPACE ID</span><code id="zone-id">grand-atrium</code></div><div class="zone-facts"><span>CONNECTED STOREFRONTS</span><strong id="zone-shops">—</strong></div><button id="show-shops" class="inspect-button" type="button">Browse storefronts ↗</button></aside>
+      </div>
+    </section>
+    <section class="storefront-section">
+      <div class="section-title"><div><span class="eyebrow">MERCHANT DIRECTORY</span><h2>Meet the storefronts.</h2></div><p>One merchant is connected to the authored Economy fixture. Other spaces are explicitly marked as leasing concepts.</p></div>
+      <div id="storefronts" class="storefront-grid"><p>Loading merchant directory…</p></div>
+      <aside id="merchant-inspector" class="merchant-inspector" aria-live="polite"><span class="eyebrow">STOREFRONT INSPECTOR</span><h3>Select a merchant</h3><p>Inspect a storefront to see its status and catalog provenance.</p></aside>
+    </section>
+    <section class="mall-footer-cta"><span class="eyebrow">A CITY DESTINATION</span><h2>There is always another door.</h2><p>Return to the city map to discover the Mall in its Civic Quarter context.</p><a href="index.html#districts">Back to Singularity City ↗</a></section>
+  </main>
+  <footer><span>THE SINGULARITY WORKSHOP · SINGULARITY CITY</span><span>FICTIONAL CITY FIXTURE · NO LIVE CHECKOUT</span></footer>
+  <script type="module" src="assets/js/mall.mjs"></script>
+</body>
+</html>
