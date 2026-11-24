@@ -10,6 +10,34 @@
   },
   "places": [
     {
+      "id": "singularity-mall",
+      "code": "M",
+      "icon": "✦",
+      "type": "SHOP / SINGULARITY MALL PAVILION",
+      "title": "Singularity Mall",
+      "description": "A walkable retail pavilion where Workshop creators, neighborhood merchants and visitors meet. Explore the architecture, browse storefronts and discover the systems behind commerce.",
+      "access": "Public pavilion preview",
+      "domain": "City places · Economy commerce",
+      "entry": "Visit Singularity Mall",
+      "detail": "Enter the central atrium, explore the promenade and inspect merchant storefronts. The bakery is connected to the authored Economy market fixture; other bays are clearly marked as leasing concepts.",
+      "action": "Open the pavilion",
+      "district": "Civic Quarter",
+      "coordinates": {
+        "x": 690,
+        "y": 265
+      },
+      "owner": {
+        "repository": "TrentBest/TheSingularityWorkshop.SingularityCity",
+        "path": "mall.html"
+      },
+      "capabilities": [
+        "destination-discovery",
+        "retail-pavilion",
+        "merchant-directory"
+      ],
+      "status": "interactive-prototype"
+    },
+    {
       "id": "workshop",
       "code": "W",
       "icon": "⌘",
