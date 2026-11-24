@@ -9,7 +9,7 @@ The first browser experience is an architectural and discovery prototype. It is 
 ## Current implementation
 
 - `mall.html` is the dedicated pavilion experience.
-- `data/mall-pavilion.json` defines the pavilion identity, six inspectable spaces, room footprints on two levels, circulation routes, vertical connectors and four storefront records.
+- `data/mall-pavilion.json` defines the pavilion identity, seven inspectable spaces, room footprints on two levels, circulation routes, vertical connectors and four storefront records plus three separately modelled vacant-unit fixtures.
 - `assets/js/mall.mjs` renders both selectable floor plans, the zone directory and merchant inspector from the authored data.
 - `assets/css/mall.css` styles the pavilion cutaway, spatial workbench and storefront directory.
 - `data/places.json` registers the Mall as a stable City destination in the Civic Quarter.
@@ -46,6 +46,10 @@ The browser displays authored fixture prices and quantities for inspection only.
 5. Upper Gallery — second-level overlook.
 6. Event Terrace — demonstrations, launches and workshops.
 
+## Management and tenant design
+
+The pavilion now includes a dedicated Mall Management Office connected to the public circulation graph. The separate `data/mall-leasing.json` fixture defines the office role and three vacant design units. `mall.html` includes a scripted manager desk and a local tenant studio with live facade and interior SVG previews. The creator can choose a shell-constrained fit-out or a freeform conceptual interior, save a browser-local draft and export JSON. No lease is offered or granted; the manager is not yet a SURPS-bound character; drafts are not shared with other visitors. See [Mall management and tenant design](MALL_MANAGEMENT_AND_TENANT_DESIGN.md).
+
 ## Next implementation gates
 
 1. Promote the current room footprints and conceptual circulation into versioned City building, floor, room, entrance and circulation entities with dimensional units and explicit validation.
@@ -53,7 +57,8 @@ The browser displays authored fixture prices and quantities for inspection only.
 3. Add SURPS-compatible visitor presence only after the shared character contract is confirmed.
 4. Move navigation and interactions behind the host adapter for real sessions, persistence and multiplayer.
 5. Add accessibility, opening schedules, delivery/service access, fire egress, utilities and capacity constraints as authoritative data rather than decorative labels.
-6. Extend the visitor journey from the Mall threshold into the first-person city experience while preserving stable City place IDs.
+6. Bind the manager role to SURPS's adopted character/agent contract and connect tenant administration to an authenticated host.
+7. Extend the visitor journey from the Mall threshold into the first-person city experience while preserving stable City place IDs.
 
 ## Evidence and limitations
 
