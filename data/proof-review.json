@@ -42,6 +42,14 @@
         "automated": "Manual browser review"
       },
       {
+        "id": "city-hyper-visualization-renderer-webgpu",
+        "title": "Renderer-driven WebGPU proving ground",
+        "claim": "City embeds the Visualize WebGPU lab, whose horizon labels and refresh cadence are supplied by a manifest generated from Renderer policy.",
+        "method": "Open the embedded Soldier Field lab. Confirm the Renderer representation labels and cadence are visible, inspect the focus-override example, and verify that the page identifies WebGPU as visitor-device execution rather than a Pages GPU service. Try the full-lab link if the embedded browser does not support WebGPU.",
+        "evidence": "Browser interaction + generated Renderer policy manifest",
+        "automated": "tests/city-experience-channels.test.mjs"
+      },
+      {
         "id": "city-civic-fixture",
         "title": "Connected Civic Quarter model",
         "claim": "The district workbench renders linked synthetic parcels, buildings, public space and network relationships from the City fixture.",
