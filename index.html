@@ -116,6 +116,21 @@
       <p class="district-scene-note">This is a first spatial-view prototype, not a photorealistic camera or surveyed 3D world. Building massing is illustrative where detailed building records do not yet exist; named Civic Quarter landmarks are placed from the connected district fixture.</p>
     </section>
 
+    <section class="hyper-visualization section" id="hyper-visualization" aria-labelledby="hyper-visualization-title">
+      <div class="section-heading">
+        <div><span class="eyebrow">RENDERER POLICY × VISUALIZE × WEBGPU</span><h2 id="hyper-visualization-title">A closer look. An unreasonable amount of detail.</h2></div>
+        <p>The same observer-relative idea that governs a city at regional scale should also decide where a single nearby object deserves extraordinary attention. This live browser lab connects Renderer policy to Visualize's WebGPU workload.</p>
+      </div>
+      <div class="hyper-visualization-frame">
+        <iframe src="https://trentbest.github.io/TheSingularityWorkshop.Visualize/samples/SoldierField/WebGpuRunner/" title="Visualize Soldier Field WebGPU and Renderer policy lab" loading="lazy"></iframe>
+      </div>
+      <div class="hyper-visualization-caption">
+        <p><strong>Hardware boundary:</strong> GitHub Pages serves these files; it does not provide a GPU rendering server. When supported, WebGPU executes on the visitor's own browser/device GPU. The lab reports browser-side timings and workload counters, not GPU timestamp measurements.</p>
+        <a href="https://trentbest.github.io/TheSingularityWorkshop.Visualize/samples/SoldierField/WebGpuRunner/" target="_blank" rel="noopener">Open the full WebGPU lab ↗</a>
+        <a href="https://github.com/TrentBest/TheSingularityWorkshop.Visualize/blob/development/samples/SoldierField/WebGpuRunner/README.md">Read the implementation and evidence limits ↗</a>
+      </div>
+    </section>
+
     <section class="district-proof section" id="connected-district">
       <div class="section-heading"><div><span class="eyebrow">ONE CONNECTED MODEL · SYNTHETIC PROOF</span><h2>Civic Quarter, down to the service connections.</h2></div><p>Land, buildings, rooms, mobility, transit, water, energy, public space and civic services share stable IDs and explicit relationships.</p></div>
       <div class="district-metrics" id="district-metrics"></div>
