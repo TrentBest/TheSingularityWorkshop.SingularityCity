@@ -7,8 +7,9 @@
   <meta name="description" content="Walk the Singularity Mall pavilion: discover its atrium, promenade, market hall and merchant storefronts.">
   <title>Singularity Mall | Singularity City</title>
   <link rel="stylesheet" href="assets/css/mall.css">
+  <link rel="stylesheet" href="assets/css/proof-review.css">
 </head>
-<body>
+<body data-proof-page="mall">
   <header class="mall-topbar">
     <a class="mall-brand" href="index.html"><span class="mall-mark">S</span><span><b>SINGULARITY CITY</b><small>THE WORKSHOP / CIVIC QUARTER</small></span></a>
     <nav><a href="index.html">City</a><a class="active" href="mall.html">The Mall</a><a href="docs/ECONOMY_IN_SINGULARITY_CITY.md">Commerce model</a></nav>
@@ -55,7 +56,12 @@
     </section>
     <section class="mall-footer-cta"><span class="eyebrow">A CITY DESTINATION</span><h2>There is always another door.</h2><p>Return to the city map to discover the Mall in its Civic Quarter context.</p><a href="index.html#districts">Back to Singularity City ↗</a></section>
   </main>
+    <section class="proof-review-section" aria-label="Human proof review">
+      <div id="proof-review" data-proof-review="mall"></div>
+    </section>
+
   <footer><span>THE SINGULARITY WORKSHOP · SINGULARITY CITY</span><span>FICTIONAL CITY FIXTURE · NO LIVE CHECKOUT</span></footer>
   <script type="module" src="assets/js/mall.mjs"></script>
+  <script type="module" src="assets/js/proof-review.mjs"></script>
 </body>
 </html>
