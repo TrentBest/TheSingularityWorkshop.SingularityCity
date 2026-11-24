@@ -17,7 +17,7 @@
   </header>
   <main>
     <section class="mall-hero">
-      <div class="hero-copy"><span class="eyebrow">CIVIC QUARTER · A PLACE TO MEET</span><h1>Come in.<br><em>Stay a while.</em></h1><p>Not just a shopping center. A covered public place where makers, merchants, neighbors and curious visitors cross paths.</p><div class="hero-meta"><span>2 LEVELS</span><span>6 SPACES</span><span>1 CONNECTED MERCHANT FIXTURE</span></div></div>
+      <div class="hero-copy"><span class="eyebrow">CIVIC QUARTER · A PLACE TO MEET</span><h1>Come in.<br><em>Stay a while.</em></h1><p>Not just a shopping center. A covered public place where makers, merchants, neighbors and curious visitors cross paths.</p><div class="hero-meta"><span>2 LEVELS</span><span>7 SPACES</span><span>1 CONNECTED MERCHANT FIXTURE</span></div></div>
       <div class="hero-art" aria-label="Illustrated architectural cutaway of the Singularity Mall pavilion">
         <svg viewBox="0 0 720 470" role="img" aria-labelledby="mall-art-title mall-art-desc">
           <title id="mall-art-title">Singularity Mall pavilion cutaway</title><desc id="mall-art-desc">A two-level glass-roofed pavilion with a central atrium, shops along the promenade and a market hall.</desc>
@@ -61,11 +61,50 @@
       <div id="storefronts" class="storefront-grid"><p>Loading merchant directory…</p></div>
       <aside id="merchant-inspector" class="merchant-inspector" aria-live="polite"><span class="eyebrow">STOREFRONT INSPECTOR</span><h3>Select a merchant</h3><p>Inspect a storefront to see its status and catalog provenance.</p></aside>
     </section>
+
+    <section class="management-section" id="mall-management">
+      <div class="section-title"><div><span class="eyebrow">THE PEOPLE BEHIND THE PLACE</span><h2>Visit Mall Management.</h2></div><p>Every real mall needs someone responsible for the building, its tenants and the visitor experience. Start here.</p></div>
+      <div class="management-layout">
+        <article class="management-office">
+          <img src="assets/images/mall-management-and-tenancy.svg" alt="Diagram showing the path from meeting the mall manager to choosing and designing a vacant shop." class="management-art">
+          <span class="eyebrow">GROUND FLOOR · MALL MANAGEMENT OFFICE</span><h3>How can we help?</h3>
+          <p class="manager-disclosure">A scripted role demonstration for the future Mall Manager. This is not a live employee or connected AI character.</p>
+          <div class="manager-prompts" id="manager-prompts">
+            <button type="button" data-manager-question="vacancies">What spaces are available?</button>
+            <button type="button" data-manager-question="customize">Can I design my own shop?</button>
+            <button type="button" data-manager-question="rules">What can I change?</button>
+            <button type="button" data-manager-question="lease">How do I become a tenant?</button>
+          </div>
+          <div class="manager-response" id="manager-response" aria-live="polite">Welcome. Select a question and I'll show you how the leasing experience is intended to work.</div>
+        </article>
+        <aside class="leasing-desk"><span class="eyebrow">LEASING DESK · DEMONSTRATION INVENTORY</span><h3>Find your space.</h3>
+          <p>These are authored vacant-unit fixtures, not live availability or an offer to lease.</p>
+          <label for="leasing-unit">Available concept unit</label><select id="leasing-unit"></select>
+          <div class="unit-facts" id="leasing-unit-facts"></div><span class="local-only-label">LOCAL DESIGN DRAFT · NOT A LEASE APPLICATION</span>
+        </aside>
+      </div>
+      <div class="tenant-studio">
+        <div class="studio-heading"><div><span class="eyebrow">TENANT CREATIVE STUDIO</span><h3>Make this storefront yours.</h3></div><p>Shape the public facade, then imagine the world behind the door.</p></div>
+        <div class="studio-controls">
+          <label>Store name<input id="tenant-store-name" maxlength="48" value="My New Store"></label>
+          <label>Sign text<input id="tenant-sign-text" maxlength="32" value="OPEN"></label>
+          <label>Facade palette<select id="tenant-palette"><option value="teal">Workshop teal</option><option value="amber">Warm brass</option><option value="forest">Forest green</option><option value="violet">Gallery violet</option></select></label>
+          <label>Interior policy<select id="tenant-fitout"><option value="shell-constrained">Respect the leased shell</option><option value="freeform-interior">Freeform interior</option></select></label>
+        </div>
+        <p id="tenant-fitout-note" class="fitout-note"></p>
+        <div class="tenant-previews">
+          <figure><figcaption>STREET-FACING FACADE · DESIGN PREVIEW</figcaption><svg id="tenant-facade-preview" viewBox="0 0 600 240" role="img" aria-label="Live storefront facade design preview"></svg></figure>
+          <figure><figcaption>INTERIOR PLAN · CONCEPTUAL SPATIAL PREVIEW</figcaption><svg id="tenant-interior-preview" viewBox="0 0 600 240" role="img" aria-label="Live interior layout preview"></svg></figure>
+        </div>
+        <div class="studio-actions"><button id="save-tenant-draft" type="button">Save local design draft</button><button id="export-tenant-draft" type="button" class="secondary">Export design JSON ↓</button><span id="tenant-draft-status" aria-live="polite">No draft saved in this browser yet.</span></div>
+        <p class="studio-boundary">Freeform mode is creative freedom, not permission to alter the leased exterior, structure, egress, accessibility, utilities or safety requirements. Both previews are illustrative. Saving is browser-local; it does not reserve a unit, create a tenant, or publish a shared storefront.</p>
+      </div>
+    </section>
     <section class="mall-footer-cta"><span class="eyebrow">A CITY DESTINATION</span><h2>There is always another door.</h2><p>Return to the city map to discover the Mall in its Civic Quarter context.</p><a href="index.html#districts">Back to Singularity City ↗</a></section>
   </main>
     <section class="proof-review-section" aria-label="Human proof review">
       <div id="proof-review" data-proof-review="mall"></div>
-      <p class="proof-review-doc-link"><a href="docs/PROOF_REVIEW_AND_VERIFICATION.md">Read the proof and evidence standard ↗</a></p>
+      <p class="proof-review-doc-link"><a href="docs/PROOF_REVIEW_AND_VERIFICATION.md">Read the proof and evidence standard ↗</a> · <a href="docs/MALL_MANAGEMENT_AND_TENANT_DESIGN.md">Management & tenant design ↗</a></p>
     </section>
 
   <footer><span>THE SINGULARITY WORKSHOP · SINGULARITY CITY</span><span>FICTIONAL CITY FIXTURE · NO LIVE CHECKOUT</span></footer>
