@@ -27,6 +27,8 @@ jobs:
         run: |
           test -s index.html
           test -s mall.html
+          test -s assets/css/mall.css
+          test -s assets/js/mall.mjs
           test -s data/mall-pavilion.json
           test -s data/proof-review.json
           test -s assets/css/proof-review.css
