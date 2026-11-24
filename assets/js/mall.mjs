@@ -12,6 +12,9 @@ const svg=(name,attrs={})=>{const node=document.createElementNS(svgNS,name);for(
 function renderFloorPlan(){
  if(!floorPlan||!pavilion.architecture.levelDefinitions)return;
  floorPlan.replaceChildren();
+ const title=svg("title",{id:"mall-floor-title"});title.textContent="Singularity Mall floor plans";
+ const description=svg("desc",{id:"mall-floor-description"});description.textContent="Selectable rooms, public circulation routes, a public entrance, stairs and a conceptual accessible lift connection.";
+ floorPlan.append(title,description);
  for(const level of pavilion.architecture.levelDefinitions){
   const group=svg("g",{transform:"translate(0 "+level.offsetY+")","data-level":level.id});
   const bg=svg("rect",{x:8,y:8,width:704,height:365,rx:14,class:"floor-background"});
@@ -33,7 +36,7 @@ function renderFloorPlan(){
   }
   for(const node of pavilion.architecture.circulation.nodes.filter(item=>item.levelId===level.id)){
    const core=node.kind==="entrance"?svg("circle",{cx:node.x,cy:node.y,r:9,class:"mall-entry-node"}):svg("rect",{x:node.x-10,y:node.y-10,width:20,height:20,rx:3,class:"mall-core-node "+node.kind});
-   const label=svg("text",{x:node.x,y:node.y-16,class:"mall-core-label","text-anchor":"middle"});label.textContent=node.kind==="lift"?"LIFT":node.kind==="stair"?"STAIR":"ENTRY";
+   const label=svg("text",{x:node.x,y:node.y-16,class:"mall-core-label","text-anchor":"middle"});label.textContent=node.kind==="lift"?(node.levelId==="ground"?"LIFT ↑":"LIFT ↓"):node.kind==="stair"?(node.levelId==="ground"?"STAIR ↑":"STAIR ↓"):"ENTRY";
    group.append(core,label);
   }
   const levelNote=svg("text",{x:24,y:355,class:"floor-note"});levelNote.textContent=level.description.toUpperCase();group.append(levelNote);
