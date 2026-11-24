@@ -35,6 +35,7 @@ jobs:
           test -s _visualize/samples/SoldierField/WebGpuRunner/renderer-policy.json
           git -C _visualize log -1 --format='Visualize WebGPU source: %H %s'
           node --test _visualize/samples/SoldierField/WebGpuRunner/renderer-policy.test.mjs
+          echo "Validated Renderer/FSM observer policy and representation-scaled dust detail from Visualize development."
           python3 - <<'PY'
           from pathlib import Path
           import re
