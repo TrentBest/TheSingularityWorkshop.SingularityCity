@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 
 const pavilion = JSON.parse(await readFile(new URL("../data/mall-pavilion.json", import.meta.url), "utf8"));
 const economy = JSON.parse(await readFile(new URL("../data/economy/civic-quarter-market.json", import.meta.url), "utf8"));
+const leasing = JSON.parse(await readFile(new URL("../data/mall-leasing.json", import.meta.url), "utf8"));
 const places = JSON.parse(await readFile(new URL("../data/places.json", import.meta.url), "utf8"));
 
 assert.equal(pavilion.schema, "singularity-city.mall-pavilion.v1");
@@ -15,6 +16,8 @@ assert.equal(zones.size, pavilion.architecture.zones.length, "pavilion zone IDs 
 assert.ok(zones.has("grand-atrium"), "the pavilion needs a central atrium");
 assert.ok(zones.has("maker-promenade"), "the pavilion needs a maker promenade");
 assert.ok(zones.has("market-hall"), "the pavilion needs a market hall");
+assert.ok(zones.has("mall-management-office"), "the mall needs a dedicated management office");
+assert.ok(pavilion.architecture.circulation.routes.some(route => route.to === "mall-management-office"), "the management office must connect to public circulation");
 for (const zone of pavilion.architecture.zones) {
   assert.ok(zone.id && zone.name && zone.description, "every zone needs an inspectable identity and description");
 }
@@ -78,5 +81,13 @@ for (const storefront of pavilion.storefronts) {
 }
 assert.ok(pavilion.limitations.some(text => text.includes("No purchase")), "the prototype must not imply live checkout");
 assert.ok(pavilion.limitations.some(text => text.includes("leasing concepts")), "the prototype must disclose conceptual tenants");
+assert.equal(leasing.schema, "singularity-city.mall-leasing.v1");
+assert.equal(leasing.managementOffice.zoneId, "mall-management-office");
+assert.equal(leasing.managementOffice.characterIdentity, "not-yet-bound-to-surps");
+assert.equal(new Set(leasing.units.map(unit => unit.id)).size, leasing.units.length, "vacant unit IDs must be unique");
+assert.equal(leasing.units.length, 3, "the prototype should expose three vacant unit fixtures");
+for (const unit of leasing.units) { assert.equal(unit.status, "vacant-fixture"); assert.ok(zones.has(unit.zoneId), "leasing unit must resolve to a City zone: " + unit.id); assert.ok(unit.areaM2 > 0 && unit.frontageM > 0 && unit.clearWidthM > 0 && unit.clearDepthM > 0); assert.ok(unit.fitOutOptions.includes("shell-constrained") && unit.fitOutOptions.includes("freeform-interior")); }
+assert.ok(leasing.designModel.interior.modes.some(mode => mode.id === "freeform-interior"));
+assert.ok(leasing.limitations.some(text => text.includes("local design drafts")));
 
-console.log("Mall pavilion validated: " + zones.size + " spaces, " + storefrontIds.size + " storefronts, " + economyShops.size + " Economy shop fixtures.");
+console.log("Mall pavilion validated: " + zones.size + " spaces, " + storefrontIds.size + " storefronts, " + economyShops.size + " Economy shop fixtures and " + leasing.units.length + " vacant design units.");
