@@ -1,0 +1,24 @@
+.proof-review-section{margin:64px clamp(20px,5vw,72px);padding:30px;border:1px solid #31556b;background:linear-gradient(125deg,#0d2030,#091725)}
+.proof-review-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);align-items:center;gap:24px}
+.proof-review-heading h2{font-size:clamp(26px,3vw,38px);margin:10px 0}
+.proof-review-heading p,.proof-review-boundary{color:#a9bdca;font-size:12px;line-height:1.8}
+.proof-review-art{width:100%;height:auto}
+.proof-review-toolbar{display:flex;align-items:end;gap:14px;flex-wrap:wrap;margin:20px 0}
+.proof-review-toolbar label{display:grid;gap:6px;color:#b9cad4;font:10px 'DM Mono',monospace}
+.proof-review-toolbar input{min-width:220px;padding:10px;background:#071522;border:1px solid #36566b;color:#eaf4f7}
+.proof-review-toolbar button{padding:11px 14px;border:1px solid #65d8df;background:#102c3d;color:#a9f1ef;font:10px 'DM Mono',monospace;cursor:pointer}
+.proof-review-summary{margin-right:auto;color:#e7ca87;font:11px 'DM Mono',monospace}
+.proof-review-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.proof-review-card{padding:18px;border:1px solid #29475a;background:#0a1927;transition:border-color .2s,background .2s}
+.proof-review-card.is-reviewed{border-color:#65d8a5;background:#0c211f}
+.proof-review-card-top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.proof-review-card h3{font-size:17px;margin:0}
+.proof-review-check{display:flex;align-items:center;gap:7px;white-space:nowrap;color:#d6e5e9;font:10px 'DM Mono',monospace}
+.proof-review-check input{width:18px;height:18px;accent-color:#65d8a5;cursor:pointer}
+.proof-review-claim{font-size:12px;line-height:1.7;color:#c0d0d8}
+.proof-review-method{font-size:11px;line-height:1.7;color:#f0d89d}
+.proof-review-evidence{display:grid;gap:6px;color:#8fb9c7;font:9px 'DM Mono',monospace}
+.proof-review-record{margin:12px 0 0;color:#9aabb5;font:9px 'DM Mono',monospace}
+.is-reviewed .proof-review-record{color:#8ce0b5}
+.proof-review-boundary{margin-top:18px;border-top:1px solid #29475a;padding-top:14px}
+@media(max-width:800px){.proof-review-heading,.proof-review-list{grid-template-columns:1fr}.proof-review-art{max-width:560px}.proof-review-section{padding:18px;margin:36px 16px}}
