@@ -1,0 +1,96 @@
+{
+  "schema": "workshop.proof-review.v1",
+  "policy": {
+    "initialState": "unchecked",
+    "browserPersistence": "localStorage",
+    "scope": "This browser profile and origin only",
+    "authority": "A local review record is not a repository-wide certification.",
+    "futureSharedRecord": "A future authenticated Workshop host or reviewed repository change must publish shared verification."
+  },
+  "pages": {
+    "city": [
+      {
+        "id": "city-destination-discovery",
+        "title": "City destination discovery",
+        "claim": "Selecting a destination reveals its dossier and opens the Mall pavilion through the City-owned entrance.",
+        "method": "Select Singularity Mall on the City map, inspect its dossier, then activate its entry.",
+        "evidence": "Browser interaction",
+        "automated": "tests/mall-pavilion.test.mjs"
+      },
+      {
+        "id": "city-map-layers",
+        "title": "Map layer controls",
+        "claim": "Terrain, land cover, watersheds, districts, parcels, mobility, transit, utilities and hazards can be independently shown or hidden.",
+        "method": "Toggle several map layers and confirm only the corresponding overlay changes.",
+        "evidence": "Browser interaction",
+        "automated": "Manual browser review"
+      },
+      {
+        "id": "city-district-scene",
+        "title": "District selection and scene",
+        "claim": "Selecting a district updates the selected district and its linked spatial scene.",
+        "method": "Select Civic Quarter and another district; compare the title, index and scene.",
+        "evidence": "Browser interaction",
+        "automated": "Manual browser review"
+      },
+      {
+        "id": "city-observation-channels",
+        "title": "Renderer and visualization channels",
+        "claim": "The City experience can show visualization, textual Renderer output, or both without changing the underlying place identity.",
+        "method": "Switch through all three modes and verify the selected place remains consistent.",
+        "evidence": "Browser interaction",
+        "automated": "Manual browser review"
+      },
+      {
+        "id": "city-civic-fixture",
+        "title": "Connected Civic Quarter model",
+        "claim": "The district workbench renders linked synthetic parcels, buildings, public space and network relationships from the City fixture.",
+        "method": "Inspect several entities and toggle mobility, water and energy overlays.",
+        "evidence": "Data + browser interaction",
+        "automated": "Manual browser review"
+      },
+      {
+        "id": "city-mall-entrance",
+        "title": "Singularity Mall entrance",
+        "claim": "The Mall is registered as a Civic Quarter destination and its City entry opens mall.html.",
+        "method": "Select the Mall destination on the map and follow its entry action.",
+        "evidence": "Browser interaction",
+        "automated": "tests/mall-pavilion.test.mjs"
+      }
+    ],
+    "mall": [
+      {
+        "id": "mall-space-directory",
+        "title": "Pavilion space directory",
+        "claim": "The pavilion page loads six stable, inspectable spaces across two conceptual levels.",
+        "method": "Confirm all six spaces render and select each zone card.",
+        "evidence": "Data + browser interaction",
+        "automated": "tests/mall-pavilion.test.mjs"
+      },
+      {
+        "id": "mall-space-inspector",
+        "title": "Space inspector",
+        "claim": "Selecting a zone updates its identity, description, type and associated storefront list.",
+        "method": "Select Arrival Court, Grand Atrium, Maker Promenade and Market Hall; compare the inspector.",
+        "evidence": "Browser interaction",
+        "automated": "Manual browser review"
+      },
+      {
+        "id": "mall-economy-fixture",
+        "title": "Economy fixture storefront",
+        "claim": "Civic Quarter Bakery reads its product information from the shared City Economy fixture without creating a second catalog.",
+        "method": "Open Civic Quarter Bakery and compare product names, prices and quantities with the linked Economy fixture.",
+        "evidence": "Data provenance + browser interaction",
+        "automated": "tests/mall-pavilion.test.mjs"
+      },
+      {
+        "id": "mall-concept-disclosure",
+        "title": "Leasing concepts remain disclosed",
+        "claim": "Maker Studio, Field & Fable and The Greenhouse Table are labelled concepts, not registered merchants or live catalogs.",
+        "method": "Inspect each proposed tenant and confirm the concept disclosure is visible.",
+        "evidence": "Browser interaction",
+        "automated": "tests/mall-pavilion.test.mjs"
+      }
+    ]
+  }
+}
