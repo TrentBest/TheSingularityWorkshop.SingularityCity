@@ -6,6 +6,12 @@ This is Singularity City's canonical local SURPS catalogue. The cross-repository
 
 Singularity City owns city-specific domain knowledge and implementation. SURPS owns shared roleplaying ontology, CORE rules, book composition, and LOD selection. These books are human-readable domain sourcebooks; their presence does not claim a completed `ISurpsRulebook` runtime adapter or machine-executable rule resolver.
 
+## SURPS living rulebook and behavior-adapter standard
+
+This repository adopts the shared SURPS [Living Rulebook and Experience Standard](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/docs/living-rulebook-standard.md) and [Behavior Model and Adapters](https://github.com/TrentBest/TheSingularityWorkshop.SingularityUniversalRoleplayingSystem/blob/development/docs/behavior-and-adapters.md). SingularityCity owns civic geography, districts, parcels, residents, institutions, services, and destination discovery. Visitor experiences should reuse the central SURPS character identity and keep City-owned progress separate.
+
+The standard requires a big-picture-first guide, concise Player path, deep Game Master/Workshop path, living pictures for major concepts, worked demonstrations for mechanics, and honest status labels. The tabletop adapter is derived from underlying behavior during workshop calibration; the digital adapter uses compiled behavior with live state. Neither is a separate source of truth. Adoption work: [repository issue](https://github.com/TrentBest/TheSingularityWorkshop.SingularityCity/issues/5).
+
 ## Declared for SURPS review — not yet enrolled
 
 All ten entries below have a local Markdown source, canonical descriptor, and distinct cover. Their current publication status is **draft**. The repository is `integrated-not-enrolled`; global ownership claims and admission evidence remain subject to independent SURPS review.
