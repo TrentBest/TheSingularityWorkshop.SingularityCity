@@ -98,6 +98,14 @@
         "method": "Inspect each proposed tenant and confirm the concept disclosure is visible.",
         "evidence": "Browser interaction",
         "automated": "tests/mall-pavilion.test.mjs"
+      },
+      {
+        "id": "mall-circulation-plan",
+        "title": "Two-level circulation plan",
+        "claim": "City-owned spatial data drives selectable ground and upper floor plans with public routes, an entrance, stair and conceptual accessible lift.",
+        "method": "Inspect both levels, select each room, trace the public route markings and identify the lift and stair cores. Treat the plan as conceptual, not a code or accessibility certification.",
+        "evidence": "Data + browser interaction",
+        "automated": "tests/mall-pavilion.test.mjs"
       }
     ]
   }
