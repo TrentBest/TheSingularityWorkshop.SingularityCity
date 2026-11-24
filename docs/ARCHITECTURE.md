@@ -11,7 +11,13 @@ The City answers four questions:
 3. **What can I do here?** Discoverable capabilities and the experiences that provide them.
 4. **What changed while I was away?** Persistent civic, economic, environmental and construction state.
 
-## Entangled workplaces and digital tenancy\n\nCity geography can also host persistent company workplaces. The proposed SingularityCorporation model leases spatial scopes (campuses, buildings, floors and rooms) while tenant identity, membership, guest grants and private work data remain separately governed. A workplace Experience keeps one identity across AnyApp, WebApp and MyVR; City supplies its place anchors, while host services own sessions, persistence, authorization enforcement and execution. See [Entangled Realities and Digital Real Estate](ENTANGLED_REALITIES.md) for the proposed model, existing technology handoffs and the first proof boundary. This is architecture direction, not a claim that multi-user workplace runtime or leasing is implemented.\n\n## Spatial hierarchy
+## Entangled workplaces and digital tenancy\n\nCity geography can also host persistent company workplaces. The proposed SingularityCorporation model leases spatial scopes (campuses, buildings, floors and rooms) while tenant identity, membership, guest grants and private work data remain separately governed. A workplace Experience keeps one identity across AnyApp, WebApp and MyVR; City supplies its place anchors, while host services own sessions, persistence, authorization enforcement and execution. See [Entangled Realities and Digital Real Estate](ENTANGLED_REALITIES.md) for the proposed model, existing technology handoffs and the first proof boundary. This is architecture direction, not a claim that multi-user workplace runtime or leasing is implemented.\n\n## Markets, venues and creator commerce
+
+City should make it easy to discover and visit creator-owned shops, market stalls, galleries, convention exhibitors, concerts and community events. City owns the spatial place, venue, schedule, placement and visitor-navigation model; Economy supplies the shared seller/shop/product/offer vocabulary and simulation primitives. The creator-facing application owns the editing and publishing workflow, while any production inventory, admission entitlement, checkout, payment and reconciliation capability must be separately implemented and authorized.
+
+The same canonical shop should be placeable as a web listing, market booth, permanent storefront or immersive shop without duplicating its seller or catalog identity. Start with a simple catalog-and-placement workflow; do not require 3D authoring or a payment provider to publish. See [Markets, Venues and Creator Commerce](MARKETS_VENUES_AND_CREATOR_COMMERCE.md) and the existing [Economy integration](ECONOMY_IN_SINGULARITY_CITY.md).
+
+## Spatial hierarchy
 
 `Workshop → Singularity Transit → Singularity City → World`
 
