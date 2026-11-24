@@ -16,10 +16,11 @@ The integration is designed around the current TheSingularityWorkshop.Economy AP
 - SimulationAccount registers an owner-controlled account for one simulated currency.
 - SimulationLedger records explicit Issue, Transfer, Post and Retire operations, derives balances from signed journal entries, and supports idempotent replay for an identical operation identity/request.
 - CommerceItem, EconomyShop and MarketplaceOffer describe products, shop composition and offers.
+- ProductionResourceId, ProductionResourceQuantity, ProductionRecipe and ProductionInventory describe generic resource requirements, process-local production execution, and immutable receipts with input/capacity/yield/waste provenance.
 - EconomyTransfer describes intent; it is not evidence of execution.
 - EconomicExecutionResult is an observation contract, not a settlement engine.
 
-The ledger is process-local and in-memory. It is not durable, distributed or real-money custody. City must not add a shadow balance counter or imply that a displayed number came from Economy unless an actual ledger run supplied receipt and journal evidence.
+The ledger and production inventory are process-local and in-memory. Neither is durable or distributed; the ledger is not real-money custody. Production receipts record declared resource flows, not verified physical measurements. City must not add a shadow balance counter or imply that a displayed number came from Economy unless an actual ledger/production run supplied receipt and journal evidence.
 
 ## Ownership
 
@@ -30,7 +31,9 @@ The ledger is process-local and in-memory. It is not durable, distributed or rea
 | Currency identity, accounts, journal semantics, explicit simulated issuance/transfer/retirement | Economy |
 | Shop/product/offer/transfer vocabulary | Economy |
 | Local pricing policy, inventory quantities, production, wages, rent, taxes, demand and consumption rules | City Experience policy plus specialist domains |
-| Material/food/component production | Specialist domains |
+| Generic recipe/resource transformation and process-local inventory accounting | Economy |
+| What a City workshop produces, where it operates, which recipes are permitted, workforce schedules and business policy | City Experience policy / specialist domains |
+| Physical material properties and process-specific simulation | Physics or specialist domains |
 | Routes and access | City; physical travel/motion belongs to Physics |
 | Storefront presentation | City/Experience |
 
@@ -63,7 +66,7 @@ The first useful end-to-end test closes both sides of the books: balances derive
 Build capability slices in an observable order:
 - households, wages, budgets and necessities;
 - shops, services, prices, inventory and market days;
-- production, inputs, recipes, labor and business costs;
+- production, inputs, recipes, labor and business costs; the generic Economy recipe executor can account for declared inputs, capacity, yield and waste, while City policy decides what each workshop is allowed to make;
 - land, property, rent, construction and maintenance;
 - utilities, transit, freight and public services;
 - civic finance, taxation, public goods and procurement;
@@ -91,7 +94,7 @@ Economy does not provide the Digiten scheduler, production system, inventory or 
 
 ## Next implementation boundary
 
-The next .NET host should reference the Economy package according to the ecosystem's development-branch/package policy, create a typed currency and accounts for selected actors, execute the fixture's operation sequence through SimulationLedger, and export receipts plus journal entries for validation. Do not add a second City-owned ledger. No release or package publication is implied.
+The next .NET host should reference the Economy package according to the ecosystem's development-branch/package policy, create a typed currency and accounts for selected actors, execute the fixture's operation sequence through SimulationLedger, and export receipts plus journal entries for validation. A workshop slice can then execute a declared ProductionRecipe against ProductionInventory and expose its receipt/provenance to City; linking produced yield to saleable CommerceItem availability remains a host-owned integration task, not an automatic side effect. Do not add a second City-owned ledger. No release or package publication is implied.
 
 ## Coordination and tracking
 
