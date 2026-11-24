@@ -30,6 +30,9 @@ jobs:
           test -s assets/css/mall.css
           test -s assets/js/mall.mjs
           test -s data/mall-pavilion.json
+          test -s data/mall-leasing.json
+          test -s assets/images/mall-management-and-tenancy.svg
+          test -s docs/MALL_MANAGEMENT_AND_TENANT_DESIGN.md
           test -s data/proof-review.json
           test -s assets/css/proof-review.css
           test -s assets/js/proof-review.mjs
