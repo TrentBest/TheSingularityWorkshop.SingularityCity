@@ -449,6 +449,7 @@ document.querySelector("#district-previous")?.addEventListener("click",()=>stepD
 document.querySelector("#district-next")?.addEventListener("click",()=>stepDistrict(1));
 document.querySelector("#entry-action").addEventListener("click",()=>{
   const p=byId(selected); if(!p)return;
+  if(p.id==="singularity-mall"){window.location.href="mall.html";return;}
   text("#dialog-title",p.entry); text("#dialog-copy",p.detail); dialog.showModal();
 });
 document.querySelector(".dialog-close").addEventListener("click",()=>dialog.close());
