@@ -9,8 +9,8 @@ The first browser experience is an architectural and discovery prototype. It is 
 ## Current implementation
 
 - `mall.html` is the dedicated pavilion experience.
-- `data/mall-pavilion.json` defines the pavilion identity, six inspectable spaces and four storefront records.
-- `assets/js/mall.mjs` renders the zone directory and merchant inspector from the authored data.
+- `data/mall-pavilion.json` defines the pavilion identity, six inspectable spaces, room footprints on two levels, circulation routes, vertical connectors and four storefront records.
+- `assets/js/mall.mjs` renders both selectable floor plans, the zone directory and merchant inspector from the authored data.
 - `assets/css/mall.css` styles the pavilion cutaway, spatial workbench and storefront directory.
 - `data/places.json` registers the Mall as a stable City destination in the Civic Quarter.
 - The City map opens the dedicated Mall page when the Mall entrance is selected.
@@ -37,7 +37,7 @@ Maker Studio, Field & Fable and The Greenhouse Table are leasing concepts. They 
 
 The browser displays authored fixture prices and quantities for inspection only. It does not reserve stock, accept payment, mutate inventory, issue receipts or settle transactions. The existing market fixture itself is not yet a production Economy execution.
 
-## Pavilion spaces
+## Spatial plan and circulation\n\nThe current plan is an explicit City-owned spatial fixture rather than a purely decorative cutaway. Each room has a stable ID, level assignment and rectangular plan footprint. Ground and upper levels expose named rooms, public circulation routes, a public entrance, stair landings and lift landings. The browser renders those records into a selectable SVG plan; selecting a room updates the same inspector used by the room directory.\n\nThe circulation study distinguishes accessible public routes and a conceptual lift from stairs. It is not a measured building plan, a code-compliant means-of-egress design, a fire/life-safety review or an accessibility audit. Dimensions, travel distances, capacities, door widths and service access remain unverified.\n\n## Pavilion spaces
 
 1. Arrival Court — public threshold.
 2. Grand Atrium — central orientation and gathering.
@@ -48,7 +48,7 @@ The browser displays authored fixture prices and quantities for inspection only.
 
 ## Next implementation gates
 
-1. Replace illustrative pavilion geometry with City-owned building, floor, room, entrance and circulation entities.
+1. Promote the current room footprints and conceptual circulation into versioned City building, floor, room, entrance and circulation entities with dimensional units and explicit validation.
 2. Connect each registered tenant to the canonical Economy merchant/shop/offer contract; do not infer completion from a display fixture.
 3. Add SURPS-compatible visitor presence only after the shared character contract is confirmed.
 4. Move navigation and interactions behind the host adapter for real sessions, persistence and multiplayer.
