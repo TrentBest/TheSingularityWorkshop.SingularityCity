@@ -1,0 +1,62 @@
+{
+  "schema": "singularity-city.mall-pavilion.v1",
+  "id": "singularity-mall-pavilion",
+  "title": "Singularity Mall",
+  "status": "interactive-architectural-prototype",
+  "reality": "fictional-city-fixture",
+  "architecture": {
+    "form": "covered urban pavilion",
+    "levels": 2,
+    "zones": [
+      { "id": "arrival-court", "name": "Arrival Court", "description": "A sheltered threshold with a clear view into the central atrium.", "kind": "public" },
+      { "id": "grand-atrium", "name": "Grand Atrium", "description": "The social heart of the pavilion: daylight, gathering space and a directory of the surrounding promenade.", "kind": "public" },
+      { "id": "maker-promenade", "name": "Maker Promenade", "description": "Small storefronts for independent makers, creators and specialist merchants.", "kind": "retail" },
+      { "id": "market-hall", "name": "Market Hall", "description": "Food, daily goods and neighborhood commerce around a shared seating court.", "kind": "retail" },
+      { "id": "upper-gallery", "name": "Upper Gallery", "description": "A quieter second-level walk overlooking the atrium and event floor.", "kind": "public" },
+      { "id": "event-terrace", "name": "Event Terrace", "description": "A flexible venue for demonstrations, launches, workshops and seasonal gatherings.", "kind": "event" }
+    ]
+  },
+  "storefronts": [
+    {
+      "id": "civic-bakery-shop",
+      "name": "Civic Quarter Bakery",
+      "category": "Food & provisions",
+      "zoneId": "market-hall",
+      "economyFixture": "data/economy/civic-quarter-market.json",
+      "economyShopId": "civic-bakery-shop",
+      "status": "fixture-connected",
+      "description": "A neighborhood cooperative serving the daily loaf and market roll basket. Its catalog is read from the shared City market fixture.",
+      "offerings": ["bread-loaf", "roll-basket"]
+    },
+    {
+      "id": "maker-studio",
+      "name": "Maker Studio",
+      "category": "Independent makers",
+      "zoneId": "maker-promenade",
+      "status": "leasing-concept",
+      "description": "A proposed storefront for Workshop creators to exhibit original objects, tools and small-run creations."
+    },
+    {
+      "id": "field-and-fable",
+      "name": "Field & Fable",
+      "category": "Books & curiosities",
+      "zoneId": "maker-promenade",
+      "status": "leasing-concept",
+      "description": "A proposed bookshop and curiosity cabinet for maps, field guides, tabletop books and unusual discoveries."
+    },
+    {
+      "id": "greenhouse-table",
+      "name": "The Greenhouse Table",
+      "category": "Food & gathering",
+      "zoneId": "market-hall",
+      "status": "leasing-concept",
+      "description": "A proposed café and community table opening onto the market hall."
+    }
+  ],
+  "limitations": [
+    "The pavilion is an authored spatial and navigation prototype, not a live 3D world.",
+    "Only Civic Quarter Bakery has a storefront reference into the current Economy market fixture.",
+    "The remaining storefronts are leasing concepts, not registered merchants or available products.",
+    "No purchase, payment, inventory reservation or settlement is performed by this browser experience."
+  ]
+}
