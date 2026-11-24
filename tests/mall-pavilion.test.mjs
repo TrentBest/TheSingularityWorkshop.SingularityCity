@@ -48,6 +48,15 @@ for (const route of circulation.routes) {
   assert.ok(route.points.length >= 2, "route needs at least two spatial points: " + route.id);
 }
 assert.ok(circulation.verticalLinks.some(link => link.mode === "lift" && link.accessible), "the concept must distinguish an accessible lift from stairs");
+
+for (const node of circulation.nodes) {
+  assert.ok(levels.has(node.levelId), "circulation node must reference a known level: " + node.id);
+  assert.ok(node.x >= 0 && node.x <= 720 && node.y >= 0 && node.y <= 375, "circulation node must be inside its floor plan: " + node.id);
+}
+for (const link of circulation.verticalLinks) {
+  assert.ok(circulationNodes.has(link.from) && circulationNodes.has(link.to), "vertical connector endpoints must resolve: " + link.id);
+  assert.ok(link.mode === "lift" || link.mode === "stair", "vertical connector mode must be explicit: " + link.id);
+}
 assert.ok(pavilion.limitations.some(text => text.includes("accessibility audit")), "circulation must disclose that it is not an accessibility audit");
 
 const economyShops = new Map(economy.shops.map(shop => [shop.id, shop]));
