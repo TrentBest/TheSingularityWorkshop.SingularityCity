@@ -180,3 +180,14 @@ body.mode-renderer .district-experience{border-color:var(--cyan)}
 @media(max-width:600px){.district-experience{padding:14px}.district-experience-toolbar{align-items:stretch;flex-wrap:wrap}.district-experience-toolbar>div{order:-1;flex-basis:100%}.district-scene-caption{flex-direction:column}.district-scene-frame #district-scene{min-height:180px}}
 
 #district-labels .map-label.district-label-selected{fill:#fff;opacity:1;font-weight:800;paint-order:stroke;stroke:#07111f;stroke-width:3px;stroke-linejoin:round}
+
+/* Hyper-visualization: embed the actual Visualize browser WebGPU runner, not a static mock. */
+.hyper-visualization{margin-top:54px;padding:clamp(16px,3vw,30px);border:1px solid #3b6478;background:linear-gradient(145deg,#0b1b2b,#08121e)}
+.hyper-visualization-frame{border:1px solid #31556b;background:#05080e;overflow:hidden}
+.hyper-visualization-frame iframe{display:block;width:100%;height:1040px;border:0;background:#0a0d13}
+.hyper-visualization-caption{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:14px 16px;background:#0d2233;border:1px solid #31556b;border-top:0}
+.hyper-visualization-caption p{flex:1 1 460px;margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.hyper-visualization-caption strong{color:var(--text)}
+.hyper-visualization-caption a{font:10px 'DM Mono',monospace;color:var(--cyan);text-decoration:none}
+.hyper-visualization-caption a:hover{text-decoration:underline}
+@media(max-width:700px){.hyper-visualization{padding:12px}.hyper-visualization-frame iframe{height:1280px}.hyper-visualization-caption{align-items:flex-start;flex-direction:column}}
