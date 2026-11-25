@@ -23,10 +23,11 @@
       "representationStatus":{"enum":["domain-bound","illustrative-placeholder"]}}}},
     "actors":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","role","layerId","representationStatus","motion"],"properties":{
       "id":{"type":"string","pattern":"^[a-z0-9-]+$"},"role":{"type":"string","minLength":1},"layerId":{"type":"string","minLength":1},
-      "sourcePersonId":{"type":"string","minLength":1},"representationStatus":{"enum":["domain-bound","illustrative-placeholder"]},
+      "sourcePersonId":{"type":"string","minLength":1},"sourceCandidateId":{"type":"string","minLength":1},"representationStatus":{"enum":["domain-bound","generated-candidate","illustrative-placeholder"]},
       "motion":{"enum":["ambient-only","domain-driven"]}},
       "allOf":[
         {"if":{"properties":{"representationStatus":{"const":"domain-bound"}},"required":["representationStatus"]},"then":{"required":["sourcePersonId"]}},
+        {"if":{"properties":{"representationStatus":{"const":"generated-candidate"}},"required":["representationStatus"]},"then":{"required":["sourceCandidateId"],"properties":{"motion":{"const":"ambient-only"}}}},
         {"if":{"properties":{"representationStatus":{"const":"illustrative-placeholder"}},"required":["representationStatus"]},"then":{"properties":{"motion":{"const":"ambient-only"}}}}
       ]}},
     "childMaps":{"type":"array","items":{"type":"string","minLength":1}},
