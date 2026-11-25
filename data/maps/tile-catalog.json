@@ -1,0 +1,172 @@
+{
+  "schema": "singularity-city.map-tile-catalog.v1",
+  "tileSize": {
+    "width": 128,
+    "height": 128,
+    "units": "svg-viewBox-units"
+  },
+  "atlas": "assets/images/map-tile-atlas.svg",
+  "authority": "presentation-only",
+  "tiles": [
+    {
+      "id": "grassland",
+      "category": "terrain",
+      "label": "Open grassland",
+      "symbolId": "tile-green",
+      "defaultLayer": "ground",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "meadow",
+      "category": "terrain",
+      "label": "Flowering meadow",
+      "symbolId": "tile-meadow",
+      "defaultLayer": "ground",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "forest",
+      "category": "ecology",
+      "label": "Mixed woodland",
+      "symbolId": "tile-forest",
+      "defaultLayer": "ground",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "dense-forest",
+      "category": "ecology",
+      "label": "Dense woodland",
+      "symbolId": "tile-dense-forest",
+      "defaultLayer": "ground",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "hill",
+      "category": "terrain",
+      "label": "Rolling hill",
+      "symbolId": "tile-hill",
+      "defaultLayer": "ground",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "rock",
+      "category": "terrain",
+      "label": "Exposed rock",
+      "symbolId": "tile-rock",
+      "defaultLayer": "ground",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "sand",
+      "category": "terrain",
+      "label": "Sand or dry soil",
+      "symbolId": "tile-sand",
+      "defaultLayer": "ground",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "water",
+      "category": "hydrology",
+      "label": "Still water",
+      "symbolId": "tile-water",
+      "defaultLayer": "hydrology",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "river",
+      "category": "hydrology",
+      "label": "Flowing river segment",
+      "symbolId": "tile-river",
+      "defaultLayer": "hydrology",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "road",
+      "category": "transport",
+      "label": "Road segment",
+      "symbolId": "tile-road",
+      "defaultLayer": "transport",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "path",
+      "category": "transport",
+      "label": "Footpath",
+      "symbolId": "tile-path",
+      "defaultLayer": "transport",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "bridge",
+      "category": "transport",
+      "label": "Bridge crossing",
+      "symbolId": "tile-bridge",
+      "defaultLayer": "transport",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "field",
+      "category": "land-use",
+      "label": "Cultivated field",
+      "symbolId": "tile-field",
+      "defaultLayer": "land-use",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "orchard",
+      "category": "land-use",
+      "label": "Orchard",
+      "symbolId": "tile-orchard",
+      "defaultLayer": "land-use",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "homestead",
+      "category": "built-form",
+      "label": "Homestead",
+      "symbolId": "tile-homestead",
+      "defaultLayer": "built-form",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "shop",
+      "category": "built-form",
+      "label": "Shop or market stall",
+      "symbolId": "tile-shop",
+      "defaultLayer": "built-form",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "inn",
+      "category": "built-form",
+      "label": "Inn or lodging",
+      "symbolId": "tile-inn",
+      "defaultLayer": "built-form",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "mill",
+      "category": "built-form",
+      "label": "Mill or workshop",
+      "symbolId": "tile-mill",
+      "defaultLayer": "built-form",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "landmark",
+      "category": "civic",
+      "label": "Landmark or monument",
+      "symbolId": "tile-landmark",
+      "defaultLayer": "civic",
+      "authority": "presentation-only"
+    },
+    {
+      "id": "market-square",
+      "category": "civic",
+      "label": "Public market square",
+      "symbolId": "tile-market-square",
+      "defaultLayer": "civic",
+      "authority": "presentation-only"
+    }
+  ]
+}
