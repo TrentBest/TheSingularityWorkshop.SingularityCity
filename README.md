@@ -82,6 +82,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [Declarative experience entry points](docs/EXPERIENCES.md)
 - [Build your own city, step by step](docs/BUILD_YOUR_CITY.md)
 - [Source-grounded world research and evidence ledger](docs/SOURCE_RESEARCH.md)
+- [Map tile catalog and SVG atlas](docs/MAP_TILE_CATALOG.md) — twenty reusable semantic vector tiles with stable symbol IDs.
 - [Living picture: visual architecture and proof ladder](docs/LIVING_PICTURE.md · [Greenhollow living-scene manifest](docs/GREENHOLLOW_LIVING_SCENE.md) · [Pages Build and Deployment](docs/PAGES_BUILD_AND_DEPLOYMENT.md)) — now includes the first [ambient Greenhollow SVG map study](assets/images/greenhollow-living-map-study.svg) with river flow, road travelers, a peddler, shopkeeper and customers.
 - [City experience channels](docs/CITY_EXPERIENCE_CHANNELS.md) — independently experience the same city through Visualization, Renderer, or both, with the first opt-in audio proof and its limits.
 - [Civic Quarter connected district proof](docs/CIVIC_QUARTER_VERTICAL_SLICE.md)
