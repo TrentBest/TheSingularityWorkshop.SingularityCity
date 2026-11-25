@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/schemas/map-instance.schema.json",
+  "title": "Singularity City Map Instance",
+  "description": "A presentation composition of reusable tile symbols over stable City feature identities. It does not define authoritative geography or traversal.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "title", "kind", "status", "coordinateSpace", "tileCatalog", "authority", "placements", "featureBindings", "childMaps", "limitations"],
+  "properties": {
+    "schema": { "const": "singularity-city.map-instance.v1" },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["region", "settlement", "district", "site", "building-interior", "room"] },
+    "status": { "enum": ["presentation-study", "data-bound-preview", "interactive-projection"] },
+    "parentMapId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "parentFeatureId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "coordinateSpace": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "units", "columns", "rows", "origin"],
+      "properties": {
+        "kind": { "const": "tile-grid" },
+        "units": { "const": "tile" },
+        "columns": { "type": "integer", "minimum": 1 },
+        "rows": { "type": "integer", "minimum": 1 },
+        "origin": { "const": "top-left" }
+      }
+    },
+    "tileCatalog": { "type": "string", "minLength": 1 },
+    "authority": { "const": "presentation-only" },
+    "placements": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "tileId", "layerId", "x", "y", "rotation"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "tileId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "layerId": { "type": "string", "minLength": 1 },
+          "x": { "type": "integer", "minimum": 0 },
+          "y": { "type": "integer", "minimum": 0 },
+          "rotation": { "enum": [0, 90, 180, 270] },
+          "zIndex": { "type": "integer" }
+        }
+      }
+    },
+    "featureBindings": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["featureId", "authority"],
+        "properties": {
+          "featureId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "authority": { "enum": ["city-domain", "external-domain", "generated-candidate", "presentation-only"] }
+        }
+      }
+    },
+    "childMaps": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["mapId", "relation", "transform"],
+        "properties": {
+          "mapId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "relation": { "enum": ["contains", "interior-of", "room-within"] },
+          "transform": {
+            "type": "object", "additionalProperties": false,
+            "required": ["translation", "rotation", "scale"],
+            "properties": {
+              "translation": {
+                "type": "object", "additionalProperties": false,
+                "required": ["x", "y"],
+                "properties": { "x": { "type": "number" }, "y": { "type": "number" } }
+              },
+              "rotation": { "enum": [0, 90, 180, 270] },
+              "scale": { "type": "number", "exclusiveMinimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "enum": ["building-interior", "room"] } }, "required": ["kind"] },
+      "then": { "required": ["parentMapId", "parentFeatureId"] }
+    }
+  ]
+}
