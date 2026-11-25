@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b20">
+  <meta name="description" content="Explore Greenhollow map compositions and nested building interiors.">
+  <title>Map Studio | Singularity City</title>
+  <style>
+    :root{color-scheme:dark;font:16px/1.5 system-ui,sans-serif;background:#101b20;color:#e8eee6}*{box-sizing:border-box}body{max-width:1440px;margin:0 auto;padding:clamp(1rem,3vw,2.5rem)}a{color:#c5dfb3}header{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-bottom:1px solid #34483e;padding-bottom:1rem}header a{text-decoration:none}.eyebrow{font-size:.75rem;letter-spacing:.14em;color:#b5c79f;text-transform:uppercase}h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.05;margin:.35rem 0}h2{margin:.2rem 0}.intro{max-width:760px;color:#bac8bd}.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:1rem;margin-top:1.5rem}.map-panel,.side-panel{border:1px solid #3c5145;border-radius:14px;background:#17251f;padding:1rem}.map-head{display:flex;justify-content:space-between;gap:1rem;align-items:start}.map-head p{margin:.2rem 0;color:#aebdaf;font-size:.85rem}.map-frame{margin-top:1rem;border-radius:10px;overflow:hidden;background:#d9e1c7;border:1px solid #53634c}.map-frame svg{display:block;width:100%;height:auto;min-height:300px}.controls{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}.controls button,.child-link{background:#263d31;border:1px solid #5d795e;border-radius:7px;color:#f0f4e9;padding:.55rem .8rem;cursor:pointer;font:inherit}.controls button:disabled{opacity:.45;cursor:default}.layers{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin-top:.75rem;color:#c5d0c5;font-size:.85rem}.layers label{display:flex;align-items:center;gap:.35rem}.side-panel section+section{border-top:1px solid #35483d;margin-top:1rem;padding-top:1rem}.side-panel p,.side-panel li{color:#bac8bd;font-size:.9rem}.child-list{display:grid;gap:.5rem;margin-top:.7rem}.child-link{text-align:left}.child-link small{display:block;color:#b9c8b8;font-size:.75rem}.facts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.fact{background:#203329;padding:.65rem;border-radius:8px}.fact small{display:block;color:#a8bba9;font-size:.7rem;text-transform:uppercase}.fact strong{font-size:.9rem;overflow-wrap:anywhere}.notice{border-left:3px solid #c3a86f;padding-left:.8rem;color:#d8c9a4;font-size:.85rem}.status{color:#c4d7c2;font-size:.85rem;min-height:1.3em}@media(max-width:900px){.layout{grid-template-columns:1fr}.side-panel{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.side-panel section+section{border-top:0;border-left:1px solid #35483d;margin:0;padding:0 0 0 1rem}}@media(max-width:560px){.side-panel{display:block}.side-panel section+section{border-left:0;border-top:1px solid #35483d;margin-top:1rem;padding:1rem 0 0}}
+  </style>
+</head>
+<body>
+  <header><a href="index.html">← Singularity City</a><span class="eyebrow">Living picture / spatial composition</span></header>
+  <main>
+    <p class="eyebrow">CITY MAP STUDIO</p>
+    <h1>Build a place from its pieces.</h1>
+    <p class="intro">Explore a data-driven Greenhollow map composition. Reusable SVG tile symbols are placed by stable IDs; building interiors open as child maps through explicit parent relationships and transforms.</p>
+    <div class="layout">
+      <section class="map-panel" aria-labelledby="map-title">
+        <div class="map-head"><div><span class="eyebrow" id="map-kind">Loading map…</span><h2 id="map-title">Greenhollow</h2><p id="map-subtitle">Reading map instance data…</p></div><span class="eyebrow" id="map-size">—</span></div>
+        <div class="controls"><button type="button" id="back-button" disabled>← Parent map</button><button type="button" id="district-button">Market District</button></div>
+        <div class="map-frame"><svg id="map-view" viewBox="0 0 5 4" role="img" aria-label="Data-driven Greenhollow map composition"></svg></div>
+        <div class="layers" id="layer-controls" aria-label="Toggle map layers"></div>
+        <p class="status" id="map-status" role="status" aria-live="polite">Loading map catalog and instances…</p>
+      </section>
+      <aside class="side-panel">
+        <section><span class="eyebrow">MAP INSTANCE</span><h2 id="instance-name">—</h2><p id="instance-id">—</p><div class="facts"><div class="fact"><small>Placements</small><strong id="placement-count">—</strong></div><div class="fact"><small>Child maps</small><strong id="child-count">—</strong></div></div></section>
+        <section><span class="eyebrow">NESTED DESTINATIONS</span><h2>Open a building</h2><p>These transitions follow the child-map declarations in the district manifest.</p><div class="child-list" id="child-list"><p>No child maps declared.</p></div><p id="parent-transform"></p></section>
+        <section><span class="eyebrow">SEMANTIC REFERENCES</span><h2>What this view depicts</h2><ul id="feature-list"></ul></section>
+        <section><span class="eyebrow">AUTHORITY</span><p class="notice">This is a presentation-only composition. Tile adjacency does not establish traversability, water flow, collision, measured dimensions, or simulation. Placeholder features remain placeholders.</p></section>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="assets/js/map-composition-viewer.mjs"></script>
+</body>
+</html>
