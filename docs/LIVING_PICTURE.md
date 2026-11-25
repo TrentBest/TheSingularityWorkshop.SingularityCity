@@ -51,6 +51,26 @@ Every visual page or artifact should state:
 
 The current atlas illustration is intentionally a systems concept image. It helps visitors see the breadth of the domain, but does not pretend to be generated from authoritative city state.
 
+## Ambient SVG layers and inhabited places
+
+![Greenhollow living map study](../assets/images/greenhollow-living-map-study.svg)
+
+The first ambient SVG study puts the idea into a concrete scene: a river with flowing highlights, a connected road, tiny travelers, a peddler with a handcart, a market keeper, customers, an inn, and a mill. The motion is deliberately presentation-only. It does not advance a clock, move authoritative residents, settle purchases, or run pathfinding.
+
+The next map renderer should assemble these effects from semantic layers rather than bake the whole world into one illustration:
+
+- **Terrain and hydrology:** ground, shorelines, streams, rivers, waterfalls, seasonal overlays.
+- **Transport:** roads, paths, bridges, routes, traffic and tiny traveler actors.
+- **Places:** settlements, buildings, shops, inns, homes, public spaces and entrances.
+- **Ambient life:** residents, visitors, shopkeepers, customers, wildlife, lights, smoke, flags and vegetation.
+- **Observation:** labels, selection outlines, provenance, visibility and level-of-detail transitions.
+
+Every visual actor should eventually bind to a stable domain identity when one exists. A shopkeeper is a City resident assigned to a place/role; a customer is a visitor or resident with a visit relationship; a traveler is an actor moving along a declared route. Decorative placeholders must remain visibly distinguishable from data-backed actors.
+
+Nested maps should preserve identity and spatial transforms while changing detail: world → region → settlement → district → site/building → interior/room. A parent view composes child map surfaces; it does not duplicate their domain records. Renderer selects the appropriate representation and LOD; Visualize manifests it; City remains the authority for City-owned geography, place relationships, residents and visits; Physics and other domain owners supply their own authoritative consequences.
+
+SVG animation must honor `prefers-reduced-motion`, remain understandable as a static image, and never be used as proof that a simulated event occurred.
+
 ## From image to instrument
 
 The next substantive vertical slice should be one district with a connected, inspectable system:
