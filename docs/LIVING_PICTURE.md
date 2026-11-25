@@ -91,6 +91,12 @@ The city should teach its own domain. Pair the visual layers with causal diagram
 
 Start with [Civil Systems and City Theory](CIVIL_SYSTEMS_AND_CITY_THEORY.md), then expand each discipline into source-grounded lessons and executable experiments.
 
+## Reusable semantic tile atlas
+
+![Twenty reusable vector map tiles](../assets/images/map-tile-atlas.svg)
+
+The [map tile catalog](MAP_TILE_CATALOG.md) supplies twenty stable visual tile symbols across terrain, ecology, hydrology, transport, land use, built form, and civic space. These are reusable presentation assets, not physical or civic authority. A river symbol does not calculate water flow; a road symbol does not establish traversability. Semantic map features and simulation remain separate from their tile artwork.
+
 ## First identity-bound map actor
 
 The [Greenhollow living-scene manifest](GREENHOLLOW_LIVING_SCENE.md) now accompanies the ambient SVG. It binds the peddler's visual actor to the existing `mara-peddler` fixture identity while explicitly keeping the keeper, customers, second traveler, and map geometry illustrative. The manifest is validated in the Pages build. This is an identity-binding proof, not simulated movement or authoritative map geometry.
