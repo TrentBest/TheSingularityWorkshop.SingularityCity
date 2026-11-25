@@ -1,0 +1,16 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/schemas/map-tile-catalog.schema.json",
+  "title":"Singularity City Map Tile Catalog",
+  "type":"object","additionalProperties":false,
+  "required":["schema","tileSize","atlas","authority","tiles"],
+  "properties":{
+    "schema":{"const":"singularity-city.map-tile-catalog.v1"},
+    "tileSize":{"type":"object","additionalProperties":false,"required":["width","height","units"],"properties":{"width":{"const":128},"height":{"const":128},"units":{"type":"string","minLength":1}}},
+    "atlas":{"type":"string","minLength":1},"authority":{"const":"presentation-only"},
+    "tiles":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["id","category","label","symbolId","defaultLayer","authority"],"properties":{
+      "id":{"type":"string","pattern":"^[a-z0-9-]+$"},"category":{"enum":["terrain","ecology","hydrology","transport","land-use","built-form","civic"]},
+      "label":{"type":"string","minLength":1},"symbolId":{"type":"string","pattern":"^tile-[a-z0-9-]+$"},
+      "defaultLayer":{"type":"string","minLength":1},"authority":{"const":"presentation-only"}}}}
+  }
+}
