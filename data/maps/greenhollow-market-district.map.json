@@ -1,0 +1,49 @@
+{
+  "schema": "singularity-city.map-instance.v1",
+  "id": "greenhollow-market-district",
+  "title": "Greenhollow Market District",
+  "kind": "district",
+  "status": "data-bound-preview",
+  "coordinateSpace": { "kind": "tile-grid", "units": "tile", "columns": 5, "rows": 4, "origin": "top-left" },
+  "tileCatalog": "data/maps/tile-catalog.json",
+  "authority": "presentation-only",
+  "placements": [
+    { "id": "market-ground-0-0", "tileId": "grassland", "layerId": "ground", "x": 0, "y": 0, "rotation": 0 },
+    { "id": "market-ground-1-0", "tileId": "meadow", "layerId": "ground", "x": 1, "y": 0, "rotation": 0 },
+    { "id": "market-ground-2-0", "tileId": "grassland", "layerId": "ground", "x": 2, "y": 0, "rotation": 0 },
+    { "id": "market-ground-3-0", "tileId": "forest", "layerId": "ground", "x": 3, "y": 0, "rotation": 90 },
+    { "id": "market-ground-4-0", "tileId": "forest", "layerId": "ground", "x": 4, "y": 0, "rotation": 90 },
+    { "id": "market-ground-0-1", "tileId": "grassland", "layerId": "ground", "x": 0, "y": 1, "rotation": 0 },
+    { "id": "market-ground-1-1", "tileId": "market-square", "layerId": "civic", "x": 1, "y": 1, "rotation": 0 },
+    { "id": "market-ground-2-1", "tileId": "market-square", "layerId": "civic", "x": 2, "y": 1, "rotation": 0 },
+    { "id": "market-ground-3-1", "tileId": "shop", "layerId": "built-form", "x": 3, "y": 1, "rotation": 0 },
+    { "id": "market-ground-4-1", "tileId": "grassland", "layerId": "ground", "x": 4, "y": 1, "rotation": 0 },
+    { "id": "market-ground-0-2", "tileId": "path", "layerId": "transport", "x": 0, "y": 2, "rotation": 90 },
+    { "id": "market-ground-1-2", "tileId": "road", "layerId": "transport", "x": 1, "y": 2, "rotation": 0 },
+    { "id": "market-ground-2-2", "tileId": "road", "layerId": "transport", "x": 2, "y": 2, "rotation": 0 },
+    { "id": "market-ground-3-2", "tileId": "road", "layerId": "transport", "x": 3, "y": 2, "rotation": 0 },
+    { "id": "market-ground-4-2", "tileId": "path", "layerId": "transport", "x": 4, "y": 2, "rotation": 90 },
+    { "id": "market-ground-0-3", "tileId": "river", "layerId": "hydrology", "x": 0, "y": 3, "rotation": 0 },
+    { "id": "market-ground-1-3", "tileId": "river", "layerId": "hydrology", "x": 1, "y": 3, "rotation": 0 },
+    { "id": "market-ground-2-3", "tileId": "bridge", "layerId": "transport", "x": 2, "y": 3, "rotation": 0 },
+    { "id": "market-ground-3-3", "tileId": "river", "layerId": "hydrology", "x": 3, "y": 3, "rotation": 0 },
+    { "id": "market-ground-4-3", "tileId": "river", "layerId": "hydrology", "x": 4, "y": 3, "rotation": 0 }
+  ],
+  "featureBindings": [
+    { "featureId": "greenhollow-market-building-study", "authority": "presentation-only" },
+    { "featureId": "greenhollow-inn-study", "authority": "presentation-only" },
+    { "featureId": "greenhollow-river-study", "authority": "presentation-only" },
+    { "featureId": "greenhollow-road-study", "authority": "presentation-only" },
+    { "featureId": "greenhollow-footbridge-study", "authority": "presentation-only" }
+  ],
+  "childMaps": [
+    { "mapId": "greenhollow-market-stall-interior", "relation": "interior-of", "transform": { "translation": { "x": 3, "y": 1 }, "rotation": 0, "scale": 0.25 } },
+    { "mapId": "greenhollow-inn-interior", "relation": "interior-of", "transform": { "translation": { "x": 4, "y": 1 }, "rotation": 0, "scale": 0.25 } }
+  ],
+  "limitations": [
+    "Tile positions and transforms are authored presentation coordinates, not surveyed geometry or authoritative spatial measurements.",
+    "Tile adjacency, collision, traversal, hydrology, road connectivity and physical behavior are not inferred from visual neighbors.",
+    "The market and inn feature bindings reference illustrative scene features, not committed building entities.",
+    "Child maps are presentation studies and do not establish authoritative building or room inventories."
+  ]
+}
