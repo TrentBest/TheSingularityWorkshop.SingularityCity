@@ -4,7 +4,7 @@
 
 Singularity City is a static, data-driven experience today. GitHub Pages publishes the browser experience; it is not the City runtime, an authoritative multiplayer server, or a tenant-ownership service.
 
-The Pages workflow follows the deployment pattern demonstrated by TheSingularityWorkshop.GUI: validate first, assemble a deliberate publication directory, upload that directory as the Pages artifact, and deploy it in a separate job.
+The workflow validates first, assembles a deliberate publication directory, and uploads that directory as the Pages artifact. Its deploy job calls CiAi's reusable `deploy-pages.yml` workflow at a pinned commit, keeping the site-specific build in City while sharing the deployment implementation.
 
 ## Build pipeline
 
@@ -19,7 +19,7 @@ The development-branch workflow in `.github/workflows/pages.yml` has two jobs:
 2. **Deploy**
    - Runs only after the build succeeds.
    - Runs for a push or an explicit manual dispatch, not for pull requests.
-   - Uses the `github-pages` environment and the Pages deployment permissions.
+   - Calls the pinned CiAi reusable deployment workflow, which uses the caller repository's `github-pages` environment and Pages deployment permissions.
 
 The workflow is intentionally triggered by `development` pushes and pull requests. `master` remains the release-aligned branch; routine development validation and preview publication should not silently switch to it.
 
