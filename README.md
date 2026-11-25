@@ -63,6 +63,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 - [City builder and first-person mayor experience](docs/CITY_BUILDER_AND_FIRST_PERSON_EXPERIENCE.md) — shared map/world contract and playable progression.
 - [City spatial and civic model](docs/CITY_MODEL.md)
 - [Commerce route fixture: itinerant peddler](docs/COMMERCE_ROUTE_FIXTURE.md) — first authored people, inventory, conveyance, route and visit relationship proof.
+- [Greenhollow NPC generation](docs/GREENHOLLOW_NPC_GENERATION.md) — deterministic shopkeeper, customer and visitor candidate suggestions, pending SURPS identity binding.
 - [Economy in Singularity City](docs/ECONOMY_IN_SINGULARITY_CITY.md) — Economy package boundary, a deterministic City Marks ledger fixture, and the path toward a living Digiten economy.
 - [Vehicles, mobility and transport](docs/books/vehicles.md) — capability-based vehicle definitions, fleets, journeys and Physics/Economy ownership.
 - [Buildings, materials and construction](docs/books/buildings-and-construction.md) — material/tool/skill capability profiles and construction feasibility.
