@@ -1,0 +1,61 @@
+{
+  "schema": "singularity-city.npc-candidate-set.v1",
+  "status": "generated-candidates-not-character-records",
+  "generation": {
+    "algorithm": "fnv1a32-role-seed-v1",
+    "generatorVersion": "1.0.0",
+    "seed": "greenhollow-market-day-v1"
+  },
+  "candidates": [
+    {
+      "candidateId": "greenhollow-candidate-market-stall-keeper-3b2ee8e1",
+      "displayNameSuggestion": "Ivo Dale",
+      "role": "market-stall-keeper",
+      "cityContext": {
+        "placeId": "greenhollow-green",
+        "routeId": null
+      },
+      "capabilityPrompts": [
+        "stall-stewardship",
+        "customer-service",
+        "goods-knowledge"
+      ],
+      "candidateStatus": "awaiting-surps-character-binding"
+    },
+    {
+      "candidateId": "greenhollow-candidate-market-customer-3967eab6",
+      "displayNameSuggestion": "Liora Kestrel",
+      "role": "market-customer",
+      "cityContext": {
+        "placeId": "greenhollow-bakery",
+        "routeId": null
+      },
+      "capabilityPrompts": [
+        "shopping-intent",
+        "local-market-literacy"
+      ],
+      "candidateStatus": "awaiting-surps-character-binding"
+    },
+    {
+      "candidateId": "greenhollow-candidate-itinerant-visitor-8e88c2a0",
+      "displayNameSuggestion": "Fenn Ashford",
+      "role": "itinerant-visitor",
+      "cityContext": {
+        "placeId": "north-road-crossing",
+        "routeId": "north-track"
+      },
+      "capabilityPrompts": [
+        "foot-travel",
+        "local-route-awareness"
+      ],
+      "candidateStatus": "awaiting-surps-character-binding"
+    }
+  ],
+  "limitations": [
+    "Candidate IDs identify generated suggestions, not canonical person or SURPS character identities.",
+    "Display names are suggestions and do not establish identity, ancestry, culture, or biography.",
+    "Capability prompts are generation inputs, not asserted character capabilities or qualifications.",
+    "No canonical SURPS character payload is emitted until the SURPS portable character contract is available.",
+    "No schedules, behavior, pathfinding, physical movement, commerce, or persistent resident state are generated."
+  ]
+}
