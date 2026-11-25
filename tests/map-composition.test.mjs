@@ -109,3 +109,14 @@ test("child transforms require positive scale", () => {
   const invalid = structuredClone(maps); invalid[0].childMaps[0].transform.scale = 0;
   assert.throws(() => validateMapSet(invalid));
 });
+const viewerPage = await readFile(new URL("../maps.html", import.meta.url), "utf8");
+const viewerScript = await readFile(new URL("../assets/js/map-composition-viewer.mjs", import.meta.url), "utf8");
+
+test("Map Studio consumes the registered map, tile and parent-feature contracts", () => {
+  assert.match(viewerPage, /assets\/js\/map-composition-viewer\.mjs/);
+  assert.match(viewerScript, /data\/maps\/tile-catalog\.json/);
+  assert.match(viewerScript, /tile\.symbolId/);
+  assert.match(viewerScript, /childMap\.parentFeatureId/);
+  assert.match(viewerScript, /child\.transform/);
+  assert.match(viewerScript, /mapPaths/);
+});
