@@ -1,0 +1,32 @@
+{
+  "schema": "singularity-city.map-instance.v1",
+  "id": "greenhollow-inn-interior",
+  "title": "The Green Inn — Interior Study",
+  "kind": "building-interior",
+  "status": "presentation-study",
+  "parentMapId": "greenhollow-market-district",
+  "parentFeatureId": "greenhollow-inn-study",
+  "coordinateSpace": { "kind": "tile-grid", "units": "tile", "columns": 4, "rows": 3, "origin": "top-left" },
+  "tileCatalog": "data/maps/tile-catalog.json",
+  "authority": "presentation-only",
+  "placements": [
+    { "id": "inn-floor-0-0", "tileId": "woodwork", "layerId": "floor", "x": 0, "y": 0, "rotation": 0 },
+    { "id": "inn-floor-1-0", "tileId": "woodwork", "layerId": "floor", "x": 1, "y": 0, "rotation": 0 },
+    { "id": "inn-floor-2-0", "tileId": "woodwork", "layerId": "floor", "x": 2, "y": 0, "rotation": 0 },
+    { "id": "inn-floor-3-0", "tileId": "woodwork", "layerId": "floor", "x": 3, "y": 0, "rotation": 0 },
+    { "id": "inn-floor-0-1", "tileId": "inn", "layerId": "fixtures", "x": 0, "y": 1, "rotation": 0 },
+    { "id": "inn-floor-1-1", "tileId": "grassland", "layerId": "floor", "x": 1, "y": 1, "rotation": 0 },
+    { "id": "inn-floor-2-1", "tileId": "grassland", "layerId": "floor", "x": 2, "y": 1, "rotation": 0 },
+    { "id": "inn-floor-3-1", "tileId": "inn", "layerId": "fixtures", "x": 3, "y": 1, "rotation": 180 },
+    { "id": "inn-floor-0-2", "tileId": "path", "layerId": "threshold", "x": 0, "y": 2, "rotation": 0 },
+    { "id": "inn-floor-1-2", "tileId": "grassland", "layerId": "floor", "x": 1, "y": 2, "rotation": 0 },
+    { "id": "inn-floor-2-2", "tileId": "grassland", "layerId": "floor", "x": 2, "y": 2, "rotation": 0 },
+    { "id": "inn-floor-3-2", "tileId": "path", "layerId": "threshold", "x": 3, "y": 2, "rotation": 180 }
+  ],
+  "featureBindings": [],
+  "childMaps": [],
+  "limitations": [
+    "The interior is a composition mock-up, not a measured or committed building plan.",
+    "Room purpose, doors, navigation, capacity, safety and occupancy are not inferred from tile placement."
+  ]
+}
