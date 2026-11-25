@@ -90,3 +90,7 @@ A visitor should be able to select a building, follow its service dependencies, 
 The city should teach its own domain. Pair the visual layers with causal diagrams, maps, time series, network views, section cuts, flow diagrams and scenario controls. Explain civil engineering and urban theory beside the picture, not in an isolated wall of prose.
 
 Start with [Civil Systems and City Theory](CIVIL_SYSTEMS_AND_CITY_THEORY.md), then expand each discipline into source-grounded lessons and executable experiments.
+
+## First identity-bound map actor
+
+The [Greenhollow living-scene manifest](GREENHOLLOW_LIVING_SCENE.md) now accompanies the ambient SVG. It binds the peddler's visual actor to the existing `mara-peddler` fixture identity while explicitly keeping the keeper, customers, second traveler, and map geometry illustrative. The manifest is validated in the Pages build. This is an identity-binding proof, not simulated movement or authoritative map geometry.
