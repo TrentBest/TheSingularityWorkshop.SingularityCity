@@ -30,6 +30,12 @@ Grid x increases rightward and y increases downward from the top-left origin. Ea
 
 These values are scene-composition coordinates only. They are not metres, feet, surveyed building dimensions, a geographic CRS, collision geometry or navigation topology. A future adapter must explicitly map these local coordinates to the City spatial frame; no silent unit conversion is permitted.
 
+## Interactive preview
+
+The [Map Studio page](../maps.html) reads the tile catalog, living-scene feature identities and the three map-instance JSON files directly. It composes external SVG symbols with `<use>`, offers per-layer visibility controls, opens the declared Market Stall and Green Inn child maps, displays the parent feature/transform metadata, and returns to the parent district.
+
+This is a browser-side City composition preview. It does not invoke Renderer or Visualize, and it does not imply that SVG tiles are authoritative geometry or simulation inputs.
+
 ## Important separation
 
 The tile atlas remains presentation-only. A road symbol does not prove a traversable road; a river symbol does not define water flow; a bridge symbol does not prove a crossing is structurally or physically valid; and adjacent symbols do not automatically connect.
