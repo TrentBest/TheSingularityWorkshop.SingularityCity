@@ -142,6 +142,11 @@ jobs:
           test -s scripts/generate-greenhollow-npc-candidates.mjs
           test -s tests/greenhollow-npc-generation.test.mjs
           test -s docs/GREENHOLLOW_NPC_GENERATION.md
+          test -s assets/images/map-tile-atlas.svg
+          test -s data/maps/tile-catalog.json
+          test -s schemas/map-tile-catalog.schema.json
+          test -s tests/map-tile-catalog.test.mjs
+          test -s docs/MAP_TILE_CATALOG.md
           test -s data/districts/civic-quarter.json
           test -s data/terrain/city-terrain.json
           test -s data/terrain/physics-volcanic-terrain.json
@@ -181,6 +186,7 @@ jobs:
           node tests/commerce-route-fixture.test.mjs
           node tests/living-scene-manifest.test.mjs
           node tests/greenhollow-npc-generation.test.mjs
+          node tests/map-tile-catalog.test.mjs
           node tests/economy-scenario.test.mjs
           node tests/vehicle-construction-capabilities.test.mjs
           node tests/underworld-sourcebooks.test.mjs
@@ -212,6 +218,8 @@ jobs:
           test -s _site/data/city-blueprint.json
           test -s _site/data/mall-leasing.json
           test -s _site/docs/LIVING_PICTURE.md
+          test -s _site/assets/images/map-tile-atlas.svg
+          test -s _site/data/maps/tile-catalog.json
           test -s _site/docs/MALL_MANAGEMENT_AND_TENANT_DESIGN.md
           test -s _site/visualization-lab/index.html
           test -s _site/visualization-lab/renderer-policy.json
