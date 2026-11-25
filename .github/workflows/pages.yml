@@ -80,6 +80,10 @@ jobs:
           test -s tests/physics-terrain-overlay.test.mjs
           test -s tests/physics-terrain-snapshot.test.mjs
           test -s data/places.json
+          test -s schemas/place-catalog.schema.json
+          test -s schemas/experience-entry.schema.json
+          test -s tests/fixtures/underworks.experience-entry.json
+          test -s tests/place-experience-contracts.test.mjs
           test -s data/city-blueprint.json
           test -s data/city-systems.json
           test -s data/vehicles/vehicle-catalog.json
@@ -193,6 +197,7 @@ jobs:
           node --check assets/js/city-experience.mjs
           node tests/city-experience-channels.test.mjs
           node tests/validate-catalog.mjs
+          node tests/place-experience-contracts.test.mjs
           node tests/commerce-route-fixture.test.mjs
           node tests/living-scene-manifest.test.mjs
           node tests/greenhollow-npc-generation.test.mjs
