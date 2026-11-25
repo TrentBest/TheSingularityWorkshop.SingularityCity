@@ -15,3 +15,5 @@ This is the first data-bound projection, not a live simulation. Mara's animated 
 The next expansion should bind existing City place and route records to spatial geometry, then add resident records for the keeper and customers through the NPC generation pipeline. Nested district, building, and room maps should be child map manifests with explicit parent transforms—not inferred from SVG groups.
 
 The candidate generator and its boundaries are described in [Greenhollow NPC generation](GREENHOLLOW_NPC_GENERATION.md). The candidate IDs remain distinct from SURPS character identity until the canonical portable character contract is available.
+
+The reusable [twenty-tile SVG atlas](MAP_TILE_CATALOG.md) provides the first shared visual vocabulary for map composition. The symbols remain presentation-only; map features and actor identities continue to come from manifests and City records.
