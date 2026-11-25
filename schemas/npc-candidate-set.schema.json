@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/schemas/npc-candidate-set.schema.json",
+  "title":"Singularity City NPC Generation Candidate Set",
+  "description":"Deterministic City-context candidate suggestions awaiting binding to the canonical SURPS character contract.",
+  "type":"object","additionalProperties":false,
+  "required":["schema","status","generation","candidates","limitations"],
+  "properties":{
+    "schema":{"const":"singularity-city.npc-candidate-set.v1"},
+    "status":{"const":"generated-candidates-not-character-records"},
+    "generation":{"type":"object","additionalProperties":false,"required":["algorithm","generatorVersion","seed"],"properties":{
+      "algorithm":{"const":"fnv1a32-role-seed-v1"},"generatorVersion":{"type":"string","minLength":1},"seed":{"type":"string","minLength":1}}},
+    "candidates":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["candidateId","displayNameSuggestion","role","cityContext","capabilityPrompts","candidateStatus"],"properties":{
+      "candidateId":{"type":"string","pattern":"^greenhollow-candidate-[a-z0-9-]+-[0-9a-f]{8}$"},
+      "displayNameSuggestion":{"type":"string","minLength":1},
+      "role":{"enum":["market-stall-keeper","market-customer","itinerant-visitor"]},
+      "cityContext":{"type":"object","additionalProperties":false,"required":["placeId","routeId"],"properties":{"placeId":{"type":"string","minLength":1},"routeId":{"type":["string","null"]}}},
+      "capabilityPrompts":{"type":"array","items":{"type":"string","minLength":1},"minItems":1},
+      "candidateStatus":{"const":"awaiting-surps-character-binding"}}}},
+    "limitations":{"type":"array","items":{"type":"string","minLength":1},"minItems":1}
+  }
+}
