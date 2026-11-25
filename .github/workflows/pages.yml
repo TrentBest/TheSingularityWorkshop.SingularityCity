@@ -137,6 +137,11 @@ jobs:
           test -s schemas/living-scene.schema.json
           test -s tests/living-scene-manifest.test.mjs
           test -s docs/GREENHOLLOW_LIVING_SCENE.md
+          test -s data/npc-generation/greenhollow-candidates.json
+          test -s schemas/npc-candidate-set.schema.json
+          test -s scripts/generate-greenhollow-npc-candidates.mjs
+          test -s tests/greenhollow-npc-generation.test.mjs
+          test -s docs/GREENHOLLOW_NPC_GENERATION.md
           test -s data/districts/civic-quarter.json
           test -s data/terrain/city-terrain.json
           test -s data/terrain/physics-volcanic-terrain.json
@@ -175,6 +180,7 @@ jobs:
           node tests/validate-catalog.mjs
           node tests/commerce-route-fixture.test.mjs
           node tests/living-scene-manifest.test.mjs
+          node tests/greenhollow-npc-generation.test.mjs
           node tests/economy-scenario.test.mjs
           node tests/vehicle-construction-capabilities.test.mjs
           node tests/underworld-sourcebooks.test.mjs
