@@ -1,0 +1,35 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/schemas/living-scene.schema.json",
+  "title":"Singularity City Living Scene Manifest",
+  "description":"Presentation manifest binding visual actors to City fixture identities without making SVG animation authoritative.",
+  "type":"object","additionalProperties":false,
+  "required":["schema","id","title","status","coordinateSpace","source","layers","features","actors","childMaps","limitations"],
+  "properties":{
+    "schema":{"const":"singularity-city.living-scene.v1"},
+    "id":{"type":"string","pattern":"^[a-z0-9-]+$"},
+    "title":{"type":"string","minLength":1},
+    "status":{"enum":["presentation-study","data-bound-preview","interactive-projection","simulated-projection"]},
+    "coordinateSpace":{"type":"object","additionalProperties":false,"required":["kind","units","width","height","origin"],"properties":{
+      "kind":{"enum":["svg-viewbox","local-map","projected-crs"]},"units":{"type":"string","minLength":1},
+      "width":{"type":"number","exclusiveMinimum":0},"height":{"type":"number","exclusiveMinimum":0},"origin":{"const":"top-left"}}},
+    "source":{"type":"object","additionalProperties":false,"required":["mapAsset","domainFixture"],"properties":{"mapAsset":{"type":"string","minLength":1},"domainFixture":{"type":"string","minLength":1}}},
+    "layers":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","kind","authority","defaultVisible"],"properties":{
+      "id":{"type":"string","pattern":"^[a-z0-9-]+$"},"kind":{"enum":["terrain","hydrology","transport","places","actors","labels","ambient-effects"]},
+      "authority":{"enum":["city-domain","external-domain","presentation-only"]},"defaultVisible":{"type":"boolean"}}}},
+    "features":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","kind","label","layerId","representationStatus"],"properties":{
+      "id":{"type":"string","pattern":"^[a-z0-9-]+$"},"kind":{"type":"string","minLength":1},"label":{"type":"string","minLength":1},
+      "layerId":{"type":"string","minLength":1},"cityEntityId":{"type":"string","minLength":1},
+      "representationStatus":{"enum":["domain-bound","illustrative-placeholder"]}}}},
+    "actors":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","role","layerId","representationStatus","motion"],"properties":{
+      "id":{"type":"string","pattern":"^[a-z0-9-]+$"},"role":{"type":"string","minLength":1},"layerId":{"type":"string","minLength":1},
+      "sourcePersonId":{"type":"string","minLength":1},"representationStatus":{"enum":["domain-bound","illustrative-placeholder"]},
+      "motion":{"enum":["ambient-only","domain-driven"]}},
+      "allOf":[
+        {"if":{"properties":{"representationStatus":{"const":"domain-bound"}},"required":["representationStatus"]},"then":{"required":["sourcePersonId"]}},
+        {"if":{"properties":{"representationStatus":{"const":"illustrative-placeholder"}},"required":["representationStatus"]},"then":{"properties":{"motion":{"const":"ambient-only"}}}}
+      ]}},
+    "childMaps":{"type":"array","items":{"type":"string","minLength":1}},
+    "limitations":{"type":"array","items":{"type":"string","minLength":1},"minItems":1}
+  }
+}
