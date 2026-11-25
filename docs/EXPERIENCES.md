@@ -4,44 +4,32 @@
 
 Experiences are discovered spatially but remain owned by their domain repositories. City provides location, discovery, access and transition. It does not absorb the dungeon, laboratory, game or workshop implementation.
 
+## Versioned contract
+
+The illustrative entry shape is now an explicit JSON Schema contract:
+
+- [Experience-entry schema](../schemas/experience-entry.schema.json)
+- [Underworks contract fixture](../tests/fixtures/underworks.experience-entry.json)
+- [Place-catalog schema](../schemas/place-catalog.schema.json)
+
+The fixture demonstrates identity and reference consistency only. It is not a registered production destination, a live runtime handoff, or proof that FSM_Dungeon is currently loadable through City.
+
+A City place is a discoverable geographic destination. An experience entry is a separate declaration that connects a stable place identity to an independently owned experience. One place may expose multiple entry points, and an experience may have multiple entries. Titles and descriptions are presentation; IDs are machine identity.
+
+The place catalog retains its existing map coordinates as City presentation/map coordinates. They are not Physics world coordinates and do not declare an origin, axis convention, unit scale, or transform. Any future conversion must use an explicit Physics-owned spatial contract rather than inference from the map.
+
 ## Manifest shape
 
-The following is an illustrative contract, not yet a bound runtime schema:
+The schema requires:
+- a versioned \`schema\` identifier;
+- stable experience and entry-point IDs;
+- the owning repository;
+- City, district and place identities;
+- target domain and opaque site reference;
+- declared capabilities;
+- an access policy evaluated by a trusted host.
 
-```json
-{
-  "schema": "singularity-city.experience-entry.v1",
-  "experienceId": "fsm-dungeon.underworks",
-  "title": "The Underworks",
-  "owner": {
-    "repository": "TrentBest/FSM_Dungeon"
-  },
-  "entryPointId": "underworks.main-entrance",
-  "place": {
-    "cityId": "singularity-city",
-    "districtId": "municipal-core",
-    "placeId": "underworks.access-gate"
-  },
-  "target": {
-    "domain": "FSM_Dungeon",
-    "siteReference": {
-      "kind": "city-district",
-      "anchor": "municipal-core"
-    }
-  },
-  "capabilities": [
-    "world.topology",
-    "world.inhabitants",
-    "world.environment",
-    "world.exploration"
-  ],
-  "access": {
-    "policy": "host-authorized"
-  }
-}
-```
-
-The exact schema should be versioned and validated before production use. IDs are stable machine identity; titles and descriptions are presentation.
+Optional host requirements and presentation metadata do not grant permissions. City describes the requested handoff; a trusted host remains responsible for authentication, authorization, capability availability, context creation and audit.
 
 ## First destination portfolio
 
@@ -50,7 +38,7 @@ The exact schema should be versioned and validated before production use. IDs ar
 | Municipal Underworks gate | Sewer network, underground exploration and simulation | FSM_Dungeon |
 | Transit Station | Destination discovery and travel | Singularity Transit / host |
 | Workshop campus | Creation tools, workbench and blueprint library | Workshop repositories |
-| Laboratory complex | Scientific and educational experiences | Laboratory domain |
+| Laboratory complex | Scientific and educational experiences | Singularity Laboratories |
 | Game Arcade / tactical shop | Reusable combat, tactics, RTS, 4X and RPG capability families | Game experience repositories |
 | Capitol | Civic roles, governance and public services | City |
 | Mansion / estate district | Architecture, property and household experiences | City and relevant domain packages |
