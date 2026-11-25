@@ -24,16 +24,16 @@
   ],
   "actors":[
     {"id":"mara-peddler-map-actor","role":"itinerant-peddler","layerId":"inhabitants-and-visitors","sourcePersonId":"mara-peddler","representationStatus":"domain-bound","motion":"ambient-only"},
-    {"id":"market-keeper-placeholder","role":"market-keeper","layerId":"inhabitants-and-visitors","representationStatus":"illustrative-placeholder","motion":"ambient-only"},
-    {"id":"market-customer-one-placeholder","role":"customer","layerId":"inhabitants-and-visitors","representationStatus":"illustrative-placeholder","motion":"ambient-only"},
+    {"id":"market-stall-keeper-map-actor","role":"market-stall-keeper","layerId":"inhabitants-and-visitors","sourceCandidateId":"greenhollow-candidate-market-stall-keeper-3b2ee8e1","representationStatus":"generated-candidate","motion":"ambient-only"},
+    {"id":"market-customer-map-actor","role":"market-customer","layerId":"inhabitants-and-visitors","sourceCandidateId":"greenhollow-candidate-market-customer-3967eab6","representationStatus":"generated-candidate","motion":"ambient-only"},
     {"id":"market-customer-two-placeholder","role":"customer","layerId":"inhabitants-and-visitors","representationStatus":"illustrative-placeholder","motion":"ambient-only"},
-    {"id":"north-road-traveler-placeholder","role":"traveler","layerId":"inhabitants-and-visitors","representationStatus":"illustrative-placeholder","motion":"ambient-only"}
+    {"id":"itinerant-visitor-map-actor","role":"itinerant-visitor","layerId":"inhabitants-and-visitors","sourceCandidateId":"greenhollow-candidate-itinerant-visitor-8e88c2a0","representationStatus":"generated-candidate","motion":"ambient-only"}
   ],
   "childMaps":[],
   "limitations":[
     "The SVG is authored illustration; its geometry is not imported from authoritative City place or route data.",
     "Mara is the only actor linked to the commerce fixture, and her SVG movement remains ambient presentation rather than simulated travel.",
-    "The keeper, customers, second traveler, river, road, bridge, market building, inn, and mill are illustrative placeholders without authoritative entity bindings.",
+    "One keeper, one customer, and one itinerant visitor bind to generated candidate suggestions, not canonical character identities. The second customer, river, road, bridge, market building, inn, and mill remain illustrative placeholders without authoritative entity bindings.",
     "No pathfinding, resident schedule, commerce settlement, persistence, or physical simulation is performed.",
     "No child district, building-interior, or room map is implemented yet."
   ]
