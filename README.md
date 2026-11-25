@@ -51,6 +51,7 @@ City does not absorb the simulation of every destination. The Underworks entranc
 `Ontology → MicroBundles → arbitration → Experience → spatial manifestation`
 
 - [Architecture and responsibility boundaries](docs/ARCHITECTURE.md)
+- [WebPage host integration](docs/WEBPAGE_HOST_INTEGRATION.md) — City-owned contracts, extraction inventory, spatial requirements, and the browser-host proof sequence.
 - [Human proof review and verification](docs/PROOF_REVIEW_AND_VERIFICATION.md) — proof claims, automated evidence, human review checkboxes and the boundary between local notes and shared certification.
 - [Singularity Mall pavilion](docs/SINGULARITY_MALL_PAVILION.md) — pavilion spaces, merchant boundaries, and the interactive browser experience.
 - [Mall management and tenant design](docs/MALL_MANAGEMENT_AND_TENANT_DESIGN.md) — management office, vacant units, tenant facade/interior customization, and the boundary between local drafts and future shared leasing.
