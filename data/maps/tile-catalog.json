@@ -12,7 +12,7 @@
       "id": "grassland",
       "category": "terrain",
       "label": "Open grassland",
-      "symbolId": "tile-green",
+      "symbolId": "tile-grassland",
       "defaultLayer": "ground",
       "authority": "presentation-only"
     },
