@@ -147,6 +147,12 @@ jobs:
           test -s schemas/map-tile-catalog.schema.json
           test -s tests/map-tile-catalog.test.mjs
           test -s docs/MAP_TILE_CATALOG.md
+          test -s schemas/map-instance.schema.json
+          test -s data/maps/greenhollow-market-district.map.json
+          test -s data/maps/greenhollow-market-stall-interior.map.json
+          test -s data/maps/greenhollow-inn-interior.map.json
+          test -s tests/map-composition.test.mjs
+          test -s docs/MAP_COMPOSITION_AND_NESTED_MAPS.md
           test -s data/districts/civic-quarter.json
           test -s data/terrain/city-terrain.json
           test -s data/terrain/physics-volcanic-terrain.json
@@ -187,6 +193,7 @@ jobs:
           node tests/living-scene-manifest.test.mjs
           node tests/greenhollow-npc-generation.test.mjs
           node tests/map-tile-catalog.test.mjs
+          node tests/map-composition.test.mjs
           node tests/economy-scenario.test.mjs
           node tests/vehicle-construction-capabilities.test.mjs
           node tests/underworld-sourcebooks.test.mjs
@@ -220,6 +227,11 @@ jobs:
           test -s _site/docs/LIVING_PICTURE.md
           test -s _site/assets/images/map-tile-atlas.svg
           test -s _site/data/maps/tile-catalog.json
+          test -s _site/schemas/map-instance.schema.json
+          test -s _site/data/maps/greenhollow-market-district.map.json
+          test -s _site/data/maps/greenhollow-market-stall-interior.map.json
+          test -s _site/data/maps/greenhollow-inn-interior.map.json
+          test -s _site/docs/MAP_COMPOSITION_AND_NESTED_MAPS.md
           test -s _site/docs/MALL_MANAGEMENT_AND_TENANT_DESIGN.md
           test -s _site/visualization-lab/index.html
           test -s _site/visualization-lab/renderer-policy.json
