@@ -99,7 +99,10 @@ test("map composition rejects invalid bounds and hierarchy cycles", () => {
   const outOfBounds = structuredClone(maps); outOfBounds[0].placements[0].x = 99;
   assert.throws(() => validateMapSet(outOfBounds));
   const cycle = structuredClone(maps);
+  cycle[1].featureBindings.push({ featureId: "greenhollow-market-building-study", authority: "presentation-only" });
   cycle[1].childMaps.push({ mapId: cycle[0].id, relation: "contains", transform: { translation: { x: 0, y: 0 }, rotation: 0, scale: 1 } });
+  cycle[0].parentMapId = cycle[1].id;
+  cycle[0].parentFeatureId = "greenhollow-market-building-study";
   assert.throws(() => validateMapSet(cycle), /cycle/);
 });
 test("child transforms require positive scale", () => {
