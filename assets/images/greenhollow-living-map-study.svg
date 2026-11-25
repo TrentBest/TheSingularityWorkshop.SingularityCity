@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+<title id="title">Greenhollow living settlement map study</title>
+<desc id="desc">A layered settlement map illustration with an animated river, connected road, tiny travelers, a peddler cart, a shopkeeper and customers. Ambient motion is illustrative, not authoritative simulation.</desc>
+<defs>
+ <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#85d2e9"/><stop offset="1" stop-color="#2879ad"/></linearGradient>
+ <pattern id="meadow" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="8" cy="10" r="1.5" fill="#719c59" opacity=".45"/><circle cx="29" cy="27" r="1.2" fill="#719c59" opacity=".35"/></pattern>
+ <style>
+  text{font-family:Georgia,serif;fill:#243c31}.meta{font:11px Arial,sans-serif;letter-spacing:2px}.place{font:15px Arial,sans-serif;font-weight:bold;letter-spacing:1.5px}.waterline{fill:none;stroke:#d9f8ff;stroke-width:3;stroke-linecap:round;stroke-dasharray:10 17;animation:water 2.4s linear infinite}.traveler{animation:walk 1.2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}.customer{animation:visit 8s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}.smoke{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:3 8;opacity:.65;animation:rise 5s linear infinite}.flag{transform-origin:0 0;animation:flag 2s ease-in-out infinite alternate}
+  @keyframes water{to{stroke-dashoffset:-54}}@keyframes walk{to{transform:translateY(-3px) rotate(3deg)}}@keyframes visit{to{transform:translateX(22px)}}@keyframes rise{to{transform:translateY(-18px);opacity:0}}@keyframes flag{to{transform:skewY(-8deg)}}
+  @media(prefers-reduced-motion:reduce){.waterline,.traveler,.customer,.smoke,.flag{animation:none}}
+ </style>
+</defs>
+<rect width="1280" height="800" fill="#d7e5b5"/><rect width="1280" height="800" fill="url(#meadow)"/>
+<path d="M-20 585C150 500 255 650 430 570S710 495 870 570 1090 655 1300 540L1300 735C1110 815 1010 700 850 730S520 790 350 705 120 665 -20 735Z" fill="url(#water)"/>
+<path class="waterline" d="M-10 635C150 550 255 700 430 620S710 545 870 620 1090 705 1290 590"/>
+<path d="M-20 350C180 315 320 400 510 350S850 290 1040 355 1170 380 1300 340" fill="none" stroke="#92724f" stroke-width="48"/>
+<path d="M-20 350C180 315 320 400 510 350S850 290 1040 355 1170 380 1300 340" fill="none" stroke="#ead9b8" stroke-width="36"/>
+<path d="M-20 350C180 315 320 400 510 350S850 290 1040 355 1170 380 1300 340" fill="none" stroke="#fff2d5" stroke-width="2" stroke-dasharray="10 16"/>
+<!-- Footbridge -->
+<path d="M360 565Q425 520 490 550" fill="none" stroke="#805b3b" stroke-width="24"/><path d="M360 565Q425 520 490 550" fill="none" stroke="#d7b17c" stroke-width="16"/><path d="M360 565L360 595M490 550L490 580" stroke="#805b3b" stroke-width="8"/>
+<!-- Mill -->
+<g transform="translate(90 135)"><rect x="0" y="85" width="190" height="125" fill="#d7b47f" stroke="#75553a" stroke-width="5"/><path d="M-12 90L95 20 202 90Z" fill="#8a6247" stroke="#62432f" stroke-width="5"/><circle cx="95" cy="150" r="30" fill="#9bb5a1" stroke="#75553a" stroke-width="5"/><path d="M95 120V180M65 150H125" stroke="#75553a" stroke-width="5"/><text x="95" y="238" text-anchor="middle" class="place">MILL</text></g>
+<!-- Market shop -->
+<g transform="translate(520 130)"><rect x="0" y="88" width="270" height="190" rx="5" fill="#e8c48e" stroke="#795438" stroke-width="5"/><path d="M-14 94L135 15 284 94Z" fill="#a64f3e" stroke="#713d31" stroke-width="5"/><rect x="26" y="135" width="95" height="82" fill="#84bbcb" stroke="#795438" stroke-width="5"/><rect x="170" y="130" width="68" height="148" fill="#79543a" stroke="#5c3e2b" stroke-width="5"/><rect x="163" y="104" width="82" height="24" rx="4" fill="#fff0ca" stroke="#795438" stroke-width="3"/><text x="204" y="121" text-anchor="middle" class="meta">GENERAL GOODS</text><text x="135" y="310" text-anchor="middle" class="place">GREENHOLLOW MARKET</text><path class="smoke" d="M235 20q-20 -20 0 -38t0 -38"/></g>
+<!-- Inn -->
+<g transform="translate(930 155)"><rect x="0" y="75" width="210" height="145" fill="#d9b27c" stroke="#795438" stroke-width="5"/><path d="M-12 80L105 10 222 80Z" fill="#667c5a" stroke="#465b42" stroke-width="5"/><rect x="76" y="130" width="58" height="90" fill="#79543a"/><text x="105" y="250" text-anchor="middle" class="place">THE GREEN INN</text><path class="flag" d="M105 10V-34l42 12-42 12" fill="#b94f43" stroke="#795438" stroke-width="2"/></g>
+<!-- Market keeper at doorway -->
+<g transform="translate(738 430)"><circle cx="0" cy="-12" r="7" fill="#9b5d42"/><path d="M0 -4V18M0 2L-9 11M0 2L9 11M0 18L-8 31M0 18L8 31" stroke="#365a48" stroke-width="5" stroke-linecap="round"/><text x="0" y="48" text-anchor="middle" class="meta">SHOPKEEPER</text></g>
+<!-- customers -->
+<g class="customer" transform="translate(820 415)"><circle cx="0" cy="-10" r="6" fill="#6f538d"/><path d="M0 -4V17M0 2L-8 10M0 2L8 10M0 17L-7 28M0 17L7 28" stroke="#6f538d" stroke-width="4" stroke-linecap="round"/></g>
+<g class="customer" transform="translate(870 438)" style="animation-delay:-3s"><circle cx="0" cy="-10" r="6" fill="#b15b43"/><path d="M0 -4V17M0 2L-8 10M0 2L8 10M0 17L-7 28M0 17L7 28" stroke="#b15b43" stroke-width="4" stroke-linecap="round"/></g>
+<!-- peddler and handcart on road -->
+<g class="traveler" transform="translate(385 337)"><circle cx="0" cy="-14" r="7" fill="#9b5d42"/><path d="M0 -7V17M0 0L-10 10M0 0L10 8M0 17L-8 31M0 17L9 31" stroke="#684c36" stroke-width="5" stroke-linecap="round"/><path d="M14 14h32l8 15H22Z" fill="#b9824f" stroke="#684c36" stroke-width="3"/><circle cx="27" cy="33" r="5" fill="#55402e"/><circle cx="49" cy="33" r="5" fill="#55402e"/></g>
+<g class="traveler" transform="translate(1040 325) scale(.8)"><circle cx="0" cy="-14" r="7" fill="#6f538d"/><path d="M0 -7V17M0 0L-10 10M0 0L10 8M0 17L-8 31M0 17L9 31" stroke="#6f538d" stroke-width="5" stroke-linecap="round"/></g>
+<!-- homes and orchard -->
+<g transform="translate(90 430)"><rect x="0" y="35" width="105" height="75" fill="#e5c18c" stroke="#795438" stroke-width="4"/><path d="M-8 40L52 0 113 40Z" fill="#8a6247" stroke="#62432f" stroke-width="4"/><text x="52" y="132" text-anchor="middle" class="meta">HOMESTEAD</text></g>
+<g fill="#58804b"><circle cx="220" cy="470" r="27"/><circle cx="270" cy="490" r="22"/><circle cx="315" cy="455" r="25"/></g><g fill="#9e633e"><circle cx="210" cy="462" r="4"/><circle cx="225" cy="480" r="4"/><circle cx="270" cy="482" r="4"/><circle cx="314" cy="448" r="4"/></g>
+<text x="40" y="48" class="place">GREENHOLLOW · LIVING MAP STUDY</text><text x="40" y="72" class="meta">RIVER · ROAD · MARKET · INN · RESIDENTS · VISITORS</text>
+<text x="640" y="775" text-anchor="middle" class="meta">AMBIENT SVG PRESENTATION · NOT AUTHORITATIVE MOVEMENT, COMMERCE, OR NPC SIMULATION</text>
+</svg>
