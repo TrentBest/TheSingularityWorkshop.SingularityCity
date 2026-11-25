@@ -1,0 +1,39 @@
+{
+  "schema": "singularity-city.experience-entry.v1",
+  "experienceId": "fsm-dungeon.underworks",
+  "title": "The Underworks",
+  "owner": {
+    "repository": "TrentBest/FSM_Dungeon"
+  },
+  "entryPointId": "underworks.main-entrance",
+  "place": {
+    "cityId": "singularity-city",
+    "districtId": "underworks",
+    "placeId": "underworks",
+    "anchor": "underworks-access-gate"
+  },
+  "target": {
+    "domain": "FSM_Dungeon",
+    "siteReference": {
+      "kind": "city-district",
+      "anchor": "underworks"
+    }
+  },
+  "capabilities": [
+    "world.topology",
+    "world.inhabitants",
+    "world.environment",
+    "world.exploration"
+  ],
+  "access": {
+    "policy": "host-authorized"
+  },
+  "hostRequirements": [
+    "experience-context",
+    "access-evaluation"
+  ],
+  "presentation": {
+    "summary": "A proposed host-mediated entrance to the municipal underground network.",
+    "icon": "⌄"
+  }
+}
