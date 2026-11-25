@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trentbest.github.io/TheSingularityWorkshop.SingularityCity/schemas/experience-entry.schema.json",
+  "title": "Singularity City Experience Entry",
+  "description": "A City-owned discovery and handoff declaration. It does not implement or authorize the target experience.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "experienceId",
+    "title",
+    "owner",
+    "entryPointId",
+    "place",
+    "target",
+    "capabilities",
+    "access"
+  ],
+  "properties": {
+    "schema": {
+      "const": "singularity-city.experience-entry.v1"
+    },
+    "experienceId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "package": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "entryPointId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "place": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cityId",
+        "districtId",
+        "placeId"
+      ],
+      "properties": {
+        "cityId": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "districtId": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "placeId": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "anchor": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domain",
+        "siteReference"
+      ],
+      "properties": {
+        "domain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "siteReference": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "anchor"
+          ],
+          "properties": {
+            "kind": {
+              "type": "string",
+              "minLength": 1
+            },
+            "anchor": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy"
+      ],
+      "properties": {
+        "policy": {
+          "enum": [
+            "public",
+            "host-authorized",
+            "restricted",
+            "invitation-only"
+          ]
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "hostRequirements": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "icon": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
