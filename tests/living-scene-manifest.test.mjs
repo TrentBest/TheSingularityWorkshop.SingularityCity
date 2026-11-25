@@ -6,6 +6,7 @@ const scene = JSON.parse(await readFile(new URL("data/maps/greenhollow-living-sc
 const commerce = JSON.parse(await readFile(new URL("data/commerce-route-fixture.json", root), "utf8"));
 const candidates = JSON.parse(await readFile(new URL("data/npc-generation/greenhollow-candidates.json", root), "utf8"));
 const schema = JSON.parse(await readFile(new URL("schemas/living-scene.schema.json", root), "utf8"));
+const svg = await readFile(new URL("assets/images/greenhollow-living-map-study.svg", root), "utf8");
 
 assert.equal(scene.schema, "singularity-city.living-scene.v1");
 assert.equal(schema.$id.endsWith("/schemas/living-scene.schema.json"), true);
@@ -22,7 +23,10 @@ const unique = (items, label) => {
 };
 const layerIds = unique(scene.layers, "Layer");
 unique(scene.features, "Feature");
-unique(scene.actors, "Actor");
+const actorIds = unique(scene.actors, "Actor");
+for (const actorId of actorIds) {
+  assert.match(svg, new RegExp('<g\\s+id="' + actorId + '"(?:\\s|>)'), "SVG group must expose actor ID " + actorId);
+}
 
 for (const feature of scene.features) {
   assert.ok(layerIds.has(feature.layerId), feature.id + " must reference an existing layer");
@@ -48,6 +52,7 @@ for (const actor of scene.actors) {
   }
 }
 assert.ok(scene.actors.some(actor => actor.sourcePersonId === "mara-peddler"));
+assert.match(svg, /id="mara-peddler-map-actor"/, "Mara SVG group must be addressable by manifest ID");
 assert.equal(scene.actors.filter(actor => actor.representationStatus === "generated-candidate").length, 3);
 assert.ok(scene.limitations.length >= 4);
 assert.deepEqual(scene.childMaps, [], "No nested child map is claimed until one exists");
