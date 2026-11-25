@@ -1,0 +1,40 @@
+{
+  "schema":"singularity-city.living-scene.v1",
+  "id":"greenhollow-settlement-ambient",
+  "title":"Greenhollow settlement — first data-bound living-scene study",
+  "status":"data-bound-preview",
+  "coordinateSpace":{"kind":"svg-viewbox","units":"viewBox units","width":1280,"height":800,"origin":"top-left"},
+  "source":{"mapAsset":"assets/images/greenhollow-living-map-study.svg","domainFixture":"data/commerce-route-fixture.json"},
+  "layers":[
+    {"id":"ground","kind":"terrain","authority":"presentation-only","defaultVisible":true},
+    {"id":"river","kind":"hydrology","authority":"presentation-only","defaultVisible":true},
+    {"id":"road-and-bridge","kind":"transport","authority":"presentation-only","defaultVisible":true},
+    {"id":"settlement-places","kind":"places","authority":"presentation-only","defaultVisible":true},
+    {"id":"inhabitants-and-visitors","kind":"actors","authority":"city-domain","defaultVisible":true},
+    {"id":"ambient","kind":"ambient-effects","authority":"presentation-only","defaultVisible":true},
+    {"id":"place-labels","kind":"labels","authority":"presentation-only","defaultVisible":true}
+  ],
+  "features":[
+    {"id":"greenhollow-river-study","kind":"river","label":"River","layerId":"river","representationStatus":"illustrative-placeholder"},
+    {"id":"greenhollow-road-study","kind":"road","label":"Settlement road","layerId":"road-and-bridge","representationStatus":"illustrative-placeholder"},
+    {"id":"greenhollow-footbridge-study","kind":"bridge","label":"Footbridge","layerId":"road-and-bridge","representationStatus":"illustrative-placeholder"},
+    {"id":"greenhollow-market-building-study","kind":"market-building","label":"General goods market","layerId":"settlement-places","representationStatus":"illustrative-placeholder"},
+    {"id":"greenhollow-inn-study","kind":"inn","label":"The Green Inn","layerId":"settlement-places","representationStatus":"illustrative-placeholder"},
+    {"id":"greenhollow-mill-study","kind":"mill","label":"Mill","layerId":"settlement-places","representationStatus":"illustrative-placeholder"}
+  ],
+  "actors":[
+    {"id":"mara-peddler-map-actor","role":"itinerant-peddler","layerId":"inhabitants-and-visitors","sourcePersonId":"mara-peddler","representationStatus":"domain-bound","motion":"ambient-only"},
+    {"id":"market-keeper-placeholder","role":"market-keeper","layerId":"inhabitants-and-visitors","representationStatus":"illustrative-placeholder","motion":"ambient-only"},
+    {"id":"market-customer-one-placeholder","role":"customer","layerId":"inhabitants-and-visitors","representationStatus":"illustrative-placeholder","motion":"ambient-only"},
+    {"id":"market-customer-two-placeholder","role":"customer","layerId":"inhabitants-and-visitors","representationStatus":"illustrative-placeholder","motion":"ambient-only"},
+    {"id":"north-road-traveler-placeholder","role":"traveler","layerId":"inhabitants-and-visitors","representationStatus":"illustrative-placeholder","motion":"ambient-only"}
+  ],
+  "childMaps":[],
+  "limitations":[
+    "The SVG is authored illustration; its geometry is not imported from authoritative City place or route data.",
+    "Mara is the only actor linked to the commerce fixture, and her SVG movement remains ambient presentation rather than simulated travel.",
+    "The keeper, customers, second traveler, river, road, bridge, market building, inn, and mill are illustrative placeholders without authoritative entity bindings.",
+    "No pathfinding, resident schedule, commerce settlement, persistence, or physical simulation is performed.",
+    "No child district, building-interior, or room map is implemented yet."
+  ]
+}
