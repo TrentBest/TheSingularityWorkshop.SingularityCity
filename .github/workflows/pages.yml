@@ -153,6 +153,8 @@ jobs:
           test -s data/maps/greenhollow-inn-interior.map.json
           test -s tests/map-composition.test.mjs
           test -s docs/MAP_COMPOSITION_AND_NESTED_MAPS.md
+          test -s maps.html
+          test -s assets/js/map-composition-viewer.mjs
           test -s data/districts/civic-quarter.json
           test -s data/terrain/city-terrain.json
           test -s data/terrain/physics-volcanic-terrain.json
@@ -210,7 +212,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p _site
-          cp index.html mall.html thinking.html _site/
+          cp index.html mall.html thinking.html maps.html _site/
           cp -R assets data docs schemas _site/
           mkdir -p _site/visualization-lab
           cp -R _visualize/samples/SoldierField/WebGpuRunner/. _site/visualization-lab/
@@ -220,6 +222,8 @@ jobs:
           test -s _site/index.html
           test -s _site/mall.html
           test -s _site/thinking.html
+          test -s _site/maps.html
+          test -s _site/assets/js/map-composition-viewer.mjs
           test -s _site/assets/js/city.js
           test -s _site/assets/js/mall.mjs
           test -s _site/data/city-blueprint.json
